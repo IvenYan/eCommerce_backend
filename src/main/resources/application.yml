@@ -1,0 +1,19 @@
+logging:
+  level:
+    com:
+      management:
+        backend:
+          mybatis:
+            mapper: DEBUG
+    org:
+      mybatis: DEBUG
+mybatis:
+  mapperLocations: classpath*:mybatis/mapping/*.xml,classpath:mybatis/casadedMapping/*.xml
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: TH6ub4LJHZgvnivm
+    url: jdbc:mysql://148.70.219.244:3306/backendshop_qzx?useUnicode=true&characterEncoding=UTF-8
+    username: backendshop_user

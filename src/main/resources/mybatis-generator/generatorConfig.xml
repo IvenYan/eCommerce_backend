@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="mybatis-generator/generatorConfig.properties" />
+    <classPathEntry location="${jdbc_driverPath}" />
+    <context id="my" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="false" />
+            <!-- 下面一行用于取消注释的生成 -->
+            <property name="suppressAllComments" value="false" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${jdbc_driverClassName}"
+                        connectionURL="${jdbc_url}" userId="${jdbc_username}" password="${jdbc_password}" >
+            <!--设置为 true 可以获取 tables 信息, 解决生成文件缺少 xxxByPrimaryKey 的问题 -->
+            <property name="useInformationSchema" value="true"/>
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="${modelPackage}"
+                            targetProject="${modelProject}">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${mappingPackage}"
+                         targetProject="${mappingProject}">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="${mapperPackage}"
+                             targetProject="${mapperProject}" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table schema="backendshop_qzx" tableName="user" domainObjectName="User"
+               enableCountByExample="true" enableUpdateByExample="true"  selectByPrimaryKeyQueryId="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            <!--<columnRenamingRule searchString="^D_" replaceString=""/> -->
+        </table>
+        <table schema="backendshop_qzx" tableName="product_detail" domainObjectName="ProductDetail"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            <!--<columnRenamingRule searchString="^D_" replaceString=""/> -->
+        </table>
+        <table schema="backendshop_qzx" tableName="product" domainObjectName="Product"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            <!--<columnRenamingRule searchString="^D_" replaceString=""/> -->
+        </table>
+        <table schema="backendshop_qzx" tableName="product_picture" domainObjectName="ProductPicture"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            <!--<columnRenamingRule searchString="^D_" replaceString=""/> -->
+        </table>
+        <table schema="backendshop_qzx" tableName="product_type" domainObjectName="ProductType"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            <!--<columnRenamingRule searchString="^D_" replaceString=""/> -->
+        </table>
+
+    </context>
+</generatorConfiguration>

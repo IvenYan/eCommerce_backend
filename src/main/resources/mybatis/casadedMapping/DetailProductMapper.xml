@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.management.backend.api.mybatis.casaded.mapper.DetailProductMapper" >
+  <resultMap id="BaseResultMap" type="com.management.backend.api.mybatis.casaded.model.DetailProduct" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP" />
+    <result column="audit_status" property="auditStatus" jdbcType="BIT" />
+    <result column="onsale" property="onsale" jdbcType="BIT" />
+    <result column="level" property="level" jdbcType="BIT" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="brand" property="brand" jdbcType="VARCHAR" />
+    <result column="factory_name" property="factoryName" jdbcType="VARCHAR" />
+    <result column="source_area" property="sourceArea" jdbcType="VARCHAR" />
+    <result column="factory_number" property="factoryNumber" jdbcType="VARCHAR" />
+    <result column="factory_catalog" property="factoryCatalog" jdbcType="VARCHAR" />
+    <result column="upload_forbiden" property="uploadForbiden" jdbcType="BIT" />
+    <result column="source_url" property="sourceUrl" jdbcType="VARCHAR" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+    <result column="cost" property="cost" jdbcType="REAL" />
+    <result column="shipping_cost" property="shippingCost" jdbcType="REAL" />
+    <result column="custom_code" property="customCode" jdbcType="VARCHAR" />
+    <result column="eng_desc" property="engDesc" jdbcType="VARCHAR" />
+    <result column="declare_price" property="declarePrice" jdbcType="VARCHAR" />
+    <result column="ch_desc" property="chDesc" jdbcType="VARCHAR" />
+    <result column="inner_sku" property="innerSku" jdbcType="VARCHAR" />
+    <result column="suit_for_group" property="suitForGroup" jdbcType="BIT" />
+    <result column="product_material" property="productMaterial" jdbcType="VARCHAR" />
+    <result column="packet_material" property="packetMaterial" jdbcType="VARCHAR" />
+    <result column="metal_type" property="metalType" jdbcType="VARCHAR" />
+    <result column="jewel_type" property="jewelType" jdbcType="VARCHAR" />
+    <result column="package_gross_weight" property="packageGrossWeight" jdbcType="VARCHAR" />
+    <result column="has_battery" property="hasBattery" jdbcType="BIT" />
+    <result column="package_long" property="packageLong" jdbcType="REAL" />
+    <result column="package_width" property="packageWidth" jdbcType="REAL" />
+    <result column="package_hight" property="packageHight" jdbcType="REAL" />
+    <result column="in_store" property="inStore" jdbcType="BIGINT" />
+    <result column="count_per_package" property="countPerPackage" jdbcType="BIGINT" />
+    <result column="product_type_id" property="productTypeId" jdbcType="INTEGER" />
+    <collection property="user" column="user_id" select="com.management.backend.api.mybatis.mapper.UserMapper.selectByPrimaryKey"></collection>
+    <collection property="productType" column="product_type_id" select="com.management.backend.api.mybatis.mapper.ProductTypeMapper.selectByPrimaryKey"></collection>
+    <collection property="productPictures" column="id" select="com.management.backend.api.mybatis.mapper.ProductPictureMapper.selectByProductId"></collection>
+    <collection property="productDetails" column="id" select="com.management.backend.api.mybatis.mapper.ProductDetailMapper.selectByProductId"></collection>
+
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, creat_time, audit_status, onsale, level, user_id, brand, factory_name, source_area, 
+    factory_number, factory_catalog, upload_forbiden, source_url, comments, cost, shipping_cost, 
+    custom_code, eng_desc, declare_price, ch_desc, inner_sku, suit_for_group, product_material, 
+    packet_material, metal_type, jewel_type, package_gross_weight, has_battery, package_long, 
+    package_width, package_hight, in_store, count_per_package, product_type_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.management.backend.api.mybatis.model.ProductExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+</mapper>
