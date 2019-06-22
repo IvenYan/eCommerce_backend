@@ -3,11 +3,17 @@ package com.management.backend;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.web.cors.CorsConfiguration;
+
+import org.springframework.web.filter.CorsFilter;
+
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.io.IOException;
-
 
 @SpringBootApplication
 @MapperScan(basePackages = {"com.management.backend.api.mybatis.mapper","com.management.backend.api.mybatis.casaded.mapper"})
