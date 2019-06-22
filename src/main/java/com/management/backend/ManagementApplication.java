@@ -14,6 +14,25 @@ import java.io.IOException;
 @ComponentScan(basePackages = {"com.management.backend.config","com.management.backend.api.controller","com.management.backend.api.services"})
 public class ManagementApplication {
 
+	private CorsConfiguration buildConfig() {
+		CorsConfiguration corsConfiguration = new CorsConfiguration();
+		corsConfiguration.addAllowedOrigin("*");
+		corsConfiguration.addAllowedHeader("*");
+		corsConfiguration.addAllowedMethod("*");
+		return corsConfiguration;
+	}
+
+	/**
+	 * 跨域过滤器
+	 * @return
+	 */
+	@Bean
+	public CorsFilter corsFilter() {
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", buildConfig()); // 4
+		return new CorsFilter(source);
+	}
+
 	public static void main(String[] args) throws IOException {
 	SpringApplication.run(ManagementApplication.class, args);
 	}
