@@ -10,4 +10,5 @@ public interface DetailProductMapper {
     List<DetailProduct> selectByExample(ProductExample example);
 
     DetailProduct selectByPrimaryKey(Integer id);
+
 }

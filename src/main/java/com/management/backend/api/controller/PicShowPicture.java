@@ -19,7 +19,7 @@ import java.util.List;
 @RestController
 @Api(value = "show productPicture",tags = {"show productPicture service"})
 public class PicShowPicture {
-    @Autowired
+    /*@Autowired
     private ProductPictureMapper productPictureMapper;
     @RequestMapping(value="/pic/{uuid}/{picName}")
     public void getProductPicture(@PathVariable("uuid") String uuid,@PathVariable("picName") String picName, final HttpServletResponse response) throws IOException {
@@ -34,5 +34,5 @@ public class PicShowPicture {
             outputSream.flush();
 
         }
-    }
+    }*/
 }

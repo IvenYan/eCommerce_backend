@@ -19,7 +19,6 @@ public class DetailProduct {
 
     private Boolean level;
 
-
     private String brand;
 
     private String factoryName;

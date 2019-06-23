@@ -32,7 +32,6 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("使用Swagger2构建RESTful APIs")
                 .description("一点寒芒先到，随后枪出如龙")
-                .contact("1438249112")
                 .version("1.0")
                 .build();
     }

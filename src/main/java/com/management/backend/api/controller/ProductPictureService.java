@@ -7,6 +7,8 @@ import com.management.backend.api.mybatis.model.ProductPicture;
 import com.management.backend.api.mybatis.model.ProductPictureExample;
 import com.management.backend.api.util.Resp;
 import io.swagger.annotations.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,8 +20,8 @@ import java.util.UUID;
 @RestController
 @Api(value = "productPicture operations",tags = {"productPicture service"})
 public class ProductPictureService {
-
-    @Autowired
+    protected static final Logger log = LoggerFactory.getLogger(ProductService.class);
+    /*@Autowired
     private ProductPictureMapper productPictureMapper;
 
 
@@ -68,7 +70,7 @@ public class ProductPictureService {
         ue.createCriteria().andIdEqualTo(productPictureId);
         productPicture.setId(productPictureId);
         return   productPictureMapper.updateByExample(productPicture,ue);
-    }
+    }*/
 
 
 
