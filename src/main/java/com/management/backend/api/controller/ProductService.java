@@ -1,7 +1,6 @@
 package com.management.backend.api.controller;
 
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.management.backend.api.controller.entity.ProductSimpleBody;
 import com.management.backend.api.mybatis.mapper.ProductSimpleMapper;
 import com.management.backend.api.mybatis.model.ProductSimple;
@@ -20,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -29,7 +27,7 @@ import java.util.UUID;
 @Api(value = "product operations",tags = {"product service"})
 public class ProductService {
     protected static final Logger log = LoggerFactory.getLogger(ProductService.class);
-    @Value("${windows.home.image.filepath}")
+    @Value("${linux.image.filepath}")
     private String filepath;
     @Autowired
     private ProductMapper productMapper;
@@ -71,8 +69,6 @@ public class ProductService {
 
 
         log.info("listProducts: start...");
-        //        PageHelper 分页，合理化为false
-        PageHelper.startPage(pageNum, pageSize,false,false);
         List<ProductSimple> allItems = productSimpleMapper.getSimpleProduct();  //包括搜索全部商品
         int countNums = productSimpleMapper.countProduct();            //包括搜索总记录数
         PageBean<ProductSimple> pageData = new PageBean<>(pageNum, pageSize, countNums);
@@ -81,7 +77,6 @@ public class ProductService {
         productSimpleBody.setList(pageData.getItems());
         productSimpleBody.setPageNum(pageNum);
         productSimpleBody.setPageSize(pageSize);
-        productSimpleBody.setSize(countNums);
         productSimpleBody.setTotal(allItems.size());
 
         return productSimpleBody;

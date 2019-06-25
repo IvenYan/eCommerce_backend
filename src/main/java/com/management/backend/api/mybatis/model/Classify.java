@@ -1,5 +1,7 @@
 package com.management.backend.api.mybatis.model;
 
+import java.util.List;
+
 /**
  * @ClassName Classify
  * @Description TODO
@@ -8,24 +10,33 @@ package com.management.backend.api.mybatis.model;
  * @Version 1.0
  **/
 public class Classify {
-    private int id;
-    private String name;
+    private int value;
+    private String label;
     private int pid;
+    private List children;
 
-    public int getId() {
-        return id;
+    public List getChildren() {
+        return children;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setChildren(List children) {
+        this.children = children;
     }
 
-    public String getName() {
-        return name;
+    public int getValue() {
+        return value;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     public int getPid() {

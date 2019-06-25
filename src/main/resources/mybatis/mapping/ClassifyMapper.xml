@@ -3,8 +3,8 @@
 <mapper namespace="com.management.backend.api.mybatis.mapper.ClassifyMapper">
   <resultMap id="BaseResultMap" type="com.management.backend.api.mybatis.model.Classify">
 
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
+    <id column="id" jdbcType="INTEGER" property="value" />
+    <result column="name" jdbcType="VARCHAR" property="label" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
   </resultMap>
 

@@ -16,7 +16,6 @@ public class ProductSimpleBody {
     private List<ProductSimple> list;
     private int pageNum;
     private int pageSize;
-    private int size;
 
     public int getTotal() {
         return total;
@@ -50,11 +49,4 @@ public class ProductSimpleBody {
         this.pageSize = pageSize;
     }
 
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
 }

@@ -29,7 +29,7 @@ amazon:
 
 linux:
   image:
-    filepath: /home/ubuntu/wechat_run/vue-backend-admin/static/images/
+    filepath: /home/ubuntu/ecommerce_backend/images/
 
 windows:
   work:

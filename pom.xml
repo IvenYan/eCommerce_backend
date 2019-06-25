@@ -93,6 +93,16 @@
 			<version>4.3.6</version>
 		</dependency>
 		<!--添加HTTP配置-->
+		<dependency>
+			<groupId>com.vaadin.external.google</groupId>
+			<artifactId>android-json</artifactId>
+			<version>0.0.20131108.vaadin1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.28</version>
+		</dependency>
 
 	</dependencies>
 

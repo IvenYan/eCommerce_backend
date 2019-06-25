@@ -14,7 +14,7 @@ import java.util.List;
  * @Version 1.0
  **/
 @Mapper
-@Component("ClassifyMapper")
+@Component
 public interface ClassifyMapper {
 
     List<Classify> selectByPid(int pid);

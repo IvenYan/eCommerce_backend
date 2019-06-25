@@ -12,7 +12,7 @@
   <select id="getSimpleProduct" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     a.id, a.cost, a.shipping_cost, a.englishProductTile,b.picture_location
-    from product a  left join (select * from product_picture group by product_id) as b on a.id=b.product_id
+    from product a  left join (select * from product_picture group by product_id) as b on a.id=b.product_id order by a.creat_time desc,a.id desc
   </select>
   <!--<select id="getSimpleProduct" parameterType="java.lang.Integer" resultMap="BaseResultMapProductSimple">
     select

@@ -2,7 +2,9 @@ package com.management.backend.api.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.management.backend.api.controller.entity.UserSimple;
 import com.management.backend.api.mybatis.mapper.UserMapper;
+import com.management.backend.api.mybatis.mapper.UserSimpleMapper;
 import com.management.backend.api.mybatis.model.User;
 import com.management.backend.api.mybatis.model.UserExample;
 import com.management.backend.api.util.Resp;
@@ -19,6 +21,8 @@ public class UserService {
 
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private UserSimpleMapper userSimpleMapper;
 
     @ApiOperation(value="获取用户详细信息", notes="根据用户的id来获取用户详细信息",produces="application/json",consumes = "application/json")
     @ApiImplicitParam(name = "userId", value = "用户ID", required = true,paramType = "path", dataType = "Integer")
@@ -26,6 +30,14 @@ public class UserService {
     public User getUser(@PathVariable("userId") int userId){
         User user = userMapper.selectByPrimaryKey(userId);
         return user;
+    }
+
+    @ApiOperation(value="获取用户列表信息", notes="获取所有用户的详细信息",produces="application/json",consumes = "application/json")
+    @GetMapping(value = "/users/simple")
+    public ArrayList<UserSimple>  getUsersSimple(){
+
+        ArrayList<UserSimple> users = (ArrayList<UserSimple>) userSimpleMapper.selectAllUserSimple();
+        return users;
     }
 
     @ApiOperation(value="获取用户列表信息", notes="获取所有用户的详细信息",produces="application/json",consumes = "application/json")
