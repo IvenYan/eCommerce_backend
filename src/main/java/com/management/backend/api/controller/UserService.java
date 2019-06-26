@@ -61,7 +61,7 @@ public class UserService {
         return new Resp(user.getId());
     }
 
-    @ApiOperation(value="更新用户", notes="更新一个已存在的用户",produces="application/json",consumes = "application/json")
+    /*@ApiOperation(value="更新用户", notes="更新一个已存在的用户",produces="application/json",consumes = "application/json")
     @PutMapping(value = "/users/{userId}")
     @ApiImplicitParam(name = "userId", value = "用户ID", required = true,paramType = "path", dataType = "Integer")
     public int updateUser(@RequestBody @ApiParam(name="用户对象",value="传入json格式;可以忽略id字段",required=true) User user,@PathVariable("userId") int userId){
@@ -70,7 +70,7 @@ public class UserService {
         user.setId(userId);
         return   userMapper.updateByExample(user,ue);
     }
-
+*/
     @ApiOperation(value="验证用户", notes="根据用户名、密码判断该用户是否存在",produces="application/json",consumes = "application/json")
     @GetMapping(value = "user")
     @ApiImplicitParams({

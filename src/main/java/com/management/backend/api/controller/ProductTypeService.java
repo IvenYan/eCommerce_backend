@@ -48,7 +48,7 @@ public class ProductTypeService {
         return   new Resp(productType.getId());
     }
 
-    @ApiOperation(value="更新产品", notes="更新一个已存在的产品",produces="application/json",consumes = "application/json")
+    /*@ApiOperation(value="更新产品", notes="更新一个已存在的产品",produces="application/json",consumes = "application/json")
     @PutMapping(value = "/producttypes/{productTypeId}")
     @ApiImplicitParam(name = "productTypeId", value = "产品ID", required = true,paramType = "path", dataType = "Integer")
     public int updateProductType(@RequestBody @ApiParam(name="产品对象",value="传入json格式;可以忽略id字段",required=true) ProductType productType,@PathVariable("productTypeId") int productTypeId){
@@ -58,6 +58,6 @@ public class ProductTypeService {
         return   productTypeMapper.updateByExample(productType,ue);
     }
 
-
+*/
 
 }

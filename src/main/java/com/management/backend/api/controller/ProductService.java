@@ -19,9 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @RestController
 @Api(value = "product operations",tags = {"product service"})
@@ -67,7 +66,6 @@ public class ProductService {
     public ProductSimpleBody listProducts(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize){
         PageHelper.startPage(pageNum,pageSize);
 
-
         log.info("listProducts: start...");
         List<ProductSimple> allItems = productSimpleMapper.getSimpleProduct();  //包括搜索全部商品
         int countNums = productSimpleMapper.countProduct();            //包括搜索总记录数
@@ -80,7 +78,6 @@ public class ProductService {
         productSimpleBody.setTotal(allItems.size());
 
         return productSimpleBody;
-
     }
 
 
@@ -88,8 +85,30 @@ public class ProductService {
     @ApiOperation(value="创建产品", notes="创建一个新的产品",produces="application/json",consumes = "application/json")
     @PostMapping(value = "/product")
     public Resp saveProduct(@RequestBody @ApiParam(name="产品对象",value="传入json格式;id会自动生成，不用输入",required=true) ProductWithBLOBs product){
+        /*if(product.getProductInnerName()!=null){
+
+        }*/
            productMapper.insert(product);
+
         return   new Resp(product.getId());
+
+    }
+
+    @ApiOperation(value="列出最近一天的产品id", notes="",produces="application/json",consumes = "application/json")
+    @PostMapping(value = "/products/recently")
+    public List listRecentlyProducts() {
+        log.info("/products/recently start...");
+        Date date = new Date();
+        SimpleDateFormat df_date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.DAY_OF_MONTH, -1);//+1今天的时间加一天
+        date = calendar.getTime();
+        String curDateStr = df_date.format(date);
+
+        List<Integer> integers = productSimpleMapper.listRecentlyProducts(curDateStr);
+
+        return   integers;
 
     }
 
@@ -128,6 +147,8 @@ public class ProductService {
         }
         hashMap=new HashMap<>();
         hashMap.put("imageName",fileName);
+        hashMap.put("status","200");
+        hashMap.put("message","images had been upload successfully");
 
         return hashMap;
     }
