@@ -64,9 +64,9 @@ public class ProductService {
             @ApiImplicitParam(name = "pageSize", value = "每页数据条数", required = true,paramType = "query", dataType = "int")
     })
     public ProductSimpleBody listProducts(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize){
-        PageHelper.startPage(pageNum,pageSize);
 
-        log.info("listProducts: start...");
+        log.info("listProducts: start...;pageNum="+pageNum+";pageSize="+pageSize);
+        PageHelper.startPage(pageNum,pageSize);
         List<ProductSimple> allItems = productSimpleMapper.getSimpleProduct();  //包括搜索全部商品
         int countNums = productSimpleMapper.countProduct();            //包括搜索总记录数
         PageBean<ProductSimple> pageData = new PageBean<>(pageNum, pageSize, countNums);
