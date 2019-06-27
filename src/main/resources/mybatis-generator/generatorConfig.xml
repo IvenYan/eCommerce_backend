@@ -35,13 +35,13 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table schema="backendshop_qzx" tableName="user" domainObjectName="User"
+       <!-- <table schema="backendshop_qzx" tableName="user" domainObjectName="User"
                enableCountByExample="true" enableUpdateByExample="true"  selectByPrimaryKeyQueryId="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <!--<columnRenamingRule searchString="^D_" replaceString=""/> -->
-        </table>
+            &lt;!&ndash;<columnRenamingRule searchString="^D_" replaceString=""/> &ndash;&gt;
+        </table>-->
         <!--<table schema="backendshop_qzx" tableName="product_detail" domainObjectName="ProductDetail"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
@@ -49,21 +49,29 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
             &lt;!&ndash;<columnRenamingRule searchString="^D_" replaceString=""/> &ndash;&gt;
         </table>-->
-        <table schema="backendshop_qzx" tableName="product" domainObjectName="Product"
+        <!--<table schema="backendshop_qzx" tableName="product" domainObjectName="Product"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <!--<columnRenamingRule searchString="^D_" replaceString=""/> -->
+            &lt;!&ndash;<columnRenamingRule searchString="^D_" replaceString=""/> &ndash;&gt;
         </table>
         <table schema="backendshop_qzx" tableName="product_picture" domainObjectName="ProductPicture"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <!--<columnRenamingRule searchString="^D_" replaceString=""/> -->
+            &lt;!&ndash;<columnRenamingRule searchString="^D_" replaceString=""/> &ndash;&gt;
         </table>
         <table schema="backendshop_qzx" tableName="product_type" domainObjectName="ProductType"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            &lt;!&ndash;<columnRenamingRule searchString="^D_" replaceString=""/> &ndash;&gt;
+        </table>-->
+
+        <table schema="backendshop_qzx" tableName="amazon_account_info" domainObjectName="AmazonAccountInfo"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">

@@ -4,16 +4,16 @@
   <resultMap id="BaseResultMap" type="com.management.backend.api.mybatis.model.Product">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
-    <result column="audit_status" jdbcType="TINYINT" property="auditStatus" />
-    <result column="onsale" jdbcType="TINYINT" property="onsale" />
-    <result column="level" jdbcType="TINYINT" property="level" />
+    <result column="audit_status" jdbcType="INTEGER" property="auditStatus" />
+    <result column="onsale" jdbcType="INTEGER" property="onsale" />
+    <result column="level" jdbcType="INTEGER" property="level" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="brand" jdbcType="VARCHAR" property="brand" />
     <result column="factory_name" jdbcType="VARCHAR" property="factoryName" />
     <result column="source_area" jdbcType="VARCHAR" property="sourceArea" />
     <result column="factory_number" jdbcType="VARCHAR" property="factoryNumber" />
     <result column="factory_catalog" jdbcType="VARCHAR" property="factoryCatalog" />
-    <result column="upload_forbiden" jdbcType="TINYINT" property="uploadForbiden" />
+    <result column="upload_forbiden" jdbcType="INTEGER" property="uploadForbiden" />
     <result column="source_url" jdbcType="VARCHAR" property="sourceUrl" />
     <result column="comments" jdbcType="VARCHAR" property="comments" />
     <result column="cost" jdbcType="REAL" property="cost" />
@@ -23,19 +23,19 @@
     <result column="declare_price" jdbcType="VARCHAR" property="declarePrice" />
     <result column="ch_desc" jdbcType="VARCHAR" property="chDesc" />
     <result column="inner_sku" jdbcType="VARCHAR" property="innerSku" />
-    <result column="suit_for_group" jdbcType="TINYINT" property="suitForGroup" />
+    <result column="suit_for_group" jdbcType="INTEGER" property="suitForGroup" />
     <result column="product_material" jdbcType="VARCHAR" property="productMaterial" />
     <result column="packet_material" jdbcType="VARCHAR" property="packetMaterial" />
     <result column="metal_type" jdbcType="VARCHAR" property="metalType" />
     <result column="jewel_type" jdbcType="VARCHAR" property="jewelType" />
     <result column="package_gross_weight" jdbcType="VARCHAR" property="packageGrossWeight" />
-    <result column="has_battery" jdbcType="TINYINT" property="hasBattery" />
+    <result column="has_battery" jdbcType="INTEGER" property="hasBattery" />
     <result column="package_long" jdbcType="REAL" property="packageLong" />
     <result column="package_width" jdbcType="REAL" property="packageWidth" />
     <result column="package_hight" jdbcType="REAL" property="packageHight" />
     <result column="in_store" jdbcType="BIGINT" property="inStore" />
     <result column="count_per_package" jdbcType="BIGINT" property="countPerPackage" />
-    <result column="product_type_id" jdbcType="INTEGER" property="productTypeId" />
+    <result column="product_type_id" jdbcType="VARCHAR" property="productTypeIds" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.management.backend.api.mybatis.model.ProductWithBLOBs">
     <result column="englishProductTile" jdbcType="LONGVARBINARY" property="englishproducttile" />
@@ -228,17 +228,17 @@
       chineseProductTile, chineseProductKeyWords, 
       chineseProductKeyDesc, chineseProductDesc
       )
-    values (#{creatTime,jdbcType=TIMESTAMP}, #{auditStatus,jdbcType=TINYINT}, #{onsale,jdbcType=TINYINT}, 
-      #{level,jdbcType=TINYINT}, #{userId,jdbcType=INTEGER}, #{brand,jdbcType=VARCHAR}, 
+    values (#{creatTime,jdbcType=TIMESTAMP}, #{auditStatus,jdbcType=INTEGER}, #{onsale,jdbcType=INTEGER},
+      #{level,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{brand,jdbcType=VARCHAR},
       #{factoryName,jdbcType=VARCHAR}, #{sourceArea,jdbcType=VARCHAR}, #{factoryNumber,jdbcType=VARCHAR}, 
-      #{factoryCatalog,jdbcType=VARCHAR}, #{uploadForbiden,jdbcType=TINYINT}, #{sourceUrl,jdbcType=VARCHAR}, 
+      #{factoryCatalog,jdbcType=VARCHAR}, #{uploadForbiden,jdbcType=INTEGER}, #{sourceUrl,jdbcType=VARCHAR},
       #{comments,jdbcType=VARCHAR}, #{cost,jdbcType=REAL}, #{shippingCost,jdbcType=REAL}, 
       #{customCode,jdbcType=VARCHAR}, #{engDesc,jdbcType=VARCHAR}, #{declarePrice,jdbcType=VARCHAR}, 
-      #{chDesc,jdbcType=VARCHAR}, #{innerSku,jdbcType=VARCHAR}, #{suitForGroup,jdbcType=TINYINT}, 
+      #{chDesc,jdbcType=VARCHAR}, #{innerSku,jdbcType=VARCHAR}, #{suitForGroup,jdbcType=INTEGER},
       #{productMaterial,jdbcType=VARCHAR}, #{packetMaterial,jdbcType=VARCHAR}, #{metalType,jdbcType=VARCHAR}, 
-      #{jewelType,jdbcType=VARCHAR}, #{packageGrossWeight,jdbcType=VARCHAR}, #{hasBattery,jdbcType=TINYINT}, 
+      #{jewelType,jdbcType=VARCHAR}, #{packageGrossWeight,jdbcType=VARCHAR}, #{hasBattery,jdbcType=INTEGER},
       #{packageLong,jdbcType=REAL}, #{packageWidth,jdbcType=REAL}, #{packageHight,jdbcType=REAL}, 
-      #{inStore,jdbcType=BIGINT}, #{countPerPackage,jdbcType=BIGINT}, #{productTypeId,jdbcType=INTEGER}, 
+      #{inStore,jdbcType=BIGINT}, #{countPerPackage,jdbcType=BIGINT}, #{productTypeIds,jdbcType=VARCHAR},
       #{englishproducttile,jdbcType=LONGVARBINARY}, #{englishproductkeywords,jdbcType=LONGVARBINARY}, 
       #{englishproductkeydesc,jdbcType=LONGVARBINARY}, #{englishproductdesc,jdbcType=LONGVARBINARY}, 
       #{frenchproducttile,jdbcType=LONGVARBINARY}, #{frenchproductkeywords,jdbcType=LONGVARBINARY}, 
@@ -359,7 +359,7 @@
       <if test="countPerPackage != null">
         count_per_package,
       </if>
-      <if test="productTypeId != null">
+      <if test="productTypeIds != null">
         product_type_id,
       </if>
       <if test="englishproducttile != null">
@@ -464,13 +464,13 @@
         #{creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="auditStatus != null">
-        #{auditStatus,jdbcType=TINYINT},
+        #{auditStatus,jdbcType=INTEGER},
       </if>
       <if test="onsale != null">
-        #{onsale,jdbcType=TINYINT},
+        #{onsale,jdbcType=INTEGER},
       </if>
       <if test="level != null">
-        #{level,jdbcType=TINYINT},
+        #{level,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
@@ -491,7 +491,7 @@
         #{factoryCatalog,jdbcType=VARCHAR},
       </if>
       <if test="uploadForbiden != null">
-        #{uploadForbiden,jdbcType=TINYINT},
+        #{uploadForbiden,jdbcType=INTEGER},
       </if>
       <if test="sourceUrl != null">
         #{sourceUrl,jdbcType=VARCHAR},
@@ -521,7 +521,7 @@
         #{innerSku,jdbcType=VARCHAR},
       </if>
       <if test="suitForGroup != null">
-        #{suitForGroup,jdbcType=TINYINT},
+        #{suitForGroup,jdbcType=INTEGER},
       </if>
       <if test="productMaterial != null">
         #{productMaterial,jdbcType=VARCHAR},
@@ -539,7 +539,7 @@
         #{packageGrossWeight,jdbcType=VARCHAR},
       </if>
       <if test="hasBattery != null">
-        #{hasBattery,jdbcType=TINYINT},
+        #{hasBattery,jdbcType=INTEGER},
       </if>
       <if test="packageLong != null">
         #{packageLong,jdbcType=REAL},
@@ -556,8 +556,8 @@
       <if test="countPerPackage != null">
         #{countPerPackage,jdbcType=BIGINT},
       </if>
-      <if test="productTypeId != null">
-        #{productTypeId,jdbcType=INTEGER},
+      <if test="productTypeIds != null">
+        #{productTypeIds,jdbcType=VARCHAR},
       </if>
       <if test="englishproducttile != null">
         #{englishproducttile,jdbcType=LONGVARBINARY},
@@ -673,13 +673,13 @@
         creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.auditStatus != null">
-        audit_status = #{record.auditStatus,jdbcType=TINYINT},
+        audit_status = #{record.auditStatus,jdbcType=INTEGER},
       </if>
       <if test="record.onsale != null">
-        onsale = #{record.onsale,jdbcType=TINYINT},
+        onsale = #{record.onsale,jdbcType=INTEGER},
       </if>
       <if test="record.level != null">
-        level = #{record.level,jdbcType=TINYINT},
+        level = #{record.level,jdbcType=INTEGER},
       </if>
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
@@ -700,7 +700,7 @@
         factory_catalog = #{record.factoryCatalog,jdbcType=VARCHAR},
       </if>
       <if test="record.uploadForbiden != null">
-        upload_forbiden = #{record.uploadForbiden,jdbcType=TINYINT},
+        upload_forbiden = #{record.uploadForbiden,jdbcType=INTEGER},
       </if>
       <if test="record.sourceUrl != null">
         source_url = #{record.sourceUrl,jdbcType=VARCHAR},
@@ -730,7 +730,7 @@
         inner_sku = #{record.innerSku,jdbcType=VARCHAR},
       </if>
       <if test="record.suitForGroup != null">
-        suit_for_group = #{record.suitForGroup,jdbcType=TINYINT},
+        suit_for_group = #{record.suitForGroup,jdbcType=INTEGER},
       </if>
       <if test="record.productMaterial != null">
         product_material = #{record.productMaterial,jdbcType=VARCHAR},
@@ -748,7 +748,7 @@
         package_gross_weight = #{record.packageGrossWeight,jdbcType=VARCHAR},
       </if>
       <if test="record.hasBattery != null">
-        has_battery = #{record.hasBattery,jdbcType=TINYINT},
+        has_battery = #{record.hasBattery,jdbcType=INTEGER},
       </if>
       <if test="record.packageLong != null">
         package_long = #{record.packageLong,jdbcType=REAL},
@@ -765,8 +765,8 @@
       <if test="record.countPerPackage != null">
         count_per_package = #{record.countPerPackage,jdbcType=BIGINT},
       </if>
-      <if test="record.productTypeId != null">
-        product_type_id = #{record.productTypeId,jdbcType=INTEGER},
+      <if test="record.productTypeIds != null">
+        product_type_id = #{record.productTypeIds,jdbcType=VARCHAR},
       </if>
       <if test="record.englishproducttile != null">
         englishProductTile = #{record.englishproducttile,jdbcType=LONGVARBINARY},
@@ -873,16 +873,16 @@
     update product
     set id = #{record.id,jdbcType=INTEGER},
       creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
-      audit_status = #{record.auditStatus,jdbcType=TINYINT},
-      onsale = #{record.onsale,jdbcType=TINYINT},
-      level = #{record.level,jdbcType=TINYINT},
+      audit_status = #{record.auditStatus,jdbcType=INTEGER},
+      onsale = #{record.onsale,jdbcType=INTEGER},
+      level = #{record.level,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
       brand = #{record.brand,jdbcType=VARCHAR},
       factory_name = #{record.factoryName,jdbcType=VARCHAR},
       source_area = #{record.sourceArea,jdbcType=VARCHAR},
       factory_number = #{record.factoryNumber,jdbcType=VARCHAR},
       factory_catalog = #{record.factoryCatalog,jdbcType=VARCHAR},
-      upload_forbiden = #{record.uploadForbiden,jdbcType=TINYINT},
+      upload_forbiden = #{record.uploadForbiden,jdbcType=INTEGER},
       source_url = #{record.sourceUrl,jdbcType=VARCHAR},
       comments = #{record.comments,jdbcType=VARCHAR},
       cost = #{record.cost,jdbcType=REAL},
@@ -892,19 +892,19 @@
       declare_price = #{record.declarePrice,jdbcType=VARCHAR},
       ch_desc = #{record.chDesc,jdbcType=VARCHAR},
       inner_sku = #{record.innerSku,jdbcType=VARCHAR},
-      suit_for_group = #{record.suitForGroup,jdbcType=TINYINT},
+      suit_for_group = #{record.suitForGroup,jdbcType=INTEGER},
       product_material = #{record.productMaterial,jdbcType=VARCHAR},
       packet_material = #{record.packetMaterial,jdbcType=VARCHAR},
       metal_type = #{record.metalType,jdbcType=VARCHAR},
       jewel_type = #{record.jewelType,jdbcType=VARCHAR},
       package_gross_weight = #{record.packageGrossWeight,jdbcType=VARCHAR},
-      has_battery = #{record.hasBattery,jdbcType=TINYINT},
+      has_battery = #{record.hasBattery,jdbcType=INTEGER},
       package_long = #{record.packageLong,jdbcType=REAL},
       package_width = #{record.packageWidth,jdbcType=REAL},
       package_hight = #{record.packageHight,jdbcType=REAL},
       in_store = #{record.inStore,jdbcType=BIGINT},
       count_per_package = #{record.countPerPackage,jdbcType=BIGINT},
-      product_type_id = #{record.productTypeId,jdbcType=INTEGER},
+      product_type_id = #{record.productTypeIds,jdbcType=VARCHAR},
       englishProductTile = #{record.englishproducttile,jdbcType=LONGVARBINARY},
       englishProductKeyWords = #{record.englishproductkeywords,jdbcType=LONGVARBINARY},
       englishProductKeyDesc = #{record.englishproductkeydesc,jdbcType=LONGVARBINARY},
@@ -945,16 +945,16 @@
     update product
     set id = #{record.id,jdbcType=INTEGER},
       creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
-      audit_status = #{record.auditStatus,jdbcType=TINYINT},
-      onsale = #{record.onsale,jdbcType=TINYINT},
-      level = #{record.level,jdbcType=TINYINT},
+      audit_status = #{record.auditStatus,jdbcType=INTEGER},
+      onsale = #{record.onsale,jdbcType=INTEGER},
+      level = #{record.level,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
       brand = #{record.brand,jdbcType=VARCHAR},
       factory_name = #{record.factoryName,jdbcType=VARCHAR},
       source_area = #{record.sourceArea,jdbcType=VARCHAR},
       factory_number = #{record.factoryNumber,jdbcType=VARCHAR},
       factory_catalog = #{record.factoryCatalog,jdbcType=VARCHAR},
-      upload_forbiden = #{record.uploadForbiden,jdbcType=TINYINT},
+      upload_forbiden = #{record.uploadForbiden,jdbcType=INTEGER},
       source_url = #{record.sourceUrl,jdbcType=VARCHAR},
       comments = #{record.comments,jdbcType=VARCHAR},
       cost = #{record.cost,jdbcType=REAL},
@@ -964,19 +964,19 @@
       declare_price = #{record.declarePrice,jdbcType=VARCHAR},
       ch_desc = #{record.chDesc,jdbcType=VARCHAR},
       inner_sku = #{record.innerSku,jdbcType=VARCHAR},
-      suit_for_group = #{record.suitForGroup,jdbcType=TINYINT},
+      suit_for_group = #{record.suitForGroup,jdbcType=INTEGER},
       product_material = #{record.productMaterial,jdbcType=VARCHAR},
       packet_material = #{record.packetMaterial,jdbcType=VARCHAR},
       metal_type = #{record.metalType,jdbcType=VARCHAR},
       jewel_type = #{record.jewelType,jdbcType=VARCHAR},
       package_gross_weight = #{record.packageGrossWeight,jdbcType=VARCHAR},
-      has_battery = #{record.hasBattery,jdbcType=TINYINT},
+      has_battery = #{record.hasBattery,jdbcType=INTEGER},
       package_long = #{record.packageLong,jdbcType=REAL},
       package_width = #{record.packageWidth,jdbcType=REAL},
       package_hight = #{record.packageHight,jdbcType=REAL},
       in_store = #{record.inStore,jdbcType=BIGINT},
       count_per_package = #{record.countPerPackage,jdbcType=BIGINT},
-      product_type_id = #{record.productTypeId,jdbcType=INTEGER}
+      product_type_id = #{record.productTypeIds,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -988,13 +988,13 @@
         creat_time = #{creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="auditStatus != null">
-        audit_status = #{auditStatus,jdbcType=TINYINT},
+        audit_status = #{auditStatus,jdbcType=INTEGER},
       </if>
       <if test="onsale != null">
-        onsale = #{onsale,jdbcType=TINYINT},
+        onsale = #{onsale,jdbcType=INTEGER},
       </if>
       <if test="level != null">
-        level = #{level,jdbcType=TINYINT},
+        level = #{level,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
@@ -1015,7 +1015,7 @@
         factory_catalog = #{factoryCatalog,jdbcType=VARCHAR},
       </if>
       <if test="uploadForbiden != null">
-        upload_forbiden = #{uploadForbiden,jdbcType=TINYINT},
+        upload_forbiden = #{uploadForbiden,jdbcType=INTEGER},
       </if>
       <if test="sourceUrl != null">
         source_url = #{sourceUrl,jdbcType=VARCHAR},
@@ -1045,7 +1045,7 @@
         inner_sku = #{innerSku,jdbcType=VARCHAR},
       </if>
       <if test="suitForGroup != null">
-        suit_for_group = #{suitForGroup,jdbcType=TINYINT},
+        suit_for_group = #{suitForGroup,jdbcType=INTEGER},
       </if>
       <if test="productMaterial != null">
         product_material = #{productMaterial,jdbcType=VARCHAR},
@@ -1063,7 +1063,7 @@
         package_gross_weight = #{packageGrossWeight,jdbcType=VARCHAR},
       </if>
       <if test="hasBattery != null">
-        has_battery = #{hasBattery,jdbcType=TINYINT},
+        has_battery = #{hasBattery,jdbcType=INTEGER},
       </if>
       <if test="packageLong != null">
         package_long = #{packageLong,jdbcType=REAL},
@@ -1080,8 +1080,8 @@
       <if test="countPerPackage != null">
         count_per_package = #{countPerPackage,jdbcType=BIGINT},
       </if>
-      <if test="productTypeId != null">
-        product_type_id = #{productTypeId,jdbcType=INTEGER},
+      <if test="productTypeIds != null">
+        product_type_id = #{productTypeIds,jdbcType=VARCHAR},
       </if>
       <if test="englishproducttile != null">
         englishProductTile = #{englishproducttile,jdbcType=LONGVARBINARY},
@@ -1185,16 +1185,16 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.management.backend.api.mybatis.model.ProductWithBLOBs">
     update product
     set creat_time = #{creatTime,jdbcType=TIMESTAMP},
-      audit_status = #{auditStatus,jdbcType=TINYINT},
-      onsale = #{onsale,jdbcType=TINYINT},
-      level = #{level,jdbcType=TINYINT},
+      audit_status = #{auditStatus,jdbcType=INTEGER},
+      onsale = #{onsale,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
       brand = #{brand,jdbcType=VARCHAR},
       factory_name = #{factoryName,jdbcType=VARCHAR},
       source_area = #{sourceArea,jdbcType=VARCHAR},
       factory_number = #{factoryNumber,jdbcType=VARCHAR},
       factory_catalog = #{factoryCatalog,jdbcType=VARCHAR},
-      upload_forbiden = #{uploadForbiden,jdbcType=TINYINT},
+      upload_forbiden = #{uploadForbiden,jdbcType=INTEGER},
       source_url = #{sourceUrl,jdbcType=VARCHAR},
       comments = #{comments,jdbcType=VARCHAR},
       cost = #{cost,jdbcType=REAL},
@@ -1204,19 +1204,19 @@
       declare_price = #{declarePrice,jdbcType=VARCHAR},
       ch_desc = #{chDesc,jdbcType=VARCHAR},
       inner_sku = #{innerSku,jdbcType=VARCHAR},
-      suit_for_group = #{suitForGroup,jdbcType=TINYINT},
+      suit_for_group = #{suitForGroup,jdbcType=INTEGER},
       product_material = #{productMaterial,jdbcType=VARCHAR},
       packet_material = #{packetMaterial,jdbcType=VARCHAR},
       metal_type = #{metalType,jdbcType=VARCHAR},
       jewel_type = #{jewelType,jdbcType=VARCHAR},
       package_gross_weight = #{packageGrossWeight,jdbcType=VARCHAR},
-      has_battery = #{hasBattery,jdbcType=TINYINT},
+      has_battery = #{hasBattery,jdbcType=INTEGER},
       package_long = #{packageLong,jdbcType=REAL},
       package_width = #{packageWidth,jdbcType=REAL},
       package_hight = #{packageHight,jdbcType=REAL},
       in_store = #{inStore,jdbcType=BIGINT},
       count_per_package = #{countPerPackage,jdbcType=BIGINT},
-      product_type_id = #{productTypeId,jdbcType=INTEGER},
+      product_type_id = #{productTypeIds,jdbcType=VARCHAR},
       englishProductTile = #{englishproducttile,jdbcType=LONGVARBINARY},
       englishProductKeyWords = #{englishproductkeywords,jdbcType=LONGVARBINARY},
       englishProductKeyDesc = #{englishproductkeydesc,jdbcType=LONGVARBINARY},
@@ -1254,16 +1254,16 @@
   <update id="updateByPrimaryKey" parameterType="com.management.backend.api.mybatis.model.Product">
     update product
     set creat_time = #{creatTime,jdbcType=TIMESTAMP},
-      audit_status = #{auditStatus,jdbcType=TINYINT},
-      onsale = #{onsale,jdbcType=TINYINT},
-      level = #{level,jdbcType=TINYINT},
+      audit_status = #{auditStatus,jdbcType=INTEGER},
+      onsale = #{onsale,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
       brand = #{brand,jdbcType=VARCHAR},
       factory_name = #{factoryName,jdbcType=VARCHAR},
       source_area = #{sourceArea,jdbcType=VARCHAR},
       factory_number = #{factoryNumber,jdbcType=VARCHAR},
       factory_catalog = #{factoryCatalog,jdbcType=VARCHAR},
-      upload_forbiden = #{uploadForbiden,jdbcType=TINYINT},
+      upload_forbiden = #{uploadForbiden,jdbcType=INTEGER},
       source_url = #{sourceUrl,jdbcType=VARCHAR},
       comments = #{comments,jdbcType=VARCHAR},
       cost = #{cost,jdbcType=REAL},
@@ -1273,19 +1273,19 @@
       declare_price = #{declarePrice,jdbcType=VARCHAR},
       ch_desc = #{chDesc,jdbcType=VARCHAR},
       inner_sku = #{innerSku,jdbcType=VARCHAR},
-      suit_for_group = #{suitForGroup,jdbcType=TINYINT},
+      suit_for_group = #{suitForGroup,jdbcType=INTEGER},
       product_material = #{productMaterial,jdbcType=VARCHAR},
       packet_material = #{packetMaterial,jdbcType=VARCHAR},
       metal_type = #{metalType,jdbcType=VARCHAR},
       jewel_type = #{jewelType,jdbcType=VARCHAR},
       package_gross_weight = #{packageGrossWeight,jdbcType=VARCHAR},
-      has_battery = #{hasBattery,jdbcType=TINYINT},
+      has_battery = #{hasBattery,jdbcType=INTEGER},
       package_long = #{packageLong,jdbcType=REAL},
       package_width = #{packageWidth,jdbcType=REAL},
       package_hight = #{packageHight,jdbcType=REAL},
       in_store = #{inStore,jdbcType=BIGINT},
       count_per_package = #{countPerPackage,jdbcType=BIGINT},
-      product_type_id = #{productTypeId,jdbcType=INTEGER}
+      product_type_id = #{productTypeIds,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 

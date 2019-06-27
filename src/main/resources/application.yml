@@ -24,8 +24,9 @@ qzx:
   amazonAccessSecret: hS/J1Wfhu3foKru5wyz0spoJ+mAh2CGV3P8D856x
 
 amazon:
-  ca:
-  de:
+  de: https://sellercentral.amazon.de/
+  en: https://sellercentral.amazon.co.uk/
+  na: https://sellercentral.amazon.com/
 
 linux:
   image:

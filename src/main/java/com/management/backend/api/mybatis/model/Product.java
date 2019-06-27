@@ -9,11 +9,11 @@ public class Product {
 
     private Date creatTime;
 
-    private Byte auditStatus;
+    private int auditStatus;
 
-    private Byte onsale;
+    private int onsale;
 
-    private Byte level;
+    private int level;
 
     private Integer userId;
 
@@ -27,7 +27,7 @@ public class Product {
 
     private String factoryCatalog;
 
-    private Byte uploadForbiden;
+    private int uploadForbiden;
 
     private String sourceUrl;
 
@@ -47,7 +47,7 @@ public class Product {
 
     private String innerSku;
 
-    private Byte suitForGroup;
+    private int suitForGroup;
 
     private String productMaterial;
 
@@ -59,7 +59,7 @@ public class Product {
 
     private String packageGrossWeight;
 
-    private Byte hasBattery;
+    private int hasBattery;
 
     private Float packageLong;
 
@@ -71,7 +71,8 @@ public class Product {
 
     private Long countPerPackage;
 
-    private Integer productTypeId;
+//    以数组形势传进来
+    private List<Integer> productTypeIds;
 
 
 //变体
@@ -101,29 +102,6 @@ public class Product {
         this.creatTime = creatTime;
     }
 
-    public Byte getAuditStatus() {
-        return auditStatus;
-    }
-
-    public void setAuditStatus(Byte auditStatus) {
-        this.auditStatus = auditStatus;
-    }
-
-    public Byte getOnsale() {
-        return onsale;
-    }
-
-    public void setOnsale(Byte onsale) {
-        this.onsale = onsale;
-    }
-
-    public Byte getLevel() {
-        return level;
-    }
-
-    public void setLevel(Byte level) {
-        this.level = level;
-    }
 
     public Integer getUserId() {
         return userId;
@@ -173,13 +151,6 @@ public class Product {
         this.factoryCatalog = factoryCatalog == null ? null : factoryCatalog.trim();
     }
 
-    public Byte getUploadForbiden() {
-        return uploadForbiden;
-    }
-
-    public void setUploadForbiden(Byte uploadForbiden) {
-        this.uploadForbiden = uploadForbiden;
-    }
 
     public String getSourceUrl() {
         return sourceUrl;
@@ -253,12 +224,48 @@ public class Product {
         this.innerSku = innerSku == null ? null : innerSku.trim();
     }
 
-    public Byte getSuitForGroup() {
+    public int getAuditStatus() {
+        return auditStatus;
+    }
+
+    public void setAuditStatus(int auditStatus) {
+        this.auditStatus = auditStatus;
+    }
+
+    public int getOnsale() {
+        return onsale;
+    }
+
+    public void setOnsale(int onsale) {
+        this.onsale = onsale;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getUploadForbiden() {
+        return uploadForbiden;
+    }
+
+    public void setUploadForbiden(int uploadForbiden) {
+        this.uploadForbiden = uploadForbiden;
+    }
+
+    public int getSuitForGroup() {
         return suitForGroup;
     }
 
-    public void setSuitForGroup(Byte suitForGroup) {
+    public void setSuitForGroup(int suitForGroup) {
         this.suitForGroup = suitForGroup;
+    }
+
+    public void setHasBattery(int hasBattery) {
+        this.hasBattery = hasBattery;
     }
 
     public String getProductMaterial() {
@@ -301,12 +308,8 @@ public class Product {
         this.packageGrossWeight = packageGrossWeight == null ? null : packageGrossWeight.trim();
     }
 
-    public Byte getHasBattery() {
+    public int getHasBattery() {
         return hasBattery;
-    }
-
-    public void setHasBattery(Byte hasBattery) {
-        this.hasBattery = hasBattery;
     }
 
     public Float getPackageLong() {
@@ -349,11 +352,11 @@ public class Product {
         this.countPerPackage = countPerPackage;
     }
 
-    public Integer getProductTypeId() {
-        return productTypeId;
+    public List<Integer> getProductTypeIds() {
+        return productTypeIds;
     }
 
-    public void setProductTypeId(Integer productTypeId) {
-        this.productTypeId = productTypeId;
+    public void setProductTypeIds(List<Integer> productTypeIds) {
+        this.productTypeIds = productTypeIds;
     }
 }

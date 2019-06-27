@@ -31,9 +31,24 @@ public class UploadToAmazon {
     private SimpleDateFormat df_date = new SimpleDateFormat("yyyy-MM-ddTHH:mm:ss.SSSS");//设置日期格式
     private static String amazonAccessID;
     private static String amazonAccessSecret;
-    private static String sellerId;
+//    private static String sellerId;
     private static String marketPlace;
+
+    private static String  amazonEN;
+    private static String  amazonNA;
     private static String  amazonDE;
+//
+//    @Value("${qzx.amazonAccessID}")
+//    public static void setSellerId(String sellerId) {        UploadToAmazon.sellerId = sellerId;    }
+    @Value("${qzx.amazonAccessID}")
+    public static void setMarketPlace(String marketPlace) {        UploadToAmazon.marketPlace = marketPlace;    }
+    @Value("${qzx.amazonAccessID}")
+    public static void setAmazonEN(String amazonEN) {        UploadToAmazon.amazonEN = amazonEN;    }
+    @Value("${qzx.amazonAccessID}")
+    public static void setAmazonNA(String amazonNA) {        UploadToAmazon.amazonNA = amazonNA;    }
+    @Value("${qzx.amazonAccessID}")
+    public static void setAmazonDE(String amazonDE) {        UploadToAmazon.amazonDE = amazonDE;    }
+
     @Value("${qzx.amazonAccessID}")
     public static void setAmazonAccessID(String amazonAccessID) {
         UploadToAmazon.amazonAccessID = amazonAccessID;
@@ -46,7 +61,7 @@ public class UploadToAmazon {
 
 
 
-    public void SubmitFeed(String productId) {
+    public void SubmitFeed(String sellerId) {
         String product_date = df_date.format(new Date());
         HttpClient client = HttpClients.createDefault();
 
