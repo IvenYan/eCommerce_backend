@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.management.backend.api.mybatis.mapper.AmazonAccountInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.management.backend.api.mybatis.model.AmazonAccountInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="account_nickname" property="accountNickname" jdbcType="VARCHAR" />
+    <result column="seller_id" property="sellerId" jdbcType="INTEGER" />
+    <result column="amazon_marketplace" property="amazonMarketplace" jdbcType="VARCHAR" />
+    <result column="country_code" property="countryCode" jdbcType="VARCHAR" />
+    <result column="amazon_mws_endpoint" property="amazonMwsEndpoint" jdbcType="VARCHAR" />
+    <result column="marketplace_id" property="marketplaceId" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, account_nickname, seller_id, amazon_marketplace, country_code, amazon_mws_endpoint, 
+    marketplace_id
+  </sql>
+  <!--<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.management.backend.api.mybatis.model.AmazonAccountInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from amazon_account_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>-->
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from amazon_account_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectListByPrimaryKey" resultMap="BaseResultMap" >
+    select
+    id,account_nickname
+    from amazon_account_info
+  </select>
+  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from amazon_account_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.management.backend.api.mybatis.model.AmazonAccountInfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into amazon_account_info (account_nickname, seller_id, amazon_marketplace, 
+      country_code, amazon_mws_endpoint, marketplace_id
+      )
+    values (#{accountNickname,jdbcType=VARCHAR}, #{sellerId,jdbcType=INTEGER}, #{amazonMarketplace,jdbcType=VARCHAR}, 
+      #{countryCode,jdbcType=VARCHAR}, #{amazonMwsEndpoint,jdbcType=VARCHAR}, #{marketplaceId,jdbcType=VARCHAR}
+      )
+  </insert>-->
+
+</mapper>

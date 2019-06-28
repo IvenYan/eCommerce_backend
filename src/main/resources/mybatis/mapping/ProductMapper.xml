@@ -35,7 +35,8 @@
     <result column="package_hight" jdbcType="REAL" property="packageHight" />
     <result column="in_store" jdbcType="BIGINT" property="inStore" />
     <result column="count_per_package" jdbcType="BIGINT" property="countPerPackage" />
-    <result column="product_type_id" jdbcType="VARCHAR" property="productTypeIds" />
+    <result column="product_type_id" jdbcType="VARCHAR" property="productTypeIdsString" />
+    <result column="pictureListString" jdbcType="VARCHAR" property="pictureListString" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.management.backend.api.mybatis.model.ProductWithBLOBs">
     <result column="englishProductTile" jdbcType="LONGVARBINARY" property="englishproducttile" />
@@ -134,7 +135,7 @@
     factory_number, factory_catalog, upload_forbiden, source_url, comments, cost, shipping_cost, 
     custom_code, eng_desc, declare_price, ch_desc, inner_sku, suit_for_group, product_material, 
     packet_material, metal_type, jewel_type, package_gross_weight, has_battery, package_long, 
-    package_width, package_hight, in_store, count_per_package, product_type_id
+    package_width, package_hight, in_store, count_per_package, product_type_id，pictureListString
   </sql>
   <sql id="Blob_Column_List">
     englishProductTile, englishProductKeyWords, englishProductKeyDesc, englishProductDesc, 
@@ -226,7 +227,7 @@
       russianProductTile, russianProductKeyWords, 
       russianProductKeyDesc, russianProductDesc, 
       chineseProductTile, chineseProductKeyWords, 
-      chineseProductKeyDesc, chineseProductDesc
+      chineseProductKeyDesc, chineseProductDesc,pictureListString
       )
     values (#{creatTime,jdbcType=TIMESTAMP}, #{auditStatus,jdbcType=INTEGER}, #{onsale,jdbcType=INTEGER},
       #{level,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{brand,jdbcType=VARCHAR},
@@ -238,7 +239,7 @@
       #{productMaterial,jdbcType=VARCHAR}, #{packetMaterial,jdbcType=VARCHAR}, #{metalType,jdbcType=VARCHAR}, 
       #{jewelType,jdbcType=VARCHAR}, #{packageGrossWeight,jdbcType=VARCHAR}, #{hasBattery,jdbcType=INTEGER},
       #{packageLong,jdbcType=REAL}, #{packageWidth,jdbcType=REAL}, #{packageHight,jdbcType=REAL}, 
-      #{inStore,jdbcType=BIGINT}, #{countPerPackage,jdbcType=BIGINT}, #{productTypeIds,jdbcType=VARCHAR},
+      #{inStore,jdbcType=BIGINT}, #{countPerPackage,jdbcType=BIGINT}, #{productTypeIdsString,jdbcType=VARCHAR},
       #{englishproducttile,jdbcType=LONGVARBINARY}, #{englishproductkeywords,jdbcType=LONGVARBINARY}, 
       #{englishproductkeydesc,jdbcType=LONGVARBINARY}, #{englishproductdesc,jdbcType=LONGVARBINARY}, 
       #{frenchproducttile,jdbcType=LONGVARBINARY}, #{frenchproductkeywords,jdbcType=LONGVARBINARY}, 
@@ -254,7 +255,7 @@
       #{russianproducttile,jdbcType=LONGVARBINARY}, #{russianproductkeywords,jdbcType=LONGVARBINARY}, 
       #{russianproductkeydesc,jdbcType=LONGVARBINARY}, #{russianproductdesc,jdbcType=LONGVARBINARY}, 
       #{chineseproducttile,jdbcType=LONGVARBINARY}, #{chineseproductkeywords,jdbcType=LONGVARBINARY}, 
-      #{chineseproductkeydesc,jdbcType=LONGVARBINARY}, #{chineseproductdesc,jdbcType=LONGVARBINARY}
+      #{chineseproductkeydesc,jdbcType=LONGVARBINARY}, #{chineseproductdesc,jdbcType=LONGVARBINARY},#{pictureListString,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.management.backend.api.mybatis.model.ProductWithBLOBs">
@@ -359,8 +360,11 @@
       <if test="countPerPackage != null">
         count_per_package,
       </if>
-      <if test="productTypeIds != null">
+      <if test="productTypeIdsString != null">
         product_type_id,
+      </if>
+      <if test="pictureListString != null">
+        pictureListString,
       </if>
       <if test="englishproducttile != null">
         englishProductTile,
@@ -556,8 +560,11 @@
       <if test="countPerPackage != null">
         #{countPerPackage,jdbcType=BIGINT},
       </if>
-      <if test="productTypeIds != null">
-        #{productTypeIds,jdbcType=VARCHAR},
+      <if test="productTypeIdsString != null">
+        #{productTypeIdsString,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureListString != null">
+        #{pictureListString,jdbcType=VARCHAR},
       </if>
       <if test="englishproducttile != null">
         #{englishproducttile,jdbcType=LONGVARBINARY},
@@ -765,8 +772,11 @@
       <if test="record.countPerPackage != null">
         count_per_package = #{record.countPerPackage,jdbcType=BIGINT},
       </if>
-      <if test="record.productTypeIds != null">
-        product_type_id = #{record.productTypeIds,jdbcType=VARCHAR},
+      <if test="record.productTypeIdsString != null">
+        product_type_id = #{record.productTypeIdsString,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pictureListString != null">
+        pictureListString = #{record.pictureListString,jdbcType=VARCHAR},
       </if>
       <if test="record.englishproducttile != null">
         englishProductTile = #{record.englishproducttile,jdbcType=LONGVARBINARY},
@@ -904,7 +914,8 @@
       package_hight = #{record.packageHight,jdbcType=REAL},
       in_store = #{record.inStore,jdbcType=BIGINT},
       count_per_package = #{record.countPerPackage,jdbcType=BIGINT},
-      product_type_id = #{record.productTypeIds,jdbcType=VARCHAR},
+      product_type_id = #{record.productTypeIdsString,jdbcType=VARCHAR},
+    pictureListString = #{record.pictureListString,jdbcType=VARCHAR},
       englishProductTile = #{record.englishproducttile,jdbcType=LONGVARBINARY},
       englishProductKeyWords = #{record.englishproductkeywords,jdbcType=LONGVARBINARY},
       englishProductKeyDesc = #{record.englishproductkeydesc,jdbcType=LONGVARBINARY},
@@ -976,7 +987,8 @@
       package_hight = #{record.packageHight,jdbcType=REAL},
       in_store = #{record.inStore,jdbcType=BIGINT},
       count_per_package = #{record.countPerPackage,jdbcType=BIGINT},
-      product_type_id = #{record.productTypeIds,jdbcType=VARCHAR}
+      product_type_id = #{record.productTypeIdsString,jdbcType=VARCHAR},
+    pictureListString = #{record.pictureListString,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -1080,8 +1092,11 @@
       <if test="countPerPackage != null">
         count_per_package = #{countPerPackage,jdbcType=BIGINT},
       </if>
-      <if test="productTypeIds != null">
-        product_type_id = #{productTypeIds,jdbcType=VARCHAR},
+      <if test="productTypeIdsString != null">
+        product_type_id = #{productTypeIdsString,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureListString != null">
+        pictureListString = #{pictureListString,jdbcType=VARCHAR},
       </if>
       <if test="englishproducttile != null">
         englishProductTile = #{englishproducttile,jdbcType=LONGVARBINARY},
@@ -1216,7 +1231,8 @@
       package_hight = #{packageHight,jdbcType=REAL},
       in_store = #{inStore,jdbcType=BIGINT},
       count_per_package = #{countPerPackage,jdbcType=BIGINT},
-      product_type_id = #{productTypeIds,jdbcType=VARCHAR},
+      product_type_id = #{productTypeIdsString,jdbcType=VARCHAR},
+      pictureListString = #{pictureListString,jdbcType=VARCHAR},
       englishProductTile = #{englishproducttile,jdbcType=LONGVARBINARY},
       englishProductKeyWords = #{englishproductkeywords,jdbcType=LONGVARBINARY},
       englishProductKeyDesc = #{englishproductkeydesc,jdbcType=LONGVARBINARY},
@@ -1285,7 +1301,8 @@
       package_hight = #{packageHight,jdbcType=REAL},
       in_store = #{inStore,jdbcType=BIGINT},
       count_per_package = #{countPerPackage,jdbcType=BIGINT},
-      product_type_id = #{productTypeIds,jdbcType=VARCHAR}
+      product_type_id = #{productTypeIdsString,jdbcType=VARCHAR},
+      pictureListString = #{pictureListString,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 

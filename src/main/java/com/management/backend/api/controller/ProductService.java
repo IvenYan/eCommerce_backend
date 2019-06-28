@@ -88,7 +88,15 @@ public class ProductService {
         /*if(product.getProductInnerName()!=null){
 
         }*/
-           productMapper.insert(product);
+        log.info(product.toString());
+        String pictureListTmp = product.getPictureList().toString();
+        String productTypeTmp=product.getProductTypeIds().toString();
+        pictureListTmp=pictureListTmp.substring(1,pictureListTmp.length()-1);
+        productTypeTmp=productTypeTmp.substring(1,productTypeTmp.length()-1);
+        product.setPictureListString(pictureListTmp);
+        product.setProductTypeIdsString(productTypeTmp);
+
+        productMapper.insert(product);
 
         return   new Resp(product.getId());
 

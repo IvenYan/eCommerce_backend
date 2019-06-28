@@ -7,6 +7,14 @@ import java.util.List;
 public class Product {
     private Integer id;
 
+    private List<String> pictureList;
+    private String pictureListString;
+    //    以数组形势传进来
+    private List<Integer> productTypeIds;
+    private String productTypeIdsString;
+
+    
+
     private Date creatTime;
 
     private int auditStatus;
@@ -71,11 +79,35 @@ public class Product {
 
     private Long countPerPackage;
 
-//    以数组形势传进来
-    private List<Integer> productTypeIds;
 
+    public String getProductTypeIdsString() {
+        return productTypeIdsString;
+    }
 
-//变体
+    public void setProductTypeIdsString(String productTypeIdsString) {
+//        String tmp=this.getProductTypeIds().toString();
+
+        this.productTypeIdsString = productTypeIdsString;
+    }
+
+    public List<String> getPictureList() {
+//        this.getPictureListString();
+        return pictureList;
+    }
+
+    public void setPictureList(List<String> pictureList) {
+        this.pictureList = pictureList;
+    }
+
+    public String getPictureListString() {
+        return this.pictureListString;
+    }
+
+    public void setPictureListString(String pictureListString) {
+        this.pictureListString = pictureListString;
+    }
+
+    //变体
     private HashMap<String,List<ProductInner>> productInnerName;
 
     public HashMap<String, List<ProductInner>> getProductInnerName() {
