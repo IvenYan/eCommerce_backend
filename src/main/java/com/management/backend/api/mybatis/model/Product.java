@@ -13,7 +13,7 @@ public class Product {
     private List<Integer> productTypeIds;
     private String productTypeIdsString;
 
-    
+
 
     private Date creatTime;
 
