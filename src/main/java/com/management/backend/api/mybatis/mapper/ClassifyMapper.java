@@ -18,5 +18,7 @@ import java.util.List;
 public interface ClassifyMapper {
 
     List<Classify> selectByPid(int pid);
+//    未用
+//    List<Classify> selectClassifyByPid(int pid);
 
 }

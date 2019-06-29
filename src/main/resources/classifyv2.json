@@ -1,0 +1,4239 @@
+[
+  {
+    "id": 1,
+    "value": "家纺",
+    "label": "家纺",
+    "pid": 0,
+    "children": [
+      {
+        "id": 25,
+        "value": "床单套装",
+        "label": "床单套装",
+        "pid": 1,
+        "children": [
+          {
+            "id": 267,
+            "value": "两件套",
+            "label": "两件套",
+            "pid": 25,
+            "children": null
+          },
+          {
+            "id": 268,
+            "value": "三件套",
+            "label": "三件套",
+            "pid": 25,
+            "children": null
+          },
+          {
+            "id": 269,
+            "value": "四件套",
+            "label": "四件套",
+            "pid": 25,
+            "children": null
+          },
+          {
+            "id": 270,
+            "value": "多件套",
+            "label": "多件套",
+            "pid": 25,
+            "children": null
+          },
+          {
+            "id": 271,
+            "value": "床单",
+            "label": "床单",
+            "pid": 25,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "value": "被罩",
+        "label": "被罩",
+        "pid": 1,
+        "children": null
+      },
+      {
+        "id": 27,
+        "value": "枕头",
+        "label": "枕头",
+        "pid": 1,
+        "children": null
+      },
+      {
+        "id": 28,
+        "value": "枕套枕巾",
+        "label": "枕套枕巾",
+        "pid": 1,
+        "children": null
+      },
+      {
+        "id": 29,
+        "value": "毛巾浴巾",
+        "label": "毛巾浴巾",
+        "pid": 1,
+        "children": null
+      },
+      {
+        "id": 30,
+        "value": "毯子",
+        "label": "毯子",
+        "pid": 1,
+        "children": null
+      },
+      {
+        "id": 31,
+        "value": "蚊帐",
+        "label": "蚊帐",
+        "pid": 1,
+        "children": null
+      },
+      {
+        "id": 32,
+        "value": "凉席",
+        "label": "凉席",
+        "pid": 1,
+        "children": null
+      },
+      {
+        "id": 33,
+        "value": "地毯",
+        "label": "地毯",
+        "pid": 1,
+        "children": null
+      },
+      {
+        "id": 34,
+        "value": "抱枕",
+        "label": "抱枕",
+        "pid": 1,
+        "children": null
+      },
+      {
+        "id": 35,
+        "value": "地垫",
+        "label": "地垫",
+        "pid": 1,
+        "children": null
+      },
+      {
+        "id": 36,
+        "value": "记忆枕",
+        "label": "记忆枕",
+        "pid": 1,
+        "children": null
+      },
+      {
+        "id": 37,
+        "value": "U型枕",
+        "label": "U型枕",
+        "pid": 1,
+        "children": null
+      },
+      {
+        "id": 38,
+        "value": "浴衣",
+        "label": "浴衣",
+        "pid": 1,
+        "children": null
+      },
+      {
+        "id": 39,
+        "value": "被子",
+        "label": "被子",
+        "pid": 1,
+        "children": [
+          {
+            "id": 272,
+            "value": "羽绒被",
+            "label": "羽绒被",
+            "pid": 39,
+            "children": null
+          },
+          {
+            "id": 273,
+            "value": "保暖被",
+            "label": "保暖被",
+            "pid": 39,
+            "children": null
+          },
+          {
+            "id": 274,
+            "value": "夏凉被",
+            "label": "夏凉被",
+            "pid": 39,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 40,
+        "value": "床垫",
+        "label": "床垫",
+        "pid": 1,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "value": "箱包",
+    "label": "箱包",
+    "pid": 0,
+    "children": [
+      {
+        "id": 41,
+        "value": "男包",
+        "label": "男包",
+        "pid": 2,
+        "children": [
+          {
+            "id": 275,
+            "value": "商务公文包",
+            "label": "商务公文包",
+            "pid": 41,
+            "children": null
+          },
+          {
+            "id": 276,
+            "value": "单肩斜挎包",
+            "label": "单肩斜挎包",
+            "pid": 41,
+            "children": null
+          },
+          {
+            "id": 277,
+            "value": "手拎包",
+            "label": "手拎包",
+            "pid": 41,
+            "children": null
+          },
+          {
+            "id": 278,
+            "value": "手领包",
+            "label": "手领包",
+            "pid": 41,
+            "children": null
+          },
+          {
+            "id": 279,
+            "value": "手拿包",
+            "label": "手拿包",
+            "pid": 41,
+            "children": null
+          },
+          {
+            "id": 280,
+            "value": "钱包",
+            "label": "钱包",
+            "pid": 41,
+            "children": null
+          },
+          {
+            "id": 281,
+            "value": "钥匙包",
+            "label": "钥匙包",
+            "pid": 41,
+            "children": null
+          },
+          {
+            "id": 282,
+            "value": "斜跨胸包",
+            "label": "斜跨胸包",
+            "pid": 41,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 42,
+        "value": "女包",
+        "label": "女包",
+        "pid": 2,
+        "children": [
+          {
+            "id": 283,
+            "value": "单肩斜跨手提包",
+            "label": "单肩斜跨手提包",
+            "pid": 42,
+            "children": null
+          },
+          {
+            "id": 284,
+            "value": "单肩斜挎包",
+            "label": "单肩斜挎包",
+            "pid": 42,
+            "children": null
+          },
+          {
+            "id": 285,
+            "value": "手领包",
+            "label": "手领包",
+            "pid": 42,
+            "children": null
+          },
+          {
+            "id": 286,
+            "value": "手拿包",
+            "label": "手拿包",
+            "pid": 42,
+            "children": null
+          },
+          {
+            "id": 287,
+            "value": "晚宴包",
+            "label": "晚宴包",
+            "pid": 42,
+            "children": null
+          },
+          {
+            "id": 288,
+            "value": "钱包小包",
+            "label": "钱包小包",
+            "pid": 42,
+            "children": null
+          },
+          {
+            "id": 289,
+            "value": "双肩包",
+            "label": "双肩包",
+            "pid": 42,
+            "children": null
+          },
+          {
+            "id": 290,
+            "value": "钥匙包",
+            "label": "钥匙包",
+            "pid": 42,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 43,
+        "value": "功能箱包",
+        "label": "功能箱包",
+        "pid": 2,
+        "children": [
+          {
+            "id": 291,
+            "value": "休闲运动包",
+            "label": "休闲运动包",
+            "pid": 43,
+            "children": null
+          },
+          {
+            "id": 292,
+            "value": "旅行包",
+            "label": "旅行包",
+            "pid": 43,
+            "children": null
+          },
+          {
+            "id": 293,
+            "value": "电脑/摄影包",
+            "label": "电脑/摄影包",
+            "pid": 43,
+            "children": null
+          },
+          {
+            "id": 294,
+            "value": "专业运动包",
+            "label": "专业运动包",
+            "pid": 43,
+            "children": null
+          },
+          {
+            "id": 295,
+            "value": "户外登山包",
+            "label": "户外登山包",
+            "pid": 43,
+            "children": null
+          },
+          {
+            "id": 296,
+            "value": "儿童书包",
+            "label": "儿童书包",
+            "pid": 43,
+            "children": null
+          },
+          {
+            "id": 297,
+            "value": "腰包",
+            "label": "腰包",
+            "pid": 43,
+            "children": null
+          },
+          {
+            "id": 298,
+            "value": "婴儿背带",
+            "label": "婴儿背带",
+            "pid": 43,
+            "children": null
+          },
+          {
+            "id": 299,
+            "value": "拉杆箱",
+            "label": "拉杆箱",
+            "pid": 43,
+            "children": null
+          },
+          {
+            "id": 300,
+            "value": "刺绣包",
+            "label": "刺绣包",
+            "pid": 43,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 44,
+        "value": "妈咪包",
+        "label": "妈咪包",
+        "pid": 2,
+        "children": null
+      },
+      {
+        "id": 45,
+        "value": "箱包配件",
+        "label": "箱包配件",
+        "pid": 2,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "value": "家居装饰",
+    "label": "家居装饰",
+    "pid": 0,
+    "children": [
+      {
+        "id": 46,
+        "value": "布艺装饰",
+        "label": "布艺装饰",
+        "pid": 3,
+        "children": [
+          {
+            "id": 301,
+            "value": "沙发垫、沙发罩",
+            "label": "沙发垫、沙发罩",
+            "pid": 46,
+            "children": null
+          },
+          {
+            "id": 302,
+            "value": "抱枕靠垫",
+            "label": "抱枕靠垫",
+            "pid": 46,
+            "children": null
+          },
+          {
+            "id": 303,
+            "value": "坐垫、椅套",
+            "label": "坐垫、椅套",
+            "pid": 46,
+            "children": null
+          },
+          {
+            "id": 304,
+            "value": "餐桌布艺",
+            "label": "餐桌布艺",
+            "pid": 46,
+            "children": null
+          },
+          {
+            "id": 305,
+            "value": "窗帘、纱帘",
+            "label": "窗帘、纱帘",
+            "pid": 46,
+            "children": null
+          },
+          {
+            "id": 306,
+            "value": "地垫、地毯",
+            "label": "地垫、地毯",
+            "pid": 46,
+            "children": null
+          },
+          {
+            "id": 307,
+            "value": "钢琴罩",
+            "label": "钢琴罩",
+            "pid": 46,
+            "children": null
+          },
+          {
+            "id": 308,
+            "value": "家电防尘罩",
+            "label": "家电防尘罩",
+            "pid": 46,
+            "children": null
+          },
+          {
+            "id": 309,
+            "value": "门帘",
+            "label": "门帘",
+            "pid": 46,
+            "children": null
+          },
+          {
+            "id": 310,
+            "value": "挂毯、壁毯",
+            "label": "挂毯、壁毯",
+            "pid": 46,
+            "children": null
+          },
+          {
+            "id": 311,
+            "value": "楼梯踏步垫",
+            "label": "楼梯踏步垫",
+            "pid": 46,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 47,
+        "value": "钟表",
+        "label": "钟表",
+        "pid": 3,
+        "children": [
+          {
+            "id": 312,
+            "value": "闹钟",
+            "label": "闹钟",
+            "pid": 47,
+            "children": null
+          },
+          {
+            "id": 313,
+            "value": "挂钟",
+            "label": "挂钟",
+            "pid": 47,
+            "children": null
+          },
+          {
+            "id": 314,
+            "value": "画钟",
+            "label": "画钟",
+            "pid": 47,
+            "children": null
+          },
+          {
+            "id": 315,
+            "value": "座钟",
+            "label": "座钟",
+            "pid": 47,
+            "children": null
+          },
+          {
+            "id": 316,
+            "value": "壁钟",
+            "label": "壁钟",
+            "pid": 47,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 48,
+        "value": "照片墙/相框相册",
+        "label": "照片墙/相框相册",
+        "pid": 3,
+        "children": [
+          {
+            "id": 317,
+            "value": "照片墙",
+            "label": "照片墙",
+            "pid": 48,
+            "children": null
+          },
+          {
+            "id": 318,
+            "value": "相框",
+            "label": "相框",
+            "pid": 48,
+            "children": null
+          },
+          {
+            "id": 319,
+            "value": "相册",
+            "label": "相册",
+            "pid": 48,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 49,
+        "value": "摆件/挂件/工艺品",
+        "label": "摆件/挂件/工艺品",
+        "pid": 3,
+        "children": null
+      },
+      {
+        "id": 50,
+        "value": "花瓶/花艺",
+        "label": "花瓶/花艺",
+        "pid": 3,
+        "children": [
+          {
+            "id": 320,
+            "value": "花盘",
+            "label": "花盘",
+            "pid": 50,
+            "children": null
+          },
+          {
+            "id": 321,
+            "value": "假花摆件",
+            "label": "假花摆件",
+            "pid": 50,
+            "children": null
+          },
+          {
+            "id": 322,
+            "value": "单支",
+            "label": "单支",
+            "pid": 50,
+            "children": null
+          },
+          {
+            "id": 323,
+            "value": "套装",
+            "label": "套装",
+            "pid": 50,
+            "children": null
+          },
+          {
+            "id": 324,
+            "value": "花藤",
+            "label": "花藤",
+            "pid": 50,
+            "children": null
+          },
+          {
+            "id": 325,
+            "value": "花架",
+            "label": "花架",
+            "pid": 50,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 51,
+        "value": "墙纸/墙贴",
+        "label": "墙纸/墙贴",
+        "pid": 3,
+        "children": null
+      },
+      {
+        "id": 52,
+        "value": "电话",
+        "label": "电话",
+        "pid": 3,
+        "children": null
+      },
+      {
+        "id": 53,
+        "value": "花环",
+        "label": "花环",
+        "pid": 3,
+        "children": null
+      },
+      {
+        "id": 54,
+        "value": "墙壁雕塑",
+        "label": "墙壁雕塑",
+        "pid": 3,
+        "children": null
+      },
+      {
+        "id": 55,
+        "value": "创意门牌",
+        "label": "创意门牌",
+        "pid": 3,
+        "children": null
+      },
+      {
+        "id": 56,
+        "value": "懒人沙发",
+        "label": "懒人沙发",
+        "pid": 3,
+        "children": null
+      },
+      {
+        "id": 57,
+        "value": "懒人椅",
+        "label": "懒人椅",
+        "pid": 3,
+        "children": null
+      },
+      {
+        "id": 58,
+        "value": "床头柜",
+        "label": "床头柜",
+        "pid": 3,
+        "children": null
+      },
+      {
+        "id": 59,
+        "value": "墙壁装饰",
+        "label": "墙壁装饰",
+        "pid": 3,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "value": "汽车用品",
+    "label": "汽车用品",
+    "pid": 0,
+    "children": [
+      {
+        "id": 60,
+        "value": "汽车电子",
+        "label": "汽车电子",
+        "pid": 4,
+        "children": [
+          {
+            "id": 326,
+            "value": "汽车蓝牙接收器",
+            "label": "汽车蓝牙接收器",
+            "pid": 60,
+            "children": null
+          },
+          {
+            "id": 327,
+            "value": "车载",
+            "label": "车载",
+            "pid": 60,
+            "children": null
+          },
+          {
+            "id": 328,
+            "value": "车载冰箱",
+            "label": "车载冰箱",
+            "pid": 60,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 61,
+        "value": "气垫床",
+        "label": "气垫床",
+        "pid": 4,
+        "children": null
+      },
+      {
+        "id": 62,
+        "value": "汽车配件",
+        "label": "汽车配件",
+        "pid": 4,
+        "children": [
+          {
+            "id": 329,
+            "value": "方向盘套",
+            "label": "方向盘套",
+            "pid": 62,
+            "children": null
+          },
+          {
+            "id": 330,
+            "value": "车贴",
+            "label": "车贴",
+            "pid": 62,
+            "children": null
+          },
+          {
+            "id": 331,
+            "value": "洗车工具",
+            "label": "洗车工具",
+            "pid": 62,
+            "children": null
+          },
+          {
+            "id": 332,
+            "value": "广脚镜/小圆镜",
+            "label": "广脚镜/小圆镜",
+            "pid": 62,
+            "children": null
+          },
+          {
+            "id": 333,
+            "value": "座椅挂袋",
+            "label": "座椅挂袋",
+            "pid": 62,
+            "children": null
+          },
+          {
+            "id": 334,
+            "value": "汽车收纳盒",
+            "label": "汽车收纳盒",
+            "pid": 62,
+            "children": null
+          },
+          {
+            "id": 335,
+            "value": "防滑链",
+            "label": "防滑链",
+            "pid": 62,
+            "children": null
+          },
+          {
+            "id": 336,
+            "value": "汽车毛刷",
+            "label": "汽车毛刷",
+            "pid": 62,
+            "children": null
+          },
+          {
+            "id": 337,
+            "value": "汽车挂件",
+            "label": "汽车挂件",
+            "pid": 62,
+            "children": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "value": "宠物用品",
+    "label": "宠物用品",
+    "pid": 0,
+    "children": [
+      {
+        "id": 63,
+        "value": "宠物窝",
+        "label": "宠物窝",
+        "pid": 5,
+        "children": null
+      },
+      {
+        "id": 64,
+        "value": "宠物包",
+        "label": "宠物包",
+        "pid": 5,
+        "children": null
+      },
+      {
+        "id": 65,
+        "value": "宠物玩具",
+        "label": "宠物玩具",
+        "pid": 5,
+        "children": null
+      },
+      {
+        "id": 66,
+        "value": "宠物牵引绳",
+        "label": "宠物牵引绳",
+        "pid": 5,
+        "children": null
+      },
+      {
+        "id": 67,
+        "value": "宠物服饰",
+        "label": "宠物服饰",
+        "pid": 5,
+        "children": null
+      },
+      {
+        "id": 68,
+        "value": "宠物厕所",
+        "label": "宠物厕所",
+        "pid": 5,
+        "children": null
+      },
+      {
+        "id": 69,
+        "value": "宠物毯子",
+        "label": "宠物毯子",
+        "pid": 5,
+        "children": null
+      },
+      {
+        "id": 70,
+        "value": "宠物被子",
+        "label": "宠物被子",
+        "pid": 5,
+        "children": null
+      },
+      {
+        "id": 71,
+        "value": "宠物刷",
+        "label": "宠物刷",
+        "pid": 5,
+        "children": null
+      },
+      {
+        "id": 72,
+        "value": "宠物垫子",
+        "label": "宠物垫子",
+        "pid": 5,
+        "children": null
+      },
+      {
+        "id": 73,
+        "value": "宠物碗",
+        "label": "宠物碗",
+        "pid": 5,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "value": "家居用品",
+    "label": "家居用品",
+    "pid": 0,
+    "children": [
+      {
+        "id": 74,
+        "value": "充水热水袋",
+        "label": "充水热水袋",
+        "pid": 6,
+        "children": null
+      },
+      {
+        "id": 75,
+        "value": "转椅",
+        "label": "转椅",
+        "pid": 6,
+        "children": null
+      },
+      {
+        "id": 76,
+        "value": "保温水壶",
+        "label": "保温水壶",
+        "pid": 6,
+        "children": null
+      },
+      {
+        "id": 77,
+        "value": "椅子",
+        "label": "椅子",
+        "pid": 6,
+        "children": null
+      },
+      {
+        "id": 78,
+        "value": "保温杯垫",
+        "label": "保温杯垫",
+        "pid": 6,
+        "children": null
+      },
+      {
+        "id": 79,
+        "value": "烘鞋器",
+        "label": "烘鞋器",
+        "pid": 6,
+        "children": null
+      },
+      {
+        "id": 80,
+        "value": "扩鞋器",
+        "label": "扩鞋器",
+        "pid": 6,
+        "children": null
+      },
+      {
+        "id": 81,
+        "value": "家电底座",
+        "label": "家电底座",
+        "pid": 6,
+        "children": null
+      },
+      {
+        "id": 82,
+        "value": "梯凳",
+        "label": "梯凳",
+        "pid": 6,
+        "children": null
+      },
+      {
+        "id": 83,
+        "value": "驱蚊器",
+        "label": "驱蚊器",
+        "pid": 6,
+        "children": null
+      },
+      {
+        "id": 84,
+        "value": "折叠床",
+        "label": "折叠床",
+        "pid": 6,
+        "children": null
+      },
+      {
+        "id": 85,
+        "value": "浇花喷壶",
+        "label": "浇花喷壶",
+        "pid": 6,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "value": "衣服",
+    "label": "衣服",
+    "pid": 0,
+    "children": [
+      {
+        "id": 86,
+        "value": "情趣内衣",
+        "label": "情趣内衣",
+        "pid": 7,
+        "children": null
+      },
+      {
+        "id": 87,
+        "value": "女装",
+        "label": "女装",
+        "pid": 7,
+        "children": [
+          {
+            "id": 338,
+            "value": "毛衣",
+            "label": "毛衣",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 339,
+            "value": "卫衣",
+            "label": "卫衣",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 340,
+            "value": "毛呢大衣",
+            "label": "毛呢大衣",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 341,
+            "value": "羽绒服",
+            "label": "羽绒服",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 342,
+            "value": "棉衣",
+            "label": "棉衣",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 343,
+            "value": "牛仔外套",
+            "label": "牛仔外套",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 344,
+            "value": "小外套",
+            "label": "小外套",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 345,
+            "value": "针织开衫",
+            "label": "针织开衫",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 346,
+            "value": "风衣",
+            "label": "风衣",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 347,
+            "value": "连身裙",
+            "label": "连身裙",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 348,
+            "value": "半身裙",
+            "label": "半身裙",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 349,
+            "value": "T桖",
+            "label": "T桖",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 350,
+            "value": "衬衫",
+            "label": "衬衫",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 351,
+            "value": "短裤",
+            "label": "短裤",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 352,
+            "value": "牛仔裤",
+            "label": "牛仔裤",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 353,
+            "value": "保暖裤",
+            "label": "保暖裤",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 354,
+            "value": "睡衣",
+            "label": "睡衣",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 355,
+            "value": "保暖内衣",
+            "label": "保暖内衣",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 356,
+            "value": "背带裤",
+            "label": "背带裤",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 357,
+            "value": "外套",
+            "label": "外套",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 358,
+            "value": "休闲裤",
+            "label": "休闲裤",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 359,
+            "value": "短裙",
+            "label": "短裙",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 360,
+            "value": "连体衣",
+            "label": "连体衣",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 361,
+            "value": "背心",
+            "label": "背心",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 362,
+            "value": "运动服套装",
+            "label": "运动服套装",
+            "pid": 87,
+            "children": null
+          },
+          {
+            "id": 363,
+            "value": "防晒衣",
+            "label": "防晒衣",
+            "pid": 87,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 88,
+        "value": "男装",
+        "label": "男装",
+        "pid": 7,
+        "children": [
+          {
+            "id": 364,
+            "value": "T桖",
+            "label": "T桖",
+            "pid": 88,
+            "children": null
+          },
+          {
+            "id": 365,
+            "value": "衬衫短袖",
+            "label": "衬衫短袖",
+            "pid": 88,
+            "children": null
+          },
+          {
+            "id": 366,
+            "value": "衬衫长袖",
+            "label": "衬衫长袖",
+            "pid": 88,
+            "children": null
+          },
+          {
+            "id": 367,
+            "value": "外套",
+            "label": "外套",
+            "pid": 88,
+            "children": null
+          },
+          {
+            "id": 368,
+            "value": "短裤",
+            "label": "短裤",
+            "pid": 88,
+            "children": null
+          },
+          {
+            "id": 369,
+            "value": "长裤",
+            "label": "长裤",
+            "pid": 88,
+            "children": null
+          },
+          {
+            "id": 370,
+            "value": "夹克",
+            "label": "夹克",
+            "pid": 88,
+            "children": null
+          },
+          {
+            "id": 371,
+            "value": "牛仔裤",
+            "label": "牛仔裤",
+            "pid": 88,
+            "children": null
+          },
+          {
+            "id": 372,
+            "value": "牛仔外套",
+            "label": "牛仔外套",
+            "pid": 88,
+            "children": null
+          },
+          {
+            "id": 373,
+            "value": "卫衣",
+            "label": "卫衣",
+            "pid": 88,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 89,
+        "value": "童装",
+        "label": "童装",
+        "pid": 7,
+        "children": null
+      },
+      {
+        "id": 90,
+        "value": "围巾/披肩",
+        "label": "围巾/披肩",
+        "pid": 7,
+        "children": [
+          {
+            "id": 374,
+            "value": "男式",
+            "label": "男式",
+            "pid": 90,
+            "children": null
+          },
+          {
+            "id": 375,
+            "value": "女式",
+            "label": "女式",
+            "pid": 90,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 91,
+        "value": "服装配饰",
+        "label": "服装配饰",
+        "pid": 7,
+        "children": [
+          {
+            "id": 376,
+            "value": "男式腰带",
+            "label": "男式腰带",
+            "pid": 91,
+            "children": null
+          },
+          {
+            "id": 377,
+            "value": "女式腰带",
+            "label": "女式腰带",
+            "pid": 91,
+            "children": null
+          },
+          {
+            "id": 378,
+            "value": "男式领结",
+            "label": "男式领结",
+            "pid": 91,
+            "children": null
+          },
+          {
+            "id": 379,
+            "value": "女式领结",
+            "label": "女式领结",
+            "pid": 91,
+            "children": null
+          },
+          {
+            "id": 380,
+            "value": "男式袖扣",
+            "label": "男式袖扣",
+            "pid": 91,
+            "children": null
+          },
+          {
+            "id": 381,
+            "value": "女式袖扣",
+            "label": "女式袖扣",
+            "pid": 91,
+            "children": null
+          },
+          {
+            "id": 382,
+            "value": "男士帽子",
+            "label": "男士帽子",
+            "pid": 91,
+            "children": null
+          },
+          {
+            "id": 383,
+            "value": "丝袜",
+            "label": "丝袜",
+            "pid": 91,
+            "children": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "value": "厨具",
+    "label": "厨具",
+    "pid": 0,
+    "children": [
+      {
+        "id": 92,
+        "value": "锅具/壶具",
+        "label": "锅具/壶具",
+        "pid": 8,
+        "children": [
+          {
+            "id": 384,
+            "value": "汤锅",
+            "label": "汤锅",
+            "pid": 92,
+            "children": null
+          },
+          {
+            "id": 385,
+            "value": "炒锅",
+            "label": "炒锅",
+            "pid": 92,
+            "children": null
+          },
+          {
+            "id": 386,
+            "value": "平底锅",
+            "label": "平底锅",
+            "pid": 92,
+            "children": null
+          },
+          {
+            "id": 387,
+            "value": "蒸锅",
+            "label": "蒸锅",
+            "pid": 92,
+            "children": null
+          },
+          {
+            "id": 388,
+            "value": "奶锅",
+            "label": "奶锅",
+            "pid": 92,
+            "children": null
+          },
+          {
+            "id": 389,
+            "value": "砂锅",
+            "label": "砂锅",
+            "pid": 92,
+            "children": null
+          },
+          {
+            "id": 390,
+            "value": "火锅",
+            "label": "火锅",
+            "pid": 92,
+            "children": null
+          },
+          {
+            "id": 391,
+            "value": "锅具套装",
+            "label": "锅具套装",
+            "pid": 92,
+            "children": null
+          },
+          {
+            "id": 392,
+            "value": "烧水壶",
+            "label": "烧水壶",
+            "pid": 92,
+            "children": null
+          },
+          {
+            "id": 393,
+            "value": "榨汁机",
+            "label": "榨汁机",
+            "pid": 92,
+            "children": null
+          },
+          {
+            "id": 394,
+            "value": "咖啡壶",
+            "label": "咖啡壶",
+            "pid": 92,
+            "children": null
+          },
+          {
+            "id": 395,
+            "value": "茶壶",
+            "label": "茶壶",
+            "pid": 92,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 93,
+        "value": "餐具",
+        "label": "餐具",
+        "pid": 8,
+        "children": [
+          {
+            "id": 396,
+            "value": "盘子",
+            "label": "盘子",
+            "pid": 93,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 94,
+        "value": "厨房小工具",
+        "label": "厨房小工具",
+        "pid": 8,
+        "children": null
+      },
+      {
+        "id": 95,
+        "value": "厨房收纳",
+        "label": "厨房收纳",
+        "pid": 8,
+        "children": null
+      },
+      {
+        "id": 96,
+        "value": "保鲜盒",
+        "label": "保鲜盒",
+        "pid": 8,
+        "children": null
+      },
+      {
+        "id": 97,
+        "value": "调料瓶",
+        "label": "调料瓶",
+        "pid": 8,
+        "children": null
+      },
+      {
+        "id": 98,
+        "value": "杯子",
+        "label": "杯子",
+        "pid": 8,
+        "children": null
+      },
+      {
+        "id": 99,
+        "value": "茶具",
+        "label": "茶具",
+        "pid": 8,
+        "children": [
+          {
+            "id": 397,
+            "value": "茶具套装",
+            "label": "茶具套装",
+            "pid": 99,
+            "children": null
+          },
+          {
+            "id": 398,
+            "value": "茶宠",
+            "label": "茶宠",
+            "pid": 99,
+            "children": null
+          },
+          {
+            "id": 399,
+            "value": "茶杯",
+            "label": "茶杯",
+            "pid": 99,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 100,
+        "value": "咖啡用品",
+        "label": "咖啡用品",
+        "pid": 8,
+        "children": null
+      },
+      {
+        "id": 101,
+        "value": "烘焙用具",
+        "label": "烘焙用具",
+        "pid": 8,
+        "children": null
+      },
+      {
+        "id": 102,
+        "value": "烘烤用具",
+        "label": "烘烤用具",
+        "pid": 8,
+        "children": null
+      },
+      {
+        "id": 103,
+        "value": "酒具",
+        "label": "酒具",
+        "pid": 8,
+        "children": null
+      },
+      {
+        "id": 104,
+        "value": "围裙",
+        "label": "围裙",
+        "pid": 8,
+        "children": null
+      },
+      {
+        "id": 105,
+        "value": "打蛋器",
+        "label": "打蛋器",
+        "pid": 8,
+        "children": null
+      },
+      {
+        "id": 106,
+        "value": "饭菜罩",
+        "label": "饭菜罩",
+        "pid": 8,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "value": "供货产品",
+    "label": "供货产品",
+    "pid": 0,
+    "children": [
+      {
+        "id": 107,
+        "value": "吊灯",
+        "label": "吊灯",
+        "pid": 9,
+        "children": null
+      },
+      {
+        "id": 108,
+        "value": "吸顶灯",
+        "label": "吸顶灯",
+        "pid": 9,
+        "children": null
+      },
+      {
+        "id": 109,
+        "value": "落地灯",
+        "label": "落地灯",
+        "pid": 9,
+        "children": null
+      },
+      {
+        "id": 110,
+        "value": "LED灯",
+        "label": "LED灯",
+        "pid": 9,
+        "children": null
+      },
+      {
+        "id": 111,
+        "value": "壁灯",
+        "label": "壁灯",
+        "pid": 9,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "value": "游戏",
+    "label": "游戏",
+    "pid": 0,
+    "children": [
+      {
+        "id": 112,
+        "value": "面具",
+        "label": "面具",
+        "pid": 10,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "value": "家居装修",
+    "label": "家居装修",
+    "pid": 0,
+    "children": [
+      {
+        "id": 113,
+        "value": "灯具",
+        "label": "灯具",
+        "pid": 11,
+        "children": [
+          {
+            "id": 400,
+            "value": "光源",
+            "label": "光源",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 401,
+            "value": "台灯",
+            "label": "台灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 402,
+            "value": "吊灯",
+            "label": "吊灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 403,
+            "value": "吸顶灯",
+            "label": "吸顶灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 404,
+            "value": "反吊灯",
+            "label": "反吊灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 405,
+            "value": "落地灯",
+            "label": "落地灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 406,
+            "value": "壁灯",
+            "label": "壁灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 407,
+            "value": "筒灯",
+            "label": "筒灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 408,
+            "value": "射灯",
+            "label": "射灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 409,
+            "value": "灭蚊灯",
+            "label": "灭蚊灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 410,
+            "value": "灯条/灯带",
+            "label": "灯条/灯带",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 411,
+            "value": "小夜灯",
+            "label": "小夜灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 412,
+            "value": "安全指示灯",
+            "label": "安全指示灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 413,
+            "value": "应急灯",
+            "label": "应急灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 414,
+            "value": "镜前灯",
+            "label": "镜前灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 415,
+            "value": "柱头灯",
+            "label": "柱头灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 416,
+            "value": "室外壁灯",
+            "label": "室外壁灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 417,
+            "value": "鱼缸灯",
+            "label": "鱼缸灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 418,
+            "value": "煤油灯",
+            "label": "煤油灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 419,
+            "value": "万圣节灯",
+            "label": "万圣节灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 420,
+            "value": "彩灯",
+            "label": "彩灯",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 421,
+            "value": "电子蜡烛",
+            "label": "电子蜡烛",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 422,
+            "value": "烛台",
+            "label": "烛台",
+            "pid": 113,
+            "children": null
+          },
+          {
+            "id": 423,
+            "value": "庭院灯",
+            "label": "庭院灯",
+            "pid": 113,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 114,
+        "value": "水龙头",
+        "label": "水龙头",
+        "pid": 11,
+        "children": [
+          {
+            "id": 424,
+            "value": "厨房龙头",
+            "label": "厨房龙头",
+            "pid": 114,
+            "children": null
+          },
+          {
+            "id": 425,
+            "value": "浴室面盆龙头",
+            "label": "浴室面盆龙头",
+            "pid": 114,
+            "children": null
+          },
+          {
+            "id": 426,
+            "value": "浴缸龙头",
+            "label": "浴缸龙头",
+            "pid": 114,
+            "children": null
+          },
+          {
+            "id": 427,
+            "value": "拖把池龙头",
+            "label": "拖把池龙头",
+            "pid": 114,
+            "children": null
+          },
+          {
+            "id": 428,
+            "value": "电热水龙头",
+            "label": "电热水龙头",
+            "pid": 114,
+            "children": null
+          },
+          {
+            "id": 429,
+            "value": "龙头净水器",
+            "label": "龙头净水器",
+            "pid": 114,
+            "children": null
+          },
+          {
+            "id": 430,
+            "value": "花洒套装",
+            "label": "花洒套装",
+            "pid": 114,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 115,
+        "value": "卫浴配件",
+        "label": "卫浴配件",
+        "pid": 11,
+        "children": [
+          {
+            "id": 431,
+            "value": "厕纸架",
+            "label": "厕纸架",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 432,
+            "value": "马桶刷架",
+            "label": "马桶刷架",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 433,
+            "value": "毛巾环",
+            "label": "毛巾环",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 434,
+            "value": "衣钩",
+            "label": "衣钩",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 435,
+            "value": "牙刷杯架",
+            "label": "牙刷杯架",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 436,
+            "value": "毛巾架/毛巾竿",
+            "label": "毛巾架/毛巾竿",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 437,
+            "value": "肥皂架",
+            "label": "肥皂架",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 438,
+            "value": "浴室镜",
+            "label": "浴室镜",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 439,
+            "value": "地漏",
+            "label": "地漏",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 440,
+            "value": "浴室防滑垫",
+            "label": "浴室防滑垫",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 441,
+            "value": "卫生间置物架",
+            "label": "卫生间置物架",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 442,
+            "value": "厨房置物架",
+            "label": "厨房置物架",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 443,
+            "value": "皂液架",
+            "label": "皂液架",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 444,
+            "value": "手持花洒",
+            "label": "手持花洒",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 445,
+            "value": "顶喷",
+            "label": "顶喷",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 446,
+            "value": "面盆",
+            "label": "面盆",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 447,
+            "value": "扶手",
+            "label": "扶手",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 448,
+            "value": "马桶盖",
+            "label": "马桶盖",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 449,
+            "value": "洗澡椅",
+            "label": "洗澡椅",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 450,
+            "value": "浴室套件",
+            "label": "浴室套件",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 451,
+            "value": "软管",
+            "label": "软管",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 452,
+            "value": "拖把架",
+            "label": "拖把架",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 453,
+            "value": "浴杆",
+            "label": "浴杆",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 454,
+            "value": "浴帘",
+            "label": "浴帘",
+            "pid": 115,
+            "children": null
+          },
+          {
+            "id": 455,
+            "value": "吹风机座",
+            "label": "吹风机座",
+            "pid": 115,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 116,
+        "value": "浴缸/浴盆",
+        "label": "浴缸/浴盆",
+        "pid": 11,
+        "children": [
+          {
+            "id": 456,
+            "value": "浴缸、浴盆",
+            "label": "浴缸、浴盆",
+            "pid": 116,
+            "children": null
+          },
+          {
+            "id": 457,
+            "value": "电泵",
+            "label": "电泵",
+            "pid": 116,
+            "children": null
+          },
+          {
+            "id": 458,
+            "value": "脚泵",
+            "label": "脚泵",
+            "pid": 116,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 117,
+        "value": "家具配件",
+        "label": "家具配件",
+        "pid": 11,
+        "children": [
+          {
+            "id": 459,
+            "value": "抽屉把手",
+            "label": "抽屉把手",
+            "pid": 117,
+            "children": null
+          },
+          {
+            "id": 460,
+            "value": "门拉手",
+            "label": "门拉手",
+            "pid": 117,
+            "children": null
+          },
+          {
+            "id": 461,
+            "value": "门插销",
+            "label": "门插销",
+            "pid": 117,
+            "children": null
+          },
+          {
+            "id": 462,
+            "value": "门锁",
+            "label": "门锁",
+            "pid": 117,
+            "children": null
+          },
+          {
+            "id": 463,
+            "value": "门铃",
+            "label": "门铃",
+            "pid": 117,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 118,
+        "value": "家具",
+        "label": "家具",
+        "pid": 11,
+        "children": [
+          {
+            "id": 464,
+            "value": "酒吧凳",
+            "label": "酒吧凳",
+            "pid": 118,
+            "children": null
+          },
+          {
+            "id": 465,
+            "value": "儿童学习桌",
+            "label": "儿童学习桌",
+            "pid": 118,
+            "children": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "value": "生活用品",
+    "label": "生活用品",
+    "pid": 0,
+    "children": [
+      {
+        "id": 119,
+        "value": "手拉车",
+        "label": "手拉车",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 120,
+        "value": "挤牙膏器",
+        "label": "挤牙膏器",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 121,
+        "value": "报警器",
+        "label": "报警器",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 122,
+        "value": "烫衣板",
+        "label": "烫衣板",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 123,
+        "value": "挂钩",
+        "label": "挂钩",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 124,
+        "value": "收纳",
+        "label": "收纳",
+        "pid": 12,
+        "children": [
+          {
+            "id": 466,
+            "value": "收纳盒",
+            "label": "收纳盒",
+            "pid": 124,
+            "children": null
+          },
+          {
+            "id": 467,
+            "value": "收纳篮",
+            "label": "收纳篮",
+            "pid": 124,
+            "children": null
+          },
+          {
+            "id": 468,
+            "value": "收纳袋",
+            "label": "收纳袋",
+            "pid": 124,
+            "children": null
+          },
+          {
+            "id": 469,
+            "value": "收纳凳",
+            "label": "收纳凳",
+            "pid": 124,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 125,
+        "value": "置物架",
+        "label": "置物架",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 126,
+        "value": "真空压缩袋",
+        "label": "真空压缩袋",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 127,
+        "value": "烟灰缸",
+        "label": "烟灰缸",
+        "pid": 12,
+        "children": [
+          {
+            "id": 253,
+            "value": "车载烟灰缸",
+            "label": "车载烟灰缸",
+            "pid": 127,
+            "children": null
+          },
+          {
+            "id": 254,
+            "value": "家用烟灰缸",
+            "label": "家用烟灰缸",
+            "pid": 127,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 128,
+        "value": "雨伞",
+        "label": "雨伞",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 129,
+        "value": "油纸伞",
+        "label": "油纸伞",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 130,
+        "value": "组合衣柜",
+        "label": "组合衣柜",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 131,
+        "value": "迷你风扇",
+        "label": "迷你风扇",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 132,
+        "value": "笔筒",
+        "label": "笔筒",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 133,
+        "value": "名片座",
+        "label": "名片座",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 134,
+        "value": "电动牙刷",
+        "label": "电动牙刷",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 135,
+        "value": "折叠桌",
+        "label": "折叠桌",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 136,
+        "value": "折叠椅",
+        "label": "折叠椅",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 137,
+        "value": "电子称",
+        "label": "电子称",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 138,
+        "value": "旋转拖把",
+        "label": "旋转拖把",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 139,
+        "value": "鱼缸",
+        "label": "鱼缸",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 140,
+        "value": "衣帽架",
+        "label": "衣帽架",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 141,
+        "value": "晾衣架",
+        "label": "晾衣架",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 142,
+        "value": "衣架",
+        "label": "衣架",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 143,
+        "value": "餐巾",
+        "label": "餐巾",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 144,
+        "value": "雨伞架",
+        "label": "雨伞架",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 145,
+        "value": "纸巾盒",
+        "label": "纸巾盒",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 146,
+        "value": "牙签盒",
+        "label": "牙签盒",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 147,
+        "value": "小木凳/凳子",
+        "label": "小木凳/凳子",
+        "pid": 12,
+        "children": [
+          {
+            "id": 255,
+            "value": "腰凳",
+            "label": "腰凳",
+            "pid": 147,
+            "children": null
+          },
+          {
+            "id": 256,
+            "value": "沙发凳",
+            "label": "沙发凳",
+            "pid": 147,
+            "children": null
+          },
+          {
+            "id": 257,
+            "value": "脚凳",
+            "label": "脚凳",
+            "pid": 147,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 148,
+        "value": "书立架",
+        "label": "书立架",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 149,
+        "value": "充气枕头",
+        "label": "充气枕头",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 150,
+        "value": "画笔",
+        "label": "画笔",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 151,
+        "value": "浴帽",
+        "label": "浴帽",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 152,
+        "value": "鞋架",
+        "label": "鞋架",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 153,
+        "value": "鞋套机",
+        "label": "鞋套机",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 154,
+        "value": "眼罩",
+        "label": "眼罩",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 155,
+        "value": "梳子",
+        "label": "梳子",
+        "pid": 12,
+        "children": [
+          {
+            "id": 258,
+            "value": "木梳",
+            "label": "木梳",
+            "pid": 155,
+            "children": null
+          },
+          {
+            "id": 259,
+            "value": "牛角梳",
+            "label": "牛角梳",
+            "pid": 155,
+            "children": null
+          },
+          {
+            "id": 260,
+            "value": "气囊按摩梳",
+            "label": "气囊按摩梳",
+            "pid": 155,
+            "children": null
+          },
+          {
+            "id": 261,
+            "value": "卷发梳",
+            "label": "卷发梳",
+            "pid": 155,
+            "children": null
+          },
+          {
+            "id": 262,
+            "value": "桃木梳",
+            "label": "桃木梳",
+            "pid": 155,
+            "children": null
+          },
+          {
+            "id": 263,
+            "value": "羊角梳",
+            "label": "羊角梳",
+            "pid": 155,
+            "children": null
+          },
+          {
+            "id": 264,
+            "value": "鬃毛梳",
+            "label": "鬃毛梳",
+            "pid": 155,
+            "children": null
+          },
+          {
+            "id": 265,
+            "value": "其他",
+            "label": "其他",
+            "pid": 155,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 156,
+        "value": "加湿器",
+        "label": "加湿器",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 157,
+        "value": "园艺工具",
+        "label": "园艺工具",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 158,
+        "value": "镜子",
+        "label": "镜子",
+        "pid": 12,
+        "children": [
+          {
+            "id": 266,
+            "value": "化妆镜",
+            "label": "化妆镜",
+            "pid": 158,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 159,
+        "value": "儿童座便器",
+        "label": "儿童座便器",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 160,
+        "value": "袖扣",
+        "label": "袖扣",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 161,
+        "value": "儿童坐便器",
+        "label": "儿童坐便器",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 162,
+        "value": "坐便器",
+        "label": "坐便器",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 163,
+        "value": "垃圾桶",
+        "label": "垃圾桶",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 164,
+        "value": "真空吸尘器",
+        "label": "真空吸尘器",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 165,
+        "value": "扫帚簸箕",
+        "label": "扫帚簸箕",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 166,
+        "value": "吹风机",
+        "label": "吹风机",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 167,
+        "value": "浴室沐浴凳",
+        "label": "浴室沐浴凳",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 168,
+        "value": "电熨斗",
+        "label": "电熨斗",
+        "pid": 12,
+        "children": null
+      },
+      {
+        "id": 169,
+        "value": "家用蒸汽桑拿箱",
+        "label": "家用蒸汽桑拿箱",
+        "pid": 12,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "value": "个人护理",
+    "label": "个人护理",
+    "pid": 0,
+    "children": [
+      {
+        "id": 170,
+        "value": "充气娃娃",
+        "label": "充气娃娃",
+        "pid": 13,
+        "children": null
+      },
+      {
+        "id": 171,
+        "value": "成人",
+        "label": "成人",
+        "pid": 13,
+        "children": [
+          {
+            "id": 470,
+            "value": "剃须刀",
+            "label": "剃须刀",
+            "pid": 171,
+            "children": null
+          },
+          {
+            "id": 471,
+            "value": "指甲刀套件",
+            "label": "指甲刀套件",
+            "pid": 171,
+            "children": null
+          },
+          {
+            "id": 472,
+            "value": "卷发器",
+            "label": "卷发器",
+            "pid": 171,
+            "children": null
+          },
+          {
+            "id": 473,
+            "value": "直发器",
+            "label": "直发器",
+            "pid": 171,
+            "children": null
+          },
+          {
+            "id": 474,
+            "value": "仿真阳具",
+            "label": "仿真阳具",
+            "pid": 171,
+            "children": null
+          },
+          {
+            "id": 475,
+            "value": "贞操带",
+            "label": "贞操带",
+            "pid": 171,
+            "children": null
+          },
+          {
+            "id": 476,
+            "value": "电刺激",
+            "label": "电刺激",
+            "pid": 171,
+            "children": null
+          },
+          {
+            "id": 477,
+            "value": "实体娃娃",
+            "label": "实体娃娃",
+            "pid": 171,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 172,
+        "value": "婴儿/儿童用品",
+        "label": "婴儿/儿童用品",
+        "pid": 13,
+        "children": [
+          {
+            "id": 478,
+            "value": "宝宝洗澡帽",
+            "label": "宝宝洗澡帽",
+            "pid": 172,
+            "children": null
+          },
+          {
+            "id": 479,
+            "value": "儿童防走失带牵引绳",
+            "label": "儿童防走失带牵引绳",
+            "pid": 172,
+            "children": null
+          },
+          {
+            "id": 480,
+            "value": "婴儿手推车",
+            "label": "婴儿手推车",
+            "pid": 172,
+            "children": null
+          },
+          {
+            "id": 481,
+            "value": "婴儿背带",
+            "label": "婴儿背带",
+            "pid": 172,
+            "children": null
+          },
+          {
+            "id": 482,
+            "value": "儿童防护",
+            "label": "儿童防护",
+            "pid": 172,
+            "children": null
+          },
+          {
+            "id": 483,
+            "value": "浴床",
+            "label": "浴床",
+            "pid": 172,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 173,
+        "value": "束发带",
+        "label": "束发带",
+        "pid": 13,
+        "children": null
+      },
+      {
+        "id": 174,
+        "value": "医疗用品",
+        "label": "医疗用品",
+        "pid": 13,
+        "children": null
+      },
+      {
+        "id": 175,
+        "value": "医疗器械",
+        "label": "医疗器械",
+        "pid": 13,
+        "children": [
+          {
+            "id": 484,
+            "value": "助行器",
+            "label": "助行器",
+            "pid": 175,
+            "children": null
+          },
+          {
+            "id": 485,
+            "value": "血压计",
+            "label": "血压计",
+            "pid": 175,
+            "children": null
+          },
+          {
+            "id": 486,
+            "value": "助听器",
+            "label": "助听器",
+            "pid": 175,
+            "children": null
+          },
+          {
+            "id": 487,
+            "value": "香薰仪",
+            "label": "香薰仪",
+            "pid": 175,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 176,
+        "value": "按摩和放松",
+        "label": "按摩和放松",
+        "pid": 13,
+        "children": [
+          {
+            "id": 488,
+            "value": "电动按摩器",
+            "label": "电动按摩器",
+            "pid": 176,
+            "children": null
+          },
+          {
+            "id": 489,
+            "value": "足部按摩器",
+            "label": "足部按摩器",
+            "pid": 176,
+            "children": null
+          },
+          {
+            "id": 490,
+            "value": "头部按摩器",
+            "label": "头部按摩器",
+            "pid": 176,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 177,
+        "value": "暖脚宝",
+        "label": "暖脚宝",
+        "pid": 13,
+        "children": null
+      },
+      {
+        "id": 178,
+        "value": "老人用品",
+        "label": "老人用品",
+        "pid": 13,
+        "children": [
+          {
+            "id": 491,
+            "value": "老人扶手",
+            "label": "老人扶手",
+            "pid": 178,
+            "children": null
+          },
+          {
+            "id": 492,
+            "value": "坐厕",
+            "label": "坐厕",
+            "pid": 178,
+            "children": null
+          },
+          {
+            "id": 493,
+            "value": "拐杖",
+            "label": "拐杖",
+            "pid": 178,
+            "children": null
+          },
+          {
+            "id": 494,
+            "value": "助行器",
+            "label": "助行器",
+            "pid": 178,
+            "children": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "value": "艺术",
+    "label": "艺术",
+    "pid": 0,
+    "children": [
+      {
+        "id": 179,
+        "value": "纹身贴",
+        "label": "纹身贴",
+        "pid": 14,
+        "children": null
+      },
+      {
+        "id": 180,
+        "value": "手链",
+        "label": "手链",
+        "pid": 14,
+        "children": null
+      },
+      {
+        "id": 181,
+        "value": "钥匙扣",
+        "label": "钥匙扣",
+        "pid": 14,
+        "children": null
+      },
+      {
+        "id": 182,
+        "value": "新娘配饰",
+        "label": "新娘配饰",
+        "pid": 14,
+        "children": null
+      },
+      {
+        "id": 183,
+        "value": "头饰",
+        "label": "头饰",
+        "pid": 14,
+        "children": [
+          {
+            "id": 495,
+            "value": "花环",
+            "label": "花环",
+            "pid": 183,
+            "children": null
+          },
+          {
+            "id": 496,
+            "value": "发簪",
+            "label": "发簪",
+            "pid": 183,
+            "children": null
+          },
+          {
+            "id": 497,
+            "value": "皇冠",
+            "label": "皇冠",
+            "pid": 183,
+            "children": null
+          },
+          {
+            "id": 498,
+            "value": "头花",
+            "label": "头花",
+            "pid": 183,
+            "children": null
+          },
+          {
+            "id": 499,
+            "value": "发带",
+            "label": "发带",
+            "pid": 183,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 184,
+        "value": "假发",
+        "label": "假发",
+        "pid": 14,
+        "children": null
+      },
+      {
+        "id": 185,
+        "value": "十字绣",
+        "label": "十字绣",
+        "pid": 14,
+        "children": null
+      },
+      {
+        "id": 186,
+        "value": "项链",
+        "label": "项链",
+        "pid": 14,
+        "children": null
+      },
+      {
+        "id": 187,
+        "value": "乐器及其配件",
+        "label": "乐器及其配件",
+        "pid": 14,
+        "children": [
+          {
+            "id": 500,
+            "value": "打击鼓麦克风",
+            "label": "打击鼓麦克风",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 501,
+            "value": "鼓麦克风夹",
+            "label": "鼓麦克风夹",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 502,
+            "value": "吉他琴弦钳",
+            "label": "吉他琴弦钳",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 503,
+            "value": "管乐配件",
+            "label": "管乐配件",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 504,
+            "value": "小号嘴",
+            "label": "小号嘴",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 505,
+            "value": "中音长号嘴",
+            "label": "中音长号嘴",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 506,
+            "value": "圆号嘴",
+            "label": "圆号嘴",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 507,
+            "value": "滑动变音夹",
+            "label": "滑动变音夹",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 508,
+            "value": "麦克风防喷罩/防喷网",
+            "label": "麦克风防喷罩/防喷网",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 509,
+            "value": "吉他金属指套拨片",
+            "label": "吉他金属指套拨片",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 510,
+            "value": "萨克斯软木",
+            "label": "萨克斯软木",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 511,
+            "value": "单簧管软木",
+            "label": "单簧管软木",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 512,
+            "value": "单簧管指套",
+            "label": "单簧管指套",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 513,
+            "value": "小提琴琴弦",
+            "label": "小提琴琴弦",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 514,
+            "value": "小提琴温湿度计",
+            "label": "小提琴温湿度计",
+            "pid": 187,
+            "children": null
+          },
+          {
+            "id": 515,
+            "value": "小提琴金属弱音器",
+            "label": "小提琴金属弱音器",
+            "pid": 187,
+            "children": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "value": "手表",
+    "label": "手表",
+    "pid": 0,
+    "children": [
+      {
+        "id": 188,
+        "value": "女表",
+        "label": "女表",
+        "pid": 15,
+        "children": null
+      },
+      {
+        "id": 189,
+        "value": "男表",
+        "label": "男表",
+        "pid": 15,
+        "children": null
+      },
+      {
+        "id": 190,
+        "value": "儿童手表",
+        "label": "儿童手表",
+        "pid": 15,
+        "children": null
+      },
+      {
+        "id": 191,
+        "value": "摇表器",
+        "label": "摇表器",
+        "pid": 15,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "value": "玩具",
+    "label": "玩具",
+    "pid": 0,
+    "children": [
+      {
+        "id": 192,
+        "value": "成人玩具",
+        "label": "成人玩具",
+        "pid": 16,
+        "children": null
+      },
+      {
+        "id": 193,
+        "value": "儿童玩具",
+        "label": "儿童玩具",
+        "pid": 16,
+        "children": [
+          {
+            "id": 516,
+            "value": "婴儿车",
+            "label": "婴儿车",
+            "pid": 193,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 194,
+        "value": "智能玩具",
+        "label": "智能玩具",
+        "pid": 16,
+        "children": null
+      },
+      {
+        "id": 195,
+        "value": "傻瓜玩具",
+        "label": "傻瓜玩具",
+        "pid": 16,
+        "children": null
+      },
+      {
+        "id": 196,
+        "value": "儿童画架",
+        "label": "儿童画架",
+        "pid": 16,
+        "children": null
+      },
+      {
+        "id": 197,
+        "value": "画板",
+        "label": "画板",
+        "pid": 16,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "value": "运动户外",
+    "label": "运动户外",
+    "pid": 0,
+    "children": [
+      {
+        "id": 198,
+        "value": "户外服饰",
+        "label": "户外服饰",
+        "pid": 18,
+        "children": [
+          {
+            "id": 517,
+            "value": "泳衣",
+            "label": "泳衣",
+            "pid": 198,
+            "children": null
+          },
+          {
+            "id": 518,
+            "value": "运动服",
+            "label": "运动服",
+            "pid": 198,
+            "children": null
+          },
+          {
+            "id": 519,
+            "value": "帽子",
+            "label": "帽子",
+            "pid": 198,
+            "children": null
+          },
+          {
+            "id": 520,
+            "value": "运动手套",
+            "label": "运动手套",
+            "pid": 198,
+            "children": null
+          },
+          {
+            "id": 521,
+            "value": "骑行雨衣",
+            "label": "骑行雨衣",
+            "pid": 198,
+            "children": null
+          },
+          {
+            "id": 522,
+            "value": "雨衣",
+            "label": "雨衣",
+            "pid": 198,
+            "children": null
+          },
+          {
+            "id": 523,
+            "value": "雨布",
+            "label": "雨布",
+            "pid": 198,
+            "children": null
+          },
+          {
+            "id": 524,
+            "value": "泳帽",
+            "label": "泳帽",
+            "pid": 198,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 199,
+        "value": "户外装备",
+        "label": "户外装备",
+        "pid": 18,
+        "children": [
+          {
+            "id": 525,
+            "value": "户外背包",
+            "label": "户外背包",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 526,
+            "value": "帐篷",
+            "label": "帐篷",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 527,
+            "value": "睡袋",
+            "label": "睡袋",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 528,
+            "value": "登山杖",
+            "label": "登山杖",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 529,
+            "value": "折叠床",
+            "label": "折叠床",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 530,
+            "value": "吊床",
+            "label": "吊床",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 531,
+            "value": "秋千",
+            "label": "秋千",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 532,
+            "value": "望远镜",
+            "label": "望远镜",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 533,
+            "value": "渔具",
+            "label": "渔具",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 534,
+            "value": "眼镜",
+            "label": "眼镜",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 535,
+            "value": "瑜伽垫",
+            "label": "瑜伽垫",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 536,
+            "value": "瑜伽球",
+            "label": "瑜伽球",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 537,
+            "value": "头盔",
+            "label": "头盔",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 538,
+            "value": "护具",
+            "label": "护具",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 539,
+            "value": "气垫床",
+            "label": "气垫床",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 540,
+            "value": "防潮垫",
+            "label": "防潮垫",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 541,
+            "value": "滑雪眼镜",
+            "label": "滑雪眼镜",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 542,
+            "value": "冬天护耳罩",
+            "label": "冬天护耳罩",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 543,
+            "value": "手套",
+            "label": "手套",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 544,
+            "value": "骑行水杯架",
+            "label": "骑行水杯架",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 545,
+            "value": "摩托车挡风被",
+            "label": "摩托车挡风被",
+            "pid": 199,
+            "children": null
+          },
+          {
+            "id": 546,
+            "value": "自行车灯",
+            "label": "自行车灯",
+            "pid": 199,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 200,
+        "value": "高尔夫",
+        "label": "高尔夫",
+        "pid": 18,
+        "children": [
+          {
+            "id": 547,
+            "value": "高尔夫练习垫子",
+            "label": "高尔夫练习垫子",
+            "pid": 200,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 201,
+        "value": "帽子",
+        "label": "帽子",
+        "pid": 18,
+        "children": [
+          {
+            "id": 548,
+            "value": "棒球帽",
+            "label": "棒球帽",
+            "pid": 201,
+            "children": null
+          },
+          {
+            "id": 549,
+            "value": "毛线帽",
+            "label": "毛线帽",
+            "pid": 201,
+            "children": null
+          },
+          {
+            "id": 550,
+            "value": "贝雷帽",
+            "label": "贝雷帽",
+            "pid": 201,
+            "children": null
+          },
+          {
+            "id": 551,
+            "value": "礼帽",
+            "label": "礼帽",
+            "pid": 201,
+            "children": null
+          },
+          {
+            "id": 552,
+            "value": "包头帽",
+            "label": "包头帽",
+            "pid": 201,
+            "children": null
+          },
+          {
+            "id": 553,
+            "value": "凉帽",
+            "label": "凉帽",
+            "pid": 201,
+            "children": null
+          },
+          {
+            "id": 554,
+            "value": "皮帽",
+            "label": "皮帽",
+            "pid": 201,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 202,
+        "value": "望远镜",
+        "label": "望远镜",
+        "pid": 18,
+        "children": [
+          {
+            "id": 555,
+            "value": "单筒望远镜",
+            "label": "单筒望远镜",
+            "pid": 202,
+            "children": null
+          },
+          {
+            "id": 556,
+            "value": "双筒望远镜",
+            "label": "双筒望远镜",
+            "pid": 202,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 203,
+        "value": "滑板车",
+        "label": "滑板车",
+        "pid": 18,
+        "children": [
+          {
+            "id": 557,
+            "value": "滑沙板",
+            "label": "滑沙板",
+            "pid": 203,
+            "children": null
+          },
+          {
+            "id": 558,
+            "value": "滑雪板",
+            "label": "滑雪板",
+            "pid": 203,
+            "children": null
+          },
+          {
+            "id": 559,
+            "value": "滑雪片",
+            "label": "滑雪片",
+            "pid": 203,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 204,
+        "value": "手电筒",
+        "label": "手电筒",
+        "pid": 18,
+        "children": null
+      },
+      {
+        "id": 205,
+        "value": "头灯",
+        "label": "头灯",
+        "pid": 18,
+        "children": null
+      },
+      {
+        "id": 206,
+        "value": "运动器材",
+        "label": "运动器材",
+        "pid": 18,
+        "children": [
+          {
+            "id": 560,
+            "value": "踏步机",
+            "label": "踏步机",
+            "pid": 206,
+            "children": null
+          },
+          {
+            "id": 561,
+            "value": "腹肌贴",
+            "label": "腹肌贴",
+            "pid": 206,
+            "children": null
+          },
+          {
+            "id": 562,
+            "value": "腹肌轮",
+            "label": "腹肌轮",
+            "pid": 206,
+            "children": null
+          },
+          {
+            "id": 563,
+            "value": "拉力器",
+            "label": "拉力器",
+            "pid": 206,
+            "children": null
+          },
+          {
+            "id": 564,
+            "value": "单杠",
+            "label": "单杠",
+            "pid": 206,
+            "children": null
+          },
+          {
+            "id": 565,
+            "value": "俯卧撑支架",
+            "label": "俯卧撑支架",
+            "pid": 206,
+            "children": null
+          },
+          {
+            "id": 566,
+            "value": "甩脂机",
+            "label": "甩脂机",
+            "pid": 206,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 207,
+        "value": "按摩棒",
+        "label": "按摩棒",
+        "pid": 18,
+        "children": null
+      },
+      {
+        "id": 208,
+        "value": "自行车",
+        "label": "自行车",
+        "pid": 18,
+        "children": [
+          {
+            "id": 567,
+            "value": "山地自行车",
+            "label": "山地自行车",
+            "pid": 208,
+            "children": null
+          },
+          {
+            "id": 568,
+            "value": "折叠自行车",
+            "label": "折叠自行车",
+            "pid": 208,
+            "children": null
+          },
+          {
+            "id": 569,
+            "value": "轻便/通勤自行车",
+            "label": "轻便/通勤自行车",
+            "pid": 208,
+            "children": null
+          },
+          {
+            "id": 570,
+            "value": "双人/三人自行车",
+            "label": "双人/三人自行车",
+            "pid": 208,
+            "children": null
+          },
+          {
+            "id": 571,
+            "value": "儿童自行车",
+            "label": "儿童自行车",
+            "pid": 208,
+            "children": null
+          },
+          {
+            "id": 572,
+            "value": "母子车/亲自车",
+            "label": "母子车/亲自车",
+            "pid": 208,
+            "children": null
+          },
+          {
+            "id": 573,
+            "value": "自行车后座",
+            "label": "自行车后座",
+            "pid": 208,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 209,
+        "value": "充气皮艇",
+        "label": "充气皮艇",
+        "pid": 18,
+        "children": null
+      },
+      {
+        "id": 210,
+        "value": "羽毛球拍",
+        "label": "羽毛球拍",
+        "pid": 18,
+        "children": null
+      },
+      {
+        "id": 211,
+        "value": "瘦身腰带",
+        "label": "瘦身腰带",
+        "pid": 18,
+        "children": null
+      },
+      {
+        "id": 212,
+        "value": "台球杆",
+        "label": "台球杆",
+        "pid": 18,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "value": "节日用品",
+    "label": "节日用品",
+    "pid": 0,
+    "children": [
+      {
+        "id": 213,
+        "value": "万圣节用品",
+        "label": "万圣节用品",
+        "pid": 19,
+        "children": null
+      },
+      {
+        "id": 214,
+        "value": "情人节",
+        "label": "情人节",
+        "pid": 19,
+        "children": null
+      },
+      {
+        "id": 215,
+        "value": "圣诞用品",
+        "label": "圣诞用品",
+        "pid": 19,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "value": "代理分类",
+    "label": "代理分类",
+    "pid": 0,
+    "children": null
+  },
+  {
+    "id": 21,
+    "value": "Shoes",
+    "label": "Shoes",
+    "pid": 0,
+    "children": [
+      {
+        "id": 216,
+        "value": "Daily necessities",
+        "label": "Daily necessities",
+        "pid": 21,
+        "children": null
+      },
+      {
+        "id": 217,
+        "value": "Shoes",
+        "label": "Shoes",
+        "pid": 21,
+        "children": null
+      },
+      {
+        "id": 218,
+        "value": "Chandelier",
+        "label": "Chandelier",
+        "pid": 21,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "value": "数码电子/办公",
+    "label": "数码电子/办公",
+    "pid": 0,
+    "children": [
+      {
+        "id": 219,
+        "value": "手机壳/平板保护套",
+        "label": "手机壳/平板保护套",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 220,
+        "value": "办公椅",
+        "label": "办公椅",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 221,
+        "value": "数据线",
+        "label": "数据线",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 222,
+        "value": "自拍杆",
+        "label": "自拍杆",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 223,
+        "value": "相机及其配件",
+        "label": "相机及其配件",
+        "pid": 22,
+        "children": [
+          {
+            "id": 574,
+            "value": "器材箱包",
+            "label": "器材箱包",
+            "pid": 223,
+            "children": null
+          },
+          {
+            "id": 575,
+            "value": "三脚架",
+            "label": "三脚架",
+            "pid": 223,
+            "children": null
+          },
+          {
+            "id": 576,
+            "value": "滤镜",
+            "label": "滤镜",
+            "pid": 223,
+            "children": null
+          },
+          {
+            "id": 577,
+            "value": "无人机摄像头",
+            "label": "无人机摄像头",
+            "pid": 223,
+            "children": null
+          },
+          {
+            "id": 578,
+            "value": "相机",
+            "label": "相机",
+            "pid": 223,
+            "children": null
+          },
+          {
+            "id": 579,
+            "value": "摄像头",
+            "label": "摄像头",
+            "pid": 223,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 224,
+        "value": "音响",
+        "label": "音响",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 225,
+        "value": "蓝牙耳机",
+        "label": "蓝牙耳机",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 226,
+        "value": "VR眼镜",
+        "label": "VR眼镜",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 227,
+        "value": "耳机",
+        "label": "耳机",
+        "pid": 22,
+        "children": [
+          {
+            "id": 580,
+            "value": "耳机",
+            "label": "耳机",
+            "pid": 227,
+            "children": null
+          },
+          {
+            "id": 581,
+            "value": "耳机转接线",
+            "label": "耳机转接线",
+            "pid": 227,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 228,
+        "value": "笔记本散热器",
+        "label": "笔记本散热器",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 229,
+        "value": "文件夹",
+        "label": "文件夹",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 230,
+        "value": "鼠标",
+        "label": "鼠标",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 231,
+        "value": "放大镜",
+        "label": "放大镜",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 232,
+        "value": "笔",
+        "label": "笔",
+        "pid": 22,
+        "children": [
+          {
+            "id": 582,
+            "value": "铅笔刀/削笔器",
+            "label": "铅笔刀/削笔器",
+            "pid": 232,
+            "children": null
+          },
+          {
+            "id": 583,
+            "value": "铅笔",
+            "label": "铅笔",
+            "pid": 232,
+            "children": null
+          },
+          {
+            "id": 584,
+            "value": "蜡笔",
+            "label": "蜡笔",
+            "pid": 232,
+            "children": null
+          },
+          {
+            "id": 585,
+            "value": "彩笔",
+            "label": "彩笔",
+            "pid": 232,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 233,
+        "value": "鼠标垫",
+        "label": "鼠标垫",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 234,
+        "value": "智能手环",
+        "label": "智能手环",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 235,
+        "value": "手机指环",
+        "label": "手机指环",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 236,
+        "value": "手机配件",
+        "label": "手机配件",
+        "pid": 22,
+        "children": [
+          {
+            "id": 586,
+            "value": "手机支架",
+            "label": "手机支架",
+            "pid": 236,
+            "children": null
+          },
+          {
+            "id": 587,
+            "value": "手机膜",
+            "label": "手机膜",
+            "pid": 236,
+            "children": null
+          },
+          {
+            "id": 588,
+            "value": "手机防水袋",
+            "label": "手机防水袋",
+            "pid": 236,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 237,
+        "value": "键盘",
+        "label": "键盘",
+        "pid": 22,
+        "children": [
+          {
+            "id": 589,
+            "value": "键帽",
+            "label": "键帽",
+            "pid": 237,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 238,
+        "value": "智能手表",
+        "label": "智能手表",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 239,
+        "value": "补光灯",
+        "label": "补光灯",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 240,
+        "value": "投影仪",
+        "label": "投影仪",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 241,
+        "value": "集线器",
+        "label": "集线器",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 242,
+        "value": "充电器",
+        "label": "充电器",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 243,
+        "value": "打印纸",
+        "label": "打印纸",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 244,
+        "value": "烟具",
+        "label": "烟具",
+        "pid": 22,
+        "children": null
+      },
+      {
+        "id": 245,
+        "value": "机顶盒",
+        "label": "机顶盒",
+        "pid": 22,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "value": "家纺",
+    "label": "家纺",
+    "pid": 0,
+    "children": null
+  },
+  {
+    "id": 24,
+    "value": "鞋子",
+    "label": "鞋子",
+    "pid": 0,
+    "children": [
+      {
+        "id": 246,
+        "value": "男鞋",
+        "label": "男鞋",
+        "pid": 24,
+        "children": null
+      },
+      {
+        "id": 247,
+        "value": "女鞋",
+        "label": "女鞋",
+        "pid": 24,
+        "children": [
+          {
+            "id": 590,
+            "value": "靴子",
+            "label": "靴子",
+            "pid": 247,
+            "children": null
+          },
+          {
+            "id": 591,
+            "value": "凉鞋",
+            "label": "凉鞋",
+            "pid": 247,
+            "children": null
+          },
+          {
+            "id": 592,
+            "value": "拖鞋",
+            "label": "拖鞋",
+            "pid": 247,
+            "children": null
+          },
+          {
+            "id": 593,
+            "value": "单鞋",
+            "label": "单鞋",
+            "pid": 247,
+            "children": null
+          },
+          {
+            "id": 594,
+            "value": "布鞋",
+            "label": "布鞋",
+            "pid": 247,
+            "children": null
+          },
+          {
+            "id": 595,
+            "value": "高跟鞋",
+            "label": "高跟鞋",
+            "pid": 247,
+            "children": null
+          },
+          {
+            "id": 596,
+            "value": "雪地靴",
+            "label": "雪地靴",
+            "pid": 247,
+            "children": null
+          }
+        ]
+      },
+      {
+        "id": 248,
+        "value": "童鞋",
+        "label": "童鞋",
+        "pid": 24,
+        "children": null
+      },
+      {
+        "id": 249,
+        "value": "雨鞋",
+        "label": "雨鞋",
+        "pid": 24,
+        "children": null
+      },
+      {
+        "id": 250,
+        "value": "拖鞋",
+        "label": "拖鞋",
+        "pid": 24,
+        "children": null
+      },
+      {
+        "id": 251,
+        "value": "瑜伽鞋",
+        "label": "瑜伽鞋",
+        "pid": 24,
+        "children": null
+      },
+      {
+        "id": 252,
+        "value": "游泳鞋",
+        "label": "游泳鞋",
+        "pid": 24,
+        "children": null
+      }
+    ]
+  }
+]

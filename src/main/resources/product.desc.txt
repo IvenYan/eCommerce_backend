@@ -1,0 +1,98 @@
+{
+  "id": 0,              产品编号
+  "pictureList": [
+    "string"
+  ],                        图片list数组
+  "pictureListString": "string",    图片list 字符串
+  "productTypeIds": [
+      0
+    ],
+   "productTypeIdsString": "string",    产品分类
+  "auditStatus": 0,     审核状态---1:通过;2:待审核;3:过滤;4:侵权;5:屏蔽
+  "onsale": 0,          上架下架---1:上架;2:下架;3:失效
+  "level": 0,           产品级别---1:重点;2:原创;3:海外;4:抓取;5下载
+  "userId": 0           业务人员 id
+  "brand": "string",    品牌名称
+  "factoryName": "string",  厂商名称
+  "factoryNumber": "string",    厂商编号
+  "sourceArea": "string",       原产地区
+  "factoryCatalog": "string",   商品目录
+  "uploadForbiden": 0,          禁止上传：1:是 2:否 (禁止上传亚马逊)
+  "sourceUrl": "string",        来源网址
+  "comments": "string",         附加备注
+  "cost": 0,                    成本单价(人民币成本)
+  "shippingCost": 0,            运输费用
+  "customCode": "string",       海关编码
+  "engDesc": "string",          英文简介
+  "chDesc": "string",           中文简介
+  "declarePrice": "string",     申报单价
+  "innerSku": "string",         内部SKU
+  "suitForGroup": 0,            适用人群:1:baby-boys;2:baby-girls;3:boys;4:gins;5:people;6:mens;7:unisex-adult;8:unisex-bab;9:womens
+  "productMaterial": "string",  产品材料
+  "packetMaterial": "string",   包装材料
+  "metalType": "string",        金属类型
+  "jewelType": "string",        珠宝类型
+  "packageGrossWeight": "string",   包装毛重
+  "hasBattery": 0,              产品有电池  0:no 1:yes
+  "packageLong": 0,             长
+  "packageWidth": 0,            宽
+  "packageHight": 0,            高
+  "inStore": 0,                 库存数量
+  "countPerPackage": 0,         每包产品数
+
+  "creatTime": "",          不用写，后台自动生成
+  "productItemTypeList": [      颜色，尺寸
+    {
+      "id": 0,
+      "name": "string",         颜色 Color,尺寸 Size
+      "value": "string"         具体值
+    }
+  ],
+  "productItems": [         变体
+    {
+      "addPrice": 0,        加价
+      "id": 0,
+      "inventory": 0,       库存
+      "name": "string",     名称
+      "pictureList": [      图片list数组
+        "string"
+      ],
+      "pictureListString": "string",    图片list 字符串
+      "pid": 0,             不用填，后台生成
+      "skuId": "string"     SKU
+    }
+  ],
+
+  "englishproducttile": "string",       产品标题：（英语）
+  "englishproductkeywords": "string",   关键词：不超过5行 逗号、空格或回车分割（英语）
+  "englishproductkeydesc": "string",    要点说明：不超过5行 回车分割（英语）
+  "englishproductdesc": "string",       产品描述：不输入html标签（英语）
+  "frenchproducttile": "string",        产品标题：（法语）
+  "frenchproductkeywords": "string",    关键词：不超过5行 逗号、空格或回车分割（法语）
+  "frenchproductkeydesc": "string",     要点说明：不超过5行 回车分割（法语）
+  "frenchproductdesc": "string",        产品描述：不输入html标签（法语）
+  "germanproducttile": "string",        产品标题：（德语）
+  "germanproductkeywords": "string",    关键词：不超过5行 逗号、空格或回车分割（德语）
+  "germanproductkeydesc": "string",     要点说明：不超过5行 回车分割（德语）
+  "germanproductdesc": "string",        产品描述：不输入html标签（德语）
+  "italyproducttile": "string",         产品标题：（意大利）
+  "italyproductkeywords": "string",     关键词：不超过5行 逗号、空格或回车分割（意大利）
+  "italyproductkeydesc": "string",      要点说明：不超过5行 回车分割（意大利）
+  "italyproductdesc": "string",         产品描述：不输入html标签（意大利）
+  "spanishproducttile": "string",       产品标题：（西班牙）
+  "spanishproductkeywords": "string",   关键词：不超过5行 逗号、空格或回车分割（西班牙）
+  "spanishproductkeydesc": "string",    要点说明：不超过5行 回车分割（西班牙）
+  "spanishproductdesc": "string",       产品描述：不输入html标签（西班牙）
+  "japaneseproducttile": "string",      产品标题：（日语）
+  "japaneseproductkeywords": "string",  关键词：不超过5行 逗号、空格或回车分割（日语）
+  "japaneseproductkeydesc": "string",   要点说明：不超过5行 回车分割（日语）
+  "japaneseproductdesc": "string",      产品描述：不输入html标签（日语）
+  "russianproducttile": "string",       产品标题：（俄语）
+  "russianproductkeywords": "string",   关键词：不超过5行 逗号、空格或回车分割（俄语）
+  "russianproductkeydesc": "string",    要点说明：不超过5行 回车分割（俄语）
+  "russianproductdesc": "string",       产品描述：不输入html标签（俄语）
+  "chineseproducttile": "string",       产品标题：（中文）
+  "chineseproductkeydesc": "string",    关键词：不超过5行 逗号、空格或回车分割（中文）
+  "chineseproductkeywords": "string",   要点说明：不超过5行 回车分割（中文）
+  "chineseproductdesc": "string",       产品描述：不输入html标签（中文）
+}

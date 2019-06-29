@@ -37,6 +37,23 @@
     <result column="count_per_package" jdbcType="BIGINT" property="countPerPackage" />
     <result column="product_type_id" jdbcType="VARCHAR" property="productTypeIdsString" />
     <result column="pictureListString" jdbcType="VARCHAR" property="pictureListString" />
+      <collection property="productItems" ofType="com.management.backend.api.mybatis.model.ProductItem">
+          <result column="itemid" jdbcType="INTEGER" property="id" />
+          <result column="pid" jdbcType="INTEGER" property="pid" />
+          <result column="pictureListString" jdbcType="VARCHAR" property="pictureListString" />
+          <result column="name" jdbcType="VARCHAR" property="name" />
+          <result column="skuId" jdbcType="VARCHAR" property="skuId" />
+          <result column="inventory" jdbcType="INTEGER" property="inventory" />
+          <result column="addPrice" jdbcType="VARCHAR" property="addPrice" />
+      </collection>
+
+      <collection property="productItemTypeList" ofType="com.management.backend.api.mybatis.model.ProductItemType">
+          <id column="typeid" jdbcType="INTEGER" property="id" />
+          <result column="typepid" jdbcType="INTEGER" property="pid" />
+          <result column="typename" jdbcType="VARCHAR" property="name" />
+          <result column="typevalue" jdbcType="VARCHAR" property="value" />
+      </collection>
+
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.management.backend.api.mybatis.model.ProductWithBLOBs">
     <result column="englishProductTile" jdbcType="LONGVARBINARY" property="englishproducttile" />
@@ -135,7 +152,7 @@
     factory_number, factory_catalog, upload_forbiden, source_url, comments, cost, shipping_cost, 
     custom_code, eng_desc, declare_price, ch_desc, inner_sku, suit_for_group, product_material, 
     packet_material, metal_type, jewel_type, package_gross_weight, has_battery, package_long, 
-    package_width, package_hight, in_store, count_per_package, product_type_id，pictureListString
+    package_width, package_hight, in_store, count_per_package, product_type_id,pictureListString
   </sql>
   <sql id="Blob_Column_List">
     englishProductTile, englishProductKeyWords, englishProductKeyDesc, englishProductDesc, 
@@ -179,13 +196,26 @@
       order by ${orderByClause}
     </if>
   </select>
+
+    <sql id="Inner_Base_Column_List">
+        a.id, a.creat_time, a.audit_status, a.onsale, a.level, a.user_id, a.brand, a.factory_name, a.source_area,
+        a.factory_number, a.factory_catalog, a.upload_forbiden, a.source_url, a.comments, a.cost, a.shipping_cost,
+        a.custom_code, a.eng_desc, a.declare_price, a.ch_desc, a.inner_sku, a.suit_for_group, a.product_material,
+        a.packet_material, a.metal_type, a.jewel_type, a.package_gross_weight, a.has_battery, a.package_long,
+        a.package_width, a.package_hight, a.in_store, a.count_per_package, a.product_type_id,a.pictureListString,a.englishProductTile, a.englishProductKeyWords, a.englishProductKeyDesc, a.englishProductDesc,
+        a.frenchProductTile, a.frenchProductKeyWords, a.frenchProductKeyDesc, a.frenchProductDesc,
+        a.germanProductTile, a.germanProductKeyWords, a.germanProductKeyDesc, a.germanProductDesc,
+        a.italyProductTile, a.italyProductKeyWords, a.italyProductKeyDesc, a.italyProductDesc, a.spanishProductTile,
+        a.spanishProductKeyWords, a.spanishProductKeyDesc, a.spanishProductDesc, a.japaneseProductTile,
+        a.japaneseProductKeyWords, a.japaneseProductKeyDesc, a.japaneseProductDesc, a.russianProductTile,
+        a.russianProductKeyWords, a.russianProductKeyDesc, a.russianProductDesc, a.chineseProductTile,
+        a.chineseProductKeyWords, a.chineseProductKeyDesc, a.chineseProductDesc,b.id as itemid,b.pictureListString, b.name, b.skuId,        b.inventory, b.addPrice,b.pid,c.id as typeid,c.name as typename,c.value as typevalue,c.pid as typepid
+    </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from product
-    where id = #{id,jdbcType=INTEGER}
+    <include refid="Inner_Base_Column_List" />
+    from product a left join product_item b on a.id=b.pid left join product_item_type c on a.id=c.pid
+    where a.id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from product

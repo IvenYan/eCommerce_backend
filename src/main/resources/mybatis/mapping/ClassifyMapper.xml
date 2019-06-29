@@ -2,16 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.management.backend.api.mybatis.mapper.ClassifyMapper">
   <resultMap id="BaseResultMap" type="com.management.backend.api.mybatis.model.Classify">
-
-    <id column="id" jdbcType="INTEGER" property="value" />
-    <result column="name" jdbcType="VARCHAR" property="label" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
   </resultMap>
 
-
   <select id="selectByPid" parameterType="Integer" resultMap="BaseResultMap">
-    select * from classify where pid = #{id,jdbcType=INTEGER}
+    select id,name as value,name as label,pid from classify where pid = #{pid,jdbcType=INTEGER}
   </select>
+ <!-- <select id="selectByPid" parameterType="Integer" resultMap="BaseResultMap">
+    select * from classify where pid = #{id,jdbcType=INTEGER}
+  </select>-->
+<!--
+  <select id="selectClassifyByPid" parameterType="Integer" resultMap="BaseResultMap">
+    select id,name as value,name as label from classify where pid = #{pid,jdbcType=INTEGER}
+  </select>-->
 
 
 

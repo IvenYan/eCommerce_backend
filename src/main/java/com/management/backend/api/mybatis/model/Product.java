@@ -13,6 +13,8 @@ public class Product {
     private List<Integer> productTypeIds;
     private String productTypeIdsString;
 
+//    变体
+    private List<ProductItem> productItems;
 
 
     private Date creatTime;
@@ -79,6 +81,18 @@ public class Product {
 
     private Long countPerPackage;
 
+//    变体类型名称,颜色 Color ,+ 值
+    private List<ProductItemType> productItemTypeList;
+
+
+
+    public List<ProductItemType> getProductItemTypeList() {
+        return productItemTypeList;
+    }
+
+    public void setProductItemTypeList(List<ProductItemType> productItemTypeList) {
+        this.productItemTypeList = productItemTypeList;
+    }
 
     public String getProductTypeIdsString() {
         return productTypeIdsString;
@@ -107,16 +121,7 @@ public class Product {
         this.pictureListString = pictureListString;
     }
 
-    //变体
-    private HashMap<String,List<ProductInner>> productInnerName;
 
-    public HashMap<String, List<ProductInner>> getProductInnerName() {
-        return productInnerName;
-    }
-
-    public void setProductInnerName(HashMap<String, List<ProductInner>> productInnerName) {
-        this.productInnerName = productInnerName;
-    }
 
     public Integer getId() {
         return id;
@@ -391,4 +396,58 @@ public class Product {
     public void setProductTypeIds(List<Integer> productTypeIds) {
         this.productTypeIds = productTypeIds;
     }
+
+    public List<ProductItem> getProductItems() {
+        return productItems;
+    }
+
+    public void setProductItems(List<ProductItem> productItems) {
+        this.productItems = productItems;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", pictureList=" + pictureList +
+                ", pictureListString='" + pictureListString + '\'' +
+                ", productTypeIds=" + productTypeIds +
+                ", productTypeIdsString='" + productTypeIdsString + '\'' +
+                ", productItems=" + productItems +
+                ", creatTime=" + creatTime +
+                ", auditStatus=" + auditStatus +
+                ", onsale=" + onsale +
+                ", level=" + level +
+                ", userId=" + userId +
+                ", brand='" + brand + '\'' +
+                ", factoryName='" + factoryName + '\'' +
+                ", sourceArea='" + sourceArea + '\'' +
+                ", factoryNumber='" + factoryNumber + '\'' +
+                ", factoryCatalog='" + factoryCatalog + '\'' +
+                ", uploadForbiden=" + uploadForbiden +
+                ", sourceUrl='" + sourceUrl + '\'' +
+                ", comments='" + comments + '\'' +
+                ", cost=" + cost +
+                ", shippingCost=" + shippingCost +
+                ", customCode='" + customCode + '\'' +
+                ", engDesc='" + engDesc + '\'' +
+                ", declarePrice='" + declarePrice + '\'' +
+                ", chDesc='" + chDesc + '\'' +
+                ", innerSku='" + innerSku + '\'' +
+                ", suitForGroup=" + suitForGroup +
+                ", productMaterial='" + productMaterial + '\'' +
+                ", packetMaterial='" + packetMaterial + '\'' +
+                ", metalType='" + metalType + '\'' +
+                ", jewelType='" + jewelType + '\'' +
+                ", packageGrossWeight='" + packageGrossWeight + '\'' +
+                ", hasBattery=" + hasBattery +
+                ", packageLong=" + packageLong +
+                ", packageWidth=" + packageWidth +
+                ", packageHight=" + packageHight +
+                ", inStore=" + inStore +
+                ", countPerPackage=" + countPerPackage +
+                '}';
+    }
+
 }

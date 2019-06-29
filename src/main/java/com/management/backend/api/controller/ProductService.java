@@ -2,14 +2,15 @@ package com.management.backend.api.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.management.backend.api.controller.entity.ProductSimpleBody;
+import com.management.backend.api.mybatis.mapper.ProductItemMapper;
+import com.management.backend.api.mybatis.mapper.ProductItemTypeMapper;
 import com.management.backend.api.mybatis.mapper.ProductSimpleMapper;
-import com.management.backend.api.mybatis.model.ProductSimple;
+import com.management.backend.api.mybatis.model.*;
 import com.management.backend.api.mybatis.mapper.ProductMapper;
-import com.management.backend.api.mybatis.model.Product;
-import com.management.backend.api.mybatis.model.ProductWithBLOBs;
 import com.management.backend.api.util.PageBean;
 import com.management.backend.api.util.Resp;
 import io.swagger.annotations.*;
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +31,18 @@ public class ProductService {
     private String filepath;
     @Autowired
     private ProductMapper productMapper;
+    @Autowired
+    private ProductItemMapper productItemMapper;
+    @Autowired
+    private ProductItemTypeMapper productItemTypeMapper;
 
     @Autowired
     private ProductSimpleMapper productSimpleMapper;
 
     @ApiOperation(value="获取产品详细信息", notes="根据产品的id来获取产品详细信息",produces="application/json",consumes = "application/json")
-    @ApiImplicitParam(name = "productId", value = "产品ID", required = true,paramType = "path", dataType = "Integer")
-    @GetMapping(value = "/products/{productId}")
-    public Product getProduct(@PathVariable("productId") int productId){
+    @ApiImplicitParam(name = "productId", value = "产品ID", required = true, dataType = "Integer")
+    @GetMapping(value = "/products")
+    public Product getProduct(@RequestParam("productId") int productId){
         Product product = productMapper.selectByPrimaryKey(productId);
         return product;
     }
@@ -71,11 +76,13 @@ public class ProductService {
         int countNums = productSimpleMapper.countProduct();            //包括搜索总记录数
         PageBean<ProductSimple> pageData = new PageBean<>(pageNum, pageSize, countNums);
         pageData.setItems(allItems);
+//        pageData.setTotalNum(countNums);
         ProductSimpleBody productSimpleBody=new ProductSimpleBody();
         productSimpleBody.setList(pageData.getItems());
         productSimpleBody.setPageNum(pageNum);
         productSimpleBody.setPageSize(pageSize);
-        productSimpleBody.setTotal(allItems.size());
+        productSimpleBody.setTotal(countNums);
+
 
         return productSimpleBody;
     }
@@ -84,21 +91,46 @@ public class ProductService {
 
     @ApiOperation(value="创建产品", notes="创建一个新的产品",produces="application/json",consumes = "application/json")
     @PostMapping(value = "/product")
-    public Resp saveProduct(@RequestBody @ApiParam(name="产品对象",value="传入json格式;id会自动生成，不用输入",required=true) ProductWithBLOBs product){
+    public HashMap saveProduct(@RequestBody @ApiParam(name="产品对象",value="传入json格式;id会自动生成，不用输入",required=true) ProductWithBLOBs product){
         /*if(product.getProductInnerName()!=null){
 
         }*/
         log.info(product.toString());
-        String pictureListTmp = product.getPictureList().toString();
+//        前端已经操作修改
+        /*String pictureListTmp = product.getPictureList().toString();
         String productTypeTmp=product.getProductTypeIds().toString();
         pictureListTmp=pictureListTmp.substring(1,pictureListTmp.length()-1);
         productTypeTmp=productTypeTmp.substring(1,productTypeTmp.length()-1);
         product.setPictureListString(pictureListTmp);
-        product.setProductTypeIdsString(productTypeTmp);
+        product.setProductTypeIdsString(productTypeTmp);*/
+//返回父产品id
+        int insert = productMapper.insert(product);
+        List<ProductItem> productItems = product.getProductItems();
+        List<ProductItemType> productItemTypeList = product.getProductItemTypeList();
+        for (ProductItemType productItemType:productItemTypeList) {
+            productItemType.setPid(insert);
+            /*String imtPictureListTmp = productItem.getPictureList().toString();
+            imtPictureListTmp=imtPictureListTmp.substring(1,imtPictureListTmp.length()-1);
+            productItem.setPictureListString(imtPictureListTmp);*/
+            productItemTypeMapper.insert(productItemType);
 
-        productMapper.insert(product);
+        }
+        for (ProductItem productItem:productItems) {
+            productItem.setPid(insert);
+            /*String imtPictureListTmp = productItem.getPictureList().toString();
+            imtPictureListTmp=imtPictureListTmp.substring(1,imtPictureListTmp.length()-1);
+            productItem.setPictureListString(imtPictureListTmp);*/
+            productItemMapper.insert(productItem);
 
-        return   new Resp(product.getId());
+        }
+
+        HashMap<String, Object> objectObjectHashMap = new HashMap<>();
+        objectObjectHashMap.put("id",product.getId());
+        objectObjectHashMap.put("status","200");
+        objectObjectHashMap.put("message","product had been add successfully");
+
+
+        return   objectObjectHashMap;
 
     }
 

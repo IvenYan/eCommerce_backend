@@ -30,7 +30,7 @@ import java.util.List;
  * @Version 1.0
  **/
 @RestController
-@Api(value = "Classify operations",tags = {"product service"})
+@Api(value = "Classify operations",tags = {"Classify service"})
 public class ClassifyController {
     protected static final Logger log = LoggerFactory.getLogger(ClassifyController.class);
 //    @Value("${windows.home.image.filepath}")
@@ -56,7 +56,7 @@ public class ClassifyController {
     public StringBuilder getProduct(@PathVariable("pid") int pid)throws Exception{
 //pid 默认为pid
         StringBuilder stringBuilder = new StringBuilder();
-        InputStream inputStream = this.getClass().getResourceAsStream("/classify.json");
+        InputStream inputStream = this.getClass().getResourceAsStream("/classifyv2.json");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
         String tmp="";
         while((tmp=bufferedReader.readLine())!=null){
@@ -99,6 +99,51 @@ public class ClassifyController {
         }
 
         return list0;*/
+    }
+
+    @ApiOperation(value="获取产品分类-全量", notes="根据产品的pid来获取产品分类信息",produces="application/json",consumes = "application/json")
+    @ApiImplicitParam(name = "pid", value = "产品父级ID", required = true,paramType = "path", dataType = "Integer")
+    @GetMapping(value = "/products/classifyall/v2/{pid}")
+    public List getClassifyList(@PathVariable("pid") int pid)throws Exception {
+//pid 默认为pid
+        StringBuilder stringBuilder = new StringBuilder();
+        InputStream inputStream = this.getClass().getResourceAsStream("/classify.json");
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+        String tmp = "";
+        while ((tmp = bufferedReader.readLine()) != null) {
+            stringBuilder.append(tmp);
+        }
+        List<Classify> list0 = classifyMapper.selectByPid(pid);
+        int i=0;
+        for(Classify item:list0 ){
+            System.out.println(i++);
+            List<Classify> list1 = classifyMapper.selectByPid(item.getId());
+            if(list1.size()>0){
+                item.setChildren(list1);
+                for(Classify item1:list1 ){
+                    System.out.println(i++);
+                    List<Classify> list2 = classifyMapper.selectByPid(item1.getId());
+                    if(list2.size()>0){
+                        item1.setChildren(list2);
+                        for(Classify item2:list2 ){
+                            System.out.println(i++);
+                            List<Classify> list3 = classifyMapper.selectByPid(item2.getId());
+                            if(list3.size()>0){
+                                item2.setChildren(list3);
+                            }else{
+                                continue;
+                            }
+                        }
+                    }else{
+                        continue;
+                    }
+                }
+            }else{
+                continue;
+            }
+        }
+
+        return list0;
     }
 
 

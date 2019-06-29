@@ -3,8 +3,13 @@ package com.management.backend.api.mybatis.mapper;
 import com.management.backend.api.mybatis.model.ProductType;
 import com.management.backend.api.mybatis.model.ProductTypeExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+
+@Mapper
+@Component
 public interface ProductTypeMapper {
     int countByExample(ProductTypeExample example);
 

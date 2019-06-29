@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+/*未在使用中*/
 @RestController
 @Api(value = "productType operations",tags = {"productType service"})
 public class ProductTypeService {

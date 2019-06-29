@@ -4,8 +4,13 @@ import com.management.backend.api.mybatis.model.Product;
 import com.management.backend.api.mybatis.model.ProductExample;
 import com.management.backend.api.mybatis.model.ProductWithBLOBs;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+
+@Mapper
+@Component
 public interface ProductMapper {
     int countByExample(ProductExample example);
 

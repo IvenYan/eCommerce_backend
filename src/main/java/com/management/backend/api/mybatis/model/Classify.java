@@ -10,24 +10,25 @@ import java.util.List;
  * @Version 1.0
  **/
 public class Classify {
-    private int value;
+    private int id;
+    private String value;
     private String label;
     private int pid;
     private List children;
 
-    public List getChildren() {
-        return children;
+    public int getId() {
+        return id;
     }
 
-    public void setChildren(List children) {
-        this.children = children;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
@@ -45,5 +46,13 @@ public class Classify {
 
     public void setPid(int pid) {
         this.pid = pid;
+    }
+
+    public List getChildren() {
+        return children;
+    }
+
+    public void setChildren(List children) {
+        this.children = children;
     }
 }

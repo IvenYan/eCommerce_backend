@@ -70,14 +70,21 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
             &lt;!&ndash;<columnRenamingRule searchString="^D_" replaceString=""/> &ndash;&gt;
         </table>-->
-
+<!--
         <table schema="backendshop_qzx" tableName="amazon_account_info" domainObjectName="AmazonAccountInfo"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            &lt;!&ndash;<columnRenamingRule searchString="^D_" replaceString=""/> &ndash;&gt;
+        </table>-->
+
+        <table schema="backendshop_qzx" tableName="product_item" domainObjectName="ProductItem"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
             <!--<columnRenamingRule searchString="^D_" replaceString=""/> -->
         </table>
-
     </context>
 </generatorConfiguration>

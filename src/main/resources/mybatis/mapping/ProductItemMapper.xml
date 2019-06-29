@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.management.backend.api.mybatis.mapper.ProductItemMapper">
+    <resultMap id="BaseResultMap" type="com.management.backend.api.mybatis.model.ProductItem">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="pid" jdbcType="INTEGER" property="pid" />
+        <result column="pictureListString" jdbcType="VARCHAR" property="pictureListString" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="skuId" jdbcType="VARCHAR" property="skuId" />
+        <result column="inventory" jdbcType="INTEGER" property="inventory" />
+        <result column="addPrice" jdbcType="VARCHAR" property="addPrice" />
+    </resultMap>
+
+    <select id="selectByPid" parameterType="Integer" resultMap="BaseResultMap">
+        select * from product_item where pid = #{id,jdbcType=INTEGER}
+    </select>
+
+    <insert id="insert" parameterType="com.management.backend.api.mybatis.model.ProductItem">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into product_item (pictureListString, name, skuId,        inventory, addPrice,pid )
+        values (#{pictureListString,jdbcType=VARCHAR}, , #{name,jdbcType=VARCHAR},
+        #{skuId,jdbcType=VARCHAR}, #{inventory,jdbcType=VARCHAR}, #{addPrice,jdbcType=DECIMAL},#{pid,jdbcType=INTEGER}        )
+    </insert>
+    <!-- <select id="selectByPid" parameterType="Integer" resultMap="BaseResultMap">
+       select * from classify where pid = #{id,jdbcType=INTEGER}
+     </select>-->
+
+    <!--<select id="selectClassifyByPid" parameterType="Integer" resultMap="BaseResultMap">-->
+        <!--select id,name as value,name as label from classify where pid = #{id,jdbcType=INTEGER}-->
+    <!--</select>-->
+
+
+
+
+</mapper>
