@@ -20,4 +20,6 @@ public interface ProductItemTypeMapper {
 
     List<ProductItemType> selectByPid(int pid);
     int insert(ProductItemType ProductItemType);
+    int update(ProductItemType ProductItemType);
+    int deleteByPid(int pid);
 }

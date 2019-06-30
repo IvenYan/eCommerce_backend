@@ -66,11 +66,11 @@ public class ProductUpload {
     @Autowired
     private AmazonAccountInfoMapper amazonAccountInfoMapper;
 
-    @ApiOperation(value="亚马逊上传产品", notes="根据产品的id来获取产品详细信息",produces="application/json",consumes = "application/json")
+    @ApiOperation(value="亚马逊-列出所有亚马逊用户", notes="",produces="application/json",consumes = "application/json")
     @GetMapping(value = "/amazon/accounts")
     public List listAmazonAccount() {
         log.info("/amazon/accounts start...;");
-        List<AmazonAccountInfo> amazonAccountInfos = amazonAccountInfoMapper.selectListByPrimaryKey();
+        List<AmazonAccountInfo> amazonAccountInfos = amazonAccountInfoMapper.selectList();
         return amazonAccountInfos;
 
     }
@@ -133,4 +133,6 @@ public class ProductUpload {
         }
 //        return jsonObject;
     }
+
+
 }

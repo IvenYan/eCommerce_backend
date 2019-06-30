@@ -19,6 +19,16 @@
         insert into product_item_type (name,value,pid )
         values (#{name,jdbcType=VARCHAR}, , #{value,jdbcType=VARCHAR},#{pid,jdbcType=INTEGER}        )
     </insert>
+
+    <update id="update" parameterType="com.management.backend.api.mybatis.model.ProductItemType">
+        update product_item_type
+        set  name=#{name,jdbcType=VARCHAR},value=#{value,jdbcType=VARCHAR},pid =#{pid,jdbcType=INTEGER} where id=#{id,jdbcType=INTEGER}
+    </update>
+    <delete id="deleteByPid" parameterType="java.lang.Integer">
+    delete from product_item_type
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+
     <!-- <select id="selectByPid" parameterType="Integer" resultMap="BaseResultMap">
        select * from classify where pid = #{id,jdbcType=INTEGER}
      </select>-->

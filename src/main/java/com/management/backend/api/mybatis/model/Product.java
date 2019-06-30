@@ -16,6 +16,11 @@ public class Product {
 //    变体
     private List<ProductItem> productItems;
 
+//处理天数
+    private int fulfillmentLatency;
+
+    private String parentSkuId;
+
 
     private Date creatTime;
 
@@ -85,6 +90,14 @@ public class Product {
     private List<ProductItemType> productItemTypeList;
 
 
+
+    public int getFulfillmentLatency() {
+        return fulfillmentLatency;
+    }
+
+    public void setFulfillmentLatency(int fulfillmentLatency) {
+        this.fulfillmentLatency = fulfillmentLatency;
+    }
 
     public List<ProductItemType> getProductItemTypeList() {
         return productItemTypeList;
@@ -405,6 +418,13 @@ public class Product {
         this.productItems = productItems;
     }
 
+    public String getParentSkuId() {
+        return parentSkuId;
+    }
+
+    public void setParentSkuId(String parentSkuId) {
+        this.parentSkuId = parentSkuId;
+    }
 
     @Override
     public String toString() {

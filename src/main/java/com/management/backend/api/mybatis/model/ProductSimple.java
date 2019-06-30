@@ -1,5 +1,7 @@
 package com.management.backend.api.mybatis.model;
 
+import java.util.List;
+
 /**
  * @ClassName ProductSimple
  * @Description TODO
@@ -14,6 +16,42 @@ public class ProductSimple {
     private float shippingCost;    //运费
     private String productTitle;    // 产品简介
     private String picture;     //产品图片
+    private int  audit_status;
+    private int onsale;
+    private int level;
+    private List<String> pictureList;
+
+    public int getAudit_status() {
+        return audit_status;
+    }
+
+    public void setAudit_status(int audit_status) {
+        this.audit_status = audit_status;
+    }
+
+    public int getOnsale() {
+        return onsale;
+    }
+
+    public void setOnsale(int onsale) {
+        this.onsale = onsale;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public List<String> getPictureList() {
+        return pictureList;
+    }
+
+    public void setPictureList(List<String> pictureList) {
+        this.pictureList = pictureList;
+    }
 
     public int getId() {
         return id;

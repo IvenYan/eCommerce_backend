@@ -2,6 +2,7 @@ package com.management.backend.api.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.management.backend.api.controller.entity.ProductSimpleBody;
+import com.management.backend.api.controller.entity.RequestSearchProduct;
 import com.management.backend.api.mybatis.mapper.ProductItemMapper;
 import com.management.backend.api.mybatis.mapper.ProductItemTypeMapper;
 import com.management.backend.api.mybatis.mapper.ProductSimpleMapper;
@@ -82,7 +83,9 @@ public class ProductService {
         productSimpleBody.setPageNum(pageNum);
         productSimpleBody.setPageSize(pageSize);
         productSimpleBody.setTotal(countNums);
-
+        productSimpleBody.setAudit_status(0);
+        productSimpleBody.setLevel(0);
+        productSimpleBody.setOnsale(0);
 
         return productSimpleBody;
     }
@@ -109,6 +112,7 @@ public class ProductService {
         List<ProductItemType> productItemTypeList = product.getProductItemTypeList();
         for (ProductItemType productItemType:productItemTypeList) {
             productItemType.setPid(insert);
+
             /*String imtPictureListTmp = productItem.getPictureList().toString();
             imtPictureListTmp=imtPictureListTmp.substring(1,imtPictureListTmp.length()-1);
             productItem.setPictureListString(imtPictureListTmp);*/
@@ -116,6 +120,8 @@ public class ProductService {
 
         }
         for (ProductItem productItem:productItems) {
+
+            productItem.setSkuId(UUID.randomUUID().toString());
             productItem.setPid(insert);
             /*String imtPictureListTmp = productItem.getPictureList().toString();
             imtPictureListTmp=imtPictureListTmp.substring(1,imtPictureListTmp.length()-1);
@@ -132,6 +138,89 @@ public class ProductService {
 
         return   objectObjectHashMap;
 
+    }
+
+
+    @ApiOperation(value="修改产品", notes="修改一个产品",produces="application/json",consumes = "application/json")
+    @PostMapping(value = "/product/update")
+    public HashMap updateProduct(@RequestBody @ApiParam(name="产品对象",value="传入json格式;id会自动生成，不用输入",required=true) ProductWithBLOBs product){
+        /*if(product.getProductInnerName()!=null){
+
+        }*/
+        log.info(product.toString());
+
+//返回父产品id
+        int insert = productMapper.updateByPrimaryKeySelective(product);
+//先删除，再添加
+        productItemTypeMapper.deleteByPid(product.getId());
+        List<ProductItem> productItems = product.getProductItems();
+        List<ProductItemType> productItemTypeList = product.getProductItemTypeList();
+        for (ProductItemType productItemType:productItemTypeList) {
+            productItemType.setPid(insert);
+            productItemTypeMapper.insert(productItemType);
+        }
+
+        productItemMapper.deleteByPid(product.getId());
+        for (ProductItem productItem:productItems) {
+            productItem.setPid(insert);
+//            设置SKU ID
+            productItem.setSkuId(UUID.randomUUID().toString());
+            productItemMapper.insert(productItem);
+
+        }
+
+        HashMap<String, Object> objectObjectHashMap = new HashMap<>();
+        objectObjectHashMap.put("id",product.getId());
+        objectObjectHashMap.put("status","200");
+        objectObjectHashMap.put("message","product had been add successfully");
+
+
+        return   objectObjectHashMap;
+
+    }
+
+//    搜索产品
+    @ApiOperation(value="搜索产品", notes="搜索一个产品",produces="application/json",consumes = "application/json")
+    @PostMapping(value = "/product/search")
+    public ProductSimpleBody searchProduct(@RequestBody @ApiParam(name="产品对象",value="传入json格式;id会自动生成，不用输入",required=true)RequestSearchProduct requestSearchProduct){
+        /*if(product.getProductInnerName()!=null){
+
+        }*/
+//        valuecascader:类型；marray:时间区间；valued：用户id；inputbh：产品id；inputOther：其他输入；audit_status：上传状态；onsale：上下架；level：产品级别，原创还是重点
+        log.info("/product/search start:"+requestSearchProduct.toString());
+//        List<String> valuecascader = requestSearchProduct.getValuecascader();
+        String[] split = requestSearchProduct.getMarray().split(",");
+        String tmp1="";
+        if("".equals(requestSearchProduct.getValuecascader())){
+            requestSearchProduct.setValuecascader(null);
+        }
+
+        PageHelper.startPage(requestSearchProduct.getPageNum(),requestSearchProduct.getPageSize());
+//        查询列表
+        List<ProductSimple> tmp= productSimpleMapper.selectByCondition(requestSearchProduct.getValuecascader(),
+                split.length>1?split[0]:null,split.length>2?split[1]:null,
+                requestSearchProduct.getValued(), requestSearchProduct.getInputbh(),requestSearchProduct.getInputOther(),requestSearchProduct.getAudit_status(),
+                requestSearchProduct.getOnsale(), requestSearchProduct.getLevel());
+//        查询列表的个数
+        int countNums = productSimpleMapper.countSelectByCondition(requestSearchProduct.getValuecascader(),
+                split.length > 1 ? split[0] : null, split.length > 2 ? split[1] : null,
+                requestSearchProduct.getValued(), requestSearchProduct.getInputbh(), requestSearchProduct.getInputOther(), requestSearchProduct.getAudit_status(),
+                requestSearchProduct.getOnsale(), requestSearchProduct.getLevel());
+
+        PageBean<ProductSimple> pageData = new PageBean<>(requestSearchProduct.getPageNum(), requestSearchProduct.getPageSize(), countNums);
+        pageData.setItems(tmp);
+//        pageData.setTotalNum(countNums);
+        ProductSimpleBody productSimpleBody=new ProductSimpleBody();
+        productSimpleBody.setList(pageData.getItems());
+        productSimpleBody.setPageNum(requestSearchProduct.getPageNum());
+        productSimpleBody.setPageSize(requestSearchProduct.getPageSize());
+        productSimpleBody.setTotal(countNums);
+
+        productSimpleBody.setAudit_status(requestSearchProduct.getAudit_status());
+        productSimpleBody.setLevel(requestSearchProduct.getLevel());
+        productSimpleBody.setOnsale(requestSearchProduct.getOnsale());
+
+        return   productSimpleBody;
     }
 
     @ApiOperation(value="列出最近一天的产品id", notes="",produces="application/json",consumes = "application/json")

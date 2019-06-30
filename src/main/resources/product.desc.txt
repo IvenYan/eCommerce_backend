@@ -3,6 +3,7 @@
   "pictureList": [
     "string"
   ],                        图片list数组
+  "parentSkuId": "string",    产品SKU id
   "pictureListString": "string",    图片list 字符串
   "productTypeIds": [
       0

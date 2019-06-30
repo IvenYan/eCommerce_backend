@@ -1,6 +1,7 @@
 package com.management.backend.api.mybatis.mapper;
 
 import com.management.backend.api.mybatis.model.ProductSimple;
+import com.management.backend.api.mybatis.model.ProductWithBLOBs;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -15,4 +16,18 @@ public interface ProductSimpleMapper {
 
     List<ProductSimple> getSimpleProduct();
     int countProduct();
+
+    //搜索
+    List<ProductSimple> selectByCondition(@Param("valuecascader") String valuecascader, @Param("marrayBefore") String marrayBefore,
+         @Param("marrayAfter") String marrayAfter, @Param("valued") String valued,
+         @Param("inputbh") String inputbh, @Param("inputOther") String inputOther,
+         @Param("audit_status") int audit_status, @Param("onsale") int onsale, @Param("level") int level);
+
+    //搜索
+    int countSelectByCondition(@Param("valuecascader") String valuecascader, @Param("marrayBefore") String marrayBefore,
+                                          @Param("marrayAfter") String marrayAfter, @Param("valued") String valued,
+                                          @Param("inputbh") String inputbh, @Param("inputOther") String inputOther,
+                                          @Param("audit_status") int audit_status, @Param("onsale") int onsale, @Param("level") int level);
+
+
 }

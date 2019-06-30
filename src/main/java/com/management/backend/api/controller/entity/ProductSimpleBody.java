@@ -16,6 +16,33 @@ public class ProductSimpleBody {
     private List<ProductSimple> list;
     private int pageNum;
     private int pageSize;
+    private int audit_status;
+    private int onsale;
+    private int level;
+
+    public int getAudit_status() {
+        return audit_status;
+    }
+
+    public void setAudit_status(int audit_status) {
+        this.audit_status = audit_status;
+    }
+
+    public int getOnsale() {
+        return onsale;
+    }
+
+    public void setOnsale(int onsale) {
+        this.onsale = onsale;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
     public int getTotal() {
         return total;

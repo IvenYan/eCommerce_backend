@@ -9,11 +9,14 @@
     <result column="country_code" property="countryCode" jdbcType="VARCHAR" />
     <result column="amazon_mws_endpoint" property="amazonMwsEndpoint" jdbcType="VARCHAR" />
     <result column="marketplace_id" property="marketplaceId" jdbcType="VARCHAR" />
+    <result column="amazonAccessID" property="amazonAccessID" jdbcType="VARCHAR" />
+    <result column="amazonAccessSecret" property="amazonAccessSecret" jdbcType="VARCHAR" />
+    <result column="accountCountry" property="accountCountry" jdbcType="VARCHAR" />
   </resultMap>
 
   <sql id="Base_Column_List" >
     id, account_nickname, seller_id, amazon_marketplace, country_code, amazon_mws_endpoint, 
-    marketplace_id
+    marketplace_id,amazonAccessID,amazonAccessSecret,accountCountry
   </sql>
   <!--<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.management.backend.api.mybatis.model.AmazonAccountInfoExample" >
     select
@@ -36,7 +39,7 @@
     from amazon_account_info
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectListByPrimaryKey" resultMap="BaseResultMap" >
+  <select id="selectList" resultMap="BaseResultMap" >
     select
     id,account_nickname
     from amazon_account_info

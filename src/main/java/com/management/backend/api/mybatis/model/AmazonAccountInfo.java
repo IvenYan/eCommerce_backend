@@ -15,6 +15,34 @@ public class AmazonAccountInfo {
 
     private String marketplaceId;
 
+    private String amazonAccessID;
+    private String amazonAccessSecret;
+    private String accountCountry;
+
+    public String getAccountCountry() {
+        return accountCountry;
+    }
+
+    public void setAccountCountry(String accountCountry) {
+        this.accountCountry = accountCountry;
+    }
+
+    public String getAmazonAccessID() {
+        return amazonAccessID;
+    }
+
+    public void setAmazonAccessID(String amazonAccessID) {
+        this.amazonAccessID = amazonAccessID;
+    }
+
+    public String getAmazonAccessSecret() {
+        return amazonAccessSecret;
+    }
+
+    public void setAmazonAccessSecret(String amazonAccessSecret) {
+        this.amazonAccessSecret = amazonAccessSecret;
+    }
+
     public Integer getId() {
         return id;
     }

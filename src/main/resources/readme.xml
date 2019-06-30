@@ -56,3 +56,14 @@ POST /?AWSAccessKeyId=0PB842ExampleN4ZTR2
         </Product>
     </Message>
 </AmazonEnvelope>
+
+
+    valuecascader: [],//类型
+    marray: [],//时间
+    valued: '',//
+    inputbh:'',//编号
+    inputOther:'',//其他输入的
+    audit_status:'1',
+    onsale:'1',
+    level:'1',
+    }json的名字

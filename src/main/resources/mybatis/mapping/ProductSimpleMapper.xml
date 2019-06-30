@@ -6,7 +6,10 @@
     <result column="cost" jdbcType="REAL" property="cost" />
     <result column="shipping_cost" jdbcType="REAL" property="shippingCost" />
     <result column="englishProductTile" jdbcType="VARCHAR" property="productTitle" />
-    <result column="picture_location" jdbcType="VARCHAR" property="picture" />
+    <result column="pictureListString" jdbcType="VARCHAR" property="picture" />
+      <result column="audit_status" jdbcType="INTEGER" property="audit_status" />
+      <result column="onsale" jdbcType="INTEGER" property="onsale" />
+      <result column="level" jdbcType="INTEGER" property="level" />
   </resultMap>
 
   <select id="listRecentlyProducts" parameterType="java.lang.String" resultType="java.lang.Integer">
@@ -15,8 +18,8 @@
   </select>
   <select id="getSimpleProduct" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
-    a.id, a.cost, a.shipping_cost, a.englishProductTile,b.picture_location
-    from product a  left join (select * from product_picture group by product_id) as b on a.id=b.product_id order by a.creat_time desc,a.id desc
+    a.id, a.cost, a.shipping_cost, a.englishProductTile,substring_index(a.pictureListString, ',', 1) as pictureListString,audit_status,onsale,level
+    from product a order by a.creat_time desc,a.id desc
   </select>
   <!--<select id="getSimpleProduct" parameterType="java.lang.Integer" resultMap="BaseResultMapProductSimple">
     select
@@ -24,8 +27,42 @@
     from product a left join product_picture b on a.id=b.product_id
   </select>-->
   <select id="countProduct" resultType="Integer">
-
     select count(id) from product
   </select>
+
+  <!--条件搜索-->
+  <select id="selectByCondition" resultMap="BaseResultMap">
+    select
+    id, cost, shipping_cost, englishProductTile,pictureListString,audit_status,onsale,level
+    from product a
+      <trim prefix="WHERE" prefixOverrides="AND | OR ">
+          <if test="valuecascader != null and valuecascader!=''">        product_type_id=#{valuecascader,jdbcType=VARCHAR}         </if>
+          <if test="marrayBefore != null">   and  creat_time &gt;= #{marrayBefore,jdbcType=VARCHAR}          </if>
+          <if test="marrayAfter != null">    and  creat_time  &lt;= #{marrayAfter,jdbcType=VARCHAR}  </if>
+          <if test="valued != null and valued != ''">         and  user_id=#{valued,jdbcType=INTEGER}         </if>
+          <if test="inputbh != null and inputbh != ''">        and   id=#{inputbh,jdbcType=INTEGER}          </if>
+          <if test="audit_status != null and audit_status != 0">   and  audit_status=#{audit_status,jdbcType=INTEGER}       </if>
+          <if test="onsale != null and onsale != 0 ">         and  onsale=#{onsale,jdbcType=INTEGER}          </if>
+          <if test="level != null and level != 0">          and level=#{level,jdbcType=INTEGER}          </if>
+      </trim>
+
+  </select>
+
+    <select id="countSelectByCondition" resultType="Integer">
+        select
+        count(id)
+        from product a
+        <trim prefix="WHERE" prefixOverrides="AND | OR ">
+            <if test="valuecascader != null and valuecascader!=''">        product_type_id=#{valuecascader,jdbcType=VARCHAR}         </if>
+            <if test="marrayBefore != null">   and  creat_time &gt;= #{marrayBefore,jdbcType=VARCHAR}          </if>
+            <if test="marrayAfter != null">    and  creat_time  &lt;= #{marrayAfter,jdbcType=VARCHAR}  </if>
+            <if test="valued != null and valued != ''">         and  user_id=#{valued,jdbcType=INTEGER}         </if>
+            <if test="inputbh != null and inputbh != ''">        and   id=#{inputbh,jdbcType=INTEGER}          </if>
+            <if test="audit_status != null and audit_status != 0">   and  audit_status=#{audit_status,jdbcType=INTEGER}       </if>
+            <if test="onsale != null and onsale != 0 ">         and  onsale=#{onsale,jdbcType=INTEGER}          </if>
+            <if test="level != null and level != 0">          and level=#{level,jdbcType=INTEGER}          </if>
+        </trim>
+
+    </select>
 
 </mapper>

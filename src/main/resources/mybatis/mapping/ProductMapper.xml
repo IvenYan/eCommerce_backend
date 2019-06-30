@@ -37,6 +37,7 @@
     <result column="count_per_package" jdbcType="BIGINT" property="countPerPackage" />
     <result column="product_type_id" jdbcType="VARCHAR" property="productTypeIdsString" />
     <result column="pictureListString" jdbcType="VARCHAR" property="pictureListString" />
+    <result column="parentSkuId" jdbcType="VARCHAR" property="parentSkuId" />
       <collection property="productItems" ofType="com.management.backend.api.mybatis.model.ProductItem">
           <result column="itemid" jdbcType="INTEGER" property="id" />
           <result column="pid" jdbcType="INTEGER" property="pid" />
@@ -152,7 +153,7 @@
     factory_number, factory_catalog, upload_forbiden, source_url, comments, cost, shipping_cost, 
     custom_code, eng_desc, declare_price, ch_desc, inner_sku, suit_for_group, product_material, 
     packet_material, metal_type, jewel_type, package_gross_weight, has_battery, package_long, 
-    package_width, package_hight, in_store, count_per_package, product_type_id,pictureListString
+    package_width, package_hight, in_store, count_per_package, product_type_id,pictureListString,parentSkuId
   </sql>
   <sql id="Blob_Column_List">
     englishProductTile, englishProductKeyWords, englishProductKeyDesc, englishProductDesc, 
@@ -202,14 +203,17 @@
         a.factory_number, a.factory_catalog, a.upload_forbiden, a.source_url, a.comments, a.cost, a.shipping_cost,
         a.custom_code, a.eng_desc, a.declare_price, a.ch_desc, a.inner_sku, a.suit_for_group, a.product_material,
         a.packet_material, a.metal_type, a.jewel_type, a.package_gross_weight, a.has_battery, a.package_long,
-        a.package_width, a.package_hight, a.in_store, a.count_per_package, a.product_type_id,a.pictureListString,a.englishProductTile, a.englishProductKeyWords, a.englishProductKeyDesc, a.englishProductDesc,
+        a.package_width, a.package_hight, a.in_store, a.count_per_package, a.product_type_id,a.pictureListString,a.parentSkuId,
+        a.englishProductTile, a.englishProductKeyWords, a.englishProductKeyDesc, a.englishProductDesc,
         a.frenchProductTile, a.frenchProductKeyWords, a.frenchProductKeyDesc, a.frenchProductDesc,
         a.germanProductTile, a.germanProductKeyWords, a.germanProductKeyDesc, a.germanProductDesc,
         a.italyProductTile, a.italyProductKeyWords, a.italyProductKeyDesc, a.italyProductDesc, a.spanishProductTile,
         a.spanishProductKeyWords, a.spanishProductKeyDesc, a.spanishProductDesc, a.japaneseProductTile,
         a.japaneseProductKeyWords, a.japaneseProductKeyDesc, a.japaneseProductDesc, a.russianProductTile,
         a.russianProductKeyWords, a.russianProductKeyDesc, a.russianProductDesc, a.chineseProductTile,
-        a.chineseProductKeyWords, a.chineseProductKeyDesc, a.chineseProductDesc,b.id as itemid,b.pictureListString, b.name, b.skuId,        b.inventory, b.addPrice,b.pid,c.id as typeid,c.name as typename,c.value as typevalue,c.pid as typepid
+        a.chineseProductKeyWords, a.chineseProductKeyDesc, a.chineseProductDesc,
+        b.id as itemid,b.pictureListString, b.name, b.skuId,        b.inventory, b.addPrice,b.pid,
+        c.id as typeid,c.name as typename,c.value as typevalue,c.pid as typepid
     </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
@@ -217,6 +221,9 @@
     from product a left join product_item b on a.id=b.pid left join product_item_type c on a.id=c.pid
     where a.id = #{id,jdbcType=INTEGER}
   </select>
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from product
     where id = #{id,jdbcType=INTEGER}
@@ -257,7 +264,7 @@
       russianProductTile, russianProductKeyWords, 
       russianProductKeyDesc, russianProductDesc, 
       chineseProductTile, chineseProductKeyWords, 
-      chineseProductKeyDesc, chineseProductDesc,pictureListString
+      chineseProductKeyDesc, chineseProductDesc,pictureListString,parentSkuId
       )
     values (#{creatTime,jdbcType=TIMESTAMP}, #{auditStatus,jdbcType=INTEGER}, #{onsale,jdbcType=INTEGER},
       #{level,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{brand,jdbcType=VARCHAR},
@@ -286,6 +293,7 @@
       #{russianproductkeydesc,jdbcType=LONGVARBINARY}, #{russianproductdesc,jdbcType=LONGVARBINARY}, 
       #{chineseproducttile,jdbcType=LONGVARBINARY}, #{chineseproductkeywords,jdbcType=LONGVARBINARY}, 
       #{chineseproductkeydesc,jdbcType=LONGVARBINARY}, #{chineseproductdesc,jdbcType=LONGVARBINARY},#{pictureListString,jdbcType=VARCHAR}
+    ,#{parentSkuId,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.management.backend.api.mybatis.model.ProductWithBLOBs">
@@ -395,6 +403,9 @@
       </if>
       <if test="pictureListString != null">
         pictureListString,
+      </if>
+      <if test="parentSkuId != null">
+        parentSkuId,
       </if>
       <if test="englishproducttile != null">
         englishProductTile,
@@ -595,6 +606,9 @@
       </if>
       <if test="pictureListString != null">
         #{pictureListString,jdbcType=VARCHAR},
+      </if>
+      <if test="parentSkuId != null">
+        #{parentSkuId,jdbcType=VARCHAR},
       </if>
       <if test="englishproducttile != null">
         #{englishproducttile,jdbcType=LONGVARBINARY},
@@ -808,6 +822,9 @@
       <if test="record.pictureListString != null">
         pictureListString = #{record.pictureListString,jdbcType=VARCHAR},
       </if>
+      <if test="record.parentSkuId != null">
+        parentSkuId = #{record.parentSkuId,jdbcType=VARCHAR},
+      </if>
       <if test="record.englishproducttile != null">
         englishProductTile = #{record.englishproducttile,jdbcType=LONGVARBINARY},
       </if>
@@ -946,6 +963,7 @@
       count_per_package = #{record.countPerPackage,jdbcType=BIGINT},
       product_type_id = #{record.productTypeIdsString,jdbcType=VARCHAR},
     pictureListString = #{record.pictureListString,jdbcType=VARCHAR},
+    parentSkuId = #{record.parentSkuId,jdbcType=VARCHAR},
       englishProductTile = #{record.englishproducttile,jdbcType=LONGVARBINARY},
       englishProductKeyWords = #{record.englishproductkeywords,jdbcType=LONGVARBINARY},
       englishProductKeyDesc = #{record.englishproductkeydesc,jdbcType=LONGVARBINARY},
@@ -1018,7 +1036,8 @@
       in_store = #{record.inStore,jdbcType=BIGINT},
       count_per_package = #{record.countPerPackage,jdbcType=BIGINT},
       product_type_id = #{record.productTypeIdsString,jdbcType=VARCHAR},
-    pictureListString = #{record.pictureListString,jdbcType=VARCHAR}
+    pictureListString = #{record.pictureListString,jdbcType=VARCHAR},
+    parentSkuId = #{record.parentSkuId,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -1127,6 +1146,9 @@
       </if>
       <if test="pictureListString != null">
         pictureListString = #{pictureListString,jdbcType=VARCHAR},
+      </if>
+      <if test="parentSkuId != null">
+        parentSkuId = #{parentSkuId,jdbcType=VARCHAR},
       </if>
       <if test="englishproducttile != null">
         englishProductTile = #{englishproducttile,jdbcType=LONGVARBINARY},
@@ -1263,6 +1285,7 @@
       count_per_package = #{countPerPackage,jdbcType=BIGINT},
       product_type_id = #{productTypeIdsString,jdbcType=VARCHAR},
       pictureListString = #{pictureListString,jdbcType=VARCHAR},
+      parentSkuId = #{parentSkuId,jdbcType=VARCHAR},
       englishProductTile = #{englishproducttile,jdbcType=LONGVARBINARY},
       englishProductKeyWords = #{englishproductkeywords,jdbcType=LONGVARBINARY},
       englishProductKeyDesc = #{englishproductkeydesc,jdbcType=LONGVARBINARY},
@@ -1332,7 +1355,8 @@
       in_store = #{inStore,jdbcType=BIGINT},
       count_per_package = #{countPerPackage,jdbcType=BIGINT},
       product_type_id = #{productTypeIdsString,jdbcType=VARCHAR},
-      pictureListString = #{pictureListString,jdbcType=VARCHAR}
+      pictureListString = #{pictureListString,jdbcType=VARCHAR},
+      parentSkuId = #{parentSkuId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
