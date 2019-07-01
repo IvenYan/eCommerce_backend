@@ -17,7 +17,7 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
         insert into product_item_type (name,value,pid )
-        values (#{name,jdbcType=VARCHAR}, , #{value,jdbcType=VARCHAR},#{pid,jdbcType=INTEGER}        )
+        values (#{name,jdbcType=VARCHAR} , #{value,jdbcType=VARCHAR},#{pid,jdbcType=INTEGER}        )
     </insert>
 
     <update id="update" parameterType="com.management.backend.api.mybatis.model.ProductItemType">

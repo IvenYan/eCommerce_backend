@@ -36,6 +36,7 @@ import java.util.UUID;
  **/
 @Component
 public class UploadToAmazon {
+
     private SimpleDateFormat df_date_before = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
     private SimpleDateFormat df_date_after = new SimpleDateFormat("HH:mm:ss.SSSS");//设置日期格式
    /* private static String amazonAccessID;

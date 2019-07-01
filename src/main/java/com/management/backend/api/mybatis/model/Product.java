@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Product {
+
     private Integer id;
 
     private List<String> pictureList;
@@ -74,7 +75,7 @@ public class Product {
 
     private String packageGrossWeight;
 
-    private int hasBattery;
+    private boolean hasBattery;
 
     private Float packageLong;
 
@@ -314,10 +315,6 @@ public class Product {
         this.suitForGroup = suitForGroup;
     }
 
-    public void setHasBattery(int hasBattery) {
-        this.hasBattery = hasBattery;
-    }
-
     public String getProductMaterial() {
         return productMaterial;
     }
@@ -358,8 +355,12 @@ public class Product {
         this.packageGrossWeight = packageGrossWeight == null ? null : packageGrossWeight.trim();
     }
 
-    public int getHasBattery() {
+    public boolean isHasBattery() {
         return hasBattery;
+    }
+
+    public void setHasBattery(boolean hasBattery) {
+        this.hasBattery = hasBattery;
     }
 
     public Float getPackageLong() {

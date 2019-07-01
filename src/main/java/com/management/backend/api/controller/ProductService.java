@@ -255,27 +255,32 @@ public class ProductService {
     @PostMapping("/product/image/upload")
     @ApiOperation(value="图片上传功能", notes="")
     @ApiImplicitParam(name = "file", value = "上传的图片文件", required = true, dataType = "File")
-    public HashMap imageUpload(@RequestParam(value = "file") MultipartFile file) throws Exception {
+    public HashMap imageUpload(@RequestParam(value = "file") MultipartFile[] files) throws Exception {
         log.info("imageUpload: start... ,file=");
-        HashMap<String,String> hashMap=null;
-        if (file.isEmpty()) {
-            log.info("imageUpload: start... ,文件为空");
-        }
-        String fileName = file.getOriginalFilename();  // 文件名
-        String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
-        fileName = UUID.randomUUID() + suffixName; // 新文件名
-        File dest = new File(this.filepath + fileName);
-        if (!dest.getParentFile().exists()) {
-            dest.getParentFile().mkdirs();
-        }
-        try {
-            file.transferTo(dest);
+        HashMap<String,Object> hashMap=null;
+        ArrayList<String> fileNameTmp=new ArrayList<String>();
+        for (MultipartFile file:files) {
+            if (file.isEmpty()) {
+                log.info("imageUpload: start... ,文件为空");
+            }
+            String fileName = file.getOriginalFilename();  // 文件名
+            String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
+            fileName = UUID.randomUUID() + suffixName; // 新文件名
+            File dest = new File(this.filepath + fileName);
+            if (!dest.getParentFile().exists()) {
+                dest.getParentFile().mkdirs();
+            }
+            try {
+                file.transferTo(dest);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            fileNameTmp.add(fileName);
         }
+
         hashMap=new HashMap<>();
-        hashMap.put("imageName",fileName);
+        hashMap.put("imageName",fileNameTmp);
         hashMap.put("status","200");
         hashMap.put("message","images had been upload successfully");
 

@@ -79,59 +79,13 @@ public class ProductUpload {
     @ApiOperation(value="亚马逊上传产品", notes="根据产品的id来获取产品详细信息",produces="application/json",consumes = "application/json")
     @ApiImplicitParam(name = "productId", value = "产品ID", required = true,paramType = "path", dataType = "Integer")
     @GetMapping(value = "/amazon/products/upload")
-    public void SubmitFeed(@Param("accountId")  String accountId,@Param("productId")  String productId,@Param("productTypeIds")  String productTypeIds) {
+    public String SubmitFeed(@Param("accountId")  String accountId,@Param("productId")  String productId,@Param("productTypeIds")  String productTypeIds) {
         log.info("/amazon/products/upload start...;accountId="+accountId);
 
-        String product_date = df_date.format(new Date());
-        String[] s = product_date.split(" ");
-        product_date=s[0]+"T"+s[1];
 
-        //        if(){
-//
-//        }
 
-        HttpClient client = HttpClients.createDefault();
-        String marketPlace="TBD";
-        String sellerId="TBD";
 
-        String requestURLParams="/?AWSAccessKeyId="+amazonAccessID +
-                "  &Action=SubmitFeed" +
-                "  &FeedType=_POST_PRODUCT_DATA_" +
-                "  &MWSAuthToken="+amazonAccessSecret +
-                "  &MarketplaceIdList.Id.1="+marketPlace +
-                "  &SellerId=" +sellerId+
-                "  &SignatureMethod=HmacSHA256" +
-                "  &SignatureVersion=2" +
-                "  &Timestamp=" +product_date+
-                "  &Version=" +
-                "  &Signature=SvSExamplefZpSignaturex2cs%3D";
-
-        String body="";
-
-        // 要调用的接口方法
-//        String url = "https://api.weixin.qq.com/sns/jscode2session";
-//        String getUrl="https://api.weixin.qq.com/sns/jscode2session?appid=" + wechatAppid + "&secret=" + wechatSecret + "&js_code=" + js_code + "&grant_type=client_credentials";
-//        HttpPost post = new HttpPost(url);
-        HttpPost get = new HttpPost(requestURLParams);
-//        JSONObject jsonObject = null;
-        try {
-//            StringEntity s = new StringEntity(data.toString());
-//            s.setContentEncoding("UTF-8");
-//            s.setContentType("application/json");
-//            post.setEntity(s);
-
-            get.addHeader("content-type", "application/json");
-            HttpResponse res = client.execute(get);
-            HttpEntity entity = res.getEntity();
-//            System.out.println(response1);
-            if (res.getStatusLine().getStatusCode() == HttpStatus.OK.value()) {
-                String result = EntityUtils.toString(entity);// 返回json格式：
-//                jsonObject = JSONObject.parseObject(result);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-//        return jsonObject;
+        return "";
     }
 
 

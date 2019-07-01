@@ -29,7 +29,7 @@
     <result column="metal_type" jdbcType="VARCHAR" property="metalType" />
     <result column="jewel_type" jdbcType="VARCHAR" property="jewelType" />
     <result column="package_gross_weight" jdbcType="VARCHAR" property="packageGrossWeight" />
-    <result column="has_battery" jdbcType="INTEGER" property="hasBattery" />
+    <result column="has_battery" jdbcType="VARCHAR" property="hasBattery" />
     <result column="package_long" jdbcType="REAL" property="packageLong" />
     <result column="package_width" jdbcType="REAL" property="packageWidth" />
     <result column="package_hight" jdbcType="REAL" property="packageHight" />
@@ -799,7 +799,7 @@
         package_gross_weight = #{record.packageGrossWeight,jdbcType=VARCHAR},
       </if>
       <if test="record.hasBattery != null">
-        has_battery = #{record.hasBattery,jdbcType=INTEGER},
+        has_battery = #{record.hasBattery,jdbcType=VARCHAR},
       </if>
       <if test="record.packageLong != null">
         package_long = #{record.packageLong,jdbcType=REAL},
@@ -955,7 +955,7 @@
       metal_type = #{record.metalType,jdbcType=VARCHAR},
       jewel_type = #{record.jewelType,jdbcType=VARCHAR},
       package_gross_weight = #{record.packageGrossWeight,jdbcType=VARCHAR},
-      has_battery = #{record.hasBattery,jdbcType=INTEGER},
+      has_battery = #{record.hasBattery,jdbcType=VARCHAR},
       package_long = #{record.packageLong,jdbcType=REAL},
       package_width = #{record.packageWidth,jdbcType=REAL},
       package_hight = #{record.packageHight,jdbcType=REAL},
@@ -1029,7 +1029,7 @@
       metal_type = #{record.metalType,jdbcType=VARCHAR},
       jewel_type = #{record.jewelType,jdbcType=VARCHAR},
       package_gross_weight = #{record.packageGrossWeight,jdbcType=VARCHAR},
-      has_battery = #{record.hasBattery,jdbcType=INTEGER},
+      has_battery = #{record.hasBattery,jdbcType=VARCHAR},
       package_long = #{record.packageLong,jdbcType=REAL},
       package_width = #{record.packageWidth,jdbcType=REAL},
       package_hight = #{record.packageHight,jdbcType=REAL},
@@ -1124,7 +1124,7 @@
         package_gross_weight = #{packageGrossWeight,jdbcType=VARCHAR},
       </if>
       <if test="hasBattery != null">
-        has_battery = #{hasBattery,jdbcType=INTEGER},
+        has_battery = #{hasBattery,jdbcType=VARCHAR},
       </if>
       <if test="packageLong != null">
         package_long = #{packageLong,jdbcType=REAL},
@@ -1277,7 +1277,7 @@
       metal_type = #{metalType,jdbcType=VARCHAR},
       jewel_type = #{jewelType,jdbcType=VARCHAR},
       package_gross_weight = #{packageGrossWeight,jdbcType=VARCHAR},
-      has_battery = #{hasBattery,jdbcType=INTEGER},
+      has_battery = #{hasBattery,jdbcType=VARCHAR},
       package_long = #{packageLong,jdbcType=REAL},
       package_width = #{packageWidth,jdbcType=REAL},
       package_hight = #{packageHight,jdbcType=REAL},
@@ -1348,7 +1348,7 @@
       metal_type = #{metalType,jdbcType=VARCHAR},
       jewel_type = #{jewelType,jdbcType=VARCHAR},
       package_gross_weight = #{packageGrossWeight,jdbcType=VARCHAR},
-      has_battery = #{hasBattery,jdbcType=INTEGER},
+      has_battery = #{hasBattery,jdbcType=VARCHAR},
       package_long = #{packageLong,jdbcType=REAL},
       package_width = #{packageWidth,jdbcType=REAL},
       package_hight = #{packageHight,jdbcType=REAL},
