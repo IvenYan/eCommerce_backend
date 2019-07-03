@@ -106,7 +106,10 @@ public class ProductService {
         productTypeTmp=productTypeTmp.substring(1,productTypeTmp.length()-1);
         product.setPictureListString(pictureListTmp);
         product.setProductTypeIdsString(productTypeTmp);*/
-//返回父产品id
+//设置父SKU
+        product.setParentSkuId(UUID.randomUUID().toString());
+        //返回父产品id
+
         int insert = productMapper.insert(product);
         List<ProductItem> productItems = product.getProductItems();
         List<ProductItemType> productItemTypeList = product.getProductItemTypeList();
@@ -215,10 +218,13 @@ public class ProductService {
         productSimpleBody.setPageNum(requestSearchProduct.getPageNum());
         productSimpleBody.setPageSize(requestSearchProduct.getPageSize());
         productSimpleBody.setTotal(countNums);
+        int searchCountByAuditStatus = productSimpleMapper.searchCountByAuditStatus(requestSearchProduct.getAudit_status());
+        int searchCountByLevel = productSimpleMapper.searchCountByLevel(requestSearchProduct.getLevel());
+        int searchCountByOnsale = productSimpleMapper.searchCountByOnsale(requestSearchProduct.getOnsale());
 
-        productSimpleBody.setAudit_status(requestSearchProduct.getAudit_status());
-        productSimpleBody.setLevel(requestSearchProduct.getLevel());
-        productSimpleBody.setOnsale(requestSearchProduct.getOnsale());
+        productSimpleBody.setAudit_status(searchCountByAuditStatus);
+        productSimpleBody.setLevel(searchCountByLevel);
+        productSimpleBody.setOnsale(searchCountByOnsale);
 
         return   productSimpleBody;
     }
@@ -252,11 +258,11 @@ public class ProductService {
     }*/
 
     //图片上传功能
-    @PostMapping("/product/image/upload")
-    @ApiOperation(value="图片上传功能", notes="")
-    @ApiImplicitParam(name = "file", value = "上传的图片文件", required = true, dataType = "File")
-    public HashMap imageUpload(@RequestParam(value = "file") MultipartFile[] files) throws Exception {
-        log.info("imageUpload: start... ,file=");
+    @PostMapping("/product/image/uploadList")
+    @ApiOperation(value="多张图片上传功能", notes="")
+    @ApiImplicitParam(name = "files", value = "上传的图片文件", required = true, dataType = "MultipartFile")
+    public HashMap imageuploadList(@RequestParam(value = "file") MultipartFile[] files) throws Exception {
+        log.info("imageuploadList: start... ,file=");
         HashMap<String,Object> hashMap=null;
         ArrayList<String> fileNameTmp=new ArrayList<String>();
         for (MultipartFile file:files) {
@@ -279,6 +285,39 @@ public class ProductService {
             fileNameTmp.add(fileName);
         }
 
+        hashMap=new HashMap<>();
+        hashMap.put("imageName",fileNameTmp);
+        hashMap.put("status","200");
+        hashMap.put("message","images had been upload successfully");
+
+        return hashMap;
+    }
+
+    //图片上传功能
+    @PostMapping("/product/image/upload")
+    @ApiOperation(value="图片上传功能", notes="")
+    @ApiImplicitParam(name = "file", value = "上传的图片文件", required = true, dataType = "File")
+    public HashMap imageUpload(@RequestParam(value = "file") MultipartFile file) throws Exception {
+        log.info("imageUpload: start... ,file=");
+        HashMap<String,Object> hashMap=null;
+        ArrayList<String> fileNameTmp=new ArrayList<String>();
+            if (file.isEmpty()) {
+                log.info("imageUpload: start... ,文件为空");
+            }
+            String fileName = file.getOriginalFilename();  // 文件名
+            String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
+            fileName = UUID.randomUUID() + suffixName; // 新文件名
+            File dest = new File(this.filepath + fileName);
+            if (!dest.getParentFile().exists()) {
+                dest.getParentFile().mkdirs();
+            }
+            try {
+                file.transferTo(dest);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            fileNameTmp.add(fileName);
         hashMap=new HashMap<>();
         hashMap.put("imageName",fileNameTmp);
         hashMap.put("status","200");

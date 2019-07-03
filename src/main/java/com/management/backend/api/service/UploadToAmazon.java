@@ -1,10 +1,12 @@
 package com.management.backend.api.service;
 
+import com.management.backend.api.controller.entity.AmazonProductUploadEntity;
 import com.management.backend.api.mybatis.mapper.AmazonAccountInfoMapper;
 import com.management.backend.api.mybatis.model.AmazonAccountInfo;
 import com.management.backend.api.mybatis.model.ProductItem;
 import com.management.backend.api.mybatis.model.ProductWithBLOBs;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.management.relation.Relation;
 import java.sql.Time;
@@ -34,42 +37,14 @@ import java.util.UUID;
  * @Date 2019/6/23 12:03
  * @Version 1.0
  **/
-@Component
+@Service
 public class UploadToAmazon {
 
     private SimpleDateFormat df_date_before = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
     private SimpleDateFormat df_date_after = new SimpleDateFormat("HH:mm:ss.SSSS");//设置日期格式
-   /* private static String amazonAccessID;
-    private static String amazonAccessSecret;
-    private static String sellerId;
-    private static String marketPlace;
+    private String imageLocationPref="http://wechatcool.xyz/ecommerce_backend/images/";
 
-    private static String  amazonEN;
-    private static String  amazonNA;
-    private static String  amazonDE;
-
-   @Value("${qzx.amazonAccessID}")
-    public static void setSellerId(String sellerId) {        UploadToAmazon.sellerId = sellerId;    }
-    @Value("${qzx.amazonAccessID}")
-    public static void setMarketPlace(String marketPlace) {        UploadToAmazon.marketPlace = marketPlace;    }
-    @Value("${qzx.amazonAccessID}")
-    public static void setAmazonEN(String amazonEN) {        UploadToAmazon.amazonEN = amazonEN;    }
-    @Value("${qzx.amazonAccessID}")
-    public static void setAmazonNA(String amazonNA) {        UploadToAmazon.amazonNA = amazonNA;    }
-    @Value("${qzx.amazonAccessID}")
-    public static void setAmazonDE(String amazonDE) {        UploadToAmazon.amazonDE = amazonDE;    }
-
-    @Value("${qzx.amazonAccessID}")
-    public static void setAmazonAccessID(String amazonAccessID) {
-        UploadToAmazon.amazonAccessID = amazonAccessID;
-    }
-    @Value("${qzx.amazonAccessSecret}")
-    public static void setAmazonAccessSecret(String amazonAccessSecret) {
-        UploadToAmazon.amazonAccessSecret = amazonAccessSecret;
-    }*/
-
-   /*
-   亚马逊的操作：
+  /* 亚马逊的操作：
    * _POST_PRODUCT_DATA_    商品上传数据
    * _POST_PRODUCT_RELATIONSHIP_DATA_   商品关系上传数据
    * _POST_ITEM_DATA_       商品上传数据
@@ -80,108 +55,138 @@ public class UploadToAmazon {
     @Autowired
     private AmazonAccountInfoMapper amazonAccountInfoMapper;
 
+    public void productAllUpload(AmazonAccountInfo amazonAccountInfo, ProductWithBLOBs productWithBLOBs, AmazonProductUploadEntity amazonProductUploadEntity) {
+//        组合方法，上传5中方式
+        this.productImageUpload(amazonAccountInfo,productWithBLOBs);
+        this.productUpload(amazonAccountInfo,productWithBLOBs);
+        this.productPriceUpload(amazonAccountInfo,productWithBLOBs);
+        this.productRelationshipUpload(amazonAccountInfo,productWithBLOBs);
+        this.productInventoryUpload(amazonAccountInfo,productWithBLOBs);
+    }
 
-    public void productImageUpload(AmazonAccountInfo amazonAccountInfo,ProductWithBLOBs productWithBLOBs) {
+    public String productImageUpload(AmazonAccountInfo amazonAccountInfo,ProductWithBLOBs productWithBLOBs) {
 
         String product_date_before = df_date_before.format(new Date());
         String product_date_after = df_date_after.format(new Date());
         HttpClient client = HttpClients.createDefault();
 
         String requestURLParams=amazonAccountInfo.getAmazonMwsEndpoint()+"/?AWSAccessKeyId="+amazonAccountInfo.getAmazonAccessID() +
-                "  &Action=SubmitFeed" +
-                "  &FeedType=_POST_PRODUCT_IMAGE_DATA_" +
-                "  &MWSAuthToken="+amazonAccountInfo.getAmazonAccessSecret() +
-                "  &MarketplaceIdList.Id.1="+amazonAccountInfo.getAmazonMarketplace() +
-                "  &SellerId=" +amazonAccountInfo.getSellerId()+
-                "  &SignatureMethod=HmacSHA256" +
-                "  &SignatureVersion=2" +
-                "  &Timestamp=" +product_date_before+"T"+product_date_after+
-                "  &Version=" +product_date_before+
-                "  &Signature=SvSExamplefZpSignaturex2cs%3D";
-        String urlPrefix="http://wechatcool.xyz/ecommerce_backend/images/";
+                "&Action=SubmitFeed" +
+                "&FeedType=_POST_PRODUCT_IMAGE_DATA_" +
+                "&MWSAuthToken="+amazonAccountInfo.getAmazonAccessSecret() +
+                "&MarketplaceIdList.Id.1="+amazonAccountInfo.getAmazonMarketplace() +
+                "&SellerId=" +amazonAccountInfo.getSellerId()+
+                "&SignatureMethod=HmacSHA256" +
+                "&SignatureVersion=2" +
+                "&Timestamp=" +product_date_before+"T"+product_date_after+
+                "&Version=" +product_date_before+
+                "&Signature=SvSExamplefZpSignaturex2cs%3D";
 
-        int j=1;
-        String tmp1="";
+        String tmp1="    <Message>\n" +
+                    "        <MessageID>1</MessageID>\n" +
+                    "        <OperationType>Update</OperationType>\n";
+        if(productWithBLOBs.getProductItems()==null)
+        {
+//没有变体
+            String[] split = productWithBLOBs.getPictureListString().split(",");
+            for (int i = 0; i <split.length ; i++) {
+                if (i == 0) {
+                    tmp1 += "        <ProductImage>\n" +
+                            "            <SKU>" + productWithBLOBs.getParentSkuId() + "</SKU>\n" +
+                            "            <ImageType>Main</ImageType>\n" +
+                            "            <ImageLocation>" + this.imageLocationPref + split[i] + "</ImageLocation>\n" +
+                            "        </ProductImage>\n";
+                } else {
+                    tmp1 += "        <ProductImage>\n" +
+                            "            <SKU>" + productWithBLOBs.getParentSkuId() + "</SKU>\n" +
+                            "            <ImageType>Alternate (PT)</ImageType>\n" +
+                            "            <ImageLocation>" + this.imageLocationPref + split[i] + "</ImageLocation>\n" +
+                            "        </ProductImage>\n";
+                }
+            }
+            tmp1+="        </Message>\n";
+        }else
+            {
+//如果有变体
+            tmp1 += "<ProductImage>\n" +
+                    "     <SKU>" + productWithBLOBs.getParentSkuId() + "</SKU>\n" +
+                    "     <ImageType>Main</ImageType>\n" +
+                    "     <ImageLocation>" + this.imageLocationPref + productWithBLOBs.getPictureListString().split(",")[0] + "</ImageLocation>\n" +
+                    "</ProductImage>\n";
 
-        String[] split = productWithBLOBs.getPictureListString().split(",");
-
-        for (int i = 0; i <split.length ; i++) {
-            if(i==0){
+            List<ProductItem> productItems = productWithBLOBs.getProductItems();
+            for (int a = 0; a <productItems.size() ; a++) {
+                String pictureListString = productItems.get(a).getPictureListString();
+                String substringPicture = pictureListString.substring(0, pictureListString.indexOf(","));
                 tmp1+="        <ProductImage>\n" +
                         "            <SKU>"+productWithBLOBs.getParentSkuId()+"</SKU>\n" +
-                        "            <ImageType>Main</ImageType>\n" +
-                        "            <ImageLocation>"+split[i]+"</ImageLocation>\n" +
+                        "            <ImageType>Swatch</ImageType>\n" +
+                        "            <ImageLocation>"+this.imageLocationPref+substringPicture+"</ImageLocation>\n" +
                         "        </ProductImage>\n";
-            }else{
-                tmp1+="        <ProductImage>\n" +
-                        "            <SKU>"+productWithBLOBs.getParentSkuId()+"</SKU>\n" +
-                        "            <ImageType>Alternate (PT)</ImageType>\n" +
-                        "            <ImageLocation>"+split[i]+"</ImageLocation>\n" +
-                        "        </ProductImage>\n";
+            }
+            tmp1+="        </Message>\n";
+//            父产品图片上传完毕，上传子图片
+            for (int b = 0; b <productItems.size() ; b++) {
+                tmp1+="    <Message>\n" +
+                        "        <MessageID>"+(b+2)+"</MessageID>\n" +
+                        "        <OperationType>Update</OperationType>\n";
+                String[] split = productItems.get(b).getPictureListString().split(",");
+                for (int c = 0; c <split.length ; c++) {
+                    if (c == 0) {
+                        tmp1 += "        <ProductImage>\n" +
+                                "            <SKU>" + productItems.get(b).getSkuId() + "</SKU>\n" +
+                                "            <ImageType>Main</ImageType>\n" +
+                                "            <ImageLocation>" + this.imageLocationPref + split[c] + "</ImageLocation>\n" +
+                                "        </ProductImage>\n";
+                    } else {
+                        tmp1 += "        <ProductImage>\n" +
+                                "            <SKU>" + productItems.get(b).getSkuId() + "</SKU>\n" +
+                                "            <ImageType>Alternate (PT)</ImageType>\n" +
+                                "            <ImageLocation>" + this.imageLocationPref + split[c] + "</ImageLocation>\n" +
+                                "        </ProductImage>\n";
+                    }
+                }
+                tmp1+="        </Message>\n";
+
             }
 
         }
 
-        String tmp="    <Message>\n" +
-                "        <MessageID>"+j+"</MessageID>\n" +
-                "        <OperationType>Update</OperationType>\n" +
-                tmp1+
-                "    </Message>\n" ;
 
-        List<ProductItem> productItems = productWithBLOBs.getProductItems();
-        for (int i = 0; i <productItems.size() ; i++) {
-
-        }
 
 
         String body="<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" +
                 "<AmazonEnvelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"amzn-envelope.xsd\">\n" +
                 "    <Header>\n" +
                 "        <DocumentVersion>1.01</DocumentVersion>\n" +
-                "        <MerchantIdentifier>"+amazonAccountInfo.getSellerId()+"</MerchantIdentifier>\n" +
+                "        <MerchantIdentifier>"+amazonAccountInfo.getMerchantIdentifier()+"</MerchantIdentifier>\n" +
                 "    </Header>\n" +
                 "    <MessageType>ProductImage</MessageType>\n" +
-                "    <Message>\n" +
-                "        <MessageID>1</MessageID>\n" +
-                "        <OperationType>Update</OperationType>\n" +
-                "        <ProductImage>\n" +
-                "            <SKU>ASUSVNA1</SKU>\n" +
-                "            <ImageType>Main</ImageType>\n" +
-                "            <ImageLocation>http://www.abc.com/images/ASUSVNA1.gif</ImageLocation>\n" +
-                "        </ProductImage>\n" +
-                "    </Message>\n" +
-                "    <Message>\n" +
-                "        <MessageID>2</MessageID>\n" +
-                "        <OperationType>Update</OperationType>\n" +
-                "        <ProductImage>\n" +
-                "            <SKU>ASUSVNA1987/4G</SKU>\n" +
-                "            <ImageType>Main</ImageType>\n" +
-                "            <ImageLocation>http://www.abc.com/images/ASUSVNA1987.jpg</ImageLocation>\n" +
-                "        </ProductImage>\n" +
-                "    </Message>\n" +
+                tmp1+
                 "</AmazonEnvelope>";
 
         // 要调用的接口方法
         HttpPost post = new HttpPost(requestURLParams);
-//        JSONObject jsonObject = null;
+        String result ="";
         try {
-//            StringEntity s = new StringEntity(data.toString());
+            StringEntity s = new StringEntity(body);
 //            s.setContentEncoding("UTF-8");
-//            s.setContentType("application/json");
-//            post.setEntity(s);
+            s.setContentType("text/xml; charset=iso-8859-1");
+            post.setEntity(s);
 
-            post.addHeader("content-type", "application/soap+xml");
+//            post.addHeader("content-type", "application/soap+xml");
             HttpResponse res = client.execute(post);
             HttpEntity entity = res.getEntity();
-//            System.out.println(response1);
+            System.out.println("productImageUpload respond:"+EntityUtils.toString(entity));
             if (res.getStatusLine().getStatusCode() == HttpStatus.OK.value()) {
-                String result = EntityUtils.toString(entity);// 返回json格式：
-//                jsonObject = JSONObject.parseObject(result);
+                result ="200";
+            }else{
+                result =res.getStatusLine().getStatusCode()+"";
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-//        return jsonObject;
+        return result;
     }
 
 

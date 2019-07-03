@@ -65,4 +65,26 @@
 
     </select>
 
+
+
+
+    <select id="searchCountByAuditStatus" resultType="Integer">
+        select
+        count(id)
+        from product a where audit_status=#{audit_status,jdbcType=INTEGER}
+
+    </select>
+    <select id="searchCountByOnsale" resultType="Integer">
+        select
+        count(id)
+        from product a where onsale=#{onsale,jdbcType=INTEGER}
+
+    </select>
+    <select id="searchCountByLevel" resultType="Integer">
+        select
+        count(id)
+        from product a where level=#{level,jdbcType=INTEGER}
+
+    </select>
+
 </mapper>

@@ -67,3 +67,59 @@ POST /?AWSAccessKeyId=0PB842ExampleN4ZTR2
     onsale:'1',
     level:'1',
     }json的名字
+
+
+
+
+
+    String tmp1="    <Message>\n" +
+    "        <MessageID>1</MessageID>\n" +
+    "        <OperationType>Update</OperationType>\n";
+    String[] split = productWithBLOBs.getPictureListString().split(",");
+
+    for (int i = 0; i <split.length ; i++) {
+    if(i==0){
+    tmp1+="        <ProductImage>\n" +
+        "            <SKU>"+productWithBLOBs.getParentSkuId()+"</SKU>\n" +
+        "            <ImageType>Main</ImageType>\n" +
+        "            <ImageLocation>"+this.imageLocationPref+split[i]+"</ImageLocation>\n" +
+        "        </ProductImage>\n";
+    }else{
+    tmp1+="        <ProductImage>\n" +
+        "            <SKU>"+productWithBLOBs.getParentSkuId()+"</SKU>\n" +
+        "            <ImageType>Alternate (PT)</ImageType>\n" +
+        "            <ImageLocation>"+this.imageLocationPref+split[i]+"</ImageLocation>\n" +
+        "        </ProductImage>\n";
+    }
+    if(productWithBLOBs.getProductItems()!=null && productWithBLOBs.getProductItems().size()>0){
+    List<ProductItem> productItems = productWithBLOBs.getProductItems();
+        for (int a = 0; a <productItems.size() ; a++) {
+        String pictureListString = productItems.get(i).getPictureListString();
+        String substringPicture = pictureListString.substring(0, pictureListString.indexOf(","));
+        tmp1+="        <ProductImage>\n" +
+            "            <SKU>"+productWithBLOBs.getParentSkuId()+"</SKU>\n" +
+            "            <ImageType>Swatch</ImageType>\n" +
+            "            <ImageLocation>"+this.imageLocationPref+substringPicture+"</ImageLocation>\n" +
+            "        </ProductImage>\n";
+        }
+        }
+        }
+
+
+        int j=2;
+        if(){
+
+        }
+        String tmp="    <Message>\n" +
+            "        <MessageID>"+j+"</MessageID>\n" +
+            "        <OperationType>Update</OperationType>\n" +
+            tmp1+
+            "    </Message>\n" ;
+
+        List<ProductItem> productItems = productWithBLOBs.getProductItems();
+            for (int i = 0; i <productItems.size() ; i++) {
+
+            }
+
+
+

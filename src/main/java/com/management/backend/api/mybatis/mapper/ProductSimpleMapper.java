@@ -29,5 +29,7 @@ public interface ProductSimpleMapper {
                                           @Param("inputbh") String inputbh, @Param("inputOther") String inputOther,
                                           @Param("audit_status") int audit_status, @Param("onsale") int onsale, @Param("level") int level);
 
-
+    int searchCountByAuditStatus(@Param("audit_status") int audit_status );
+    int searchCountByLevel(@Param("level") int level );
+    int searchCountByOnsale( @Param("onsale") int onsale );
 }

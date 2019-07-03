@@ -5,7 +5,7 @@ public class AmazonAccountInfo {
 
     private String accountNickname;
 
-    private Integer sellerId;
+    private String sellerId;
 
     private String amazonMarketplace;
 
@@ -18,6 +18,15 @@ public class AmazonAccountInfo {
     private String amazonAccessID;
     private String amazonAccessSecret;
     private String accountCountry;
+    private String merchantIdentifier;
+
+    public String getMerchantIdentifier() {
+        return merchantIdentifier;
+    }
+
+    public void setMerchantIdentifier(String merchantIdentifier) {
+        this.merchantIdentifier = merchantIdentifier;
+    }
 
     public String getAccountCountry() {
         return accountCountry;
@@ -59,11 +68,11 @@ public class AmazonAccountInfo {
         this.accountNickname = accountNickname == null ? null : accountNickname.trim();
     }
 
-    public Integer getSellerId() {
+    public String getSellerId() {
         return sellerId;
     }
 
-    public void setSellerId(Integer sellerId) {
+    public void setSellerId(String sellerId) {
         this.sellerId = sellerId;
     }
 

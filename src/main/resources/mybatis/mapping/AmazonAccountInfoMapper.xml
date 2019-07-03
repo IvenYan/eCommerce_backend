@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.management.backend.api.mybatis.model.AmazonAccountInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="account_nickname" property="accountNickname" jdbcType="VARCHAR" />
-    <result column="seller_id" property="sellerId" jdbcType="INTEGER" />
+    <result column="seller_id" property="sellerId" jdbcType="VARCHAR" />
     <result column="amazon_marketplace" property="amazonMarketplace" jdbcType="VARCHAR" />
     <result column="country_code" property="countryCode" jdbcType="VARCHAR" />
     <result column="amazon_mws_endpoint" property="amazonMwsEndpoint" jdbcType="VARCHAR" />
@@ -12,11 +12,12 @@
     <result column="amazonAccessID" property="amazonAccessID" jdbcType="VARCHAR" />
     <result column="amazonAccessSecret" property="amazonAccessSecret" jdbcType="VARCHAR" />
     <result column="accountCountry" property="accountCountry" jdbcType="VARCHAR" />
+    <result column="merchantIdentifier" property="merchantIdentifier" jdbcType="VARCHAR" />
   </resultMap>
 
   <sql id="Base_Column_List" >
-    id, account_nickname, seller_id, amazon_marketplace, country_code, amazon_mws_endpoint, 
-    marketplace_id,amazonAccessID,amazonAccessSecret,accountCountry
+    id, account_nickname, seller_id, amazon_marketplace, country_code, amazon_mws_endpoint,
+    marketplace_id,amazonAccessID,amazonAccessSecret,accountCountry,merchantIdentifier
   </sql>
   <!--<select id="selectByExample" resultMap="BaseResultMap" parameterType="com.management.backend.api.mybatis.model.AmazonAccountInfoExample" >
     select
@@ -34,7 +35,7 @@
     </if>
   </select>-->
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from amazon_account_info
     where id = #{id,jdbcType=INTEGER}
@@ -52,10 +53,10 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into amazon_account_info (account_nickname, seller_id, amazon_marketplace, 
+    insert into amazon_account_info (account_nickname, seller_id, amazon_marketplace,
       country_code, amazon_mws_endpoint, marketplace_id
       )
-    values (#{accountNickname,jdbcType=VARCHAR}, #{sellerId,jdbcType=INTEGER}, #{amazonMarketplace,jdbcType=VARCHAR}, 
+    values (#{accountNickname,jdbcType=VARCHAR}, #{sellerId,jdbcType=INTEGER}, #{amazonMarketplace,jdbcType=VARCHAR},
       #{countryCode,jdbcType=VARCHAR}, #{amazonMwsEndpoint,jdbcType=VARCHAR}, #{marketplaceId,jdbcType=VARCHAR}
       )
   </insert>-->
