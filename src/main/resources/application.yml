@@ -4,9 +4,9 @@ logging:
       management:
         backend:
           mybatis:
-            mapper: DEBUG
+            mapper: INFO
     org:
-      mybatis: DEBUG
+      mybatis: INFO
 mybatis:
   mapperLocations: classpath*:mybatis/mapping/*.xml,classpath:mybatis/casadedMapping/*.xml
 server:

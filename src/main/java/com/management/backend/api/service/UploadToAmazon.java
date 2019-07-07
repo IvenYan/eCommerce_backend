@@ -214,9 +214,6 @@ public class UploadToAmazon {
 
         }
 
-
-
-
         String body="<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" +
                 "<AmazonEnvelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"amzn-envelope.xsd\">\n" +
                 "    <Header>\n" +

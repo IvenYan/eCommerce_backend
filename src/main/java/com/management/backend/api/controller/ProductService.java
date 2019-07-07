@@ -36,7 +36,6 @@ public class ProductService {
     private ProductItemMapper productItemMapper;
     @Autowired
     private ProductItemTypeMapper productItemTypeMapper;
-
     @Autowired
     private ProductSimpleMapper productSimpleMapper;
 
@@ -45,6 +44,18 @@ public class ProductService {
     @GetMapping(value = "/products")
     public Product getProduct(@RequestParam("productId") int productId){
         Product product = productMapper.selectByPrimaryKey(productId);
+        List<ProductItem> tmp =new ArrayList<>();
+        List<ProductItem> productItems = product.getProductItems();
+        for (ProductItem productItem:productItems) {
+            ArrayList<String> strings = new ArrayList<>();
+            String[] split = productItem.getPictureListString().split(",");
+            for (int i = 0; i <split.length ; i++) {
+                strings.add(split[i]);
+            }
+            productItem.setPictureList(strings);
+            tmp.add(productItem);
+        }
+        product.setProductItems(tmp);
         return product;
     }
 
@@ -114,7 +125,8 @@ public class ProductService {
         List<ProductItem> productItems = product.getProductItems();
         List<ProductItemType> productItemTypeList = product.getProductItemTypeList();
         for (ProductItemType productItemType:productItemTypeList) {
-            productItemType.setPid(insert);
+            productItemTypeMapper.deleteByPid(product.getId());
+            productItemType.setPid(product.getId());
 
             /*String imtPictureListTmp = productItem.getPictureList().toString();
             imtPictureListTmp=imtPictureListTmp.substring(1,imtPictureListTmp.length()-1);
@@ -123,21 +135,25 @@ public class ProductService {
 
         }
         for (ProductItem productItem:productItems) {
-
-            productItem.setSkuId(UUID.randomUUID().toString());
-            productItem.setPid(insert);
-            /*String imtPictureListTmp = productItem.getPictureList().toString();
+            productItemMapper.deleteByPid(product.getId());
+//            设置SKU ID
+            if(productItem.getSkuId()==null){
+                productItem.setSkuId(UUID.randomUUID().toString());
+            }
+//            设置父ID
+            productItem.setPid(product.getId());
+//            设置List转字符串
+            String imtPictureListTmp = productItem.getPictureList().toString();
             imtPictureListTmp=imtPictureListTmp.substring(1,imtPictureListTmp.length()-1);
-            productItem.setPictureListString(imtPictureListTmp);*/
-            productItemMapper.insert(productItem);
+            productItem.setPictureListString(imtPictureListTmp);
 
+            productItemMapper.insert(productItem);
         }
 
         HashMap<String, Object> objectObjectHashMap = new HashMap<>();
         objectObjectHashMap.put("id",product.getId());
         objectObjectHashMap.put("status","200");
         objectObjectHashMap.put("message","product had been add successfully");
-
 
         return   objectObjectHashMap;
 
@@ -156,27 +172,33 @@ public class ProductService {
         int insert = productMapper.updateByPrimaryKeySelective(product);
 //先删除，再添加
         productItemTypeMapper.deleteByPid(product.getId());
+        productItemMapper.deleteByPid(product.getId());
+
         List<ProductItem> productItems = product.getProductItems();
+        log.info("/product/update process;productItems 个数="+productItems.size()+";");
         List<ProductItemType> productItemTypeList = product.getProductItemTypeList();
         for (ProductItemType productItemType:productItemTypeList) {
-            productItemType.setPid(insert);
+            productItemType.setPid(product.getId());
             productItemTypeMapper.insert(productItemType);
         }
 
         productItemMapper.deleteByPid(product.getId());
         for (ProductItem productItem:productItems) {
-            productItem.setPid(insert);
+            log.info("/product/update process;name="+productItem.getName()+";getSkuId="+productItem.getSkuId());
+            productItem.setPid(product.getId());
 //            设置SKU ID
-            productItem.setSkuId(UUID.randomUUID().toString());
+            if(productItem.getSkuId()==null){
+                productItem.setSkuId(UUID.randomUUID().toString());
+            }
+            String imtPictureListTmp = productItem.getPictureList().toString();
+            imtPictureListTmp=imtPictureListTmp.substring(1,imtPictureListTmp.length()-1);
+            productItem.setPictureListString(imtPictureListTmp);
             productItemMapper.insert(productItem);
-
         }
-
         HashMap<String, Object> objectObjectHashMap = new HashMap<>();
         objectObjectHashMap.put("id",product.getId());
         objectObjectHashMap.put("status","200");
         objectObjectHashMap.put("message","product had been add successfully");
-
 
         return   objectObjectHashMap;
 

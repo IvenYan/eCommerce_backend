@@ -87,7 +87,14 @@
             &lt;!&ndash;<columnRenamingRule searchString="^D_" replaceString=""/> &ndash;&gt;
         </table>-->
 
-        <table schema="backendshop_qzx" tableName="amazon_account_info" domainObjectName="AmazonAccountInfo"
+        <!--<table schema="backendshop_qzx" tableName="amazon_account_info" domainObjectName="AmazonAccountInfo"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true" />-->
+            <!--&lt;!&ndash;<columnRenamingRule searchString="^D_" replaceString=""/> &ndash;&gt;-->
+        <!--</table>-->
+        <table schema="backendshop_qzx" tableName="amazon_classify" domainObjectName="AmazonClassify"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">

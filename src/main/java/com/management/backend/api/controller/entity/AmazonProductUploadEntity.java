@@ -1,5 +1,7 @@
 package com.management.backend.api.controller.entity;
 
+import java.util.List;
+
 /**
  * @ClassName AmazonProductUploadEntity
  * @Description TODO
@@ -9,13 +11,44 @@ package com.management.backend.api.controller.entity;
  **/
 public class AmazonProductUploadEntity {
 
+//    产品级别
+    private int level;
+//    限制条数
+    private int limitNumber;
+//    产品日期
+    private List<String> productDate;
+//    产品排序-在用
+    private int productSort;
+//    产品编号-在用
     private int productId;
+//    选择账户-在用
     private int amazonAccountId;
+//    处理天数-在用
     private int processDays;
-    private String amazonProductType;
-    private String factoryName;
-    private String factoryNo;
+//    产品分类-在用
     private String productType;
+//    亚马逊分类-在用
+    private String amazonProductType;
+//    上传模板
+    private String uploadTemplate;
+//    厂商名称-在用
+    private String factoryName;
+//    厂商编号-在用
+    private String factoryNo;
+//    产品品牌
+    private String productBrand;
+//    标题前缀
+    private String titlePrefix;
+//    标题后缀
+    private String titleSuffix;
+//    关键字
+    private String keyWords;
+//    前面描述
+    private String descPrefix;
+//    后面描述
+    private String descSuffix;
+//    描述标签
+    private String descTag;
 
     public int getProductId() {
         return productId;
@@ -84,5 +117,101 @@ public class AmazonProductUploadEntity {
                 ", factoryNo='" + factoryNo + '\'' +
                 ", productType='" + productType + '\'' +
                 '}';
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getLimitNumber() {
+        return limitNumber;
+    }
+
+    public void setLimitNumber(int limitNumber) {
+        this.limitNumber = limitNumber;
+    }
+
+    public List<String> getProductDate() {
+        return productDate;
+    }
+
+    public void setProductDate(List<String> productDate) {
+        this.productDate = productDate;
+    }
+
+    public int getProductSort() {
+        return productSort;
+    }
+
+    public void setProductSort(int productSort) {
+        this.productSort = productSort;
+    }
+
+    public String getUploadTemplate() {
+        return uploadTemplate;
+    }
+
+    public void setUploadTemplate(String uploadTemplate) {
+        this.uploadTemplate = uploadTemplate;
+    }
+
+    public String getProductBrand() {
+        return productBrand;
+    }
+
+    public void setProductBrand(String productBrand) {
+        this.productBrand = productBrand;
+    }
+
+    public String getTitlePrefix() {
+        return titlePrefix;
+    }
+
+    public void setTitlePrefix(String titlePrefix) {
+        this.titlePrefix = titlePrefix;
+    }
+
+    public String getTitleSuffix() {
+        return titleSuffix;
+    }
+
+    public void setTitleSuffix(String titleSuffix) {
+        this.titleSuffix = titleSuffix;
+    }
+
+    public String getKeyWords() {
+        return keyWords;
+    }
+
+    public void setKeyWords(String keyWords) {
+        this.keyWords = keyWords;
+    }
+
+    public String getDescPrefix() {
+        return descPrefix;
+    }
+
+    public void setDescPrefix(String descPrefix) {
+        this.descPrefix = descPrefix;
+    }
+
+    public String getDescSuffix() {
+        return descSuffix;
+    }
+
+    public void setDescSuffix(String descSuffix) {
+        this.descSuffix = descSuffix;
+    }
+
+    public String getDescTag() {
+        return descTag;
+    }
+
+    public void setDescTag(String descTag) {
+        this.descTag = descTag;
     }
 }

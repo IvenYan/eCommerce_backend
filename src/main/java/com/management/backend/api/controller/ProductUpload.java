@@ -58,27 +58,46 @@ public class ProductUpload {
 
     @ApiOperation(value="亚马逊上传产品", notes="根据产品的id来获取产品详细信息",produces="application/json",consumes = "application/json")
     @PostMapping(value = "/amazon/products/upload")
-    public String SubmitFeed(@RequestBody @ApiParam(name="上传的产品对象",value="传入json格式;id会自动生成，不用输入",required=true)
+    public ResponseBodyEntity SubmitFeed(@RequestBody @ApiParam(name="上传的产品对象",value="传入json格式;id会自动生成，不用输入",required=true)
                                          AmazonProductUploadEntity amazonProductUploadEntity)throws Exception {
         log.info("/amazon/products/upload start...;accountId="+amazonProductUploadEntity.toString());
-
 
         AmazonAccountInfo amazonAccountInfo = amazonAccountInfoMapper.selectByPrimaryKey(amazonProductUploadEntity.getAmazonAccountId());
         ProductWithBLOBs productWithBLOBs = productMapper.selectByPrimaryKey(amazonProductUploadEntity.getProductId());
 //        productWithBLOBs
 
-//        uploadToAmazon.productAllUpload(amazonAccountInfo,productWithBLOBs,amazonProductUploadEntity);
+//        设置处理天数
+        if(amazonProductUploadEntity.getProcessDays()==0){
+            productWithBLOBs.setFulfillmentLatency(2);
+        }else{
+            productWithBLOBs.setFulfillmentLatency(amazonProductUploadEntity.getProcessDays());
+        }
+        if(amazonProductUploadEntity.getFactoryName()!=null){
+            productWithBLOBs.setFactoryName(amazonProductUploadEntity.getFactoryName());
+        }
+        if(amazonProductUploadEntity.getFactoryNo()!=null){
+            productWithBLOBs.setFactoryNumber(amazonProductUploadEntity.getFactoryNo());
+        }
 
-        return uploadToAmazon.productImageUpload(amazonAccountInfo,productWithBLOBs);
+//        productWithBLOBs
+//        uploadToAmazon.productAllUpload(amazonAccountInfo,productWithBLOBs,amazonProductUploadEntity);
+        String s = uploadToAmazon.productImageUpload(amazonAccountInfo, productWithBLOBs);
+
+        ResponseBodyEntity responseBody = new ResponseBodyEntity();
+//        responseBody.setId();
+        responseBody.setStatus("200");
+        responseBody.setMessage(s);
+
+        return responseBody;
     }
 
 
+//    弃用
     @ApiOperation(value="亚马逊上传产品测试接口", notes="根据产品的id来获取产品详细信息",produces="application/json",consumes = "application/json")
     @PostMapping(value = "/amazon/products/uploadTest")
     public ResponseBodyEntity test(@RequestBody @ApiParam(name="上传的产品对象",value="传入json格式;id会自动生成，不用输入",required=true)
                                                AmazonProductUploadEntity amazonProductUploadEntity)throws Exception {
         log.info("/amazon/products/uploadTest start...;accountId="+amazonProductUploadEntity.toString());
-
 
         AmazonAccountInfo amazonAccountInfo = amazonAccountInfoMapper.selectByPrimaryKey(amazonProductUploadEntity.getAmazonAccountId());
         ProductWithBLOBs productWithBLOBs = productMapper.selectByPrimaryKey(amazonProductUploadEntity.getProductId());
@@ -98,4 +117,7 @@ public class ProductUpload {
 
         return responseBody;
     }
+
+
+
 }
