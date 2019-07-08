@@ -165,7 +165,7 @@ public class ProductService {
         /*if(product.getProductInnerName()!=null){
 
         }*/
-        log.info(product.toString());
+        log.info("修改产品:"+product.toString());
 
 //返回父产品id
         int insert = productMapper.updateByPrimaryKeySelective(product);

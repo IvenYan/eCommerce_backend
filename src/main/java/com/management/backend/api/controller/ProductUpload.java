@@ -3,8 +3,10 @@ package com.management.backend.api.controller;
 import com.management.backend.api.controller.entity.AmazonProductUploadEntity;
 import com.management.backend.api.controller.entity.ResponseBodyEntity;
 import com.management.backend.api.mybatis.mapper.AmazonAccountInfoMapper;
+import com.management.backend.api.mybatis.mapper.AmazonUploadHistoryMapper;
 import com.management.backend.api.mybatis.mapper.ProductMapper;
 import com.management.backend.api.mybatis.model.AmazonAccountInfo;
+import com.management.backend.api.mybatis.model.AmazonUploadHistory;
 import com.management.backend.api.mybatis.model.ProductWithBLOBs;
 import com.management.backend.api.service.UploadToAmazon;
 import com.management.backend.api.util.Resp;
@@ -45,6 +47,8 @@ public class ProductUpload {
     private ProductMapper productMapper;
     @Autowired
     private UploadToAmazon uploadToAmazon;
+    @Autowired
+    private AmazonUploadHistoryMapper amazonUploadHistoryMapper;
 
     @ApiOperation(value="亚马逊-列出所有亚马逊用户", notes="",produces="application/json",consumes = "application/json")
     @GetMapping(value = "/amazon/accounts")
@@ -55,13 +59,38 @@ public class ProductUpload {
 
     }
 
+    @ApiOperation(value="亚马逊-列出最近的操作", notes="",produces="application/json",consumes = "application/json")
+    @GetMapping(value = "/amazon/productType")
+    public List listProductTypeHistory(@RequestParam @ApiParam(name="counts",value="",required=true) int counts,@RequestParam @ApiParam(name="amazonAccountId",value="",required=true) int amazonAccountId) {
+        log.info("/amazon/productType start...;查询最近十天的信息");
+
+        List<AmazonUploadHistory> amazonUploadHistories = amazonUploadHistoryMapper.selectListByCounts(counts,amazonAccountId);
+        return amazonUploadHistories;
+
+    }
 
     @ApiOperation(value="亚马逊上传产品", notes="根据产品的id来获取产品详细信息",produces="application/json",consumes = "application/json")
     @PostMapping(value = "/amazon/products/upload")
     public ResponseBodyEntity SubmitFeed(@RequestBody @ApiParam(name="上传的产品对象",value="传入json格式;id会自动生成，不用输入",required=true)
                                          AmazonProductUploadEntity amazonProductUploadEntity)throws Exception {
         log.info("/amazon/products/upload start...;accountId="+amazonProductUploadEntity.toString());
+        log.info("写入历史记录");
+        AmazonUploadHistory amazonUploadHistory = new AmazonUploadHistory();
+        amazonUploadHistory.setAmazonaccountid(amazonProductUploadEntity.getAmazonAccountId());
+        amazonUploadHistory.setAmazonproducttype(amazonProductUploadEntity.getAmazonProductType());
+        amazonUploadHistory.setDescprefix(amazonProductUploadEntity.getDescPrefix());
+        amazonUploadHistory.setDescsuffix(amazonProductUploadEntity.getDescSuffix());
+        amazonUploadHistory.setFactoryname(amazonProductUploadEntity.getFactoryName());
+        amazonUploadHistory.setFactoryno(amazonProductUploadEntity.getFactoryNo());
+        amazonUploadHistory.setKeywords(amazonProductUploadEntity.getKeyWords());
+        amazonUploadHistory.setProcessdays(amazonProductUploadEntity.getProcessDays());
+        amazonUploadHistory.setProductbrand(amazonProductUploadEntity.getProductBrand());
+        amazonUploadHistory.setProducttype(amazonProductUploadEntity.getProductType());
+        amazonUploadHistory.setTitleprefix(amazonProductUploadEntity.getTitlePrefix());
+        amazonUploadHistory.setTitlesuffix(amazonProductUploadEntity.getTitleSuffix());
 
+        amazonUploadHistoryMapper.insert(amazonUploadHistory);
+        log.info("写入历史记录");
         AmazonAccountInfo amazonAccountInfo = amazonAccountInfoMapper.selectByPrimaryKey(amazonProductUploadEntity.getAmazonAccountId());
         ProductWithBLOBs productWithBLOBs = productMapper.selectByPrimaryKey(Integer.parseInt(amazonProductUploadEntity.getProductId()));
 //        productWithBLOBs
