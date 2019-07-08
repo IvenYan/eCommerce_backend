@@ -63,14 +63,14 @@ public class ProductUpload {
         log.info("/amazon/products/upload start...;accountId="+amazonProductUploadEntity.toString());
 
         AmazonAccountInfo amazonAccountInfo = amazonAccountInfoMapper.selectByPrimaryKey(amazonProductUploadEntity.getAmazonAccountId());
-        ProductWithBLOBs productWithBLOBs = productMapper.selectByPrimaryKey(amazonProductUploadEntity.getProductId());
+        ProductWithBLOBs productWithBLOBs = productMapper.selectByPrimaryKey(Integer.parseInt(amazonProductUploadEntity.getProductId()));
 //        productWithBLOBs
 
 //        设置处理天数
-        if(amazonProductUploadEntity.getProcessDays()==0){
+        if(Integer.parseInt(amazonProductUploadEntity.getProcessDays())==0){
             productWithBLOBs.setFulfillmentLatency(2);
         }else{
-            productWithBLOBs.setFulfillmentLatency(amazonProductUploadEntity.getProcessDays());
+            productWithBLOBs.setFulfillmentLatency(Integer.parseInt(amazonProductUploadEntity.getProcessDays()));
         }
         if(amazonProductUploadEntity.getFactoryName()!=null){
             productWithBLOBs.setFactoryName(amazonProductUploadEntity.getFactoryName());
@@ -100,9 +100,9 @@ public class ProductUpload {
         log.info("/amazon/products/uploadTest start...;accountId="+amazonProductUploadEntity.toString());
 
         AmazonAccountInfo amazonAccountInfo = amazonAccountInfoMapper.selectByPrimaryKey(amazonProductUploadEntity.getAmazonAccountId());
-        ProductWithBLOBs productWithBLOBs = productMapper.selectByPrimaryKey(amazonProductUploadEntity.getProductId());
+        ProductWithBLOBs productWithBLOBs = productMapper.selectByPrimaryKey(Integer.parseInt(amazonProductUploadEntity.getProductId()));
 //        设置处理天数
-        productWithBLOBs.setFulfillmentLatency(amazonProductUploadEntity.getProcessDays());
+        productWithBLOBs.setFulfillmentLatency(Integer.parseInt(amazonProductUploadEntity.getProcessDays()));
         productWithBLOBs.setFactoryName(amazonProductUploadEntity.getFactoryName());
         productWithBLOBs.setFactoryNumber(amazonProductUploadEntity.getFactoryNo());
 //        productWithBLOBs

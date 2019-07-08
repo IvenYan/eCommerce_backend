@@ -54,6 +54,7 @@ public class ProductService {
             }
             productItem.setPictureList(strings);
             tmp.add(productItem);
+            strings=null;
         }
         product.setProductItems(tmp);
         return product;
@@ -109,7 +110,7 @@ public class ProductService {
         /*if(product.getProductInnerName()!=null){
 
         }*/
-        log.info(product.toString());
+        log.info("/product;创建产品;"+product.toString());
 //        前端已经操作修改
         /*String pictureListTmp = product.getPictureList().toString();
         String productTypeTmp=product.getProductTypeIds().toString();
@@ -125,17 +126,15 @@ public class ProductService {
         List<ProductItem> productItems = product.getProductItems();
         List<ProductItemType> productItemTypeList = product.getProductItemTypeList();
         for (ProductItemType productItemType:productItemTypeList) {
-            productItemTypeMapper.deleteByPid(product.getId());
             productItemType.setPid(product.getId());
 
             /*String imtPictureListTmp = productItem.getPictureList().toString();
             imtPictureListTmp=imtPictureListTmp.substring(1,imtPictureListTmp.length()-1);
             productItem.setPictureListString(imtPictureListTmp);*/
             productItemTypeMapper.insert(productItemType);
-
         }
         for (ProductItem productItem:productItems) {
-            productItemMapper.deleteByPid(product.getId());
+
 //            设置SKU ID
             if(productItem.getSkuId()==null){
                 productItem.setSkuId(UUID.randomUUID().toString());

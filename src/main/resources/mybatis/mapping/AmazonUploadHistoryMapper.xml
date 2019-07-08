@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.management.backend.api.mybatis.mapper.AmazonUploadHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.management.backend.api.mybatis.model.AmazonUploadHistory" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="amazonAccountId" property="amazonaccountid" jdbcType="INTEGER" />
+    <result column="processDays" property="processdays" jdbcType="VARCHAR" />
+    <result column="productType" property="producttype" jdbcType="VARCHAR" />
+    <result column="amazonProductType" property="amazonproducttype" jdbcType="VARCHAR" />
+    <result column="factoryName" property="factoryname" jdbcType="VARCHAR" />
+    <result column="factoryNo" property="factoryno" jdbcType="VARCHAR" />
+    <result column="productBrand" property="productbrand" jdbcType="VARCHAR" />
+    <result column="titlePrefix" property="titleprefix" jdbcType="VARCHAR" />
+    <result column="titleSuffix" property="titlesuffix" jdbcType="VARCHAR" />
+    <result column="keyWords" property="keywords" jdbcType="VARCHAR" />
+    <result column="descPrefix" property="descprefix" jdbcType="VARCHAR" />
+    <result column="descSuffix" property="descsuffix" jdbcType="VARCHAR" />
+    <result column="descTag" property="desctag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, amazonAccountId, processDays, productType, amazonProductType, factoryName, factoryNo, 
+    productBrand, titlePrefix, titleSuffix, keyWords, descPrefix, descSuffix, descTag
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.management.backend.api.mybatis.model.AmazonUploadHistoryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from amazon_upload_history
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from amazon_upload_history
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from amazon_upload_history
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.management.backend.api.mybatis.model.AmazonUploadHistoryExample" >
+    delete from amazon_upload_history
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.management.backend.api.mybatis.model.AmazonUploadHistory" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into amazon_upload_history (amazonAccountId, processDays, productType, 
+      amazonProductType, factoryName, factoryNo, 
+      productBrand, titlePrefix, titleSuffix, 
+      keyWords, descPrefix, descSuffix, 
+      descTag)
+    values (#{amazonaccountid,jdbcType=INTEGER}, #{processdays,jdbcType=VARCHAR}, #{producttype,jdbcType=VARCHAR}, 
+      #{amazonproducttype,jdbcType=VARCHAR}, #{factoryname,jdbcType=VARCHAR}, #{factoryno,jdbcType=VARCHAR}, 
+      #{productbrand,jdbcType=VARCHAR}, #{titleprefix,jdbcType=VARCHAR}, #{titlesuffix,jdbcType=VARCHAR}, 
+      #{keywords,jdbcType=VARCHAR}, #{descprefix,jdbcType=VARCHAR}, #{descsuffix,jdbcType=VARCHAR}, 
+      #{desctag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.management.backend.api.mybatis.model.AmazonUploadHistory" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into amazon_upload_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="amazonaccountid != null" >
+        amazonAccountId,
+      </if>
+      <if test="processdays != null" >
+        processDays,
+      </if>
+      <if test="producttype != null" >
+        productType,
+      </if>
+      <if test="amazonproducttype != null" >
+        amazonProductType,
+      </if>
+      <if test="factoryname != null" >
+        factoryName,
+      </if>
+      <if test="factoryno != null" >
+        factoryNo,
+      </if>
+      <if test="productbrand != null" >
+        productBrand,
+      </if>
+      <if test="titleprefix != null" >
+        titlePrefix,
+      </if>
+      <if test="titlesuffix != null" >
+        titleSuffix,
+      </if>
+      <if test="keywords != null" >
+        keyWords,
+      </if>
+      <if test="descprefix != null" >
+        descPrefix,
+      </if>
+      <if test="descsuffix != null" >
+        descSuffix,
+      </if>
+      <if test="desctag != null" >
+        descTag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="amazonaccountid != null" >
+        #{amazonaccountid,jdbcType=INTEGER},
+      </if>
+      <if test="processdays != null" >
+        #{processdays,jdbcType=VARCHAR},
+      </if>
+      <if test="producttype != null" >
+        #{producttype,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonproducttype != null" >
+        #{amazonproducttype,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryname != null" >
+        #{factoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryno != null" >
+        #{factoryno,jdbcType=VARCHAR},
+      </if>
+      <if test="productbrand != null" >
+        #{productbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="titleprefix != null" >
+        #{titleprefix,jdbcType=VARCHAR},
+      </if>
+      <if test="titlesuffix != null" >
+        #{titlesuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null" >
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="descprefix != null" >
+        #{descprefix,jdbcType=VARCHAR},
+      </if>
+      <if test="descsuffix != null" >
+        #{descsuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="desctag != null" >
+        #{desctag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.management.backend.api.mybatis.model.AmazonUploadHistoryExample" resultType="java.lang.Integer" >
+    select count(*) from amazon_upload_history
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update amazon_upload_history
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.amazonaccountid != null" >
+        amazonAccountId = #{record.amazonaccountid,jdbcType=INTEGER},
+      </if>
+      <if test="record.processdays != null" >
+        processDays = #{record.processdays,jdbcType=VARCHAR},
+      </if>
+      <if test="record.producttype != null" >
+        productType = #{record.producttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amazonproducttype != null" >
+        amazonProductType = #{record.amazonproducttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.factoryname != null" >
+        factoryName = #{record.factoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.factoryno != null" >
+        factoryNo = #{record.factoryno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productbrand != null" >
+        productBrand = #{record.productbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.titleprefix != null" >
+        titlePrefix = #{record.titleprefix,jdbcType=VARCHAR},
+      </if>
+      <if test="record.titlesuffix != null" >
+        titleSuffix = #{record.titlesuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keywords != null" >
+        keyWords = #{record.keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="record.descprefix != null" >
+        descPrefix = #{record.descprefix,jdbcType=VARCHAR},
+      </if>
+      <if test="record.descsuffix != null" >
+        descSuffix = #{record.descsuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="record.desctag != null" >
+        descTag = #{record.desctag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update amazon_upload_history
+    set id = #{record.id,jdbcType=INTEGER},
+      amazonAccountId = #{record.amazonaccountid,jdbcType=INTEGER},
+      processDays = #{record.processdays,jdbcType=VARCHAR},
+      productType = #{record.producttype,jdbcType=VARCHAR},
+      amazonProductType = #{record.amazonproducttype,jdbcType=VARCHAR},
+      factoryName = #{record.factoryname,jdbcType=VARCHAR},
+      factoryNo = #{record.factoryno,jdbcType=VARCHAR},
+      productBrand = #{record.productbrand,jdbcType=VARCHAR},
+      titlePrefix = #{record.titleprefix,jdbcType=VARCHAR},
+      titleSuffix = #{record.titlesuffix,jdbcType=VARCHAR},
+      keyWords = #{record.keywords,jdbcType=VARCHAR},
+      descPrefix = #{record.descprefix,jdbcType=VARCHAR},
+      descSuffix = #{record.descsuffix,jdbcType=VARCHAR},
+      descTag = #{record.desctag,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.management.backend.api.mybatis.model.AmazonUploadHistory" >
+    update amazon_upload_history
+    <set >
+      <if test="amazonaccountid != null" >
+        amazonAccountId = #{amazonaccountid,jdbcType=INTEGER},
+      </if>
+      <if test="processdays != null" >
+        processDays = #{processdays,jdbcType=VARCHAR},
+      </if>
+      <if test="producttype != null" >
+        productType = #{producttype,jdbcType=VARCHAR},
+      </if>
+      <if test="amazonproducttype != null" >
+        amazonProductType = #{amazonproducttype,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryname != null" >
+        factoryName = #{factoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryno != null" >
+        factoryNo = #{factoryno,jdbcType=VARCHAR},
+      </if>
+      <if test="productbrand != null" >
+        productBrand = #{productbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="titleprefix != null" >
+        titlePrefix = #{titleprefix,jdbcType=VARCHAR},
+      </if>
+      <if test="titlesuffix != null" >
+        titleSuffix = #{titlesuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null" >
+        keyWords = #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="descprefix != null" >
+        descPrefix = #{descprefix,jdbcType=VARCHAR},
+      </if>
+      <if test="descsuffix != null" >
+        descSuffix = #{descsuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="desctag != null" >
+        descTag = #{desctag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.management.backend.api.mybatis.model.AmazonUploadHistory" >
+    update amazon_upload_history
+    set amazonAccountId = #{amazonaccountid,jdbcType=INTEGER},
+      processDays = #{processdays,jdbcType=VARCHAR},
+      productType = #{producttype,jdbcType=VARCHAR},
+      amazonProductType = #{amazonproducttype,jdbcType=VARCHAR},
+      factoryName = #{factoryname,jdbcType=VARCHAR},
+      factoryNo = #{factoryno,jdbcType=VARCHAR},
+      productBrand = #{productbrand,jdbcType=VARCHAR},
+      titlePrefix = #{titleprefix,jdbcType=VARCHAR},
+      titleSuffix = #{titlesuffix,jdbcType=VARCHAR},
+      keyWords = #{keywords,jdbcType=VARCHAR},
+      descPrefix = #{descprefix,jdbcType=VARCHAR},
+      descSuffix = #{descsuffix,jdbcType=VARCHAR},
+      descTag = #{desctag,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

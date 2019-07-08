@@ -14,17 +14,17 @@ public class AmazonProductUploadEntity {
 //    产品级别
     private int level;
 //    限制条数
-    private int limitNumber;
+    private String limitNumber;
 //    产品日期
     private List<String> productDate;
 //    产品排序-在用
     private int productSort;
 //    产品编号-在用
-    private int productId;
+    private String productId;
 //    选择账户-在用
     private int amazonAccountId;
 //    处理天数-在用
-    private int processDays;
+    private String processDays;
 //    产品分类-在用
     private String productType;
 //    亚马逊分类-在用
@@ -50,13 +50,6 @@ public class AmazonProductUploadEntity {
 //    描述标签
     private String descTag;
 
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
 
     public int getAmazonAccountId() {
         return amazonAccountId;
@@ -66,13 +59,6 @@ public class AmazonProductUploadEntity {
         this.amazonAccountId = amazonAccountId;
     }
 
-    public int getProcessDays() {
-        return processDays;
-    }
-
-    public void setProcessDays(int processDays) {
-        this.processDays = processDays;
-    }
 
     public String getAmazonProductType() {
         return amazonProductType;
@@ -127,12 +113,28 @@ public class AmazonProductUploadEntity {
         this.level = level;
     }
 
-    public int getLimitNumber() {
+    public String getLimitNumber() {
         return limitNumber;
     }
 
-    public void setLimitNumber(int limitNumber) {
+    public void setLimitNumber(String limitNumber) {
         this.limitNumber = limitNumber;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public String getProcessDays() {
+        return processDays;
+    }
+
+    public void setProcessDays(String processDays) {
+        this.processDays = processDays;
     }
 
     public List<String> getProductDate() {

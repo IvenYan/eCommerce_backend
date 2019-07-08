@@ -40,5 +40,4 @@ public interface ProductMapper {
 
     int updateByPrimaryKey(Product record);
 
-
 }

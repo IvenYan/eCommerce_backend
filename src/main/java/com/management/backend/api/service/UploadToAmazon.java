@@ -118,7 +118,6 @@ public class UploadToAmazon {
 
     public void productAllUpload(AmazonAccountInfo amazonAccountInfo, ProductWithBLOBs productWithBLOBs, AmazonProductUploadEntity amazonProductUploadEntity) throws Exception{
 
-
         //        组合方法，上传5中方式
         this.productImageUpload(amazonAccountInfo,productWithBLOBs);
         this.productUpload(amazonAccountInfo,productWithBLOBs);

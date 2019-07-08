@@ -41,13 +41,12 @@
       <collection property="productItems" ofType="com.management.backend.api.mybatis.model.ProductItem">
           <result column="itemid" jdbcType="INTEGER" property="id" />
           <result column="pid" jdbcType="INTEGER" property="pid" />
-          <result column="pictureListString" jdbcType="VARCHAR" property="pictureListString" />
+          <result column="itemPictureListString" jdbcType="VARCHAR" property="pictureListString" />
           <result column="name" jdbcType="VARCHAR" property="name" />
           <result column="skuId" jdbcType="VARCHAR" property="skuId" />
           <result column="inventory" jdbcType="INTEGER" property="inventory" />
           <result column="addPrice" jdbcType="VARCHAR" property="addPrice" />
       </collection>
-
       <collection property="productItemTypeList" ofType="com.management.backend.api.mybatis.model.ProductItemType">
           <id column="typeid" jdbcType="INTEGER" property="id" />
           <result column="typepid" jdbcType="INTEGER" property="pid" />
@@ -149,20 +148,20 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, creat_time, audit_status, onsale, level, user_id, brand, factory_name, source_area, 
-    factory_number, factory_catalog, upload_forbiden, source_url, comments, cost, shipping_cost, 
-    custom_code, eng_desc, declare_price, ch_desc, inner_sku, suit_for_group, product_material, 
-    packet_material, metal_type, jewel_type, package_gross_weight, has_battery, package_long, 
+    id, creat_time, audit_status, onsale, level, user_id, brand, factory_name, source_area,
+    factory_number, factory_catalog, upload_forbiden, source_url, comments, cost, shipping_cost,
+    custom_code, eng_desc, declare_price, ch_desc, inner_sku, suit_for_group, product_material,
+    packet_material, metal_type, jewel_type, package_gross_weight, has_battery, package_long,
     package_width, package_hight, in_store, count_per_package, product_type_id,pictureListString,parentSkuId
   </sql>
   <sql id="Blob_Column_List">
-    englishProductTile, englishProductKeyWords, englishProductKeyDesc, englishProductDesc, 
-    frenchProductTile, frenchProductKeyWords, frenchProductKeyDesc, frenchProductDesc, 
-    germanProductTile, germanProductKeyWords, germanProductKeyDesc, germanProductDesc, 
-    italyProductTile, italyProductKeyWords, italyProductKeyDesc, italyProductDesc, spanishProductTile, 
-    spanishProductKeyWords, spanishProductKeyDesc, spanishProductDesc, japaneseProductTile, 
-    japaneseProductKeyWords, japaneseProductKeyDesc, japaneseProductDesc, russianProductTile, 
-    russianProductKeyWords, russianProductKeyDesc, russianProductDesc, chineseProductTile, 
+    englishProductTile, englishProductKeyWords, englishProductKeyDesc, englishProductDesc,
+    frenchProductTile, frenchProductKeyWords, frenchProductKeyDesc, frenchProductDesc,
+    germanProductTile, germanProductKeyWords, germanProductKeyDesc, germanProductDesc,
+    italyProductTile, italyProductKeyWords, italyProductKeyDesc, italyProductDesc, spanishProductTile,
+    spanishProductKeyWords, spanishProductKeyDesc, spanishProductDesc, japaneseProductTile,
+    japaneseProductKeyWords, japaneseProductKeyDesc, japaneseProductDesc, russianProductTile,
+    russianProductKeyWords, russianProductKeyDesc, russianProductDesc, chineseProductTile,
     chineseProductKeyWords, chineseProductKeyDesc, chineseProductDesc
   </sql>
   <select id="selectByExampleWithBLOBs" parameterType="com.management.backend.api.mybatis.model.ProductExample" resultMap="ResultMapWithBLOBs">
@@ -212,11 +211,11 @@
         a.japaneseProductKeyWords, a.japaneseProductKeyDesc, a.japaneseProductDesc, a.russianProductTile,
         a.russianProductKeyWords, a.russianProductKeyDesc, a.russianProductDesc, a.chineseProductTile,
         a.chineseProductKeyWords, a.chineseProductKeyDesc, a.chineseProductDesc,
-        b.id as itemid,b.pictureListString, b.name, b.skuId,        b.inventory, b.addPrice,b.pid,
+        b.id as itemid,b.pictureListString as itemPictureListString, b.name, b.skuId,        b.inventory, b.addPrice,b.pid,
         c.id as typeid,c.name as typename,c.value as typevalue,c.pid as typepid
     </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Inner_Base_Column_List" />
     from product a left join product_item b on a.id=b.pid left join product_item_type c on a.id=c.pid
     where a.id = #{id,jdbcType=INTEGER}
@@ -238,60 +237,60 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into product (creat_time, audit_status, onsale, 
-      level, user_id, brand, 
-      factory_name, source_area, factory_number, 
-      factory_catalog, upload_forbiden, source_url, 
-      comments, cost, shipping_cost, 
-      custom_code, eng_desc, declare_price, 
-      ch_desc, inner_sku, suit_for_group, 
-      product_material, packet_material, metal_type, 
-      jewel_type, package_gross_weight, has_battery, 
-      package_long, package_width, package_hight, 
-      in_store, count_per_package, product_type_id, 
-      englishProductTile, englishProductKeyWords, 
-      englishProductKeyDesc, englishProductDesc, 
-      frenchProductTile, frenchProductKeyWords, 
-      frenchProductKeyDesc, frenchProductDesc, 
-      germanProductTile, germanProductKeyWords, 
-      germanProductKeyDesc, germanProductDesc, 
-      italyProductTile, italyProductKeyWords, 
-      italyProductKeyDesc, italyProductDesc, 
-      spanishProductTile, spanishProductKeyWords, 
-      spanishProductKeyDesc, spanishProductDesc, 
-      japaneseProductTile, japaneseProductKeyWords, 
-      japaneseProductKeyDesc, japaneseProductDesc, 
-      russianProductTile, russianProductKeyWords, 
-      russianProductKeyDesc, russianProductDesc, 
-      chineseProductTile, chineseProductKeyWords, 
+    insert into product (creat_time, audit_status, onsale,
+      level, user_id, brand,
+      factory_name, source_area, factory_number,
+      factory_catalog, upload_forbiden, source_url,
+      comments, cost, shipping_cost,
+      custom_code, eng_desc, declare_price,
+      ch_desc, inner_sku, suit_for_group,
+      product_material, packet_material, metal_type,
+      jewel_type, package_gross_weight, has_battery,
+      package_long, package_width, package_hight,
+      in_store, count_per_package, product_type_id,
+      englishProductTile, englishProductKeyWords,
+      englishProductKeyDesc, englishProductDesc,
+      frenchProductTile, frenchProductKeyWords,
+      frenchProductKeyDesc, frenchProductDesc,
+      germanProductTile, germanProductKeyWords,
+      germanProductKeyDesc, germanProductDesc,
+      italyProductTile, italyProductKeyWords,
+      italyProductKeyDesc, italyProductDesc,
+      spanishProductTile, spanishProductKeyWords,
+      spanishProductKeyDesc, spanishProductDesc,
+      japaneseProductTile, japaneseProductKeyWords,
+      japaneseProductKeyDesc, japaneseProductDesc,
+      russianProductTile, russianProductKeyWords,
+      russianProductKeyDesc, russianProductDesc,
+      chineseProductTile, chineseProductKeyWords,
       chineseProductKeyDesc, chineseProductDesc,pictureListString,parentSkuId
       )
     values (#{creatTime,jdbcType=TIMESTAMP}, #{auditStatus,jdbcType=INTEGER}, #{onsale,jdbcType=INTEGER},
       #{level,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{brand,jdbcType=VARCHAR},
-      #{factoryName,jdbcType=VARCHAR}, #{sourceArea,jdbcType=VARCHAR}, #{factoryNumber,jdbcType=VARCHAR}, 
+      #{factoryName,jdbcType=VARCHAR}, #{sourceArea,jdbcType=VARCHAR}, #{factoryNumber,jdbcType=VARCHAR},
       #{factoryCatalog,jdbcType=VARCHAR}, #{uploadForbiden,jdbcType=INTEGER}, #{sourceUrl,jdbcType=VARCHAR},
-      #{comments,jdbcType=VARCHAR}, #{cost,jdbcType=REAL}, #{shippingCost,jdbcType=REAL}, 
-      #{customCode,jdbcType=VARCHAR}, #{engDesc,jdbcType=VARCHAR}, #{declarePrice,jdbcType=VARCHAR}, 
+      #{comments,jdbcType=VARCHAR}, #{cost,jdbcType=REAL}, #{shippingCost,jdbcType=REAL},
+      #{customCode,jdbcType=VARCHAR}, #{engDesc,jdbcType=VARCHAR}, #{declarePrice,jdbcType=VARCHAR},
       #{chDesc,jdbcType=VARCHAR}, #{innerSku,jdbcType=VARCHAR}, #{suitForGroup,jdbcType=INTEGER},
-      #{productMaterial,jdbcType=VARCHAR}, #{packetMaterial,jdbcType=VARCHAR}, #{metalType,jdbcType=VARCHAR}, 
+      #{productMaterial,jdbcType=VARCHAR}, #{packetMaterial,jdbcType=VARCHAR}, #{metalType,jdbcType=VARCHAR},
       #{jewelType,jdbcType=VARCHAR}, #{packageGrossWeight,jdbcType=VARCHAR}, #{hasBattery,jdbcType=INTEGER},
-      #{packageLong,jdbcType=REAL}, #{packageWidth,jdbcType=REAL}, #{packageHight,jdbcType=REAL}, 
+      #{packageLong,jdbcType=REAL}, #{packageWidth,jdbcType=REAL}, #{packageHight,jdbcType=REAL},
       #{inStore,jdbcType=BIGINT}, #{countPerPackage,jdbcType=BIGINT}, #{productTypeIdsString,jdbcType=VARCHAR},
-      #{englishproducttile,jdbcType=LONGVARBINARY}, #{englishproductkeywords,jdbcType=LONGVARBINARY}, 
-      #{englishproductkeydesc,jdbcType=LONGVARBINARY}, #{englishproductdesc,jdbcType=LONGVARBINARY}, 
-      #{frenchproducttile,jdbcType=LONGVARBINARY}, #{frenchproductkeywords,jdbcType=LONGVARBINARY}, 
-      #{frenchproductkeydesc,jdbcType=LONGVARBINARY}, #{frenchproductdesc,jdbcType=LONGVARBINARY}, 
-      #{germanproducttile,jdbcType=LONGVARBINARY}, #{germanproductkeywords,jdbcType=LONGVARBINARY}, 
-      #{germanproductkeydesc,jdbcType=LONGVARBINARY}, #{germanproductdesc,jdbcType=LONGVARBINARY}, 
-      #{italyproducttile,jdbcType=LONGVARBINARY}, #{italyproductkeywords,jdbcType=LONGVARBINARY}, 
-      #{italyproductkeydesc,jdbcType=LONGVARBINARY}, #{italyproductdesc,jdbcType=LONGVARBINARY}, 
-      #{spanishproducttile,jdbcType=LONGVARBINARY}, #{spanishproductkeywords,jdbcType=LONGVARBINARY}, 
-      #{spanishproductkeydesc,jdbcType=LONGVARBINARY}, #{spanishproductdesc,jdbcType=LONGVARBINARY}, 
-      #{japaneseproducttile,jdbcType=LONGVARBINARY}, #{japaneseproductkeywords,jdbcType=LONGVARBINARY}, 
-      #{japaneseproductkeydesc,jdbcType=LONGVARBINARY}, #{japaneseproductdesc,jdbcType=LONGVARBINARY}, 
-      #{russianproducttile,jdbcType=LONGVARBINARY}, #{russianproductkeywords,jdbcType=LONGVARBINARY}, 
-      #{russianproductkeydesc,jdbcType=LONGVARBINARY}, #{russianproductdesc,jdbcType=LONGVARBINARY}, 
-      #{chineseproducttile,jdbcType=LONGVARBINARY}, #{chineseproductkeywords,jdbcType=LONGVARBINARY}, 
+      #{englishproducttile,jdbcType=LONGVARBINARY}, #{englishproductkeywords,jdbcType=LONGVARBINARY},
+      #{englishproductkeydesc,jdbcType=LONGVARBINARY}, #{englishproductdesc,jdbcType=LONGVARBINARY},
+      #{frenchproducttile,jdbcType=LONGVARBINARY}, #{frenchproductkeywords,jdbcType=LONGVARBINARY},
+      #{frenchproductkeydesc,jdbcType=LONGVARBINARY}, #{frenchproductdesc,jdbcType=LONGVARBINARY},
+      #{germanproducttile,jdbcType=LONGVARBINARY}, #{germanproductkeywords,jdbcType=LONGVARBINARY},
+      #{germanproductkeydesc,jdbcType=LONGVARBINARY}, #{germanproductdesc,jdbcType=LONGVARBINARY},
+      #{italyproducttile,jdbcType=LONGVARBINARY}, #{italyproductkeywords,jdbcType=LONGVARBINARY},
+      #{italyproductkeydesc,jdbcType=LONGVARBINARY}, #{italyproductdesc,jdbcType=LONGVARBINARY},
+      #{spanishproducttile,jdbcType=LONGVARBINARY}, #{spanishproductkeywords,jdbcType=LONGVARBINARY},
+      #{spanishproductkeydesc,jdbcType=LONGVARBINARY}, #{spanishproductdesc,jdbcType=LONGVARBINARY},
+      #{japaneseproducttile,jdbcType=LONGVARBINARY}, #{japaneseproductkeywords,jdbcType=LONGVARBINARY},
+      #{japaneseproductkeydesc,jdbcType=LONGVARBINARY}, #{japaneseproductdesc,jdbcType=LONGVARBINARY},
+      #{russianproducttile,jdbcType=LONGVARBINARY}, #{russianproductkeywords,jdbcType=LONGVARBINARY},
+      #{russianproductkeydesc,jdbcType=LONGVARBINARY}, #{russianproductdesc,jdbcType=LONGVARBINARY},
+      #{chineseproducttile,jdbcType=LONGVARBINARY}, #{chineseproductkeywords,jdbcType=LONGVARBINARY},
       #{chineseproductkeydesc,jdbcType=LONGVARBINARY}, #{chineseproductdesc,jdbcType=LONGVARBINARY},#{pictureListString,jdbcType=VARCHAR}
     ,#{parentSkuId,jdbcType=VARCHAR}
       )
