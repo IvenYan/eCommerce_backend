@@ -100,8 +100,15 @@
                selectByExampleQueryId="true">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
             &lt;!&ndash;<columnRenamingRule searchString="^D_" replaceString=""/> &ndash;&gt;
-        </table>-->
+        </table>--><!--
         <table schema="backendshop_qzx" tableName="amazon_upload_history" domainObjectName="AmazonUploadHistory"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            &lt;!&ndash;<columnRenamingRule searchString="^D_" replaceString=""/> &ndash;&gt;
+        </table>-->
+        <table schema="backendshop_qzx" tableName="amazon_upload_result" domainObjectName="AmazonUploadResult"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">

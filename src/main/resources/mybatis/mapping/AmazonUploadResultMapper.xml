@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.management.backend.api.mybatis.mapper.AmazonUploadResultMapper" >
+  <resultMap id="BaseResultMap" type="com.management.backend.api.mybatis.model.AmazonUploadResult" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="batchNo" property="batchno" jdbcType="INTEGER" />
+    <result column="amazonAccount" property="amazonaccount" jdbcType="VARCHAR" />
+    <result column="accountId" property="accountid" jdbcType="INTEGER" />
+    <result column="uploadType" property="uploadtype" jdbcType="VARCHAR" />
+    <result column="uploadTypeDesc" property="uploadtypedesc" jdbcType="VARCHAR" />
+    <result column="uploadProductCounts" property="uploadproductcounts" jdbcType="VARCHAR" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="uploadError" property="uploaderror" jdbcType="INTEGER" />
+    <result column="uploadWarn" property="uploadwarn" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, batchNo, amazonAccount, accountId, uploadType, uploadTypeDesc, uploadProductCounts,
+    createDate, uploadError, uploadWarn, status
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from amazon_upload_result
+      order by createDate desc
+  </select>
+  <select id="countAll" resultType="java.lang.Integer" >
+    select count(id)
+    from amazon_upload_result
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.management.backend.api.mybatis.model.AmazonUploadResultExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from amazon_upload_result
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from amazon_upload_result
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from amazon_upload_result
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.management.backend.api.mybatis.model.AmazonUploadResultExample" >
+    delete from amazon_upload_result
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.management.backend.api.mybatis.model.AmazonUploadResult" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into amazon_upload_result (batchNo, amazonAccount, accountId,
+      uploadType, uploadTypeDesc, uploadProductCounts,
+      createDate, uploadError, uploadWarn,
+      status)
+    values (#{batchno,jdbcType=INTEGER}, #{amazonaccount,jdbcType=VARCHAR}, #{accountid,jdbcType=INTEGER},
+      #{uploadtype,jdbcType=VARCHAR}, #{uploadtypedesc,jdbcType=VARCHAR}, #{uploadproductcounts,jdbcType=VARCHAR},
+      #{createdate,jdbcType=TIMESTAMP}, #{uploaderror,jdbcType=INTEGER}, #{uploadwarn,jdbcType=INTEGER},
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.management.backend.api.mybatis.model.AmazonUploadResult" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into amazon_upload_result
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="batchno != null" >
+        batchNo,
+      </if>
+      <if test="amazonaccount != null" >
+        amazonAccount,
+      </if>
+      <if test="accountid != null" >
+        accountId,
+      </if>
+      <if test="uploadtype != null" >
+        uploadType,
+      </if>
+      <if test="uploadtypedesc != null" >
+        uploadTypeDesc,
+      </if>
+      <if test="uploadproductcounts != null" >
+        uploadProductCounts,
+      </if>
+      <if test="createdate != null" >
+        createDate,
+      </if>
+      <if test="uploaderror != null" >
+        uploadError,
+      </if>
+      <if test="uploadwarn != null" >
+        uploadWarn,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="batchno != null" >
+        #{batchno,jdbcType=INTEGER},
+      </if>
+      <if test="amazonaccount != null" >
+        #{amazonaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="uploadtype != null" >
+        #{uploadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtypedesc != null" >
+        #{uploadtypedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadproductcounts != null" >
+        #{uploadproductcounts,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploaderror != null" >
+        #{uploaderror,jdbcType=INTEGER},
+      </if>
+      <if test="uploadwarn != null" >
+        #{uploadwarn,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.management.backend.api.mybatis.model.AmazonUploadResultExample" resultType="java.lang.Integer" >
+    select count(*) from amazon_upload_result
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update amazon_upload_result
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.batchno != null" >
+        batchNo = #{record.batchno,jdbcType=INTEGER},
+      </if>
+      <if test="record.amazonaccount != null" >
+        amazonAccount = #{record.amazonaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountid != null" >
+        accountId = #{record.accountid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uploadtype != null" >
+        uploadType = #{record.uploadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uploadtypedesc != null" >
+        uploadTypeDesc = #{record.uploadtypedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uploadproductcounts != null" >
+        uploadProductCounts = #{record.uploadproductcounts,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdate != null" >
+        createDate = #{record.createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.uploaderror != null" >
+        uploadError = #{record.uploaderror,jdbcType=INTEGER},
+      </if>
+      <if test="record.uploadwarn != null" >
+        uploadWarn = #{record.uploadwarn,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update amazon_upload_result
+    set id = #{record.id,jdbcType=INTEGER},
+      batchNo = #{record.batchno,jdbcType=INTEGER},
+      amazonAccount = #{record.amazonaccount,jdbcType=VARCHAR},
+      accountId = #{record.accountid,jdbcType=INTEGER},
+      uploadType = #{record.uploadtype,jdbcType=VARCHAR},
+      uploadTypeDesc = #{record.uploadtypedesc,jdbcType=VARCHAR},
+      uploadProductCounts = #{record.uploadproductcounts,jdbcType=VARCHAR},
+      createDate = #{record.createdate,jdbcType=TIMESTAMP},
+      uploadError = #{record.uploaderror,jdbcType=INTEGER},
+      uploadWarn = #{record.uploadwarn,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.management.backend.api.mybatis.model.AmazonUploadResult" >
+    update amazon_upload_result
+    <set >
+      <if test="batchno != null" >
+        batchNo = #{batchno,jdbcType=INTEGER},
+      </if>
+      <if test="amazonaccount != null" >
+        amazonAccount = #{amazonaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null" >
+        accountId = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="uploadtype != null" >
+        uploadType = #{uploadtype,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtypedesc != null" >
+        uploadTypeDesc = #{uploadtypedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadproductcounts != null" >
+        uploadProductCounts = #{uploadproductcounts,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        createDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploaderror != null" >
+        uploadError = #{uploaderror,jdbcType=INTEGER},
+      </if>
+      <if test="uploadwarn != null" >
+        uploadWarn = #{uploadwarn,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.management.backend.api.mybatis.model.AmazonUploadResult" >
+    update amazon_upload_result
+    set batchNo = #{batchno,jdbcType=INTEGER},
+      amazonAccount = #{amazonaccount,jdbcType=VARCHAR},
+      accountId = #{accountid,jdbcType=INTEGER},
+      uploadType = #{uploadtype,jdbcType=VARCHAR},
+      uploadTypeDesc = #{uploadtypedesc,jdbcType=VARCHAR},
+      uploadProductCounts = #{uploadproductcounts,jdbcType=VARCHAR},
+      createDate = #{createdate,jdbcType=TIMESTAMP},
+      uploadError = #{uploaderror,jdbcType=INTEGER},
+      uploadWarn = #{uploadwarn,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

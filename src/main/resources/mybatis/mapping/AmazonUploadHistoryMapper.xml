@@ -16,6 +16,7 @@
     <result column="descPrefix" property="descprefix" jdbcType="VARCHAR" />
     <result column="descSuffix" property="descsuffix" jdbcType="VARCHAR" />
     <result column="descTag" property="desctag" jdbcType="VARCHAR" />
+    <result column="uploadTemplate" property="uploadTemplate" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -77,17 +78,17 @@
   </sql>
   <sql id="Base_Column_List" >
     id, amazonAccountId, processDays, productType, amazonProductType, factoryName, factoryNo,
-    productBrand, titlePrefix, titleSuffix, keyWords, descPrefix, descSuffix, descTag
+    productBrand, titlePrefix, titleSuffix, keyWords, descPrefix, descSuffix, descTag,uploadTemplate
   </sql>
 
   <select id="selectListByCounts" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
     <include refid="Base_Column_List" />
     from amazon_upload_history
-    ORDER BY createDate desc limit #{counts,jdbcType=INTEGER}
-    <if test="amazonAccountId !== 0">
+    <if test="amazonAccountId != 0">
       where amazonAccountId=#{amazonAccountId,jdbcType=INTEGER}
     </if>
+    ORDER BY createDate desc limit #{counts,jdbcType=INTEGER}
   </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.management.backend.api.mybatis.model.AmazonUploadHistoryExample" >
     select
@@ -128,12 +129,13 @@
       amazonProductType, factoryName, factoryNo,
       productBrand, titlePrefix, titleSuffix,
       keyWords, descPrefix, descSuffix,
-      descTag)
+      descTag,uploadTemplate)
     values (#{amazonaccountid,jdbcType=INTEGER}, #{processdays,jdbcType=VARCHAR}, #{producttype,jdbcType=VARCHAR},
       #{amazonproducttype,jdbcType=VARCHAR}, #{factoryname,jdbcType=VARCHAR}, #{factoryno,jdbcType=VARCHAR},
       #{productbrand,jdbcType=VARCHAR}, #{titleprefix,jdbcType=VARCHAR}, #{titlesuffix,jdbcType=VARCHAR},
       #{keywords,jdbcType=VARCHAR}, #{descprefix,jdbcType=VARCHAR}, #{descsuffix,jdbcType=VARCHAR},
-      #{desctag,jdbcType=VARCHAR})
+      #{desctag,jdbcType=VARCHAR}),
+    #{uploadTemplate,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.management.backend.api.mybatis.model.AmazonUploadHistory" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -180,6 +182,9 @@
       <if test="desctag != null" >
         descTag,
       </if>
+      <if test="uploadTemplate != null" >
+        uploadTemplate,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="amazonaccountid != null" >
@@ -220,6 +225,9 @@
       </if>
       <if test="desctag != null" >
         #{desctag,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTemplate != null" >
+        #{uploadTemplate,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>

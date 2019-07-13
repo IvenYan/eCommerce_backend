@@ -1,5 +1,7 @@
 package com.management.backend.api.mybatis.model;
 
+import java.util.List;
+
 public class AmazonUploadHistory {
     private Integer id;
 
@@ -7,9 +9,13 @@ public class AmazonUploadHistory {
 
     private String processdays;
 
+    private String uploadTemplate;
+
     private String producttype;
+    private List producttypeList;
 
     private String amazonproducttype;
+private List amazonproducttypeList;
 
     private String factoryname;
 
@@ -28,6 +34,30 @@ public class AmazonUploadHistory {
     private String descsuffix;
 
     private String desctag;
+
+    public String getUploadTemplate() {
+        return uploadTemplate;
+    }
+
+    public void setUploadTemplate(String uploadTemplate) {
+        this.uploadTemplate = uploadTemplate;
+    }
+
+    public List getProducttypeList() {
+        return producttypeList;
+    }
+
+    public void setProducttypeList(List producttypeList) {
+        this.producttypeList = producttypeList;
+    }
+
+    public List getAmazonproducttypeList() {
+        return amazonproducttypeList;
+    }
+
+    public void setAmazonproducttypeList(List amazonproducttypeList) {
+        this.amazonproducttypeList = amazonproducttypeList;
+    }
 
     public Integer getId() {
         return id;

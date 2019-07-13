@@ -27,8 +27,10 @@ public class AmazonProductUploadEntity {
     private String processDays;
 //    产品分类-在用
     private String productType;
+    private List prodductTypeList;
 //    亚马逊分类-在用
     private String amazonProductType;
+    private List amazonProductTypeList;
 //    上传模板
     private String uploadTemplate;
 //    厂商名称-在用
@@ -50,6 +52,22 @@ public class AmazonProductUploadEntity {
 //    描述标签
     private String descTag;
 
+
+    public List getProdductTypeList() {
+        return prodductTypeList;
+    }
+
+    public void setProdductTypeList(List prodductTypeList) {
+        this.prodductTypeList = prodductTypeList;
+    }
+
+    public List getAmazonProductTypeList() {
+        return amazonProductTypeList;
+    }
+
+    public void setAmazonProductTypeList(List amazonProductTypeList) {
+        this.amazonProductTypeList = amazonProductTypeList;
+    }
 
     public int getAmazonAccountId() {
         return amazonAccountId;

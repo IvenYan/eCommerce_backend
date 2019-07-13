@@ -23,6 +23,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -56,15 +57,36 @@ public class ProductUpload {
         log.info("/amazon/accounts start...;");
         List<AmazonAccountInfo> amazonAccountInfos = amazonAccountInfoMapper.selectList();
         return amazonAccountInfos;
-
     }
 
-    @ApiOperation(value="亚马逊-列出最近的操作", notes="",produces="application/json",consumes = "application/json")
+    @ApiOperation(value="亚马逊-历史-列出最近的操作", notes="",produces="application/json",consumes = "application/json")
     @GetMapping(value = "/amazon/productType")
     public List listProductTypeHistory(@RequestParam @ApiParam(name="counts",value="",required=true) int counts,@RequestParam @ApiParam(name="amazonAccountId",value="",required=true) int amazonAccountId) {
         log.info("/amazon/productType start...;查询最近十天的信息");
 
         List<AmazonUploadHistory> amazonUploadHistories = amazonUploadHistoryMapper.selectListByCounts(counts,amazonAccountId);
+        for(int a=0; a<amazonUploadHistories.size();a++){
+            AmazonUploadHistory amazonUploadHistory = amazonUploadHistories.get(a);
+            String amazonproducttype = amazonUploadHistory.getAmazonproducttype();
+            String[] split = amazonproducttype.split(",");
+            ArrayList<String> tmp=new ArrayList<>();
+            if(split!=null && split.length>0){
+                for(int b=0; b<split.length;b++){
+                    tmp.add(split[b]);
+                }
+            }
+            amazonUploadHistory.setAmazonproducttypeList(tmp);
+
+            String producttype = amazonUploadHistory.getProducttype();
+            String[] split1 = producttype.split(",");
+            ArrayList<String> tmp1=new ArrayList<>();
+            if(split1!=null && split1.length>0){
+                for(int b=0; b<split1.length;b++){
+                    tmp1.add(split1[b]);
+                }
+            }
+            amazonUploadHistory.setProducttypeList(tmp1);
+        }
         return amazonUploadHistories;
 
     }
@@ -73,8 +95,28 @@ public class ProductUpload {
     @PostMapping(value = "/amazon/products/upload")
     public ResponseBodyEntity SubmitFeed(@RequestBody @ApiParam(name="上传的产品对象",value="传入json格式;id会自动生成，不用输入",required=true)
                                          AmazonProductUploadEntity amazonProductUploadEntity)throws Exception {
+//        约定：前端传数组，两个数组分别为 prodductTypeList，amazonProductTypeList
+
         log.info("/amazon/products/upload start...;accountId="+amazonProductUploadEntity.toString());
         log.info("写入历史记录");
+        List amazonProductTypeList = amazonProductUploadEntity.getAmazonProductTypeList();
+        List amazonproducttype = amazonProductUploadEntity.getProdductTypeList();
+        String tmp="";
+        if(amazonProductTypeList!=null && amazonProductTypeList.size()>0){
+            for(int b=0; b<amazonProductTypeList.size();b++){
+                tmp+=amazonProductTypeList.get(b)+",";
+            }
+        }
+        amazonProductUploadEntity.setAmazonProductType(tmp);
+
+        String tmp1="";
+        if(amazonproducttype!=null && amazonproducttype.size()>0){
+            for(int b=0; b<amazonproducttype.size();b++){
+                tmp1+=amazonproducttype.get(b)+",";
+            }
+        }
+        amazonProductUploadEntity.setProductType(tmp1);
+
         AmazonUploadHistory amazonUploadHistory = new AmazonUploadHistory();
         amazonUploadHistory.setAmazonaccountid(amazonProductUploadEntity.getAmazonAccountId());
         amazonUploadHistory.setAmazonproducttype(amazonProductUploadEntity.getAmazonProductType());
@@ -85,9 +127,16 @@ public class ProductUpload {
         amazonUploadHistory.setKeywords(amazonProductUploadEntity.getKeyWords());
         amazonUploadHistory.setProcessdays(amazonProductUploadEntity.getProcessDays());
         amazonUploadHistory.setProductbrand(amazonProductUploadEntity.getProductBrand());
+//        上传的两个数组分别写入 历史记录中
+        amazonUploadHistory.setUploadTemplate(amazonProductUploadEntity.getUploadTemplate());
+        amazonUploadHistory.setProducttypeList(amazonProductUploadEntity.getProdductTypeList());
+        amazonUploadHistory.setAmazonproducttypeList(amazonProductUploadEntity.getAmazonProductTypeList());
         amazonUploadHistory.setProducttype(amazonProductUploadEntity.getProductType());
         amazonUploadHistory.setTitleprefix(amazonProductUploadEntity.getTitlePrefix());
         amazonUploadHistory.setTitlesuffix(amazonProductUploadEntity.getTitleSuffix());
+
+//        amazonProductUploadEntity
+
 
         amazonUploadHistoryMapper.insert(amazonUploadHistory);
         log.info("写入历史记录");

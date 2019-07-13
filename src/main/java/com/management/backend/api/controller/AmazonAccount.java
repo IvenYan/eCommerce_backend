@@ -23,7 +23,6 @@ import java.util.List;
  * @Date 2019/6/29 20:10
  * @Version 1.0
  **/
-
 @RestController
 @Api(value = "AmazonAccount operations",tags = {"AmazonAccount service"})
 public class AmazonAccount {
@@ -33,7 +32,6 @@ public class AmazonAccount {
 
     @Autowired
     private AmazonAccountInfoMapper amazonAccountInfoMapper;
-
 
     /*@ApiOperation(value="获取产品分类-单个父级", notes="根据产品的pid来获取产品分类信息",produces="application/json",consumes = "application/json")
     @ApiImplicitParam(name = "pid", value = "产品父级ID", required = true,paramType = "path", dataType = "Integer")
