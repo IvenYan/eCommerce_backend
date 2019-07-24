@@ -63,7 +63,7 @@ public class ProductUpload {
     @GetMapping(value = "/amazon/productType")
     public List listProductTypeHistory(@RequestParam @ApiParam(name="counts",value="",required=true) int counts,@RequestParam @ApiParam(name="amazonAccountId",value="",required=true) int amazonAccountId) {
         log.info("/amazon/productType start...;查询最近十天的信息");
-
+//        amazonAccountInfoMapper.selectByAccountName(amazonAccountName);
         List<AmazonUploadHistory> amazonUploadHistories = amazonUploadHistoryMapper.selectListByCounts(counts,amazonAccountId);
         for(int a=0; a<amazonUploadHistories.size();a++){
             AmazonUploadHistory amazonUploadHistory = amazonUploadHistories.get(a);
@@ -145,7 +145,9 @@ public class ProductUpload {
 //        productWithBLOBs
 
 //        设置处理天数
-        if(Integer.parseInt(amazonProductUploadEntity.getProcessDays())==0){
+        if(amazonProductUploadEntity.getProcessDays()==null ||amazonProductUploadEntity.getProcessDays()=="" ){
+            productWithBLOBs.setFulfillmentLatency(2);
+        }else  if(Integer.parseInt(amazonProductUploadEntity.getProcessDays())==0){
             productWithBLOBs.setFulfillmentLatency(2);
         }else{
             productWithBLOBs.setFulfillmentLatency(Integer.parseInt(amazonProductUploadEntity.getProcessDays()));

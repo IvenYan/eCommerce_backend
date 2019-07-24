@@ -3,7 +3,7 @@
 <mapper namespace="com.management.backend.api.mybatis.mapper.AmazonUploadResultMapper" >
   <resultMap id="BaseResultMap" type="com.management.backend.api.mybatis.model.AmazonUploadResult" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="batchNo" property="batchno" jdbcType="INTEGER" />
+    <result column="batchNo" property="batchno" jdbcType="VARCHAR" />
     <result column="amazonAccount" property="amazonaccount" jdbcType="VARCHAR" />
     <result column="accountId" property="accountid" jdbcType="INTEGER" />
     <result column="uploadType" property="uploadtype" jdbcType="VARCHAR" />

@@ -1,27 +1,17 @@
 package com.management.backend.api.controller;
 
 import com.github.pagehelper.PageHelper;
-import com.management.backend.api.controller.entity.AmazonProductUploadEntity;
-import com.management.backend.api.controller.entity.ProductSimpleBody;
-import com.management.backend.api.controller.entity.RequestSearchProduct;
-import com.management.backend.api.controller.entity.ResponseBodyEntity;
-import com.management.backend.api.mybatis.mapper.AmazonAccountInfoMapper;
-import com.management.backend.api.mybatis.mapper.AmazonUploadHistoryMapper;
 import com.management.backend.api.mybatis.mapper.AmazonUploadResultMapper;
-import com.management.backend.api.mybatis.mapper.ProductMapper;
 import com.management.backend.api.mybatis.model.*;
-import com.management.backend.api.service.UploadToAmazon;
 import com.management.backend.api.util.PageBean;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,19 +23,17 @@ import java.util.List;
  **/
 @RestController
 @Api(value = "Amazon ProductUpload operations",tags = {"Amazon product upload service"})
-public class ProductUploadResult {
+public class AmazonProductUploadResult {
 
-    protected static final Logger log = LoggerFactory.getLogger(ProductUploadResult.class);
-    private SimpleDateFormat df_date = new SimpleDateFormat("yyyy-MM-dd“”“ HH:mm:ss.SSSS");//设置日期格式
-
-
+    protected static final Logger log = LoggerFactory.getLogger(AmazonProductUploadResult.class);
+//    private SimpleDateFormat df_date = new SimpleDateFormat("yyyy-MM-dd“”“ HH:mm:ss.SSSS");//设置日期格式
     @Autowired
     private AmazonUploadResultMapper amazonUploadResultMapper;
 
 
     @ApiOperation(value="亚马逊-列出所有亚马逊上传结果", notes="",produces="application/json",consumes = "application/json")
     @GetMapping(value = "/amazon/uploadresults")
-    public List listAmazonResultList(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
+    public PageBean<AmazonUploadResult> listAmazonResultList(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
         log.info("/amazon/uploadresults start...;");
 
         if(pageSize==0){
@@ -63,7 +51,7 @@ public class ProductUploadResult {
         pageData.setTotalNum(countNums);
         pageData.setItems(amazonUploadResults);
 
-        return pageData.getItems();
+        return pageData;
     }
 
 

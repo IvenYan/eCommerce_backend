@@ -8,7 +8,7 @@
     <result column="englishNameLabel" property="label" jdbcType="VARCHAR" />
     <result column="amazonType" property="amazontype" jdbcType="VARCHAR" />
     <result column="nodeId" property="nodeid" jdbcType="VARCHAR" />
-    <result column="hasChild" property="haschild" jdbcType="VARCHAR" />
+    <result column="hasChild" property="hasChildren" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,13 +71,39 @@
   <sql id="Base_Column_List" >
     id, name, pid, englishName, amazonType, nodeId, hasChild
   </sql>
-
-  <select id="selectByPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <!--最新数据库版本 还未使用-->
+  <select id="selectByPidAmazonClassifyProduct" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
-    id, name, pid, englishName,englishName as englishNameLabel
-    from amazon_classify_base where pid = ${pid}
+    id, name, pid, englishName,englishName as englishNameLabel,nodeId,hasChild
+    from amazon_product_classify_v2 where pid = ${pid}
       order by id
   </select>
+    <!--最新数据库表的操作-->
+    <select id="selectAmazonProductClassifyV2ByPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    id,chineseName as name, pid, nodeType as englishName,nodeType as englishNameLabel,nodeId
+    from amazon_product_classify_v2 where pid = ${pid}
+      order by id
+  </select>
+  <select id="selectByPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    id, name, pid, englishName,englishName as englishNameLabel,nodeId,hasChild
+    from amazon_classify where pid = ${pid}
+      order by id
+  </select>
+  <select id="selectBySearchPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    id, name, pid, englishName,englishName as englishNameLabel,nodeId,hasChild
+    from amazon_classify where pid = ${pid}
+      order by id
+  </select>
+  <select id="selectBySearchName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    id, name, pid, englishName,englishName as englishNameLabel,nodeId,hasChild
+    from amazon_classify where englishName like #{searchName,jdbcType=VARCHAR}
+      order by id
+  </select>
+
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.management.backend.api.mybatis.model.AmazonClassifyExample" >
     select
     <if test="distinct" >

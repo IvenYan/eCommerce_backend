@@ -135,7 +135,7 @@ public class UploadToAmazon {
                 "&Action=SubmitFeed" +
                 "&FeedType=_POST_PRODUCT_IMAGE_DATA_" +
                 "&MWSAuthToken="+amazonAccountInfo.getAmazonAccessSecret() +
-                "&MarketplaceIdList.Id.1="+amazonAccountInfo.getAmazonMarketplace() +
+                "&MarketplaceIdList.Id.1="+amazonAccountInfo.getMarketplaceId() +
                 "&SellerId=" +amazonAccountInfo.getSellerId()+
                 "&SignatureMethod=HmacSHA256" +
                 "&SignatureVersion=2" +
@@ -257,7 +257,7 @@ public class UploadToAmazon {
                 "&Action=SubmitFeed" +
                 "&FeedType=_POST_PRODUCT_IMAGE_DATA_" +
                 "&MWSAuthToken="+amazonAccountInfo.getAmazonAccessSecret() +
-                "&MarketplaceIdList.Id.1="+amazonAccountInfo.getAmazonMarketplace() +
+                "&MarketplaceIdList.Id.1="+amazonAccountInfo.getMarketplaceId() +
                 "&SellerId=" +amazonAccountInfo.getSellerId()+
                 "&SignatureMethod=HmacSHA256" +
                 "&SignatureVersion=2" +
@@ -348,7 +348,7 @@ public class UploadToAmazon {
                 "<AmazonEnvelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"amzn-envelope.xsd\">\n" +
                 "    <Header>\n" +
                 "        <DocumentVersion>1.01</DocumentVersion>\n" +
-                "        <MerchantIdentifier>"+amazonAccountInfo.getSellerId()+"</MerchantIdentifier>\n" +
+                "        <MerchantIdentifier>"+amazonAccountInfo.getMerchantIdentifier()+"</MerchantIdentifier>\n" +
                 "    </Header>\n" +
                 "    <MessageType>Product</MessageType>\n" +
                 "    <PurgeAndReplace>true</PurgeAndReplace>\n" +
@@ -406,7 +406,7 @@ public class UploadToAmazon {
                 "&Action=SubmitFeed" +
                 "&FeedType=_POST_PRODUCT_IMAGE_DATA_" +
                 "&MWSAuthToken="+amazonAccountInfo.getAmazonAccessSecret() +
-                "&MarketplaceIdList.Id.1="+amazonAccountInfo.getAmazonMarketplace() +
+                "&MarketplaceIdList.Id.1="+amazonAccountInfo.getMarketplaceId() +
                 "&SellerId=" +amazonAccountInfo.getSellerId()+
                 "&SignatureMethod=HmacSHA256" +
                 "&SignatureVersion=2" +
@@ -462,7 +462,7 @@ public class UploadToAmazon {
                 "<AmazonEnvelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"amzn-envelope.xsd\">\n" +
                 "    <Header>\n" +
                 "        <DocumentVersion>1.01</DocumentVersion>\n" +
-                "        <MerchantIdentifier>"+amazonAccountInfo.getSellerId()+"</MerchantIdentifier>\n" +
+                "        <MerchantIdentifier>"+amazonAccountInfo.getMerchantIdentifier()+"</MerchantIdentifier>\n" +
                 "    </Header>\n" +
                 "    <MessageType>Price</MessageType>\n" +
                 "    <Message>\n" +
@@ -498,7 +498,7 @@ public class UploadToAmazon {
                 "&Action=SubmitFeed" +
                 "&FeedType=_POST_PRODUCT_IMAGE_DATA_" +
                 "&MWSAuthToken="+amazonAccountInfo.getAmazonAccessSecret() +
-                "&MarketplaceIdList.Id.1="+amazonAccountInfo.getAmazonMarketplace() +
+                "&MarketplaceIdList.Id.1="+amazonAccountInfo.getMarketplaceId() +
                 "&SellerId=" +amazonAccountInfo.getSellerId()+
                 "&SignatureMethod=HmacSHA256" +
                 "&SignatureVersion=2" +
@@ -520,7 +520,7 @@ public class UploadToAmazon {
                 "<AmazonEnvelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"amzn-envelope.xsd\">\n" +
                 "    <Header>\n" +
                 "        <DocumentVersion>1.01</DocumentVersion>\n" +
-                "        <MerchantIdentifier>"+amazonAccountInfo.getSellerId()+"</MerchantIdentifier>\n" +
+                "        <MerchantIdentifier>"+amazonAccountInfo.getMerchantIdentifier()+"</MerchantIdentifier>\n" +
                 "    </Header>\n" +
                 "    <MessageType>Relationship</MessageType>\n" +
                 "    <Message>\n" +
@@ -545,7 +545,7 @@ public class UploadToAmazon {
                 "&Action=SubmitFeed" +
                 "&FeedType=_POST_PRODUCT_IMAGE_DATA_" +
                 "&MWSAuthToken="+amazonAccountInfo.getAmazonAccessSecret() +
-                "&MarketplaceIdList.Id.1="+amazonAccountInfo.getAmazonMarketplace() +
+                "&MarketplaceIdList.Id.1="+amazonAccountInfo.getMarketplaceId() +
                 "&SellerId=" +amazonAccountInfo.getSellerId()+
                 "&SignatureMethod=HmacSHA256" +
                 "&SignatureVersion=2" +
@@ -582,7 +582,7 @@ public class UploadToAmazon {
                 "<AmazonEnvelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"amzn-envelope.xsd\">\n" +
                 "    <Header>\n" +
                 "        <DocumentVersion>1.01</DocumentVersion>\n" +
-                "        <MerchantIdentifier>"+amazonAccountInfo.getSellerId()+"</MerchantIdentifier>\n" +
+                "        <MerchantIdentifier>"+amazonAccountInfo.getMerchantIdentifier()+"</MerchantIdentifier>\n" +
                 "    </Header>\n" +
                 "    <MessageType>Inventory</MessageType>\n" +
                 tmp+

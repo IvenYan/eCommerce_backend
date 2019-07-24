@@ -21,6 +21,8 @@ public interface AmazonAccountInfoMapper {
     List<AmazonAccountInfo> selectList();
     AmazonAccountInfo selectByPrimaryKey(Integer id);
 
+    AmazonAccountInfo selectByAccountName(String amazonAccountName);
+
     /*int updateByExampleSelective(@Param("record") AmazonAccountInfo record, @Param("example") AmazonAccountInfoExample example);
 
     int updateByExample(@Param("record") AmazonAccountInfo record, @Param("example") AmazonAccountInfoExample example);

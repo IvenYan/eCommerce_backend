@@ -36,9 +36,10 @@
   </select>-->
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
-    <include refid="Base_Column_List" />
-    from amazon_account_info
-    where id = #{id,jdbcType=INTEGER}
+    a.id, a.account_nickname, a.seller_id, b.amazon_marketplace, b.country_code, b.amazon_mws_endpoint,
+    b.marketplace_id,a.amazonAccessID,a.amazonAccessSecret,b.accountCountry,a.merchantIdentifier
+    from amazon_account_info a left join amazon_officer_marketplace b on a.amazonOfficerMarketplaceID=b.id
+    where a.id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectList" resultMap="BaseResultMap" >
     select

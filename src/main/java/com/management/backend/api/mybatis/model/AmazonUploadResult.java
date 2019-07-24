@@ -5,7 +5,7 @@ import java.util.Date;
 public class AmazonUploadResult {
     private Integer id;
 
-    private Integer batchno;
+    private String batchno;
 
     private String amazonaccount;
 
@@ -33,11 +33,11 @@ public class AmazonUploadResult {
         this.id = id;
     }
 
-    public Integer getBatchno() {
+    public String getBatchno() {
         return batchno;
     }
 
-    public void setBatchno(Integer batchno) {
+    public void setBatchno(String batchno) {
         this.batchno = batchno;
     }
 

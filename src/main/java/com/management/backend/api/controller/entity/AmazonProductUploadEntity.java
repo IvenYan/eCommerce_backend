@@ -14,7 +14,7 @@ public class AmazonProductUploadEntity {
 //    产品级别
     private int level;
 //    限制条数
-    private String limitNumber;
+    private int limitNumber;
 //    产品日期
     private List<String> productDate;
 //    产品排序-在用
@@ -27,10 +27,10 @@ public class AmazonProductUploadEntity {
     private String processDays;
 //    产品分类-在用
     private String productType;
-    private List prodductTypeList;
+    private List<String> prodductTypeList;
 //    亚马逊分类-在用
     private String amazonProductType;
-    private List amazonProductTypeList;
+    private List<String> amazonProductTypeList;
 //    上传模板
     private String uploadTemplate;
 //    厂商名称-在用
@@ -57,17 +57,11 @@ public class AmazonProductUploadEntity {
         return prodductTypeList;
     }
 
-    public void setProdductTypeList(List prodductTypeList) {
-        this.prodductTypeList = prodductTypeList;
-    }
 
     public List getAmazonProductTypeList() {
         return amazonProductTypeList;
     }
 
-    public void setAmazonProductTypeList(List amazonProductTypeList) {
-        this.amazonProductTypeList = amazonProductTypeList;
-    }
 
     public int getAmazonAccountId() {
         return amazonAccountId;
@@ -131,12 +125,20 @@ public class AmazonProductUploadEntity {
         this.level = level;
     }
 
-    public String getLimitNumber() {
+    public int getLimitNumber() {
         return limitNumber;
     }
 
-    public void setLimitNumber(String limitNumber) {
+    public void setLimitNumber(int limitNumber) {
         this.limitNumber = limitNumber;
+    }
+
+    public void setProdductTypeList(List<String> prodductTypeList) {
+        this.prodductTypeList = prodductTypeList;
+    }
+
+    public void setAmazonProductTypeList(List<String> amazonProductTypeList) {
+        this.amazonProductTypeList = amazonProductTypeList;
     }
 
     public String getProductId() {

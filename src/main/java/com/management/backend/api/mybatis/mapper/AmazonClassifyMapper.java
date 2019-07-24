@@ -15,6 +15,8 @@ public interface AmazonClassifyMapper {
 
     int deleteByExample(AmazonClassifyExample example);
 
+
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(AmazonClassify record);
@@ -34,4 +36,8 @@ public interface AmazonClassifyMapper {
     int updateByPrimaryKey(AmazonClassify record);
 //    获取父节点的所有值
 List<AmazonClassify> selectByPid(@Param("pid")Integer pid);
+    List<AmazonClassify> selectAmazonProductClassifyV2ByPid(@Param("pid")Integer pid);
+
+    List<AmazonClassify> selectBySearchName(@Param("searchName")String searchName);
+
 }

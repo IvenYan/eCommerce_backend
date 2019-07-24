@@ -6,7 +6,7 @@ public class AmazonUploadHistory {
     private Integer id;
 
     private Integer amazonaccountid;
-
+    private String  amazonaccountName;
     private String processdays;
 
     private String uploadTemplate;
@@ -34,6 +34,14 @@ private List amazonproducttypeList;
     private String descsuffix;
 
     private String desctag;
+
+    public String getAmazonaccountName() {
+        return amazonaccountName;
+    }
+
+    public void setAmazonaccountName(String amazonaccountName) {
+        this.amazonaccountName = amazonaccountName;
+    }
 
     public String getUploadTemplate() {
         return uploadTemplate;

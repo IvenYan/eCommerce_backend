@@ -6,18 +6,29 @@ public class AmazonClassify {
     private List<AmazonClassify> children;
     private Integer id;
 
+    //中文名称
     private String value;
 
     private Integer pid;
-
+//分类名称
     private String label;
-
+//    数组形式的
+    private List<String> labelList;
     private String amazontype;
-
+//分类节点ID
     private String nodeid;
 
-    private String haschild;
+//    是否有子类
+    private String hasChildren;
 
+
+    public List<String> getLabelList() {
+        return labelList;
+    }
+
+    public void setLabelList(List<String> labelList) {
+        this.labelList = labelList;
+    }
 
     public Integer getId() {
         return id;
@@ -75,11 +86,11 @@ public class AmazonClassify {
         this.nodeid = nodeid == null ? null : nodeid.trim();
     }
 
-    public String getHaschild() {
-        return haschild;
+    public String getHasChildren() {
+        return hasChildren;
     }
 
-    public void setHaschild(String haschild) {
-        this.haschild = haschild == null ? null : haschild.trim();
+    public void setHasChildren(String hasChildren) {
+        this.hasChildren = hasChildren;
     }
 }
