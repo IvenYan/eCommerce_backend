@@ -17,10 +17,19 @@ public class AmazonClassify {
     private String amazontype;
 //分类节点ID
     private String nodeid;
+//   类似于Baby(宝宝)
+    private String fullName;
 
 //    是否有子类
     private String hasChildren;
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
     public List<String> getLabelList() {
         return labelList;

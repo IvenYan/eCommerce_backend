@@ -1,5 +1,6 @@
 package hwj;
 
+import com.management.backend.api.controller.ClassifyController;
 import org.apache.http.HttpHost;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -8,6 +9,8 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.Proxy;
@@ -15,6 +18,8 @@ import java.net.URI;
 import java.util.Map;
 
 public class HttpClientUtil {
+
+    protected static final Logger log = LoggerFactory.getLogger(HttpClientUtil.class);
 
     public static final int SO_TIMEOUT_MS = 8000;
     public static final int CONNECTION_TIMEOUT_MS = 1000;
@@ -39,7 +44,8 @@ public class HttpClientUtil {
             if (response.getStatusLine().getStatusCode() == 200)
                 resultString = EntityUtils.toString(response.getEntity(), "UTF-8");
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            log.error("doGet= connect timeout"+e.getMessage());
         } finally {
             try {
                 if (response != null) {

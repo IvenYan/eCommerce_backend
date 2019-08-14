@@ -1,12 +1,13 @@
 package com.management.backend.api.util;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SignatureException;
+import java.security.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -30,7 +31,7 @@ public class Signature {
 
     public static void main(String[] args) throws Exception {
         // Change this secret key to yours
-        String secretKey = "Your";
+        String secretKey = "AKIAJH2EZXNXNDOS3TJQ";
 
         // Use the endpoint for your marketplace
         String serviceUrl = "https://mws.amazonservices.com/";
@@ -39,10 +40,10 @@ public class Signature {
         HashMap<String, String> parameters = new HashMap<String,String>();
 
         // Add required parameters. Change these as needed.
-        parameters.put("AWSAccessKeyId", urlEncode("Your"));
+        parameters.put("AWSAccessKeyId", urlEncode("AKIAJH2EZXNXNDOS3TJQ"));
         parameters.put("Action", urlEncode("GetFeedSubmissionList"));
-        parameters.put("MWSAuthToken", urlEncode("Your"));
-        parameters.put("SellerId", urlEncode("Your"));
+        parameters.put("MWSAuthToken", urlEncode("hS/J1Wfhu3foKru5wyz0spoJ+mAh2CGV3P8D856x"));
+        parameters.put("SellerId", urlEncode("A2R2HEGXW6VHVZ"));
         parameters.put("SignatureMethod", urlEncode(ALGORITHM));
         parameters.put("SignatureVersion", urlEncode("2"));
         parameters.put("SubmittedFromDate",
@@ -84,6 +85,27 @@ public class Signature {
      *       by the '&' character (ASCII code 38).
      *
      */
+    public static String computeContentMD5HeaderValue( InputStream fis )
+            throws IOException, NoSuchAlgorithmException {
+
+        DigestInputStream dis = new DigestInputStream( fis,
+                MessageDigest.getInstance( "MD5" ));
+
+        byte[] buffer = new byte[8192];
+        while( dis.read( buffer ) > 0 );
+
+        String md5Content = new String(
+                org.apache.commons.codec.binary.Base64.encodeBase64(
+                        dis.getMessageDigest().digest()) );
+
+        // Effectively resets the stream to be beginning of the file
+        // via a FileChannel.
+//        YK 注释掉的
+//        fis.getChannel().position( 0 );
+
+        return md5Content;
+    }
+
     public static String calculateStringToSignV2(
             Map<String, String> parameters, String serviceUrl)
             throws SignatureException, URISyntaxException {
@@ -97,10 +119,10 @@ public class Signature {
 
         // Create flattened (String) representation
         StringBuilder data = new StringBuilder();
-        data.append("POST\n");
-        data.append(endpoint.getHost());
-        data.append("\n/");
-        data.append("\n");
+//        data.append("POST\n");
+//        data.append(endpoint.getHost());
+//        data.append("\n/");
+//        data.append("\n");
 
         Iterator<Entry<String, String>> pairs =
                 sorted.entrySet().iterator();

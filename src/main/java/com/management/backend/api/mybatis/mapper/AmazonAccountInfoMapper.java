@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 @Mapper
 @Component
 public interface AmazonAccountInfoMapper {
+//Demo 验证接口不可以是无初始化的变量
+    //    int a;
 
    /* int insert(AmazonAccountInfo record);
 

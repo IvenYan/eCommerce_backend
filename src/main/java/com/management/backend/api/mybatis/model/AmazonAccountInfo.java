@@ -107,4 +107,21 @@ public class AmazonAccountInfo {
     public void setMarketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId == null ? null : marketplaceId.trim();
     }
+
+    @Override
+    public String toString() {
+        return "AmazonAccountInfo{" +
+                "id=" + id +
+                ", accountNickname='" + accountNickname + '\'' +
+                ", sellerId='" + sellerId + '\'' +
+                ", amazonMarketplace='" + amazonMarketplace + '\'' +
+                ", countryCode='" + countryCode + '\'' +
+                ", amazonMwsEndpoint='" + amazonMwsEndpoint + '\'' +
+                ", marketplaceId='" + marketplaceId + '\'' +
+                ", amazonAccessID='" + amazonAccessID + '\'' +
+                ", amazonAccessSecret='" + amazonAccessSecret + '\'' +
+                ", accountCountry='" + accountCountry + '\'' +
+                ", merchantIdentifier='" + merchantIdentifier + '\'' +
+                '}';
+    }
 }

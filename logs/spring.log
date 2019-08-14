@@ -1,0 +1,10 @@
+2019-08-13 17:50:45.672  INFO 2740 --- [main] c.m.backend.ManagementApplicationTests   : Starting ManagementApplicationTests on hadoop-PC with PID 2740 (started by hadoop in F:\IvenDevelop\ECommerceWorkspace\eCommerce_backend)
+2019-08-13 17:50:45.678  INFO 2740 --- [main] c.m.backend.ManagementApplicationTests   : No active profile set, falling back to default profiles: default
+2019-08-13 17:50:47.387  INFO 2740 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$242da3d7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-13 17:50:49.406  INFO 2740 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-08-13 17:50:49.792  INFO 2740 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-08-13 17:50:49.814  INFO 2740 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-08-13 17:50:49.827  INFO 2740 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-08-13 17:50:50.057  INFO 2740 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getProductUsingGET_1
+2019-08-13 17:50:50.176  INFO 2740 --- [main] c.m.backend.ManagementApplicationTests   : Started ManagementApplicationTests in 4.936 seconds (JVM running for 6.623)
+2019-08-13 17:50:50.403  INFO 2740 --- [Thread-3] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

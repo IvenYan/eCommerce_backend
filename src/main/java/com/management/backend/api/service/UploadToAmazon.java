@@ -1,5 +1,7 @@
 package com.management.backend.api.service;
 
+import com.amazonaws.mws.IvenDemoSample;
+import com.management.backend.api.controller.ProductUpload;
 import com.management.backend.api.controller.entity.AmazonProductUploadEntity;
 import com.management.backend.api.mybatis.mapper.AmazonAccountInfoMapper;
 import com.management.backend.api.mybatis.model.AmazonAccountInfo;
@@ -10,6 +12,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -38,7 +42,7 @@ import java.util.*;
  **/
 @Service
 public class UploadToAmazon {
-
+    protected static final Logger log = LoggerFactory.getLogger(UploadToAmazon.class);
     private SimpleDateFormat df_date_before = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
     private SimpleDateFormat df_date_after = new SimpleDateFormat("HH:mm:ss");//设置日期格式
     private SimpleDateFormat timeStamp = new SimpleDateFormat("HH:mm:ss.SSS");
@@ -47,19 +51,20 @@ public class UploadToAmazon {
     private String imageLocationPref="http://wechatcool.xyz/ecommerce_backend/images/";
 
     private String signature="";
+    private String url="";
     HashMap<String, String> parameters = new HashMap<String,String>();
 
   /* 亚马逊的操作：
    * _POST_PRODUCT_DATA_    商品上传数据
    * _POST_PRODUCT_RELATIONSHIP_DATA_   商品关系上传数据
    * _POST_ITEM_DATA_       商品上传数据
-   * _POST_OFFER_ONLY_DATA_ 仅含价格的上传数据
-   * _POST_WEBSTORE_ITEM_DATA_  WebStore 商品上传数据
+   * _POST_PRODUCT_PRICING_DATA_ 仅含价格的上传数据
+   * _POST_INVENTORY_AVAILABILITY_DATA_  WebStore 商品上传数据
    * */
 
     @Autowired
     private AmazonAccountInfoMapper amazonAccountInfoMapper;
-    public String common(AmazonAccountInfo amazonAccountInfo) throws Exception{
+    public String common(AmazonAccountInfo amazonAccountInfo,String feedType) throws Exception{
         float timeZoneOffset=0.00f;
         /*if (timeZoneOffset > 13 || timeZoneOffset < -12) {
              timeZoneOffset = 0;
@@ -79,16 +84,15 @@ public class UploadToAmazon {
         String product_date_before = df_date_before.format(new Date());
         String product_date_after = df_date_after.format(new Date());
         String tmp = timeStamp.format(new Date());
+
         this.dateSimple=product_date_before+"T"+product_date_after+"Z";
         this.dateTimeStamp=product_date_before+"T"+tmp+"Z";
 
 // Change this secret key to yours
         String secretKey = amazonAccountInfo.getAmazonAccessSecret();
-
         // Use the endpoint for your marketplace
         String serviceUrl = amazonAccountInfo.getAmazonMwsEndpoint();
 //        HashMap<String, String> parameters = new HashMap<String,String>();
-
         // Add required parameters. Change these as needed.
         this.parameters.put("AWSAccessKeyId", Signature.urlEncode(amazonAccountInfo.getAmazonAccessID()));
         this.parameters.put("Action", Signature.urlEncode("SubmitFeed"));
@@ -100,25 +104,21 @@ public class UploadToAmazon {
                 Signature.urlEncode(this.dateSimple));
         this.parameters.put("Timestamp", Signature.urlEncode(this.dateTimeStamp));
         this.parameters.put("Version", Signature.urlEncode("2009-01-01"));
+        this.parameters.put("FeedType", Signature.urlEncode(feedType));
 
-        // Format the parameters as they will appear in final format
-        // (without the signature parameter)
-        String formattedParameters = Signature.calculateStringToSignV2(parameters,
-                serviceUrl);
-
-        String signature = Signature.sign(formattedParameters, secretKey);
-
-        // Add signature to the parameters and display final results
-        parameters.put("Signature", Signature.urlEncode(signature));
-//        System.out.println(Signature.calculateStringToSignV2(parameters, serviceUrl));
-        String s = Signature.urlEncode(signature);
-        return s;
+        String formattedParameters = Signature.calculateStringToSignV2(parameters, serviceUrl);
+        String signatureTmp = Signature.sign(formattedParameters, secretKey);
+        parameters.put("Signature", Signature.urlEncode(signatureTmp));
+        String fullUrl = Signature.calculateStringToSignV2(parameters, serviceUrl);
+//        log.info(fullUrl);
+        this.signature = Signature.urlEncode(signature);
+        return fullUrl;
 
     }
 
     public void productAllUpload(AmazonAccountInfo amazonAccountInfo, ProductWithBLOBs productWithBLOBs, AmazonProductUploadEntity amazonProductUploadEntity) throws Exception{
 
-        //        组合方法，上传5中方式
+        //        组合方法，上传5种方式
         this.productImageUpload(amazonAccountInfo,productWithBLOBs);
         this.productUpload(amazonAccountInfo,productWithBLOBs);
         this.productPriceUpload(amazonAccountInfo,productWithBLOBs);
@@ -128,27 +128,19 @@ public class UploadToAmazon {
     }
 
     public String productImageUpload(AmazonAccountInfo amazonAccountInfo,ProductWithBLOBs productWithBLOBs) throws Exception{
-        String common = this.common(amazonAccountInfo);
-        HttpClient client = HttpClients.createDefault();
+        String common = this.common(amazonAccountInfo,"_POST_PRODUCT_IMAGE_DATA_");
+        log.info("productImageUpload="+amazonAccountInfo.toString());
+//        HttpClient client = HttpClients.createDefault();
 
-        String requestURLParams=amazonAccountInfo.getAmazonMwsEndpoint()+"?AWSAccessKeyId="+amazonAccountInfo.getAmazonAccessID() +
-                "&Action=SubmitFeed" +
-                "&FeedType=_POST_PRODUCT_IMAGE_DATA_" +
-                "&MWSAuthToken="+amazonAccountInfo.getAmazonAccessSecret() +
-                "&MarketplaceIdList.Id.1="+amazonAccountInfo.getMarketplaceId() +
-                "&SellerId=" +amazonAccountInfo.getSellerId()+
-                "&SignatureMethod=HmacSHA256" +
-                "&SignatureVersion=2" +
-                "&Timestamp=" +this.dateTimeStamp+
-                "&Version=2009-01-01" +
-                "&Signature="+common;
+        String requestURLParams=amazonAccountInfo.getAmazonMwsEndpoint()+"?"+common;
         System.out.println(requestURLParams);
         String tmp1="    <Message>\n" +
                     "        <MessageID>1</MessageID>\n" +
                     "        <OperationType>Update</OperationType>\n";
-        if(productWithBLOBs.getProductItems()==null)
+        if(productWithBLOBs.getProductItems()==null ||productWithBLOBs.getProductItems().size()==0)
         {
 //没有变体
+            log.info("productImageUpload:没有变体");
             String[] split = productWithBLOBs.getPictureListString().split(",");
             for (int i = 0; i <split.length ; i++) {
                 if (i == 0) {
@@ -169,6 +161,7 @@ public class UploadToAmazon {
         }else
             {
 //如果有变体
+            log.info("productImageUpload:有变体");
             tmp1 += "<ProductImage>\n" +
                     "     <SKU>" + productWithBLOBs.getParentSkuId() + "</SKU>\n" +
                     "     <ImageType>Main</ImageType>\n" +
@@ -208,9 +201,7 @@ public class UploadToAmazon {
                     }
                 }
                 tmp1+="        </Message>\n";
-
             }
-
         }
 
         String body="<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" +
@@ -223,9 +214,14 @@ public class UploadToAmazon {
                 tmp1+
                 "</AmazonEnvelope>";
 
+        log.info("productImageUpload="+body);
         // 要调用的接口方法
-        HttpPost post = new HttpPost(requestURLParams);
+
+        IvenDemoSample.invoke(amazonAccountInfo,"_POST_PRODUCT_IMAGE_DATA_",body);
         String result ="";
+
+/*
+        HttpPost post = new HttpPost(requestURLParams);
         try {
             StringEntity s = new StringEntity(body);
 //            s.setContentEncoding("UTF-8");
@@ -243,19 +239,18 @@ public class UploadToAmazon {
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        }*/
         return result;
     }
 
-
 //    产品上传-未完待续
     public void productUpload(AmazonAccountInfo amazonAccountInfo , ProductWithBLOBs productWithBLOBs) throws Exception{
-        String common = this.common(amazonAccountInfo);
+        String common = this.common(amazonAccountInfo,"_POST_PRODUCT_DATA_");
         HttpClient client = HttpClients.createDefault();
 
         String requestURLParams=amazonAccountInfo.getAmazonMwsEndpoint()+"?AWSAccessKeyId="+amazonAccountInfo.getAmazonAccessID() +
                 "&Action=SubmitFeed" +
-                "&FeedType=_POST_PRODUCT_IMAGE_DATA_" +
+                "&FeedType=_POST_PRODUCT_DATA_" +
                 "&MWSAuthToken="+amazonAccountInfo.getAmazonAccessSecret() +
                 "&MarketplaceIdList.Id.1="+amazonAccountInfo.getMarketplaceId() +
                 "&SellerId=" +amazonAccountInfo.getSellerId()+
@@ -265,7 +260,7 @@ public class UploadToAmazon {
                 "&Version=2009-01-01" +
                 "&Signature=";
 
-//        根据国家选择产品的语言描述以及类型
+//      根据国家选择产品的语言描述以及类型
         String productTile="";
         String productKeyWords="";
         String productKeyDesc="";
@@ -273,6 +268,7 @@ public class UploadToAmazon {
         String amazonProductKeyDesc="";
         String amazonProductKeyWords="";
         String tmp="";
+
         switch(amazonAccountInfo.getAccountCountry()){
             case "英国" :
                 productTile=productWithBLOBs.getEnglishproducttile();
@@ -343,7 +339,6 @@ public class UploadToAmazon {
             amazonProductKeyWords+=tmp;
         }
 
-
         String body="<?xml version=\"1.0\" ?>\n" +
                 "<AmazonEnvelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"amzn-envelope.xsd\">\n" +
                 "    <Header>\n" +
@@ -399,12 +394,13 @@ public class UploadToAmazon {
 
     //    产品价格上传-未完待续
     public void productPriceUpload(AmazonAccountInfo amazonAccountInfo , ProductWithBLOBs productWithBLOBs) throws Exception{
-        String common = this.common(amazonAccountInfo);
+        String common = this.common(amazonAccountInfo,"_POST_PRODUCT_PRICING_DATA_");
+
         HttpClient client = HttpClients.createDefault();
 
         String requestURLParams=amazonAccountInfo.getAmazonMwsEndpoint()+"?AWSAccessKeyId="+amazonAccountInfo.getAmazonAccessID() +
                 "&Action=SubmitFeed" +
-                "&FeedType=_POST_PRODUCT_IMAGE_DATA_" +
+                "&FeedType=_POST_PRODUCT_PRICING_DATA_" +
                 "&MWSAuthToken="+amazonAccountInfo.getAmazonAccessSecret() +
                 "&MarketplaceIdList.Id.1="+amazonAccountInfo.getMarketplaceId() +
                 "&SellerId=" +amazonAccountInfo.getSellerId()+
@@ -491,12 +487,12 @@ public class UploadToAmazon {
 
     //    产品关系上传-未完待续
     public void productRelationshipUpload(AmazonAccountInfo amazonAccountInfo , ProductWithBLOBs productWithBLOBs) throws Exception{
-        String common = this.common(amazonAccountInfo);
+        String common = this.common(amazonAccountInfo,"_POST_PRODUCT_RELATIONSHIP_DATA_");
         HttpClient client = HttpClients.createDefault();
 
         String requestURLParams=amazonAccountInfo.getAmazonMwsEndpoint()+"?AWSAccessKeyId="+amazonAccountInfo.getAmazonAccessID() +
                 "&Action=SubmitFeed" +
-                "&FeedType=_POST_PRODUCT_IMAGE_DATA_" +
+                "&FeedType=_POST_PRODUCT_RELATIONSHIP_DATA_" +
                 "&MWSAuthToken="+amazonAccountInfo.getAmazonAccessSecret() +
                 "&MarketplaceIdList.Id.1="+amazonAccountInfo.getMarketplaceId() +
                 "&SellerId=" +amazonAccountInfo.getSellerId()+
@@ -538,12 +534,12 @@ public class UploadToAmazon {
 
     //    产品库存上传-未完待续
     public void productInventoryUpload(AmazonAccountInfo amazonAccountInfo , ProductWithBLOBs productWithBLOBs) throws Exception{
-        String common = this.common(amazonAccountInfo);
+        String common = this.common(amazonAccountInfo,"_POST_INVENTORY_AVAILABILITY_DATA_");
         HttpClient client = HttpClients.createDefault();
 
         String requestURLParams=amazonAccountInfo.getAmazonMwsEndpoint()+"?AWSAccessKeyId="+amazonAccountInfo.getAmazonAccessID() +
                 "&Action=SubmitFeed" +
-                "&FeedType=_POST_PRODUCT_IMAGE_DATA_" +
+                "&FeedType=_POST_INVENTORY_AVAILABILITY_DATA_" +
                 "&MWSAuthToken="+amazonAccountInfo.getAmazonAccessSecret() +
                 "&MarketplaceIdList.Id.1="+amazonAccountInfo.getMarketplaceId() +
                 "&SellerId=" +amazonAccountInfo.getSellerId()+
