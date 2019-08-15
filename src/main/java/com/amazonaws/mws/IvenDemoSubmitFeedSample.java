@@ -54,7 +54,7 @@ public class IvenDemoSubmitFeedSample {
         final String secretAccessKey = "hS/J1Wfhu3foKru5wyz0spoJ+mAh2CGV3P8D856x";
 
         final String appName = "LANJan";
-        final String appVersion = "2016-09-21";
+        final String appVersion = "2.0";
 
         MarketplaceWebServiceConfig config = new MarketplaceWebServiceConfig();
 //        YK 添加
@@ -66,7 +66,8 @@ public class IvenDemoSubmitFeedSample {
         // US
 //         config.setServiceURL("https://mws.amazonservices.com/");
         // UK
-         config.setServiceURL("https://mws.amazonservices.co.uk/");
+//         config.setServiceURL("https://mws.amazonservices.co.uk/");
+         config.setServiceURL("https://mws-eu.amazonservices.com");
         // Germany
 //         config.setServiceURL("https://mws.amazonservices.de/");
         // France
@@ -126,6 +127,8 @@ public class IvenDemoSubmitFeedSample {
         FileInputStream fileInputStream = new FileInputStream(new File("F:/IvenDevelop/ECommerceWorkspace/xsd/product.xml"));
         request.setFeedContent(fileInputStream);
         request.setContentMD5(UtilTools.getFileInputStreamMD5String(fileInputStream));
+        request.setContentType(ContentType.TextXml);
+
 
         // MWS exclusively offers a streaming interface for uploading your
         // feeds. This is because
@@ -149,7 +152,6 @@ public class IvenDemoSubmitFeedSample {
         // "my-flat-file.txt" if you use flat files*/);
 
         invokeSubmitFeed(service, request);
-
     }
 
     /**
