@@ -15,21 +15,20 @@
  *
  */
 
-package com.amazonaws.mws.samples;
+package com.management.backend.api.util;
 
-import java.io.ByteArrayInputStream;
-import java.util.Arrays;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.ArrayList;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-
-import com.amazonaws.mws.*;
+import com.amazonaws.mws.MarketplaceWebService;
+import com.amazonaws.mws.MarketplaceWebServiceClient;
+import com.amazonaws.mws.MarketplaceWebServiceConfig;
+import com.amazonaws.mws.MarketplaceWebServiceException;
 import com.amazonaws.mws.model.*;
-import com.amazonaws.mws.mock.MarketplaceWebServiceMock;
+import com.management.backend.api.mybatis.model.AmazonAccountInfo;
+import com.management.backend.api.util.UtilTools;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Arrays;
 
 /**
  *
@@ -37,7 +36,7 @@ import com.amazonaws.mws.mock.MarketplaceWebServiceMock;
  *
  *
  */
-public class SubmitFeedSample {
+public class SubmitFeedFunction {
 
     /**
      * Just add a few required parameters, and try the service Submit Feed
@@ -47,43 +46,26 @@ public class SubmitFeedSample {
      *            unused
      */
     /**
-     * @param args
+     * @param amazonAccountInfo,feedType,body
      */
-    public static void main(String... args) {
+    public static void invokeAmazon(AmazonAccountInfo amazonAccountInfo,String feedType,String body,String fileTmpPath) throws IOException {
 
         /************************************************************************
          * Access Key ID and Secret Access Key ID, obtained from:
          * http://aws.amazon.com
          ***********************************************************************/
-        final String accessKeyId = "<Your Access Key ID>";
-        final String secretAccessKey = "<Your Secret Access Key>";
+        String accessKeyId = amazonAccountInfo.getAmazonAccessID();
+        String secretAccessKey = amazonAccountInfo.getAmazonAccessSecret();
 
-        final String appName = "<Your Application or Company Name>";
-        final String appVersion = "<Your Application Version or Build Number or Release Date>";
+        String appName = amazonAccountInfo.getMerchantIdentifier();
+        String appVersion = "2009-01-01";
 
         MarketplaceWebServiceConfig config = new MarketplaceWebServiceConfig();
 
         /************************************************************************
          * Uncomment to set the appropriate MWS endpoint.
          ************************************************************************/
-        // US
-        // config.setServiceURL("https://mws.amazonservices.com/");
-        // UK
-        // config.setServiceURL("https://mws.amazonservices.co.uk/");
-        // Germany
-        // config.setServiceURL("https://mws.amazonservices.de/");
-        // France
-        // config.setServiceURL("https://mws.amazonservices.fr/");
-        // Italy
-        // config.setServiceURL("https://mws.amazonservices.it/");
-        // Japan
-        // config.setServiceURL("https://mws.amazonservices.jp/");
-        // China
-        // config.setServiceURL("https://mws.amazonservices.com.cn/");
-        // Canada
-        // config.setServiceURL("https://mws.amazonservices.ca/");
-        // India
-        // config.setServiceURL("https://mws.amazonservices.in/");
+         config.setServiceURL(amazonAccountInfo.getAmazonMwsEndpoint());
 
         /************************************************************************
          * You can also try advanced configuration options. Available options are:
@@ -111,21 +93,25 @@ public class SubmitFeedSample {
          * Marketplace and Merchant IDs are required parameters for all
          * Marketplace Web Service calls.
          ***********************************************************************/
-        final String merchantId = "<Your Merchant ID>";
+        final String merchantId = amazonAccountInfo.getMerchantIdentifier();
         final String sellerDevAuthToken = "<Merchant Developer MWS Auth Token>";
         // marketplaces to which this feed will be submitted; look at the
         // API reference document on the MWS website to see which marketplaces are
         // included if you do not specify the list yourself
         final IdList marketplaces = new IdList(Arrays.asList(
-        		"Marketplae1",
-        		"Marketplace2"));
+        		amazonAccountInfo.getMarketplaceId()));
 
         SubmitFeedRequest request = new SubmitFeedRequest();
         request.setMerchant(merchantId);
         //request.setMWSAuthToken(sellerDevAuthToken);
         request.setMarketplaceIdList(marketplaces);
 
-        request.setFeedType("<Feed Type>");
+        request.setFeedType(feedType);
+//        yk 添加
+
+        FileInputStream fileInputStream = new FileInputStream(new File("F:/IvenDevelop/ECommerceWorkspace/xsd/product.xml"));
+        request.setFeedContent(fileInputStream);
+        request.setContentMD5(UtilTools.getFileInputStreamMD5String(fileInputStream));
 
         // MWS exclusively offers a streaming interface for uploading your
         // feeds. This is because

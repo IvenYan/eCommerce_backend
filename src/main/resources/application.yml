@@ -20,18 +20,21 @@ spring:
     url: jdbc:mysql://148.70.219.244:3306/backendshop_qzx?useUnicode=true&characterEncoding=UTF-8
     username: backendshop_user
 
+#Test demo使用
 qzx:
   sellerId:
   amazonAccessID: AKIAJH2EZXNXNDOS3TJQ
   amazonAccessSecret: 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
-
+#亚马逊地址使用
 amazon:
   de: https://sellercentral.amazon.de/
   en: https://sellercentral.amazon.co.uk/
   na: https://sellercentral.amazon.com/
 
+
 linux:
   json: /home/ubuntu/ecommerce_backend/ecommerce-backend/static
+  fileTmpPath:
   image:
     filepath: /home/ubuntu/ecommerce_backend/images/
 
@@ -41,6 +44,7 @@ windows:
       filepath: D:/05Program/vue-backend-admin/static/images/
   home:
     classifyjson: F:/IvenDevelop/ECommerceWorkspace/project0714/project/static/amazonClassifyv2.json
+    fileTmpPath: F:/IvenDevelop/ECommerceWorkspace/xsd/product.xml
     image:
       filepath: F:/IvenDevelop/AppWorkspace/shopping/vue-backend-admin/static/images/
 

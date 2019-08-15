@@ -1,6 +1,6 @@
 package com.management.backend.api.service;
 
-import com.amazonaws.mws.IvenDemoSample;
+//import com.amazonaws.mws.IvenDemoSample;
 import com.management.backend.api.controller.ProductUpload;
 import com.management.backend.api.controller.entity.AmazonProductUploadEntity;
 import com.management.backend.api.mybatis.mapper.AmazonAccountInfoMapper;
@@ -53,6 +53,10 @@ public class UploadToAmazon {
     private String signature="";
     private String url="";
     HashMap<String, String> parameters = new HashMap<String,String>();
+
+    @Value("windows.home.fileTmpPath")
+    private static String fileTmpPath;
+
 
   /* 亚马逊的操作：
    * _POST_PRODUCT_DATA_    商品上传数据
@@ -217,7 +221,7 @@ public class UploadToAmazon {
         log.info("productImageUpload="+body);
         // 要调用的接口方法
 
-        IvenDemoSample.invoke(amazonAccountInfo,"_POST_PRODUCT_IMAGE_DATA_",body);
+//        IvenDemoSample.invoke(amazonAccountInfo,"_POST_PRODUCT_IMAGE_DATA_",body);
         String result ="";
 
 /*
