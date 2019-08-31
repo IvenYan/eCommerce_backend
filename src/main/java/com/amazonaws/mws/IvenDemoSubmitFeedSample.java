@@ -18,12 +18,13 @@
 package com.amazonaws.mws;
 
 import com.amazonaws.mws.model.*;
+import com.management.backend.api.mybatis.model.AmazonAccountInfo;
+import com.management.backend.api.service.UploadToAmazon;
 import com.management.backend.api.util.UtilTools;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
+import java.util.UUID;
 import java.util.concurrent.locks.Condition;
 
 /**
@@ -42,8 +43,126 @@ public class IvenDemoSubmitFeedSample {
      *            unused
      */
     /**
-     * @param args
+     * @param amazonAccountInfo,feedType, body
      */
+    public static void invoke(AmazonAccountInfo amazonAccountInfo,String feedType, String body) throws Exception{
+        /************************************************************************
+         * Access Key ID and Secret Access Key ID, obtained from:
+         * http://aws.amazon.com
+         ***********************************************************************/
+        final String accessKeyId = amazonAccountInfo.getAmazonAccessID();
+        final String secretAccessKey = amazonAccountInfo.getAmazonAccessSecret();
+
+        final String appName = "";
+        final String appVersion = "";
+
+        MarketplaceWebServiceConfig config = new MarketplaceWebServiceConfig();
+//        YK 添加
+//        config.setProxyProtocol(MarketplaceWebServiceConfig.ProxyProtocol.HTTPS);
+
+        /************************************************************************
+         * Uncomment to set the appropriate MWS endpoint.
+         ************************************************************************/
+        // US
+//         config.setServiceURL("https://mws.amazonservices.com/");
+        // UK
+//         config.setServiceURL("https://mws.amazonservices.co.uk/");
+        config.setServiceURL(amazonAccountInfo.getAmazonMwsEndpoint());
+        // Germany
+//         config.setServiceURL("https://mws.amazonservices.de/");
+        // France
+//         config.setServiceURL("https://mws.amazonservices.fr/");
+        // Italy
+//         config.setServiceURL("https://mws.amazonservices.it/");
+        // Japan
+        // config.setServiceURL("https://mws.amazonservices.jp/");
+        // China
+        // config.setServiceURL("https://mws.amazonservices.com.cn/");
+        // Canada
+        // config.setServiceURL("https://mws.amazonservices.ca/");
+        // India
+        // config.setServiceURL("https://mws.amazonservices.in/");
+
+        /************************************************************************
+         * You can also try advanced configuration options. Available options are:
+         *
+         *  - Signature Version
+         *  - Proxy Host and Proxy Port
+         *  - User Agent String to be sent to Marketplace Web Service
+         *
+         ***********************************************************************/
+
+        /************************************************************************
+         * Instantiate Http Client Implementation of Marketplace Web Service
+         ***********************************************************************/
+
+        MarketplaceWebService service = new MarketplaceWebServiceClient(
+                accessKeyId, secretAccessKey, appName, appVersion, config);
+
+
+        /************************************************************************
+         * Setup request parameters and uncomment invoke to try out sample for
+         * Submit Feed
+         ***********************************************************************/
+
+        /************************************************************************
+         * Marketplace and Merchant IDs are required parameters for all
+         * Marketplace Web Service calls.
+         ***********************************************************************/
+        String merchantId = amazonAccountInfo.getMerchantIdentifier();
+        String sellerDevAuthToken = "<Merchant Developer MWS Auth Token>";
+        // marketplaces to which this feed will be submitted; look at the
+        // API reference document on the MWS website to see which marketplaces are
+        // included if you do not specify the list yourself
+        IdList marketplaces = new IdList(Arrays.asList(
+                amazonAccountInfo.getMarketplaceId()));
+
+        SubmitFeedRequest request = new SubmitFeedRequest();
+        request.setMerchant(merchantId);
+        //request.setMWSAuthToken(sellerDevAuthToken);
+        request.setMarketplace(amazonAccountInfo.getMarketplaceId());
+//        request.setMarketplaceIdList(marketplaces);
+
+        request.setFeedType(feedType);
+//        yk 添加
+//        FileInputStream fileInputStream = new FileInputStream(new File("F:/IvenDevelop/ECommerceWorkspace/xsd/product.xml"));
+//        FileInputStream fileInputStream = new FileInputStream(new File("D:/03WorkTemp/xsd/product.xml"));
+        UUID uuid = UUID.randomUUID();
+
+//        IvenDemoSubmitFeedSample.getClass().getResourceAsStream(uuid+"tmp.txt");
+        String path = new Object() {
+            public String getPath() {
+                return this.getClass().getResource("/").getPath();
+            }
+        }.getPath().substring(1);
+        System.out.println("测试专用-"+path);
+        File file = new File(path + uuid + "tmp.xml");
+        if(file.exists()){
+            file.delete();
+        }
+        FileOutputStream fos = new FileOutputStream(file);
+        fos.write(body.getBytes("UTF-8"));
+//输出内容
+        fos.flush();
+//        关闭连接
+        fos.close();
+
+        FileInputStream fis = new FileInputStream(file);
+
+        request.setFeedContent(fis);
+
+        request.setContentMD5(UtilTools.getFileInputStreamMD5String(fis));
+        request.setContentType(ContentType.TextXml);
+        request.setPurgeAndReplace(true);
+//        request.set
+
+        invokeSubmitFeed(service, request);
+//        最后关闭fis
+        fis.close();
+        if(file.exists()){
+            file.delete();
+        }
+    }
     public static void main(String... args) throws IOException {
 
         /************************************************************************
@@ -124,7 +243,8 @@ public class IvenDemoSubmitFeedSample {
 
         request.setFeedType("_POST_PRODUCT_DATA_");
 //        yk 添加
-        FileInputStream fileInputStream = new FileInputStream(new File("F:/IvenDevelop/ECommerceWorkspace/xsd/product.xml"));
+//        FileInputStream fileInputStream = new FileInputStream(new File("F:/IvenDevelop/ECommerceWorkspace/xsd/product.xml"));
+        FileInputStream fileInputStream = new FileInputStream(new File("D:/03WorkTemp/xsd/product.xml"));
         request.setFeedContent(fileInputStream);
         request.setContentMD5(UtilTools.getFileInputStreamMD5String(fileInputStream));
         request.setContentType(ContentType.TextXml);

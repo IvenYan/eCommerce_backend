@@ -1,10 +1,13 @@
 package com.management.backend.api.service;
 
 //import com.amazonaws.mws.IvenDemoSample;
+import com.amazonaws.mws.IvenDemoSubmitFeedSample;
 import com.management.backend.api.controller.ProductUpload;
 import com.management.backend.api.controller.entity.AmazonProductUploadEntity;
 import com.management.backend.api.mybatis.mapper.AmazonAccountInfoMapper;
+import com.management.backend.api.mybatis.mapper.AmazonProductStandardNoMapper;
 import com.management.backend.api.mybatis.model.AmazonAccountInfo;
+import com.management.backend.api.mybatis.model.AmazonProductStandardNo;
 import com.management.backend.api.mybatis.model.ProductItem;
 import com.management.backend.api.mybatis.model.ProductWithBLOBs;
 import com.management.backend.api.util.Signature;
@@ -55,7 +58,7 @@ public class UploadToAmazon {
     HashMap<String, String> parameters = new HashMap<String,String>();
 
     @Value("windows.home.fileTmpPath")
-    private static String fileTmpPath;
+    private String fileTmpPath;
 
 
   /* 亚马逊的操作：
@@ -68,6 +71,9 @@ public class UploadToAmazon {
 
     @Autowired
     private AmazonAccountInfoMapper amazonAccountInfoMapper;
+    @Autowired
+    private AmazonProductStandardNoMapper amazonProductStandardNoMapper;
+
     public String common(AmazonAccountInfo amazonAccountInfo,String feedType) throws Exception{
         float timeZoneOffset=0.00f;
         /*if (timeZoneOffset > 13 || timeZoneOffset < -12) {
@@ -221,7 +227,7 @@ public class UploadToAmazon {
         log.info("productImageUpload="+body);
         // 要调用的接口方法
 
-//        IvenDemoSample.invoke(amazonAccountInfo,"_POST_PRODUCT_IMAGE_DATA_",body);
+        IvenDemoSubmitFeedSample.invoke(amazonAccountInfo,"_POST_PRODUCT_IMAGE_DATA_",body);
         String result ="";
 
 /*
@@ -248,7 +254,7 @@ public class UploadToAmazon {
     }
 
 //    产品上传-未完待续
-    public void productUpload(AmazonAccountInfo amazonAccountInfo , ProductWithBLOBs productWithBLOBs) throws Exception{
+    public String productUpload(AmazonAccountInfo amazonAccountInfo , ProductWithBLOBs productWithBLOBs) throws Exception{
         String common = this.common(amazonAccountInfo,"_POST_PRODUCT_DATA_");
         HttpClient client = HttpClients.createDefault();
 
@@ -346,7 +352,7 @@ public class UploadToAmazon {
         String body="<?xml version=\"1.0\" ?>\n" +
                 "<AmazonEnvelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"amzn-envelope.xsd\">\n" +
                 "    <Header>\n" +
-                "        <DocumentVersion>1.01</DocumentVersion>\n" +
+                "        <DocumentVersion>1.0</DocumentVersion>\n" +
                 "        <MerchantIdentifier>"+amazonAccountInfo.getMerchantIdentifier()+"</MerchantIdentifier>\n" +
                 "    </Header>\n" +
                 "    <MessageType>Product</MessageType>\n" +
@@ -356,8 +362,13 @@ public class UploadToAmazon {
                 "        <OperationType>Update</OperationType>\n" +
                 "        <Product>\n" +
                 "            <SKU>"+ UUID.randomUUID()+"</SKU>\n" +
-                "            <ProductTaxCode>A_GEN_TAX</ProductTaxCode>\n" +
-                "            <LaunchDate>“”"+this.dateTimeStamp+"</LaunchDate>\n" +
+
+                "            <StandardProductID>\n" +
+                "               <Type>UPC</Type>\n" +
+//                Todo
+                "               <Value>"+new String("")+"</Value>\n" +
+                "            </StandardProductID>\n" +
+                "            <LaunchDate>"+this.dateTimeStamp+"</LaunchDate>\n" +
                 "            <DescriptionData>\n" +
                 "                <Title>"+productTile+"</Title>\n" +
                 "                <Brand>"+productWithBLOBs.getBrand()+"</Brand>\n" +
@@ -389,10 +400,12 @@ public class UploadToAmazon {
                 "            </ProductData>\n" +
                 "        </Product>\n" +
                 "    </Message>\n" +
-                "    <Message>\n" +
                 "</AmazonEnvelope>";
 
+        IvenDemoSubmitFeedSample.invoke(amazonAccountInfo,"_POST_PRODUCT_DATA_",body);
 
+        String result="";
+        return result;
     }
 
 

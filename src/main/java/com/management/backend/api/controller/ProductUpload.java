@@ -158,7 +158,8 @@ public class ProductUpload {
 
 //        productWithBLOBs
 //        uploadToAmazon.productAllUpload(amazonAccountInfo,productWithBLOBs,amazonProductUploadEntity);
-        String s = uploadToAmazon.productImageUpload(amazonAccountInfo, productWithBLOBs);
+//        String s = uploadToAmazon.productImageUpload(amazonAccountInfo, productWithBLOBs);
+        String s = uploadToAmazon.productUpload(amazonAccountInfo, productWithBLOBs);
 
         ResponseBodyEntity responseBody = new ResponseBodyEntity();
 //        responseBody.setId();
@@ -170,6 +171,7 @@ public class ProductUpload {
 
 
 //    弃用
+    @Deprecated
     @ApiOperation(value="亚马逊上传产品测试接口", notes="根据产品的id来获取产品详细信息",produces="application/json",consumes = "application/json")
     @PostMapping(value = "/amazon/products/uploadTest")
     public ResponseBodyEntity test(@RequestBody @ApiParam(name="上传的产品对象",value="传入json格式;id会自动生成，不用输入",required=true)

@@ -115,12 +115,19 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
             &lt;!&ndash;<columnRenamingRule searchString="^D_" replaceString=""/> &ndash;&gt;
         </table>-->
-        <table schema="backendshop_qzx" tableName="amazon_product_classify_v2" domainObjectName="AmazonProductClassify"
+        <!--<table schema="backendshop_qzx" tableName="amazon_product_classify_v2" domainObjectName="AmazonProductClassify"
                enableCountByExample="true" enableUpdateByExample="true"
                enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <!--<columnRenamingRule searchString="^D_" replaceString=""/> -->
-        </table>
+            &lt;!&ndash;<columnRenamingRule searchString="^D_" replaceString=""/> &ndash;&gt;
+        </table>-->
+        <!--<table schema="backendshop_qzx" tableName="amazon_product_standard_no" domainObjectName="AmazonProductStandardNo"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            &lt;!&ndash;<columnRenamingRule searchString="^D_" replaceString=""/> &ndash;&gt;
+        </table>-->
     </context>
 </generatorConfiguration>

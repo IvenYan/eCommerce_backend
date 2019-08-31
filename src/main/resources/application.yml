@@ -40,6 +40,7 @@ linux:
 
 windows:
   work:
+    fileTmpPath : D:/03WorkTemp/xsd/product.xml
     image:
       filepath: D:/05Program/vue-backend-admin/static/images/
   home:

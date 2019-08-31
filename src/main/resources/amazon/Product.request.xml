@@ -1,50 +1,242 @@
 <?xml version="1.0" ?>
-<AmazonEnvelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="amzn-
-envelope.xsd">
+<AmazonEnvelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="amzn-envelope.xsd">
     <Header>
         <DocumentVersion>1.01</DocumentVersion>
-        <MerchantIdentifier>M_SELLER_354577</MerchantIdentifier>
+        <MerchantIdentifier>A2R2HEGXW6VHVZ</MerchantIdentifier>
     </Header>
     <MessageType>Product</MessageType>
     <PurgeAndReplace>true</PurgeAndReplace>
     <Message>
         <MessageID>1</MessageID>
         <OperationType>Update</OperationType>
-        <Product>
-            <SKU>1Z-500ABR-FLAT</SKU>
-            <ProductTaxCode>A_GEN_TAX</ProductTaxCode>
-            <LaunchDate>2005-07-26T00:00:01</LaunchDate>
+        <Product xsi:noNamespaceSchemaLocation="amzn-envelope.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <SKU>a</SKU>
+            <StandardProductID>
+                <Type>ASIN</Type>
+                <Value>aaaaaaaa</Value>
+            </StandardProductID>
+            <GtinExemptionReason>part</GtinExemptionReason>
+            <RelatedProductID>
+                <Type>UPC</Type>
+                <Value>aaaaaaaa</Value>
+            </RelatedProductID>
+            <ProductTaxCode>a</ProductTaxCode>
+            <LaunchDate>2001-12-17T09:30:47Z</LaunchDate>
+            <DiscontinueDate>2001-12-17T09:30:47Z</DiscontinueDate>
+            <ReleaseDate>2001-12-17T09:30:47Z</ReleaseDate>
+            <ExternalProductUrl>http://www.altova.com</ExternalProductUrl>
+            <Condition>
+                <ConditionType>New</ConditionType>
+                <ConditionNote>sample string</ConditionNote>
+            </Condition>
+            <Rebate>
+                <RebateStartDate>2001-12-17T09:30:47Z</RebateStartDate>
+                <RebateEndDate>2001-12-17T09:30:47Z</RebateEndDate>
+                <RebateMessage>a</RebateMessage>
+                <RebateName>a</RebateName>
+            </Rebate>
+            <Rebate>
+                <RebateStartDate>2001-12-17T09:30:47Z</RebateStartDate>
+                <RebateEndDate>2001-12-17T09:30:47Z</RebateEndDate>
+                <RebateMessage>a</RebateMessage>
+                <RebateName>a</RebateName>
+            </Rebate>
+            <ItemPackageQuantity>2</ItemPackageQuantity>
+            <NumberOfItems>2</NumberOfItems>
+            <LiquidVolume unitOfMeasure="microliters">1234567891.12</LiquidVolume>
             <DescriptionData>
-                <Title>Lyric 500 tc Queen Flat Sheet, Ivory</Title>
-                <Brand>Peacock Alley</Brand>
-                <Description>Lyric sheeting by Peacock Alley is the epitome of simple and classic elegance. The flat sheets
-                    and pillowcases feature a double row of hemstitching. The fitted sheets fit mattresses up to 21 inches deep.
-                    The sheets are shown at left with tone on tone monogramming, please call for monogramming details and prices.
-                    Please note, gift wrapping and overnight shipping are not available for this style.</Description>
-                <BulletPoint>made in Italy</BulletPoint>
-                <BulletPoint>500 thread count</BulletPoint>
-                <BulletPoint>plain weave (percale)</BulletPoint>
-                <BulletPoint>100% Egyptian cotton</BulletPoint>
-                <Manufacturer>Peacock Alley</Manufacturer>
-                <SearchTerms>bedding</SearchTerms>
-                <SearchTerms>Sheets</SearchTerms>
-                <ItemType>flat-sheets</ItemType>
-                <IsGiftWrapAvailable>false</IsGiftWrapAvailable>
-                <IsGiftMessageAvailable>false</IsGiftMessageAvailable>
-                <RecommendedBrowseNode>60583031</RecommendedBrowseNode>
-                <RecommendedBrowseNode>60576021</RecommendedBrowseNode>
+                <Title>a</Title>
+                <Brand>sample string</Brand>
+                <Designer>a</Designer>
+                <Description>sample string</Description>
+                <BulletPoint>a</BulletPoint>
+                <BulletPoint>a</BulletPoint>
+                <ItemDimensions>
+                    <Length unitOfMeasure="CM">1234567891.12</Length>
+                    <Width unitOfMeasure="micrometers">1234567891.12</Width>
+                    <Height unitOfMeasure="meters">1234567891.12</Height>
+                    <Weight unitOfMeasure="MG">1234567891.12</Weight>
+                </ItemDimensions>
+                <PackageDimensions>
+                    <Length unitOfMeasure="micrometers">1234567891.12</Length>
+                    <Width unitOfMeasure="inches">1234567891.12</Width>
+                    <Height unitOfMeasure="decimeters">1234567891.12</Height>
+                    <Weight unitOfMeasure="OZ">1234567891.12</Weight>
+                </PackageDimensions>
+                <PackageWeight unitOfMeasure="GR">0.00</PackageWeight>
+                <ShippingWeight unitOfMeasure="LB">0.00</ShippingWeight>
+                <MerchantCatalogNumber>a</MerchantCatalogNumber>
+                <MSRP currency="GBP">123456789123456789.12</MSRP>
+                <MSRPWithTax currency="GBP">123456789123456789.12</MSRPWithTax>
+                <MaxOrderQuantity>2</MaxOrderQuantity>
+                <SerialNumberRequired>true</SerialNumberRequired>
+                <Prop65>true</Prop65>
+                <CPSIAWarning>choking_hazard_is_a_marble</CPSIAWarning>
+                <CPSIAWarning>choking_hazard_contains_a_marble</CPSIAWarning>
+                <CPSIAWarningDescription>a</CPSIAWarningDescription>
+                <LegalDisclaimer>sample string</LegalDisclaimer>
+                <Manufacturer>sample string</Manufacturer>
+                <MfrPartNumber>a</MfrPartNumber>
+                <SearchTerms>a</SearchTerms>
+                <SearchTerms>a</SearchTerms>
+                <PlatinumKeywords>a</PlatinumKeywords>
+                <PlatinumKeywords>a</PlatinumKeywords>
+                <Memorabilia>true</Memorabilia>
+                <Autographed>true</Autographed>
+                <UsedFor>a</UsedFor>
+                <UsedFor>a</UsedFor>
+                <ItemType>a</ItemType>
+                <OtherItemAttributes>a</OtherItemAttributes>
+                <OtherItemAttributes>a</OtherItemAttributes>
+                <TargetAudience>a</TargetAudience>
+                <TargetAudience>a</TargetAudience>
+                <SubjectContent>a</SubjectContent>
+                <SubjectContent>a</SubjectContent>
+                <IsGiftWrapAvailable>true</IsGiftWrapAvailable>
+                <IsGiftMessageAvailable>true</IsGiftMessageAvailable>
+                <PromotionKeywords>a</PromotionKeywords>
+                <PromotionKeywords>a</PromotionKeywords>
+                <IsDiscontinuedByManufacturer>true</IsDiscontinuedByManufacturer>
+                <DeliveryScheduleGroupID>a</DeliveryScheduleGroupID>
+                <DeliveryChannel>in_store</DeliveryChannel>
+                <DeliveryChannel>direct_ship</DeliveryChannel>
+                <ExternalProductInformation>a</ExternalProductInformation>
+                <MaxAggregateShipQuantity>2</MaxAggregateShipQuantity>
+                <RecommendedBrowseNode>2</RecommendedBrowseNode>
+                <RecommendedBrowseNode>2</RecommendedBrowseNode>
+                <MerchantShippingGroupName>sample string</MerchantShippingGroupName>
+                <FEDAS_ID>aaaaaa</FEDAS_ID>
+                <TSDAgeWarning>not_suitable_under_6_years_supervision</TSDAgeWarning>
+                <TSDWarning>risk_of_entanglement</TSDWarning>
+                <TSDWarning>toy_inside</TSDWarning>
+                <TSDLanguage>German</TSDLanguage>
+                <TSDLanguage>French</TSDLanguage>
+                <OptionalPaymentTypeExclusion>exclude cvs</OptionalPaymentTypeExclusion>
+                <DistributionDesignation>jp_parallel_import</DistributionDesignation>
+                <ExternalTestingCertification>a</ExternalTestingCertification>
+                <ExternalTestingCertification>a</ExternalTestingCertification>
+                <Battery>
+                    <AreBatteriesIncluded>true</AreBatteriesIncluded>
+                    <AreBatteriesRequired>true</AreBatteriesRequired>
+                    <BatterySubgroup>
+                        <BatteryType>battery_type_a</BatteryType>
+                        <NumberOfBatteries>2</NumberOfBatteries>
+                    </BatterySubgroup>
+                    <BatterySubgroup>
+                        <BatteryType>battery_type_SC</BatteryType>
+                        <NumberOfBatteries>2</NumberOfBatteries>
+                    </BatterySubgroup>
+                </Battery>
+                <BatteryCellType>zinc</BatteryCellType>
+                <BatteryWeight unitOfMeasure="LB">1234567891.12</BatteryWeight>
+                <NumberOfLithiumMetalCells>2</NumberOfLithiumMetalCells>
+                <NumberOfLithiumIonCells>2</NumberOfLithiumIonCells>
+                <LithiumBatteryPackaging>batteries_contained_in_equipment</LithiumBatteryPackaging>
+                <LithiumBatteryEnergyContent unitOfMeasure="btu">1234567891.12</LithiumBatteryEnergyContent>
+                <LithiumBatteryWeight unitOfMeasure="MG">1234567891.12</LithiumBatteryWeight>
+                <ItemWeight unitOfMeasure="KG">1234567891.12</ItemWeight>
+                <ItemVolume unitOfMeasure="picoliters">1234567891.12</ItemVolume>
+                <FlashPoint>a</FlashPoint>
+                <GHSClassificationClass>irritant</GHSClassificationClass>
+                <GHSClassificationClass>oxidizing</GHSClassificationClass>
+                <SupplierDeclaredDGHZRegulation>unknown</SupplierDeclaredDGHZRegulation>
+                <SupplierDeclaredDGHZRegulation>waste</SupplierDeclaredDGHZRegulation>
+                <HazmatUnitedNationsRegulatoryID>String</HazmatUnitedNationsRegulatoryID>
+                <SafetyDataSheetURL>http://www.altova.com</SafetyDataSheetURL>
+                <CaliforniaProposition65ComplianceType>passenger_or_off_road_vehicle</CaliforniaProposition65ComplianceType>
+                <CaliforniaProposition65ChemicalNames1>chlorendic_acid</CaliforniaProposition65ChemicalNames1>
+                <CaliforniaProposition65ChemicalNames2>aminopterin</CaliforniaProposition65ChemicalNames2>
+                <CaliforniaProposition65ChemicalNames3>1_5_nitrofurfurylidene_amino_2_imidazoli</CaliforniaProposition65ChemicalNames3>
+                <CaliforniaProposition65ChemicalNames4>ethylene_oxide</CaliforniaProposition65ChemicalNames4>
+                <CaliforniaProposition65ChemicalNames5>aramite</CaliforniaProposition65ChemicalNames5>
             </DescriptionData>
+            <DiscoveryData>
+                <Priority>1</Priority>
+                <BrowseExclusion>true</BrowseExclusion>
+                <RecommendationExclusion>true</RecommendationExclusion>
+            </DiscoveryData>
             <ProductData>
-                <Home>
-                    <Parentage>variation-parent</Parentage>
+                <ClothingAccessories>
                     <VariationData>
-                        <VariationTheme>Size-Color</VariationTheme>
+                        <Parentage>parent</Parentage>
+                        <Size>a</Size>
+                        <Color>a</Color>
+                        <VariationTheme>Size</VariationTheme>
                     </VariationData>
-                    <Material>cotton</Material>
-                    <ThreadCount>500</ThreadCount>
-                </Home>
+                    <ClassificationData>
+                        <Department>a</Department>
+                        <ColorMap>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</ColorMap>
+                        <SpecialSizeType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SpecialSizeType>
+                        <SpecialFeature>sample string</SpecialFeature>
+                        <SpecialFeature>sample string</SpecialFeature>
+                        <MaterialAndFabric>sample string</MaterialAndFabric>
+                        <MaterialAndFabric>sample string</MaterialAndFabric>
+                        <ImportDesignation>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</ImportDesignation>
+                        <CountryAsLabeled>AA</CountryAsLabeled>
+                        <FurDescription>sample string</FurDescription>
+                        <MaterialOpacity>sample string</MaterialOpacity>
+                        <FabricWash>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</FabricWash>
+                        <PatternStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</PatternStyle>
+                        <FitType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</FitType>
+                        <WaterResistanceLevel>waterproof</WaterResistanceLevel>
+                        <ApparelClosureType>sample string</ApparelClosureType>
+                        <ButtonQuantity>1</ButtonQuantity>
+                        <ControlType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</ControlType>
+                        <OccasionAndLifestyle>sample string</OccasionAndLifestyle>
+                        <StyleName>a</StyleName>
+                        <StyleNumber>a</StyleNumber>
+                        <CollarType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</CollarType>
+                        <SleeveType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SleeveType>
+                        <CuffType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</CuffType>
+                        <PocketDescription>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</PocketDescription>
+                        <FrontPleatType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</FrontPleatType>
+                        <TopStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</TopStyle>
+                        <BottomStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</BottomStyle>
+                        <SizeMap>a</SizeMap>
+                        <WaistSize unitOfMeasure="CM">1234567891.12</WaistSize>
+                        <InseamLength unitOfMeasure="CM">1234567891.12</InseamLength>
+                        <SleeveLength unitOfMeasure="CM">1234567891.12</SleeveLength>
+                        <NeckSize unitOfMeasure="CM">1234567891.12</NeckSize>
+                        <NeckStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</NeckStyle>
+                        <ChestSize unitOfMeasure="CM">1234567891.12</ChestSize>
+                        <CupSize>J</CupSize>
+                        <UnderwireType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</UnderwireType>
+                        <ShoeWidth>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</ShoeWidth>
+                        <ItemRise unitOfMeasure="centimeters">1234567891.12</ItemRise>
+                        <RiseStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</RiseStyle>
+                        <LegDiameter unitOfMeasure="micrometers">1234567891.12</LegDiameter>
+                        <LegStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</LegStyle>
+                        <BeltStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</BeltStyle>
+                        <StrapType>a</StrapType>
+                        <ToeStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</ToeStyle>
+                        <Theme>sample string</Theme>
+                        <Character>sample string</Character>
+                        <LaptopCapacity>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</LaptopCapacity>
+                        <IsStainResistant>true</IsStainResistant>
+                        <NumberOfPieces>123456789123</NumberOfPieces>
+                        <WheelType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</WheelType>
+                    </ClassificationData>
+                </ClothingAccessories>
             </ProductData>
+            <ShippedByFreight>true</ShippedByFreight>
+            <EnhancedImageURL>http://www.altova.com</EnhancedImageURL>
+            <Amazon-Vendor-Only>
+                <Cost currency="AED">123456789123456789.12</Cost>
+            </Amazon-Vendor-Only>
+            <Amazon-Only>
+                <Tier>2</Tier>
+                <PurchasingCategory>a</PurchasingCategory>
+                <PurchasingSubCategory>a</PurchasingSubCategory>
+                <PackagingType>a</PackagingType>
+                <UnderlyingAvailability>backordered</UnderlyingAvailability>
+                <ReplenishmentCategory>non-stockupable</ReplenishmentCategory>
+                <DropShipStatus>drop-ship-only</DropShipStatus>
+                <OutOfStockWebsiteMessage>pre-order-ute</OutOfStockWebsiteMessage>
+            </Amazon-Only>
+            <RegisteredParameter>PrivateLabel</RegisteredParameter>
+            <NationalStockNumber>a</NationalStockNumber>
+            <UnspscCode>a</UnspscCode>
+            <UVPListPrice currency="AED">123456789123456789.12</UVPListPrice>
         </Product>
     </Message>
-    <Message>
 </AmazonEnvelope>
