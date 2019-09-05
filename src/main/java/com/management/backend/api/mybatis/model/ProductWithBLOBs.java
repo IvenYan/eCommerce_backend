@@ -320,4 +320,42 @@ public class ProductWithBLOBs extends Product {
     public void setChineseproductdesc(String chineseproductdesc) {
         this.chineseproductdesc = chineseproductdesc;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+"ProductWithBLOBs{" +
+                "englishproducttile='" + englishproducttile + '\'' +
+                ", englishproductkeywords='" + englishproductkeywords + '\'' +
+                ", englishproductkeydesc='" + englishproductkeydesc + '\'' +
+                ", englishproductdesc='" + englishproductdesc + '\'' +
+                ", frenchproducttile='" + frenchproducttile + '\'' +
+                ", frenchproductkeywords='" + frenchproductkeywords + '\'' +
+                ", frenchproductkeydesc='" + frenchproductkeydesc + '\'' +
+                ", frenchproductdesc='" + frenchproductdesc + '\'' +
+                ", germanproducttile='" + germanproducttile + '\'' +
+                ", germanproductkeywords='" + germanproductkeywords + '\'' +
+                ", germanproductkeydesc='" + germanproductkeydesc + '\'' +
+                ", germanproductdesc='" + germanproductdesc + '\'' +
+                ", italyproducttile='" + italyproducttile + '\'' +
+                ", italyproductkeywords='" + italyproductkeywords + '\'' +
+                ", italyproductkeydesc='" + italyproductkeydesc + '\'' +
+                ", italyproductdesc='" + italyproductdesc + '\'' +
+                ", spanishproducttile='" + spanishproducttile + '\'' +
+                ", spanishproductkeywords='" + spanishproductkeywords + '\'' +
+                ", spanishproductkeydesc='" + spanishproductkeydesc + '\'' +
+                ", spanishproductdesc='" + spanishproductdesc + '\'' +
+                ", japaneseproducttile='" + japaneseproducttile + '\'' +
+                ", japaneseproductkeywords='" + japaneseproductkeywords + '\'' +
+                ", japaneseproductkeydesc='" + japaneseproductkeydesc + '\'' +
+                ", japaneseproductdesc='" + japaneseproductdesc + '\'' +
+                ", russianproducttile='" + russianproducttile + '\'' +
+                ", russianproductkeywords='" + russianproductkeywords + '\'' +
+                ", russianproductkeydesc='" + russianproductkeydesc + '\'' +
+                ", russianproductdesc='" + russianproductdesc + '\'' +
+                ", chineseproducttile='" + chineseproducttile + '\'' +
+                ", chineseproductkeywords='" + chineseproductkeywords + '\'' +
+                ", chineseproductkeydesc='" + chineseproductkeydesc + '\'' +
+                ", chineseproductdesc='" + chineseproductdesc + '\'' +
+                '}';
+    }
 }

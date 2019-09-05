@@ -5,6 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Product {
+//  亚马逊官方类型ID example :1730930031
+    private String amazonTypeId;
+
+    public String getAmazonTypeId() {
+        return amazonTypeId;
+    }
+
+    public void setAmazonTypeId(String amazonTypeId) {
+        this.amazonTypeId = amazonTypeId;
+    }
 
     private Integer id;
 

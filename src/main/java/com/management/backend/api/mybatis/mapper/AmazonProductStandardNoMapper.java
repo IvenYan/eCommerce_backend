@@ -11,6 +11,10 @@ import org.springframework.stereotype.Component;
 @Mapper
 @Component
 public interface AmazonProductStandardNoMapper {
+
+//    查询 最新的 UPC 编码
+    AmazonProductStandardNo getNewNotUsedNo();
+
     int countByExample(AmazonProductStandardNoExample example);
 
     int deleteByExample(AmazonProductStandardNoExample example);

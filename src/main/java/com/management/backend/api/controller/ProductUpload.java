@@ -6,6 +6,7 @@ import com.management.backend.api.mybatis.mapper.AmazonAccountInfoMapper;
 import com.management.backend.api.mybatis.mapper.AmazonUploadHistoryMapper;
 import com.management.backend.api.mybatis.mapper.ProductMapper;
 import com.management.backend.api.mybatis.model.AmazonAccountInfo;
+import com.management.backend.api.mybatis.model.AmazonProductClassify;
 import com.management.backend.api.mybatis.model.AmazonUploadHistory;
 import com.management.backend.api.mybatis.model.ProductWithBLOBs;
 import com.management.backend.api.service.UploadToAmazon;
@@ -26,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import com.management.backend.api.mybatis.mapper.AmazonProductClassifyMapper;
 
 /**
  * @ClassName ProductUpload
@@ -50,6 +52,8 @@ public class ProductUpload {
     private UploadToAmazon uploadToAmazon;
     @Autowired
     private AmazonUploadHistoryMapper amazonUploadHistoryMapper;
+    @Autowired
+    private AmazonProductClassifyMapper amazonProductClassifyMapper;
 
     @ApiOperation(value="亚马逊-列出所有亚马逊用户", notes="",produces="application/json",consumes = "application/json")
     @GetMapping(value = "/amazon/accounts")
@@ -139,7 +143,10 @@ public class ProductUpload {
         log.info("写入历史记录");
         AmazonAccountInfo amazonAccountInfo = amazonAccountInfoMapper.selectByPrimaryKey(amazonProductUploadEntity.getAmazonAccountId());
         ProductWithBLOBs productWithBLOBs = productMapper.selectByPrimaryKey(Integer.parseInt(amazonProductUploadEntity.getProductId()));
-//        productWithBLOBs
+//        查询亚马逊分类的ID
+        List<String> amazonProductTypeList1 = amazonProductUploadEntity.getAmazonProductTypeList();
+        AmazonProductClassify amazonProductClassify = amazonProductClassifyMapper.selectByNodeType(amazonProductTypeList1.get(amazonProductTypeList1.size()));
+        productWithBLOBs.setAmazonTypeId(amazonProductClassify.getNodeid());
 
 //        设置处理天数
         if(amazonProductUploadEntity.getProcessDays()==null ||amazonProductUploadEntity.getProcessDays()=="" ){

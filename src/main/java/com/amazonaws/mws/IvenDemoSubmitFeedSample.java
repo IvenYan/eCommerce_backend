@@ -18,9 +18,13 @@
 package com.amazonaws.mws;
 
 import com.amazonaws.mws.model.*;
+import com.management.backend.api.controller.AmazonAccount;
 import com.management.backend.api.mybatis.model.AmazonAccountInfo;
 import com.management.backend.api.service.UploadToAmazon;
 import com.management.backend.api.util.UtilTools;
+import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.Arrays;
@@ -34,6 +38,7 @@ import java.util.concurrent.locks.Condition;
  *
  */
 public class IvenDemoSubmitFeedSample {
+    protected static final Logger log = LoggerFactory.getLogger(IvenDemoSubmitFeedSample.class);
 
     /**
      * Just add a few required parameters, and try the service Submit Feed
@@ -136,10 +141,8 @@ public class IvenDemoSubmitFeedSample {
             }
         }.getPath().substring(1);
         System.out.println("测试专用-"+path);
-        File file = new File(path + uuid + "tmp.xml");
-        if(file.exists()){
-            file.delete();
-        }
+        File file = new File("/"+path + uuid + "_tmp.xml");
+
         FileOutputStream fos = new FileOutputStream(file);
         fos.write(body.getBytes("UTF-8"));
 //输出内容
@@ -160,8 +163,10 @@ public class IvenDemoSubmitFeedSample {
 //        最后关闭fis
         fis.close();
         if(file.exists()){
+
             file.delete();
         }
+        log.info("IvenDemoSubmitFeedSample end");
     }
     public static void main(String... args) throws IOException {
 
@@ -244,7 +249,7 @@ public class IvenDemoSubmitFeedSample {
         request.setFeedType("_POST_PRODUCT_DATA_");
 //        yk 添加
 //        FileInputStream fileInputStream = new FileInputStream(new File("F:/IvenDevelop/ECommerceWorkspace/xsd/product.xml"));
-        FileInputStream fileInputStream = new FileInputStream(new File("D:/03WorkTemp/xsd/product.xml"));
+        FileInputStream fileInputStream = new FileInputStream(new File("/Users/SherryZ/IdeaProjects/tmp/product.xml"));
         request.setFeedContent(fileInputStream);
         request.setContentMD5(UtilTools.getFileInputStreamMD5String(fileInputStream));
         request.setContentType(ContentType.TextXml);

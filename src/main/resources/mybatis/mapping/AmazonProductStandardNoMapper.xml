@@ -68,6 +68,13 @@
   <sql id="Base_Column_List" >
     id, standard_product_id, standard_type, used
   </sql>
+
+  <select id="getNewNotUsedNo" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from amazon_product_standard_no
+    where used='false' order by id limit 1
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.management.backend.api.mybatis.model.AmazonProductStandardNoExample" >
     select
     <if test="distinct" >

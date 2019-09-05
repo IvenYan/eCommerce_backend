@@ -38,6 +38,9 @@ linux:
   image:
     filepath: /home/ubuntu/ecommerce_backend/images/
 
+mac:
+  fileTmpPath : /Users/SherryZ/IdeaProjects/tmp/product.xml
+
 windows:
   work:
     fileTmpPath : D:/03WorkTemp/xsd/product.xml

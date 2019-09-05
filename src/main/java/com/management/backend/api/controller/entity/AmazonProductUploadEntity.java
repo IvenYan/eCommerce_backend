@@ -58,7 +58,7 @@ public class AmazonProductUploadEntity {
     }
 
 
-    public List getAmazonProductTypeList() {
+    public List<String> getAmazonProductTypeList() {
         return amazonProductTypeList;
     }
 

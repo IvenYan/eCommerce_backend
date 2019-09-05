@@ -37,4 +37,5 @@ public interface AmazonProductClassifyMapper {
     int updatePidAndChineseName(@Param("sourceId") int sourceId,@Param("pid") int pid,@Param("chineseName") String chineseName);
     int updatePidAndNodeType(@Param("sourceId") int sourceId,@Param("pid") int pid,@Param("nodeType") String nodeType,@Param("chineseName") String chineseName);
     AmazonProductClassify selectByNodePath(@Param("nodePath") String nodePath);
+    AmazonProductClassify selectByNodeType(@Param("nodeType") String nodeType);
 }

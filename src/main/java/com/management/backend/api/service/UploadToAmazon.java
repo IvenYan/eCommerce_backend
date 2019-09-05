@@ -255,10 +255,11 @@ public class UploadToAmazon {
 
 //    产品上传-未完待续
     public String productUpload(AmazonAccountInfo amazonAccountInfo , ProductWithBLOBs productWithBLOBs) throws Exception{
+        System.out.println("productUpload： "+productWithBLOBs.toString());
         String common = this.common(amazonAccountInfo,"_POST_PRODUCT_DATA_");
-        HttpClient client = HttpClients.createDefault();
+//        HttpClient client = HttpClients.createDefault();
 
-        String requestURLParams=amazonAccountInfo.getAmazonMwsEndpoint()+"?AWSAccessKeyId="+amazonAccountInfo.getAmazonAccessID() +
+        /*String requestURLParams=amazonAccountInfo.getAmazonMwsEndpoint()+"?AWSAccessKeyId="+amazonAccountInfo.getAmazonAccessID() +
                 "&Action=SubmitFeed" +
                 "&FeedType=_POST_PRODUCT_DATA_" +
                 "&MWSAuthToken="+amazonAccountInfo.getAmazonAccessSecret() +
@@ -268,7 +269,7 @@ public class UploadToAmazon {
                 "&SignatureVersion=2" +
                 "&Timestamp=" +this.dateTimeStamp+
                 "&Version=2009-01-01" +
-                "&Signature=";
+                "&Signature=";*/
 
 //      根据国家选择产品的语言描述以及类型
         String productTile="";
@@ -348,6 +349,8 @@ public class UploadToAmazon {
             tmp="<SearchTerms>"+splitProductKeyWords[i]+"</SearchTerms>\n";
             amazonProductKeyWords+=tmp;
         }
+//        获取最新的UPC编码，
+        AmazonProductStandardNo newNotUsedNo = amazonProductStandardNoMapper.getNewNotUsedNo();
 
         String body="<?xml version=\"1.0\" ?>\n" +
                 "<AmazonEnvelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"amzn-envelope.xsd\">\n" +
@@ -366,7 +369,7 @@ public class UploadToAmazon {
                 "            <StandardProductID>\n" +
                 "               <Type>UPC</Type>\n" +
 //                Todo
-                "               <Value>"+new String("")+"</Value>\n" +
+                "               <Value>"+newNotUsedNo.getStandardProductId()+"</Value>\n" +
                 "            </StandardProductID>\n" +
                 "            <LaunchDate>"+this.dateTimeStamp+"</LaunchDate>\n" +
                 "            <DescriptionData>\n" +
@@ -385,12 +388,12 @@ public class UploadToAmazon {
                 "                <ItemType>flat-sheets</ItemType>\n" +
                 "                <IsGiftWrapAvailable>false</IsGiftWrapAvailable>\n" +
                 "                <IsGiftMessageAvailable>false</IsGiftMessageAvailable>\n" +
-                "                <RecommendedBrowseNode>60583031</RecommendedBrowseNode>\n" +
-                "                <RecommendedBrowseNode>60576021</RecommendedBrowseNode>\n" +
+                "                <RecommendedBrowseNode>"+productWithBLOBs.getAmazonTypeId()+"</RecommendedBrowseNode>\n" +
+//                "                <RecommendedBrowseNode>60576021</RecommendedBrowseNode>\n" +
                 "            </DescriptionData>\n" +
                 "            <ProductData>\n" +
                 "                <Home>\n" +
-                "                    <Parentage>variation-parent</Parentage>\n" +
+//                "                    <Parentage>variation-parent</Parentage>\n" +
                 "                    <VariationData>\n" +
                 "                        <VariationTheme>Size-Color</VariationTheme>\n" +
                 "                    </VariationData>\n" +
@@ -405,6 +408,9 @@ public class UploadToAmazon {
         IvenDemoSubmitFeedSample.invoke(amazonAccountInfo,"_POST_PRODUCT_DATA_",body);
 
         String result="";
+//        更新UPC编码为不可用
+        newNotUsedNo.setUsed("true");
+        amazonProductStandardNoMapper.updateByPrimaryKey(newNotUsedNo);
         return result;
     }
 

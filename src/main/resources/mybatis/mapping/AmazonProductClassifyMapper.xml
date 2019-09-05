@@ -238,6 +238,13 @@
     select
     <include refid="Base_Column_List" />
     from amazon_product_classify_v2
-    where nodepath = #{nodePath,jdbcType=VARCHAR}
+    where nodePath = #{nodePath,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByNodeType" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from amazon_product_classify_v2
+    where nodeType = #{nodeType,jdbcType=VARCHAR}
   </select>
 </mapper>
