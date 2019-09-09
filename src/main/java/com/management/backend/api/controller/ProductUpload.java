@@ -102,6 +102,8 @@ public class ProductUpload {
 //        约定：前端传数组，两个数组分别为 prodductTypeList，amazonProductTypeList
         log.info("/amazon/products/upload start...;accountId="+amazonProductUploadEntity.toString());
         log.info("写入历史记录");
+//        设置返回值
+        ResponseBodyEntity responseBody = new ResponseBodyEntity();
         List amazonProductTypeList = amazonProductUploadEntity.getAmazonProductTypeList();
         List amazonproducttype = amazonProductUploadEntity.getProdductTypeList();
         String tmp="";
@@ -143,9 +145,18 @@ public class ProductUpload {
         log.info("写入历史记录");
         AmazonAccountInfo amazonAccountInfo = amazonAccountInfoMapper.selectByPrimaryKey(amazonProductUploadEntity.getAmazonAccountId());
         ProductWithBLOBs productWithBLOBs = productMapper.selectByPrimaryKey(Integer.parseInt(amazonProductUploadEntity.getProductId()));
+
 //        查询亚马逊分类的ID
         List<String> amazonProductTypeList1 = amazonProductUploadEntity.getAmazonProductTypeList();
-        AmazonProductClassify amazonProductClassify = amazonProductClassifyMapper.selectByNodeType(amazonProductTypeList1.get(amazonProductTypeList1.size()));
+        if(amazonProductTypeList1==null || amazonProductTypeList1.size()<=0){
+            responseBody.setStatus("200");
+            responseBody.setMessage("需要选择上传的亚马逊类型");
+            return responseBody;
+        }
+
+//        查询亚马逊分类的ID   取List中最后一个值
+        AmazonProductClassify amazonProductClassify = amazonProductClassifyMapper.selectByNodeType(amazonProductTypeList1.get(amazonProductTypeList1.size()-1));
+        log.info("/amazon/products/upload start...;amazon node id="+amazonProductClassify.getNodeid());
         productWithBLOBs.setAmazonTypeId(amazonProductClassify.getNodeid());
 
 //        设置处理天数
@@ -168,7 +179,7 @@ public class ProductUpload {
 //        String s = uploadToAmazon.productImageUpload(amazonAccountInfo, productWithBLOBs);
         String s = uploadToAmazon.productUpload(amazonAccountInfo, productWithBLOBs);
 
-        ResponseBodyEntity responseBody = new ResponseBodyEntity();
+
 //        responseBody.setId();
         responseBody.setStatus("200");
         responseBody.setMessage(s);

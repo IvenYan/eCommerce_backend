@@ -9,5 +9,7 @@ public class Demo {
 //        GoogleApi googleApi = new GoogleApi("122.224.227.202", 3128);
         String result = googleApi.translate("hello world", "zh");
         System.out.println(result);
+
+        
     }
 }

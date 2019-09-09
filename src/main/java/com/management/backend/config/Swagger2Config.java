@@ -17,6 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration  //让spring来加载配置
 @EnableSwagger2 //开启swagger2
 public class Swagger2Config {
+
     @Bean
     public Docket creatRestApi(){
         return new Docket(DocumentationType.SWAGGER_2)

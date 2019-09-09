@@ -2248,14 +2248,16 @@ public  class MarketplaceWebServiceClient implements MarketplaceWebService {
                     throw awse;
 
                 } catch (IOException ioe) {
-                    log.error("Caught IOException exception", ioe);
+//                    log.error("Caught IOException exception", ioe);
+                    log.error("Caught IOException exception;"+ioe.getMessage());
                     if (config.isSetProxyHost() && config.isSetProxyPort() && ioe instanceof javax.net.ssl.SSLPeerUnverifiedException) {
                         String error = "\n*****\n* Perhaps you are attempting to use https protocol to communicate with the proxy that does not support it.\n* If so either enable https on the proxy, or configure the client to use http communications with the proxy.\n* See  MarketplaceWebServiceClientConfig.setProxyProtocol for details.\n*****";
                        log.error(error);
                     }
                     throw new MarketplaceWebServiceException("Internal Error", ioe);
                 } catch (Exception e) {
-                    log.error("Caught Exception", e);
+//                    log.error("Caught Exception", e);
+                    log.error("Caught Exception;"+e.getMessage());
                     throw new MarketplaceWebServiceException(e);
                 } finally {
                     method.releaseConnection();
@@ -2263,11 +2265,13 @@ public  class MarketplaceWebServiceClient implements MarketplaceWebService {
             } while (shouldRetry);
 
         } catch (MarketplaceWebServiceException se) {
-            log.error("Caught MarketplaceWebServiceException", se);
+//            log.error("Caught MarketplaceWebServiceException", se);
+            log.error("Caught MarketplaceWebServiceException;errorCode="+se.getErrorCode()+";message="+se.getMessage());
             throw se;
 
         } catch (Throwable t) {
-            log.error("Caught Exception", t);
+//            log.error("Caught Exception", t);
+            log.error("Caught Exception;message="+t.getMessage());
             throw new MarketplaceWebServiceException(t);
         }
         return response;

@@ -163,7 +163,6 @@ public class IvenDemoSubmitFeedSample {
 //        最后关闭fis
         fis.close();
         if(file.exists()){
-
             file.delete();
         }
         log.info("IvenDemoSubmitFeedSample end");
@@ -248,8 +247,8 @@ public class IvenDemoSubmitFeedSample {
 
         request.setFeedType("_POST_PRODUCT_DATA_");
 //        yk 添加
-//        FileInputStream fileInputStream = new FileInputStream(new File("F:/IvenDevelop/ECommerceWorkspace/xsd/product.xml"));
-        FileInputStream fileInputStream = new FileInputStream(new File("/Users/SherryZ/IdeaProjects/tmp/product.xml"));
+        FileInputStream fileInputStream = new FileInputStream(new File("F:/IvenDevelop/ECommerceWorkspace/xsd/product.xml"));
+//        FileInputStream fileInputStream = new FileInputStream(new File("/Users/SherryZ/IdeaProjects/tmp/product.xml"));
         request.setFeedContent(fileInputStream);
         request.setContentMD5(UtilTools.getFileInputStreamMD5String(fileInputStream));
         request.setContentType(ContentType.TextXml);

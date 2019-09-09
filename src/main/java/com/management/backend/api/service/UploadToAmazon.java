@@ -254,9 +254,17 @@ public class UploadToAmazon {
     }
 
 //    产品上传-未完待续
-    public String productUpload(AmazonAccountInfo amazonAccountInfo , ProductWithBLOBs productWithBLOBs) throws Exception{
+    public String productUpload(AmazonAccountInfo amazonAccountInfo , ProductWithBLOBs productWithBLOBs) {
         System.out.println("productUpload： "+productWithBLOBs.toString());
-        String common = this.common(amazonAccountInfo,"_POST_PRODUCT_DATA_");
+//        初始化返回结果
+        String result="";
+
+        try {
+            String common = this.common(amazonAccountInfo,"_POST_PRODUCT_DATA_");
+        } catch (Exception e) {
+            log.info("productUpload:// common exception");
+            e.printStackTrace();
+        }
 //        HttpClient client = HttpClients.createDefault();
 
         /*String requestURLParams=amazonAccountInfo.getAmazonMwsEndpoint()+"?AWSAccessKeyId="+amazonAccountInfo.getAmazonAccessID() +
@@ -365,10 +373,8 @@ public class UploadToAmazon {
                 "        <OperationType>Update</OperationType>\n" +
                 "        <Product>\n" +
                 "            <SKU>"+ UUID.randomUUID()+"</SKU>\n" +
-
                 "            <StandardProductID>\n" +
                 "               <Type>UPC</Type>\n" +
-//                Todo
                 "               <Value>"+newNotUsedNo.getStandardProductId()+"</Value>\n" +
                 "            </StandardProductID>\n" +
                 "            <LaunchDate>"+this.dateTimeStamp+"</LaunchDate>\n" +
@@ -405,10 +411,16 @@ public class UploadToAmazon {
                 "    </Message>\n" +
                 "</AmazonEnvelope>";
 
-        IvenDemoSubmitFeedSample.invoke(amazonAccountInfo,"_POST_PRODUCT_DATA_",body);
+        try {
+            IvenDemoSubmitFeedSample.invoke(amazonAccountInfo,"_POST_PRODUCT_DATA_",body);
+        } catch (Exception e) {
+            log.info("productUpload:// invoke Amazon 失败;message="+ e.getMessage());
 
-        String result="";
+            result="有问题";
+        }
+
 //        更新UPC编码为不可用
+        log.info("productUpload = 更新UPC编码为不可用");
         newNotUsedNo.setUsed("true");
         amazonProductStandardNoMapper.updateByPrimaryKey(newNotUsedNo);
         return result;
