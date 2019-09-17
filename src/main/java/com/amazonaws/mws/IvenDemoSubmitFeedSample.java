@@ -50,7 +50,7 @@ public class IvenDemoSubmitFeedSample {
     /**
      * @param amazonAccountInfo,feedType, body
      */
-    public static void invoke(AmazonAccountInfo amazonAccountInfo,String feedType, String body) throws Exception{
+    public static void invoke(AmazonAccountInfo amazonAccountInfo,String feedType, String body){
         /************************************************************************
          * Access Key ID and Secret Access Key ID, obtained from:
          * http://aws.amazon.com
@@ -143,25 +143,30 @@ public class IvenDemoSubmitFeedSample {
         System.out.println("测试专用-"+path);
         File file = new File("/"+path + uuid + "_tmp.xml");
 
-        FileOutputStream fos = new FileOutputStream(file);
-        fos.write(body.getBytes("UTF-8"));
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(body.getBytes("UTF-8"));
 //输出内容
-        fos.flush();
+            fos.flush();
 //        关闭连接
-        fos.close();
+            fos.close();
 
-        FileInputStream fis = new FileInputStream(file);
+            FileInputStream fis = new FileInputStream(file);
 
-        request.setFeedContent(fis);
+            request.setFeedContent(fis);
 
-        request.setContentMD5(UtilTools.getFileInputStreamMD5String(fis));
-        request.setContentType(ContentType.TextXml);
-        request.setPurgeAndReplace(true);
+            request.setContentMD5(UtilTools.getFileInputStreamMD5String(fis));
+            request.setContentType(ContentType.TextXml);
+            request.setPurgeAndReplace(true);
 //        request.set
 
-        invokeSubmitFeed(service, request);
+            invokeSubmitFeed(service, request);
 //        最后关闭fis
-        fis.close();
+            fis.close();
+        } catch (IOException e) {
+            log.info("IvenDemoSubmitFeedSample IOException happend;message="+e.getMessage());
+//            e.printStackTrace();
+        }
         if(file.exists()){
             file.delete();
         }

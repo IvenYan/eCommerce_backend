@@ -1,5 +1,6 @@
 package com.management.backend.api.mybatis.mapper;
 
+import com.github.pagehelper.ISelect;
 import com.management.backend.api.mybatis.model.AmazonProductStandardNo;
 import com.management.backend.api.mybatis.model.AmazonProductStandardNoExample;
 import java.util.List;
@@ -10,10 +11,12 @@ import org.springframework.stereotype.Component;
 
 @Mapper
 @Component
-public interface AmazonProductStandardNoMapper {
+public interface AmazonProductStandardNoMapper extends ISelect {
 
 //    查询 最新的 UPC 编码
     AmazonProductStandardNo getNewNotUsedNo();
+//    查询出所有的 UPC 编码
+    List<AmazonProductStandardNo> listAmazonStandardNo();
 
     int countByExample(AmazonProductStandardNoExample example);
 

@@ -9,7 +9,8 @@
     <Message>
         <MessageID>1</MessageID>
         <OperationType>Update</OperationType>
-        <Product xsi:noNamespaceSchemaLocation="amzn-envelope.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <!--产品header 参数-->
+        <Product>
             <SKU>a</SKU>
             <StandardProductID>
                 <Type>ASIN</Type>
@@ -122,10 +123,6 @@
                         <BatteryType>battery_type_a</BatteryType>
                         <NumberOfBatteries>2</NumberOfBatteries>
                     </BatterySubgroup>
-                    <BatterySubgroup>
-                        <BatteryType>battery_type_SC</BatteryType>
-                        <NumberOfBatteries>2</NumberOfBatteries>
-                    </BatterySubgroup>
                 </Battery>
                 <BatteryCellType>zinc</BatteryCellType>
                 <BatteryWeight unitOfMeasure="LB">1234567891.12</BatteryWeight>
@@ -156,67 +153,161 @@
                 <RecommendationExclusion>true</RecommendationExclusion>
             </DiscoveryData>
             <ProductData>
-                <ClothingAccessories>
+                <Home>
+                    <ProductType>
+                        <BedAndBath>
+                            <Battery>
+                                <AreBatteriesIncluded>true</AreBatteriesIncluded>
+                                <AreBatteriesRequired>true</AreBatteriesRequired>
+                                <BatterySubgroup>
+                                    <BatteryType>battery_type_cr5</BatteryType>
+                                    <NumberOfBatteries>2</NumberOfBatteries>
+                                </BatterySubgroup>
+                                <BatterySubgroup>
+                                    <BatteryType>battery_type_product_specific</BatteryType>
+                                    <NumberOfBatteries>2</NumberOfBatteries>
+                                </BatterySubgroup>
+                            </Battery>
+                            <CanShipInOriginalContainer>true</CanShipInOriginalContainer>
+                            <ColorMap>a</ColorMap>
+                            <FabricWarmthDescription>a</FabricWarmthDescription>
+                            <Finish>a</Finish>
+                            <IdentityPackageType>traditional</IdentityPackageType>
+                            <IsStainResistant>true</IsStainResistant>
+                            <LightSourceType>a</LightSourceType>
+                            <Material>a</Material>
+                            <MaximumCoverageArea unitOfMeasure="square-ft">1234567891.12</MaximumCoverageArea>
+                            <NumberOfSets>1234567891</NumberOfSets>
+                            <OutputCapacity unitOfMeasure="picoliters per minute">1234567891.12</OutputCapacity>
+                            <PieceCount>123456789123</PieceCount>
+                            <Shape>a</Shape>
+                            <ThreadCount>123456789123</ThreadCount>
+                            <TowelWeight unitOfMeasure="GR">1234567891.12</TowelWeight>
+                            <VariationData>
+                                <VariationTheme>DisplayWidth-Color</VariationTheme>
+                                <Size>a</Size>
+                                <Color>a</Color>
+                                <Scent>a</Scent>
+                                <StyleName>a</StyleName>
+                                <CustomerPackageType>a</CustomerPackageType>
+                            </VariationData>
+                            <Wattage unitOfMeasure="kilowatts">1234567891.12</Wattage>
+                            <InnerMaterialType>a</InnerMaterialType>
+                            <ItemThickness unitOfMeasure="meters">1234567891.12</ItemThickness>
+                            <ManufacturerMinimumAge>123456789123</ManufacturerMinimumAge>
+                            <ManufacturerMaximumAge>123456789123</ManufacturerMaximumAge>
+                            <Occupancy>a</Occupancy>
+                            <OuterMaterialType>a</OuterMaterialType>
+                            <Seasons>a</Seasons>
+                            <MaterialComposition>a</MaterialComposition>
+                            <ItemTypeName>a</ItemTypeName>
+                            <ItemDiameter unitOfMeasure="decimeters">1234567891.12</ItemDiameter>
+                            <CustomerRestrictionType>a</CustomerRestrictionType>
+                            <OccasionType>a</OccasionType>
+                            <PowerSourceType>a</PowerSourceType>
+                            <BatteryCellComposition>lithium_ion</BatteryCellComposition>
+                            <BatteryDescription>a</BatteryDescription>
+                            <BatteryFormFactor>a</BatteryFormFactor>
+                            <LithiumBatteryWeight>0.0</LithiumBatteryWeight>
+                            <Efficiency>a</Efficiency>
+                            <ClosureType>a</ClosureType>
+                            <CoverMaterialType>a</CoverMaterialType>
+                            <FurnitureFinish>a</FurnitureFinish>
+                            <MountingType>a</MountingType>
+                            <NumberOfDoors>123456789123</NumberOfDoors>
+                            <NumberOfDrawers>123456789123</NumberOfDrawers>
+                            <StyleKeywords>123456789123</StyleKeywords>
+                            <BatteryAverageLife>0.00</BatteryAverageLife>
+                            <BatteryAverageLifeStandby>0.00</BatteryAverageLifeStandby>
+                            <BatteryChargeTime>0.00</BatteryChargeTime>
+                            <LithiumBatteryEnergyContent>0.0</LithiumBatteryEnergyContent>
+                            <LithiumBatteryPackaging>batteries_contained_in_equipment</LithiumBatteryPackaging>
+                            <LithiumBatteryVoltage>0.0</LithiumBatteryVoltage>
+                            <NumberOfLithiumIonCells>2</NumberOfLithiumIonCells>
+                            <NumberOfLithiumMetalCells>2</NumberOfLithiumMetalCells>
+                            <SellerWarrantyDescription>a</SellerWarrantyDescription>
+                            <SizeMap>a</SizeMap>
+                            <ExternalTestingCertification>a</ExternalTestingCertification>
+                            <ExternalTestingCertification>a</ExternalTestingCertification>
+                            <Voltage unitOfMeasure="volts">0.00</Voltage>
+                        </BedAndBath>
+                    </ProductType>
+                    <Parentage>parent</Parentage>
                     <VariationData>
-                        <Parentage>parent</Parentage>
+                        <Parentage>child</Parentage>
+                        <VariationTheme>StyleName-PatternName</VariationTheme>
                         <Size>a</Size>
                         <Color>a</Color>
-                        <VariationTheme>Size</VariationTheme>
                     </VariationData>
-                    <ClassificationData>
-                        <Department>a</Department>
-                        <ColorMap>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</ColorMap>
-                        <SpecialSizeType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SpecialSizeType>
-                        <SpecialFeature>sample string</SpecialFeature>
-                        <SpecialFeature>sample string</SpecialFeature>
-                        <MaterialAndFabric>sample string</MaterialAndFabric>
-                        <MaterialAndFabric>sample string</MaterialAndFabric>
-                        <ImportDesignation>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</ImportDesignation>
-                        <CountryAsLabeled>AA</CountryAsLabeled>
-                        <FurDescription>sample string</FurDescription>
-                        <MaterialOpacity>sample string</MaterialOpacity>
-                        <FabricWash>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</FabricWash>
-                        <PatternStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</PatternStyle>
-                        <FitType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</FitType>
-                        <WaterResistanceLevel>waterproof</WaterResistanceLevel>
-                        <ApparelClosureType>sample string</ApparelClosureType>
-                        <ButtonQuantity>1</ButtonQuantity>
-                        <ControlType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</ControlType>
-                        <OccasionAndLifestyle>sample string</OccasionAndLifestyle>
-                        <StyleName>a</StyleName>
-                        <StyleNumber>a</StyleNumber>
-                        <CollarType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</CollarType>
-                        <SleeveType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</SleeveType>
-                        <CuffType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</CuffType>
-                        <PocketDescription>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</PocketDescription>
-                        <FrontPleatType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</FrontPleatType>
-                        <TopStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</TopStyle>
-                        <BottomStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</BottomStyle>
-                        <SizeMap>a</SizeMap>
-                        <WaistSize unitOfMeasure="CM">1234567891.12</WaistSize>
-                        <InseamLength unitOfMeasure="CM">1234567891.12</InseamLength>
-                        <SleeveLength unitOfMeasure="CM">1234567891.12</SleeveLength>
-                        <NeckSize unitOfMeasure="CM">1234567891.12</NeckSize>
-                        <NeckStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</NeckStyle>
-                        <ChestSize unitOfMeasure="CM">1234567891.12</ChestSize>
-                        <CupSize>J</CupSize>
-                        <UnderwireType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</UnderwireType>
-                        <ShoeWidth>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</ShoeWidth>
-                        <ItemRise unitOfMeasure="centimeters">1234567891.12</ItemRise>
-                        <RiseStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</RiseStyle>
-                        <LegDiameter unitOfMeasure="micrometers">1234567891.12</LegDiameter>
-                        <LegStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</LegStyle>
-                        <BeltStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</BeltStyle>
-                        <StrapType>a</StrapType>
-                        <ToeStyle>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</ToeStyle>
-                        <Theme>sample string</Theme>
-                        <Character>sample string</Character>
-                        <LaptopCapacity>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</LaptopCapacity>
-                        <IsStainResistant>true</IsStainResistant>
-                        <NumberOfPieces>123456789123</NumberOfPieces>
-                        <WheelType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</WheelType>
-                    </ClassificationData>
-                </ClothingAccessories>
+                    <BatteryDescription>a</BatteryDescription>
+                    <CanShipInOriginalContainer>true</CanShipInOriginalContainer>
+                    <CountryAsLabeled>AA</CountryAsLabeled>
+                    <CountryOfOrigin>aa</CountryOfOrigin>
+                    <CountryProducedIn>a</CountryProducedIn>
+                    <ImportDesignation>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</ImportDesignation>
+                    <FurDescription>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</FurDescription>
+                    <IdentityPackageType>frustration_free</IdentityPackageType>
+                    <IncludedComponents>a</IncludedComponents>
+                    <IncludedComponents>a</IncludedComponents>
+                    <FabricType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</FabricType>
+                    <FabricType>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</FabricType>
+                    <PatternName>a</PatternName>
+                    <SeatHeight unitOfMeasure="M">1234567891.12</SeatHeight>
+                    <SpecialFeatures>a</SpecialFeatures>
+                    <SpecialFeatures>a</SpecialFeatures>
+                    <StyleName>a</StyleName>
+                    <Occasion>a</Occasion>
+                    <MatteStyle>a</MatteStyle>
+                    <DisplayLength unitOfMeasure="meters">1234567891.12</DisplayLength>
+                    <DisplayWidth unitOfMeasure="micrometers">1234567891.12</DisplayWidth>
+                    <DisplayHeight unitOfMeasure="nanometers">1234567891.12</DisplayHeight>
+                    <DisplayDepth unitOfMeasure="M">1234567891.12</DisplayDepth>
+                    <DisplayDiameter unitOfMeasure="M">1234567891.12</DisplayDiameter>
+                    <DisplayVolume unitOfMeasure="liters">1234567891.12</DisplayVolume>
+                    <DisplayWeight unitOfMeasure="KG">1234567891.12</DisplayWeight>
+                    <ItemPackageQuantity>1</ItemPackageQuantity>
+                    <ManufacturerWarrantyDescription>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</ManufacturerWarrantyDescription>
+                    <Volume unitOfMeasure="cubic-ft">2</Volume>
+                    <VolumeCapacity unitOfMeasure="liters">2</VolumeCapacity>
+                    <Material>a</Material>
+                    <ThreadCount>2</ThreadCount>
+                    <NumberOfPieces>2</NumberOfPieces>
+                    <SafetyWarning>a</SafetyWarning>
+                    <AwardsWon>a</AwardsWon>
+                    <AwardsWon>a</AwardsWon>
+                    <BatteryAverageLife>0.00</BatteryAverageLife>
+                    <BatteryAverageLifeStandby>0.00</BatteryAverageLifeStandby>
+                    <BatteryChargeTime>0.00</BatteryChargeTime>
+                    <BatteryTypeLithiumIon>2</BatteryTypeLithiumIon>
+                    <BatteryTypeLithiumMetal>2</BatteryTypeLithiumMetal>
+                    <LithiumBatteryEnergyContent>0.0</LithiumBatteryEnergyContent>
+                    <LithiumBatteryPackaging>batteries_contained_in_equipment</LithiumBatteryPackaging>
+                    <LithiumBatteryVoltage>0.0</LithiumBatteryVoltage>
+                    <LithiumBatteryWeight>0.0</LithiumBatteryWeight>
+                    <MfgWarrantyDescriptionLabor>a</MfgWarrantyDescriptionLabor>
+                    <MfgWarrantyDescriptionParts>a</MfgWarrantyDescriptionParts>
+                    <MfgWarrantyDescriptionType>a</MfgWarrantyDescriptionType>
+                    <NumberOfItemsInPackage>2</NumberOfItemsInPackage>
+                    <NumberOfLithiumIonCells>2</NumberOfLithiumIonCells>
+                    <NumberOfLithiumMetalCells>2</NumberOfLithiumMetalCells>
+                    <PowerSourceType>a</PowerSourceType>
+                    <RegionOfOrigin>a</RegionOfOrigin>
+                    <SellerWarrantyDescription>a</SellerWarrantyDescription>
+                    <SizeMap>a</SizeMap>
+                    <Warnings>a</Warnings>
+                    <Wattage>2</Wattage>
+                    <Length unitOfMeasure="MM">1234567891.12</Length>
+                    <Width unitOfMeasure="millimeters">1234567891.12</Width>
+                    <Height unitOfMeasure="meters">1234567891.12</Height>
+                    <Depth unitOfMeasure="MM">1234567891.12</Depth>
+                    <Diameter unitOfMeasure="CM">1234567891.12</Diameter>
+                    <Weight unitOfMeasure="OZ">1234567891.12</Weight>
+                    <Spread unitOfMeasure="feet">1234567891.12</Spread>
+                    <SunlightExposure>full-sun</SunlightExposure>
+                    <MoistureNeeds>constant-watering</MoistureNeeds>
+                    <USDAHardinessZone>1</USDAHardinessZone>
+                    <SunsetClimateZone>1</SunsetClimateZone>
+                </Home>
             </ProductData>
             <ShippedByFreight>true</ShippedByFreight>
             <EnhancedImageURL>http://www.altova.com</EnhancedImageURL>

@@ -69,7 +69,17 @@
     id, standard_product_id, standard_type, used
   </sql>
 
-  <select id="getNewNotUsedNo" resultMap="BaseResultMap"  >
+  <select id="doSelect" resultType="java.lang.Integer" >
+    select count(id)
+    from amazon_product_standard_no
+  </select>
+
+  <select id="listAmazonStandardNo" resultMap="BaseResultMap"  >
+    select
+    id, standard_product_id, standard_type, CASE used WHEN "true" THEN '已用' ELSE '未用' END as used
+    from amazon_product_standard_no
+  </select>
+  <select id="getNewNotUsedNo" resultMap="BaseResultMap" >
     select
     <include refid="Base_Column_List" />
     from amazon_product_standard_no
@@ -91,7 +101,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from amazon_product_standard_no
     where id = #{id,jdbcType=INTEGER}
@@ -110,9 +120,9 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into amazon_product_standard_no (standard_product_id, standard_type, 
+    insert into amazon_product_standard_no (standard_product_id, standard_type,
       used)
-    values (#{standardProductId,jdbcType=VARCHAR}, #{standardType,jdbcType=VARCHAR}, 
+    values (#{standardProductId,jdbcType=VARCHAR}, #{standardType,jdbcType=VARCHAR},
       #{used,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.management.backend.api.mybatis.model.AmazonProductStandardNo" >

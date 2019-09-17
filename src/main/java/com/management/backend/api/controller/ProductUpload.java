@@ -98,7 +98,7 @@ public class ProductUpload {
     @ApiOperation(value="亚马逊上传产品", notes="根据产品的id来获取产品详细信息",produces="application/json",consumes = "application/json")
     @PostMapping(value = "/amazon/products/upload")
     public ResponseBodyEntity SubmitFeed(@RequestBody @ApiParam(name="上传的产品对象",value="传入json格式;id会自动生成，不用输入",required=true)
-                                         AmazonProductUploadEntity amazonProductUploadEntity)throws Exception {
+                                         AmazonProductUploadEntity amazonProductUploadEntity){
 //        约定：前端传数组，两个数组分别为 prodductTypeList，amazonProductTypeList
         log.info("/amazon/products/upload start...;accountId="+amazonProductUploadEntity.toString());
         log.info("写入历史记录");
@@ -121,7 +121,6 @@ public class ProductUpload {
             }
         }
         amazonProductUploadEntity.setProductType(tmp1);
-
         AmazonUploadHistory amazonUploadHistory = new AmazonUploadHistory();
         amazonUploadHistory.setAmazonaccountid(amazonProductUploadEntity.getAmazonAccountId());
         amazonUploadHistory.setAmazonproducttype(amazonProductUploadEntity.getAmazonProductType());
